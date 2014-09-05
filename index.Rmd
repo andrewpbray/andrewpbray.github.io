@@ -23,3 +23,5 @@ without.
 
 #### Friday
 - [Research Reports with R Markdown Prezi](http://prezi.com/8pwudebf9jof/reproducible-20/)
+- [Markdown Demo File (.html)](markdown-demo.html)
+- [Markdown Demo File (.Rmd)](markdown-demo.Rmd)
