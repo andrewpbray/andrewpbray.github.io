@@ -3,6 +3,8 @@ output: html_document
 ---
 # Applied Regression Methods
 
+#### [Syllabus](andrewpbray.github.io/syllabus.html)
+
 #### Homework 1 (due Friday)
 - Please [sign up](https://docs.google.com/a/mtholyoke.edu/spreadsheets/d/1d6T28DhkwoZT6AyXh6BDY4G24h4asFC7WXyqcD9ajMI/edit#gid=0)
 for an office visit. 

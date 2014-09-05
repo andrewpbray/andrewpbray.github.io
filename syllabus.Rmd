@@ -1,0 +1,156 @@
+---
+title: "Applied Regression Methods: Syllabus"
+output: html_document
+---
+
+*STAT 340, Fall 2014*  
+*Professor Andrew Bray*  
+*Clapp 401A*  
+abray@mtholyoke.edu
+
+Does smoking cause cancer?  How do we know this?  Is there a gender wage gap after 
+controlling for education and experience?  How is this quantitative argument made?
+This course covers the beautiful and useful tool of regression, which is the
+central technique of statistical modeling.  By the end of this course you will be
+able to
+
+- Discern research questions and data that are well-suited to regression
+analysis.
+- Conduct thorough exploratory data analysis of data in multiple dimensions.
+- Understand the mathematical foundations of regression.
+- Perform regression analysis in a modern computing environment.
+- Interpret your model and communicate what it implies.
+
+This course will utilize matrix notation, so students that have taken linear 
+algebra will be well-prepared.  Those who have yet to take linear algebra will be
+able to pick up when they need through a short introduction in class and through
+self-study.
+
+Modern statistical analysis is done in a computing environment, so this course has
+a strong computational focus.  The tool we will be using is the R language, which
+is free and open-source and can also be accessed via the Mt. Holyoke RStudio server
+by pointing a browser to https://rstudio.mtholyoke.edu/.  If this is your first time
+using R, don't fear, it's fairly quick to learn.  I can recommend some resources
+to aid in self-study.
+
+The textbook for this course is [A Modern Approach to Regression with R](http://link.springer.com/book/10.1007%2F978-0-387-09608-7).
+The book is available for $25 through the Springer link website, accessible 
+through an on-campus internet connection.  The [author's website](http://www.stat.tamu.edu/~sheather/book/) 
+contains all of the data sets that are used as well as the R-code needed to 
+generate all of the plots.
+
+* * *
+
+## Assignments
+| Component     | Grade Proportion |
+|:-------------:|:----------------:|
+| participation | 5                |
+| homework      | 20               | 
+| activities    | 15               |
+| exam          | 20               |
+| project       | 40               |
+
+#### Participation
+Think of your classmates as your learning community and it's important that you're
+an active member.  You're expected to participate to in-class discussions, collaborate
+with your group members during activities, and contribute to your group project.
+
+#### Homework
+There will be weekly homework assignments, due at the beginning of class on Friday. 
+You are encouraged to work with others, but each student must write their own 
+response/code and list the names of their collaborators at the top.
+
+#### Activities
+Each class there will be an activity that will be done either in small groups or
+individually.  This will be due at the end of class.
+
+#### Exam
+There will be one exam in this course which will occur around Thanksgiving break.
+It will be a comprehensive exam that will cover the conceptual, mathematical, and
+computational aspects of this course.
+
+#### Project
+Each group of three students will complete a research project during the term, 
+and you will present your results in a written report and oral presentation. We'll 
+talk a lot more about the project as the semester proceeds. The project can be
+broken down into three components:
+
+1. Proposal [10%]
+2. Presentation [10%]
+3. Report [20%]
+
+We will discuss the project in detail but in the meantime, start thinking of 
+areas of application that are really interesting to you and how you can access
+data that relates to that area.
+
+#### Extra Credit
+Extra credit is available in several ways: attending an out-of-class lecture (as
+will be announced) and writing a short review of it; pointing out a substantial 
+new mistake in the book or a homework exercise; drawing our attention to an 
+interesting data set or news article; etc. The extra credit is applied when a 
+student is near the boundary of a letter grade.
+
+#### Late work
+No late homeworks or activites will be accepted, though your lowest grade in each 
+will be dropped.
+
+* * *
+
+## Policies
+#### Attendance
+Your attendance in class is crucial. We are all going to learn this material 
+together, so we need to have everyone present and working. I will make 
+accommodations for an unavoidable absence if you notify me. One necessary absence 
+during the semester is not unusual; having more than two is uncommon.
+
+#### Collaboration
+Much of this course will operate on a collaborative basis and you are expected
+and encouraged to work together with a partner or in small groups to study, complete 
+homework assignments, and prepare for exams. However, every word that you write 
+must be your own. Copying and pasting sentences, paragraphs, or blocks of R code 
+from another student is not acceptable and will receive no credit. No interaction 
+with anyone but the instructors is allowed on exams.
+
+#### Disability Accomodations
+If you have a disability and would like to request accomodations, please contact
+AccessAbility Services, located in Wilder Hall B4, at (413) 538-2646 or
+accessability-services@mtholyoke.edu. If you are eligible, they will give you an
+accomodation letter which you sould bring to me as soon as possible.
+
+* * *
+
+## Resources
+#### On the web
+The administrative side of this course resides on moodle. That is where you'll 
+submit your work and where you'll be able to check your grades.  The content for 
+the course will be stored on a separate website that is in development. Stay tuned!
+
+#### Computing
+The use of the R statistical environment with the RStudio interface (downloadable
+from rstudio.org) is thoroughly integrated into the course. We'll also be using 
+R through a version of RStudio accessible on the web at http://rstudio.mtholyoke.edu.
+This software is also installed on many computer labs on campus. It is free 
+software that can be installed on your own machine (download information can be found 
+at http://r-project.org). It will be helpful to bring a laptop to class, to be 
+able to follow along with some of the examples that we run and work through in 
+class.
+
+#### Evening help
+There will likely be help available in the evenings for things related to R.  Details
+will be announced soon.
+
+#### Office hours
+If you'd like to talk through questions you have related to this course or 
+statistics in general, please come by my office hours.  My office is Clapp 401A,
+located two doors down from our classroom.
+
+- Mondays 2:30 - 4:15
+- Wednesdays 2:30 - 3:30
+- Thursdays 1:00 - 4:15
+
+I'm also generally available in the afternoons, so feel free to drop by outside 
+of my office hours.  I'm also available by email: abray@mtholyoke.edu
+
+
+
+
