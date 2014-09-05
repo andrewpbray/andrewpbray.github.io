@@ -58,3 +58,17 @@ This file can be knit to HTML, PDF, or Word.  In RStudio, just select the desire
 output file type and click on `Knit HTML`, `Knit PDF`, or `Knit Word`.  Use the 
 dropdown menu next to that to change the desired file type.
 
+
+
+### Stress Test
+Please do not run the following code until the very end of class.
+
+```{r eval=FALSE, echo=FALSE}
+set.seed(485)
+m <- matrix(rnorm(4e6), ncol = 2000)
+system.time(m_inv <- solve(m))
+```
+
+
+
+
