@@ -6,6 +6,8 @@ output: html_document
 
 #### [Syllabus](syllabus.html)
 
+### Week 1
+
 #### Homework 1 (due Friday)
 - Please [sign up](https://docs.google.com/a/mtholyoke.edu/spreadsheets/d/1d6T28DhkwoZT6AyXh6BDY4G24h4asFC7WXyqcD9ajMI/edit#gid=0)
 for an office visit. 
@@ -20,8 +22,24 @@ Google).
 - Also, please bring your laptop on Friday.  There will be machines to borrow for those
 without.
 
-
 #### Friday
 - [Research Reports with R Markdown Prezi](http://prezi.com/8pwudebf9jof/reproducible-20/)
 - [Markdown Demo File (.html)](markdown-demo.html)
 - [Markdown Demo File (.Rmd)](markdown-demo.Rmd)
+
+
+### Week 2
+
+#### Monday
+- [Slides](week2A-RI.Rpres)
+- [Activity](week2A-RI-activity.Rmd)
+- Helpful videos by Nick Horton (Amherst College):
+    - [Getting started with RStudio: logging in to the server](https://www.youtube.com/watch?v=bStxuxtnIsQ&feature=youtu.be)
+    - [Getting started with RStudio: first steps in R](https://www.youtube.com/watch?v=3Y_i3PxIKfg&feature=youtu.be)
+- Introductory browser-based R course: [Datacamp](https://www.datacamp.com/courses/introduction-to-r)
+
+
+
+
+
+
