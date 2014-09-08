@@ -31,7 +31,7 @@ without.
 ### Week 2
 
 #### Monday
-- [Slides (.RPres)](week2A-RI.RPres)
+- [Slides (.RPres)](week2A-RI.Rpres)
 - [Activity (.Rmd)](week2A-RI-activity.Rmd)
 - Helpful videos by Nick Horton (Amherst College):
     - [Getting started with RStudio: logging in to the server](https://www.youtube.com/watch?v=bStxuxtnIsQ&feature=youtu.be)
