@@ -30,8 +30,10 @@ without.
 
 ### Week 2
 
+This week we'll be going over the fundaments of the R language, so please bring your laptops. [Homework #1](homework1.Rmd) is due Friday (adapted from materials developed by Olaf Hall-Holt and Paul Roback.)
+
 #### Monday
-- [Slides (.RPres)](week2A-RI.Rpres)
+- [Slides (.Rpres)](week2A-RI.Rpres)
 - [Activity (.Rmd)](week2A-RI-activity.Rmd)
 - Helpful videos by Nick Horton (Amherst College):
     - [Getting started with RStudio: logging in to the server](https://www.youtube.com/watch?v=bStxuxtnIsQ&feature=youtu.be)

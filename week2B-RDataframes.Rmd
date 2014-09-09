@@ -1,0 +1,77 @@
+---
+title: "R Vectors and Dataframes"
+output: ioslides_presentation
+---
+
+## Vector Subsetting/Filtering
+What's going on here?
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+x[x < 10]
+x < 10
+```
+
+We can index our vector with a logical vector of the same length.
+
+
+## Subsetting with logicals
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+i <- c(F, F, T, F, F)
+x[i]
+which(x < 10)
+x[x < 10] <- 10
+x
+```
+
+
+## Useful fact!
+
+```{r}
+i <- c(F, F, T, F, F)
+sum(i)
+mean(i)
+x <- c(12, 15, 8, 11, 24)
+mean(x > 11)
+```
+
+
+## Logical operators
+
+`<` less than
+
+`<=` less than or equal
+
+`>` greater than
+
+`>=` greater than or equal
+
+`==` exactly equal to
+
+***
+
+`!=` not equal to
+
+`!x` not equal to x
+
+`x | y` x or y
+
+`x & y` x and y
+
+
+##
+How can you subset the following vector to exclude both elements less than 10 
+and all even elements? (hint: `%%`)
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+```
+
+```{r}
+x[x > 10 & x %% 2 == 1]
+```
+
+
+## Activity: Vector Generation and Subsetting
