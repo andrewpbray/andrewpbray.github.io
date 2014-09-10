@@ -83,7 +83,18 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Vector Subsetting/Filtering</h2></hgroup><article  id="vector-subsettingfiltering">
+<slide class=''><hgroup><h2>Vector Indexing</h2></hgroup><article  id="vector-indexing">
+
+<p>Consider the vector <code>x &lt;- c(12,15,8,11,24)</code>. How do we create a vector of the differences between adjacent elements?</p>
+
+<pre class = 'prettyprint lang-r'>x &lt;- c(12, 15, 8, 11, 24)
+x[-1] - x[-length(x)]</pre>
+
+<pre >## [1]  3 -7  3 13</pre>
+
+<p>Work in vectors instead of loops where possible.</p>
+
+</article></slide><slide class=''><hgroup><h2>Vector Subsetting/Filtering</h2></hgroup><article  id="vector-subsettingfiltering" class="build">
 
 <p>What&#39;s going on here?</p>
 
@@ -98,7 +109,7 @@ x[x &lt; 10]</pre>
 
 <p>We can index our vector with a logical vector of the same length.</p>
 
-</article></slide><slide class=''><hgroup><h2>Subsetting with logicals</h2></hgroup><article  id="subsetting-with-logicals">
+</article></slide><slide class=''><hgroup><h2>Subsetting with logicals</h2></hgroup><article  id="subsetting-with-logicals" class="build">
 
 <pre class = 'prettyprint lang-r'>x &lt;- c(12, 15, 8, 11, 24)
 i &lt;- c(F, F, T, F, F)
@@ -115,7 +126,7 @@ x</pre>
 
 <pre >## [1] 12 15 10 11 24</pre>
 
-</article></slide><slide class=''><hgroup><h2>Useful fact!</h2></hgroup><article  id="useful-fact">
+</article></slide><slide class=''><hgroup><h2>Useful fact!</h2></hgroup><article  id="useful-fact" class="build">
 
 <pre class = 'prettyprint lang-r'>i &lt;- c(F, F, T, F, F)
 sum(i)</pre>
@@ -133,6 +144,7 @@ mean(x &gt; 11)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Logical operators</h2></hgroup><article  id="logical-operators">
 
+<div class="columns-2">
 <p><code>&lt;</code> less than</p>
 
 <p><code>&lt;=</code> less than or equal</p>
@@ -143,27 +155,163 @@ mean(x &gt; 11)</pre>
 
 <p><code>==</code> exactly equal to</p>
 
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
-
 <p><code>!=</code> not equal to</p>
 
 <p><code>!x</code> not equal to x</p>
 
 <p><code>x | y</code> x or y</p>
 
-<p><code>x &amp; y</code> x and y</p>
+<code>x &amp; y</code> x and y</div>
 
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section">
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section" class="build">
 
 <p>How can you subset the following vector to exclude both elements less than 10 and all even elements? (hint: <code>%%</code>)</p>
 
 <pre class = 'prettyprint lang-r'>x &lt;- c(12, 15, 8, 11, 24)</pre>
 
-<pre class = 'prettyprint lang-r'>x[x &gt; 10 &amp; x %% 2 == 1]</pre>
+</article></slide><slide class=''><hgroup><h2>Activity: Vector Generation and Subsetting</h2></hgroup><article  id="activity-vector-generation-and-subsetting">
 
-<pre >## [1] 15 11</pre>
+</article></slide><slide class=''><hgroup><h2>From Vectors to Matrices</h2></hgroup><article  id="from-vectors-to-matrices" class="build">
 
-</article></slide><slide class=''><hgroup><h2>Activity: Vector Generation and Subsetting</h2></hgroup><article  id="activity-vector-generation-and-subsetting"></article></slide>
+<p>Consider the vector</p>
+
+<pre class = 'prettyprint lang-r'>v &lt;- letters
+length(v)</pre>
+
+<pre >## [1] 26</pre>
+
+<p>we can turn this into a matrix.</p>
+
+<pre class = 'prettyprint lang-r'>m &lt;- matrix(v, nrow = 2)
+length(m)</pre>
+
+<pre >## [1] 26</pre>
+
+<pre class = 'prettyprint lang-r'>dim(m)</pre>
+
+<pre >## [1]  2 13</pre>
+
+</article></slide><slide class=''><hgroup><h2>From Vectors to Matrices</h2></hgroup><article  id="from-vectors-to-matrices-1" class="build">
+
+<pre class = 'prettyprint lang-r'>m &lt;- matrix(v, nrow = 2)
+m</pre>
+
+<pre >##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
+## [1,] &quot;a&quot;  &quot;c&quot;  &quot;e&quot;  &quot;g&quot;  &quot;i&quot;  &quot;k&quot;  &quot;m&quot;  &quot;o&quot;  &quot;q&quot;  &quot;s&quot;   &quot;u&quot;   &quot;w&quot;   &quot;y&quot;  
+## [2,] &quot;b&quot;  &quot;d&quot;  &quot;f&quot;  &quot;h&quot;  &quot;j&quot;  &quot;l&quot;  &quot;n&quot;  &quot;p&quot;  &quot;r&quot;  &quot;t&quot;   &quot;v&quot;   &quot;x&quot;   &quot;z&quot;</pre>
+
+<p>By default, R will spool the vector into a matrix by first filling the columns. Which argument can we tweak to change this? (<code>?matrix</code>)</p>
+
+<p><code>matrix(v, nrow = 2, byrow = TRUE)</code></p>
+
+</article></slide><slide class=''><hgroup><h2>Matrix Subsetting</h2></hgroup><article  id="matrix-subsetting" class="build">
+
+<p>Square brackets again, but with [rows, columns].</p>
+
+<pre class = 'prettyprint lang-r'>m[2, 3]</pre>
+
+<pre >## [1] &quot;f&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>m[2, 2:4]</pre>
+
+<pre >## [1] &quot;d&quot; &quot;f&quot; &quot;h&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>m[, 3]</pre>
+
+<pre >## [1] &quot;e&quot; &quot;f&quot;</pre>
+
+<p>Leaving a blank means &quot;all&quot;.</p>
+
+</article></slide><slide class=''><hgroup><h2>Data structures in R</h2></hgroup><article  id="data-structures-in-r">
+
+<ol class = 'build'>
+<li><p><strong>Vector:</strong> homogeneous groups of integers, numerics, logicals, characters. Scalars are just vectors of length one.</p></li>
+<li><p><strong>Matrix:</strong> vectors with an additional dimension attributes (also homogeneous).</p></li>
+<li><p><strong>Dataframe:</strong> matrix of heterogeneous columns of the same length.</p></li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Dataframe: nc</h2></hgroup><article  id="dataframe-nc">
+
+<img src='http://smashinghub.com/wp-content/uploads/2013/01/BP-33.jpg' title=''/>
+
+<pre class = 'prettyprint lang-r'>download.file(&quot;http://www.openintro.org/stat/data/nc.RData&quot;, destfile = &quot;nc.RData&quot;)
+load(&quot;nc.RData&quot;)</pre>
+
+<ul class = 'build'>
+<li>What are the dimensions?</li>
+<li>What mode of data is in each column? (<code>head()</code>)</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Dataframe: nc</h2></hgroup><article  id="dataframe-nc-1">
+
+<pre class = 'prettyprint lang-r'>class(nc)</pre>
+
+<pre >## [1] &quot;data.frame&quot;</pre>
+
+<pre class = 'prettyprint lang-r'>dim(nc)</pre>
+
+<pre >## [1] 1000   13</pre>
+
+<pre class = 'prettyprint lang-r'>length(nc)</pre>
+
+<pre >## [1] 13</pre>
+
+</article></slide><slide class=''><hgroup><h2>Dataframes</h2></hgroup><article  id="dataframes">
+
+<ol class = 'build'>
+<li>What <code>attributes()</code> does this dataframe have?</li>
+<li>What happens when you convert this dataframe into a matrix?</li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Subsetting columns</h2></hgroup><article  id="subsetting-columns" class="build">
+
+<p><code>$</code> is an operator used to access a column (vector) from a dataframe.</p>
+
+<pre class = 'prettyprint lang-r'>head(nc$fage)</pre>
+
+<pre >## [1] NA NA 19 21 NA NA</pre>
+
+<pre class = 'prettyprint lang-r'>length(nc$fage)</pre>
+
+<pre >## [1] 1000</pre>
+
+<p>It can be subsetted just like a vector.</p>
+
+<pre class = 'prettyprint lang-r'>nc$fage[3]</pre>
+
+<pre >## [1] 19</pre>
+
+</article></slide><slide class=''><hgroup><h2>Subsetting as a matrix</h2></hgroup><article  id="subsetting-as-a-matrix" class="build">
+
+<p>You can also subset the whole dataframe like a matrix. What do you think the following commands do?</p>
+
+<pre class = 'prettyprint lang-r'>nc[1:10, 1:2]
+nc[1, ]
+nc[nc$gender == &quot;female&quot;, &quot;premie&quot;]</pre>
+
+<p>Note that the last command could be written also using vector subsetting.</p>
+
+<pre class = 'prettyprint lang-r'>nc$premie[nc$gender == &quot;female&quot;]</pre>
+
+</article></slide><slide class=''><hgroup><h2>Functions on vectors</h2></hgroup><article  id="functions-on-vectors">
+
+<p>There are many statistical functions that take a vector as an argument (<code>mean()</code>, <code>sum()</code>, <code>median()</code>, <code>sd()</code>, <code>max()</code>, <code>min()</code>etc.) that can also be used to subset.</p>
+
+<pre class = 'prettyprint lang-r'>nc[nc$mage == max(nc$mage), ]</pre>
+
+<pre >##      fage mage     mature weeks    premie visits     marital gained weight
+## 1000   45   50 mature mom    39 full term     14 not married     23   7.13
+##      lowbirthweight gender     habit whitemom
+## 1000        not low female nonsmoker    white</pre>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section-1">
+
+<p>Fix the following subsetting errors using data from <code>nc</code>.</p>
+
+<pre class = 'prettyprint lang-r'>nc[nc$visits = 4, ]
+nc[-1:4, ]
+nc[nc$visits &lt;= 5]
+nc[nc$visits == 4 | 6, ]</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

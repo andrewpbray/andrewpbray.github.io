@@ -30,7 +30,7 @@ without.
 
 ### Week 2
 
-This week we'll be going over the fundaments of the R language, so please bring your laptops. [Homework #1](homework1.Rmd) is due Friday (adapted from materials developed by Olaf Hall-Holt and Paul Roback.)
+This week we'll be going over the fundamentals of the R language, so please bring your laptops. [Homework #1](homework1.Rmd) is due Friday (adapted from materials developed by Olaf Hall-Holt and Paul Roback.)
 
 #### Monday
 - [Slides (.Rpres)](week2A-RI.Rpres)
@@ -39,6 +39,9 @@ This week we'll be going over the fundaments of the R language, so please bring 
     - [Getting started with RStudio: logging in to the server](https://www.youtube.com/watch?v=bStxuxtnIsQ&feature=youtu.be)
     - [Getting started with RStudio: first steps in R](https://www.youtube.com/watch?v=3Y_i3PxIKfg&feature=youtu.be)
 - Introductory browser-based R course: [Datacamp](https://www.datacamp.com/courses/introduction-to-r)
+
+#### Wednesday
+- [Slides](week2B-RDataframes.Rmd)
 
 
 

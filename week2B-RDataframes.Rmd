@@ -1,9 +1,24 @@
 ---
 title: "R Vectors and Dataframes"
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    incremental: true
 ---
 
-## Vector Subsetting/Filtering
+## Vector Indexing
+
+Consider the vector `x <- c(12,15,8,11,24)`.  How do we create a vector of the
+differences between adjacent elements?
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+x[-1] - x[-length(x)]
+```
+
+Work in vectors instead of loops where possible.
+
+
+## Vector Subsetting/Filtering {.build}
 What's going on here?
 
 ```{r}
@@ -15,7 +30,7 @@ x < 10
 We can index our vector with a logical vector of the same length.
 
 
-## Subsetting with logicals
+## Subsetting with logicals {.build}
 
 ```{r}
 x <- c(12, 15, 8, 11, 24)
@@ -27,7 +42,7 @@ x
 ```
 
 
-## Useful fact!
+## Useful fact!  {.build}
 
 ```{r}
 i <- c(F, F, T, F, F)
@@ -40,6 +55,7 @@ mean(x > 11)
 
 ## Logical operators
 
+<div class="columns-2">
 `<` less than
 
 `<=` less than or equal
@@ -50,8 +66,6 @@ mean(x > 11)
 
 `==` exactly equal to
 
-***
-
 `!=` not equal to
 
 `!x` not equal to x
@@ -59,9 +73,11 @@ mean(x > 11)
 `x | y` x or y
 
 `x & y` x and y
+</div>
 
 
-##
+## {.build}
+
 How can you subset the following vector to exclude both elements less than 10 
 and all even elements? (hint: `%%`)
 
@@ -69,9 +85,166 @@ and all even elements? (hint: `%%`)
 x <- c(12, 15, 8, 11, 24)
 ```
 
+
+## Activity: Vector Generation and Subsetting
+
+
+## From Vectors to Matrices {.build}
+
+Consider the vector
+
 ```{r}
-x[x > 10 & x %% 2 == 1]
+v <- letters
+length(v)
+```
+
+we can turn this into a matrix.
+
+```{r}
+m <- matrix(v, nrow = 2)
+length(m)
+dim(m)
 ```
 
 
-## Activity: Vector Generation and Subsetting
+## From Vectors to Matrices {.build}
+
+```{r}
+m <- matrix(v, nrow = 2)
+m
+```
+
+By default, R will spool the vector into a matrix by first filling the columns.
+Which argument can we tweak to change this? (`?matrix`)
+
+`matrix(v, nrow = 2, byrow = TRUE)`
+
+
+
+## Matrix Subsetting {.build}
+
+Square brackets again, but with [rows, columns].
+
+```{r}
+m[2, 3]
+m[2, 2:4]
+m[, 3]
+```
+
+Leaving a blank means "all".
+
+
+## Data structures in R
+
+1. **Vector:** homogeneous groups of integers, numerics, logicals, characters.
+Scalars are just vectors of length one.
+
+2. **Matrix:** vectors with an additional dimension attributes (also homogeneous).
+
+3. **Dataframe:** matrix of heterogeneous columns of the same length.
+
+
+## Dataframe: nc
+
+![baby](http://smashinghub.com/wp-content/uploads/2013/01/BP-33.jpg)
+
+```{r}
+download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
+load("nc.RData")
+```
+
+- What are the dimensions?
+- What mode of data is in each column? (`head()`)
+
+
+## Dataframe: nc
+
+```{r}
+class(nc)
+dim(nc)
+length(nc)
+```
+
+
+## Dataframes
+1. What `attributes()` does this dataframe have?
+2. What happens when you convert this dataframe into a matrix?
+
+
+## Subsetting columns {.build}
+`$` is an operator used to access a column (vector) from a dataframe.
+
+```{r}
+head(nc$fage)
+length(nc$fage)
+```
+
+It can be subsetted just like a vector.
+
+```{r}
+nc$fage[3]
+```
+
+
+
+## Subsetting as a matrix {.build}
+You can also subset the whole dataframe like a matrix.  What do you think the 
+following commands do?
+
+```{r, eval=FALSE}
+nc[1:10, 1:2]
+nc[1, ]
+nc[nc$gender == "female", "premie"]
+```
+
+Note that the last command could be written also using vector subsetting.
+
+```{r, eval=FALSE}
+nc$premie[nc$gender == "female"]
+```
+
+
+## Functions on vectors
+
+There are many statistical functions that take a vector as an argument (`mean()`,
+`sum()`, `median()`, `sd()`, `max()`, `min()`etc.) that can also be used to subset.
+
+```{r}
+nc[nc$mage == max(nc$mage), ]
+```
+
+
+##
+
+Fix the following subsetting errors using data from `nc`.
+
+```{r, eval = FALSE}
+nc[nc$visits = 4, ]
+nc[-1:4, ]
+nc[nc$visits <= 5]
+nc[nc$visits == 4 | 6, ]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
