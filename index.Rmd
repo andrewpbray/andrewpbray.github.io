@@ -41,8 +41,11 @@ This week we'll be going over the fundamentals of the R language, so please brin
 - Introductory browser-based R course: [Datacamp](https://www.datacamp.com/courses/introduction-to-r)
 
 #### Wednesday
-- [Slides](week2B-RDataframes.Rmd)
+- [Slides](week2B-RMatrices.Rmd)
 
+#### Friday
+- [Slides](week2C-RDataframes.Rmd)
+- [Slides(html)](week2C-RDataframes.html)
 
 
 
