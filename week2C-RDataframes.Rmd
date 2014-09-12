@@ -7,7 +7,7 @@ output:
 
 ## Dataframe: nc
 <div class="columns-2">
-![baby](ella.png)
+![baby](http://smashinghub.com/wp-content/uploads/2013/01/BP-33.jpg)
 
 ```{r}
 download.file("http://www.openintro.org/stat/data/nc.RData",
