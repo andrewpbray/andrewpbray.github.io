@@ -47,6 +47,12 @@ This week we'll be going over the fundamentals of the R language, so please brin
 - Dataframes ([html](week2C-RDataframes.html)) ([Rmd](week2C-RDataframes.Rmd))
 
 
+### Week 3: Describing Data
+Solutions to Homework 1 are now posted on moodle.
 
+#### Monday
+- Describing data I: slides ([html](week3A-describing-dataI.html)) ([Rmd](week3A-describing-dataI.Rmd))
+- Activity 2 [Rmd](week3A-viz-activity.Rmd)
+- [nat geo video](http://www.youtube.com/watch?v=4B2xOvKFFz4)
 
 
