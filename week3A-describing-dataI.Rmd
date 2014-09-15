@@ -1,0 +1,7 @@
+---
+title: "Describing Data I"
+output: ioslides_presentation
+---
+
+## Data Taxonomy
+![data taxonomy]("http://andrewpbray.github.io/data-taxonomy.png")
