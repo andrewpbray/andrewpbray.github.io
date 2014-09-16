@@ -148,6 +148,15 @@ mplot(nc)
 ```
 
 
+```{r submit-time-data}
+d <- read.csv("submit-times.csv")
+d <- as.character(d[,1])
+a <- d[d != "-"]
+datestamp <- unlist(strsplit(a, ", "))[seq(2, length(a)*3, 3)]
+timestamp <- unlist(strsplit(a, ", "))[seq(3, length(a)*3, 3)]
+dt <- POSIXlt()
+```
+
 
 
 

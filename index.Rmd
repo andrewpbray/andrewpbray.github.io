@@ -48,7 +48,7 @@ This week we'll be going over the fundamentals of the R language, so please brin
 
 
 ### Week 3: Describing Data
-Solutions to Homework 1 are now posted on moodle.
+[Homework 2](homework2.Rmd) will be due Sunday afternoon. Solutions to Homework 1 are now posted on moodle.
 
 #### Monday
 - Describing data I: slides ([html](week3A-describing-dataI.html)) ([Rmd](week3A-describing-dataI.Rmd))
