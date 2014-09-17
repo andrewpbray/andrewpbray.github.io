@@ -55,4 +55,8 @@ This week we'll be going over the fundamentals of the R language, so please brin
 - Activity 2 [Rmd](week3A-viz-activity.Rmd)
 - [nat geo video](http://www.youtube.com/watch?v=4B2xOvKFFz4)
 
+#### Wednesday
+- Describing data in high dimensions: slides ([html](week3B-describing-dataII.html)) ([Rmd](week3B-describing-dataII.Rmd))
+
+
 
