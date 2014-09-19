@@ -58,5 +58,8 @@ This week we'll be going over the fundamentals of the R language, so please brin
 #### Wednesday
 - Describing data in high dimensions: slides ([html](week3B-describing-dataII.html)) ([Rmd](week3B-describing-dataII.Rmd))
 
+#### Friday
+- From Data to Distributions ([html](week3C-data-to-dists.html)) ([Rmd](week3C-data-to-dists.Rmd))
+- [Data Art](http://www.memo.tv/forms/)
 
 

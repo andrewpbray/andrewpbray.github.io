@@ -1,5 +1,5 @@
 ---
-title: "Describing Data in High Dimensions"
+title: "From Data to Distributions"
 output: ioslides_presentation
 ---
 
