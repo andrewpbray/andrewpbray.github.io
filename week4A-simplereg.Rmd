@@ -17,17 +17,17 @@ opts_chunk$set(warning=FALSE,message=FALSE)
 
 ## Viz 
 
-![bad2](http://andrewpbray.github.io/viz-bad2.PNG)
+![bad2](http://andrewpbray.github.io/viz-bad2.png)
 
 
 ## Viz 
 
-![meh](http://andrewpbray.github.io/viz-meh.PNG)
+![meh](http://andrewpbray.github.io/viz-meh.png)
 
 
 ## Viz 
 
-![good](http://andrewpbray.github.io/viz-good.PNG)
+![good](http://andrewpbray.github.io/viz-god.PNG)
 
 ## Poverty and Graduation
 
