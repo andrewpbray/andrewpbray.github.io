@@ -1,0 +1,43 @@
+---
+title: "Simple Linear Regression"
+output: ioslides_presentation
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+require(knitr)
+require(ggplot2)
+opts_chunk$set(warning=FALSE,message=FALSE)
+```
+
+
+## Production Runs
+
+```{r eval=FALSE}
+
+poverty <- read.csv("http://math.smith.edu/~bbaumer/mth241/poverty.txt", sep = "nt")
+d <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/production.txt",
+                header = TRUE)
+ggplot(d, aes(x = RunSize, y = RunTime)) +
+  geom_point(color = "tomato")
+```
+
+![rosie](http://cbsnews2.cbsistatic.com/hub/i/r/2014/03/28/7fb9175c-9c32-4fb4-a138-532691e4ec36/thumbnail/620x350/a738e211d7f03673a915c3d5e2aa7631/rosie-riveter-factory.jpg)
+
+## Production Runs
+
+```{r echo=FALSE}
+d <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/production.txt",
+                header = TRUE)
+plot(d$RunSize, d$RunTime, col = "steelblue", pch = 16)
+```
+
+## Which line?
+
+```{r, eval=FALSE}
+download.file("http://www.openintro.org/stat/data/mlb11.RData",
+              destfile = "mlb11.RData")
+load("mlb11.RData")
+plot_ss(d$RunSize, d$RunTime)
+m1 <- lm(RunTime ~ RunSize, data = d)
+```
+
