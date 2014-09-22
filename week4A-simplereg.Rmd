@@ -10,25 +10,39 @@ opts_chunk$set(warning=FALSE,message=FALSE)
 ```
 
 
-## Production Runs
+## Viz 
+
+![bad](http://andrewpbray.github.io/viz-bad.PNG)
+
+
+## Viz 
+
+![bad2](http://andrewpbray.github.io/viz-bad2.PNG)
+
+
+## Viz 
+
+![meh](http://andrewpbray.github.io/viz-meh.PNG)
+
+
+## Viz 
+
+![good](http://andrewpbray.github.io/viz-good.PNG)
+
+## Poverty and Graduation
 
 ```{r eval=FALSE}
-
-poverty <- read.csv("http://math.smith.edu/~bbaumer/mth241/poverty.txt", sep = "nt")
-d <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/production.txt",
-                header = TRUE)
-ggplot(d, aes(x = RunSize, y = RunTime)) +
-  geom_point(color = "tomato")
+poverty <- read.csv("http://andrewpbray.github.io/poverty.txt", sep = "nt")
+plot(poverty$Poverty, poverty$Graduates, pch = 16, col = "steelblue")
 ```
 
-![rosie](http://cbsnews2.cbsistatic.com/hub/i/r/2014/03/28/7fb9175c-9c32-4fb4-a138-532691e4ec36/thumbnail/620x350/a738e211d7f03673a915c3d5e2aa7631/rosie-riveter-factory.jpg)
+![dropout](http://www.carleton.edu/departments/educ/vote/pictures/icons/DropoutIcon.jpg)
 
-## Production Runs
+## Poverty and Graduation
 
 ```{r echo=FALSE}
-d <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/production.txt",
-                header = TRUE)
-plot(d$RunSize, d$RunTime, col = "steelblue", pch = 16)
+poverty <- read.delim("http://andrewpbray.github.io/poverty.txt", header = TRUE)
+plot(poverty$Poverty, poverty$Graduates, pch = 16, col = "steelblue")
 ```
 
 ## Which line?
@@ -37,7 +51,7 @@ plot(d$RunSize, d$RunTime, col = "steelblue", pch = 16)
 download.file("http://www.openintro.org/stat/data/mlb11.RData",
               destfile = "mlb11.RData")
 load("mlb11.RData")
-plot_ss(d$RunSize, d$RunTime)
-m1 <- lm(RunTime ~ RunSize, data = d)
+plot_ss(poverty$Poverty, poverty$Graduates)
+m1 <- lm(Graduates ~ Poverty, data = poverty)
 ```
 
