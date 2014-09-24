@@ -68,7 +68,9 @@ Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1, 2, 3, 5, 7.
 
 #### Monday
 - Readings for next time: 2.1 - 2.4
-- SLR: slides ([html](week4A-simplereg.html) [Rmd](week4A-simplereg.Rmd))
+- SLR: slides ([html](week4A-simplereg.html)) ([Rmd](week4A-simplereg.Rmd))
 
 #### Wednesday
-
+- Readings for next time: 2.73 and 2.74
+- Inference for SLR: slides ([html](week4B-simpleregII.html)) ([Rmd](week4B-simpleregII.Rmd))
+- Activity 3 ([Rmd](week4B-lm-activity.Rmd))
