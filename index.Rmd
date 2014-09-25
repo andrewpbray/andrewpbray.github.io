@@ -64,7 +64,7 @@ This week we'll be going over the fundamentals of the R language, so please brin
 
 
 ### Week 4: Simple Linear Regression
-Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1, 2, 3, 5, 7.
+Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1(a, b, d), 2(a), 3(a, b), 7.
 
 #### Monday
 - Readings for next time: 2.1 - 2.4
