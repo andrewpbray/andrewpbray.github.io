@@ -72,5 +72,11 @@ Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1(a, b, d), 2(a), 
 
 #### Wednesday
 - Readings for next time: 2.73 and 2.74
-- Inference for SLR: slides ([html](week4B-simpleregII.html)) ([Rmd](week4B-simpleregII.Rmd))
+- SLR II: slides ([html](week4B-simpleregII.html)) ([Rmd](week4B-simpleregII.Rmd))
 - Activity 3 ([Rmd](week4B-lm-activity.Rmd))
+
+#### Friday
+- Inference on SLR: slides ([html](week4C-simplereg-inf.html)) ([Rmd](week4C-simplereg-inf.Rmd))
+- If you need to review CI's and H-testing, see Ch. 2 and 4 in [OpenIntro Statistics](http://www.openintro.org/download.php?file=isrs1&referrer=/stat/textbook.php).
+
+
