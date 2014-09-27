@@ -78,5 +78,6 @@ Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1(a, b, d), 2(a), 
 #### Friday
 - Inference on SLR: slides ([html](week4C-simplereg-inf.html)) ([Rmd](week4C-simplereg-inf.Rmd))
 - If you need to review CI's and H-testing, see Ch. 2 and 4 in [OpenIntro Statistics](http://www.openintro.org/download.php?file=isrs1&referrer=/stat/textbook.php).
+- Helpful web app for visualizing what the t-table is telling you, or how pt() and qt() work. [link](http://spark.rstudio.com/minebocek/dist_calc/)
 
 
