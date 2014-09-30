@@ -81,3 +81,19 @@ Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1(a, b, d), 2(a), 
 - Helpful web app for visualizing what the t-table is telling you, or how pt() and qt() work. [link](http://spark.rstudio.com/minebocek/dist_calc/)
 
 
+### Week 5: Simple Linear Regression continued
+Homework 4 is an extension of Homework 3.  It is your chance to complete the parts 
+from HW 3 that you may have left incomplete and to add in the addtional parts:
+1(c), 2(b), 3(c).  This homework must be done in markdown.  Please add at the top
+of the homework three areas of interest for the group project.  These will be three
+fields (e.g. public health, childhood psychology, sports/tennis, voting behavior,
+ecology) that you would be excited to work in for your project, which will include
+tracking down data and constructing a regression model.
+
+#### Monday
+Happy Mountain Day!
+
+#### Wednesday
+- Hypothesis testing for regression, intervals for E(Y|X) and p(Y|X).
+
+
