@@ -72,7 +72,7 @@ summary(m1)$coef[1, 2]
 ```
 
 
-## Activity 3b
+## Activity 4b
 
 Additional questions:
 
