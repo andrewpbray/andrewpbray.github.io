@@ -94,5 +94,10 @@ tracking down data and constructing a regression model.
 Happy Mountain Day!
 
 #### Wednesday
-- Hypothesis testing for regression, intervals for E(Y|X) and p(Y|X): slides ([html](week5B-simplereg-PIs.html)) ([Rmd](week5B-simplereg-PIs.Rmd)) 
+- Hypothesis testing for regression: slides ([html](week5B-simplereg-PIs.html)) ([Rmd](week5B-simplereg-PIs.Rmd))
+- [New York Times](http://www.nytimes.com/2014/09/30/science/the-odds-continually-updated.html) article on Bayesian Statistics.
+
+#### Friday
+- Reading for next week: A Modern Approach: 3.1, 3.2.5, 3.2.6, OpenIntro: Ch. 5 (particularly 5.4).
+- Intervals for E(Y|X) and Y|X: slides ([html](week5C-simplereg-PIs.html)) ([Rmd](week5C-simplereg-PIs.Rmd))
 
