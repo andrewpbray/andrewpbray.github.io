@@ -1,0 +1,259 @@
+---
+title: "Outliers"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## What is an outlier? {.build}
+
+<div class="columns-2">
+![outliers](http://marcoghislanzoni.com/blog/wp-content/uploads/2013/10/outliers_gladwell.jpg)
+
+**Outlier** is a general term to describe a data point that doesn't follow the
+pattern set by the bulk of the data, when one takes into account the model.
+</div>
+
+
+## Outlier Example One
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# this chunk sets the chunk options for the whole document
+require(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+```{r, echo=FALSE}
+library(openintro)
+COL <- c('#55000088','#225588')
+set.seed(238)
+n <- c(50, 25, 78, 55, 70, 150)
+m <- c(12, -4, 7, -19, 0, 40)
+xr <- list(0.3, c(2), 1.42, runif(4,1.45,1.55), 5.78, -0.6)
+yr <- list(-4, c(-8), 19, c(-17,-20,-21,-19), 12, -23.2)
+i <- 1
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
+```
+
+
+## Outlier Example Two
+
+```{r, echo=FALSE}
+i <- 2
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
+```
+
+
+## Outlier Example Three
+
+```{r, echo=FALSE}
+i <- 3
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
+```
+
+
+## Outlier Example Four
+
+```{r, echo=FALSE}
+i <- 5
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
+```
+
+
+## Outlier Example Four
+
+```{r, echo=FALSE}
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x[1:70], y[1:70], col = COL[2], lCol = COL[1], lwd = 3, xlim = range(x), ylim = range(y))
+```
+
+
+## Outliers, leverage, influence {.build}
+
+**Outliers** are points that don't fit the trend in the rest of the data.
+
+**High leverage points** have the potential to have an unusually large influence 
+on the fitted model.
+
+**Influential points** are high leverage points that cause a very different
+line to be fit than would be with that point removed.
+
+
+## Example of high leverage, high influence
+
+We can data on the surface temperature and light intensity of 47 stars in the
+star cluster CYG OB1, near Cygnus.
+
+```{r, echo=FALSE}
+library(faraway)
+data(star)
+par(mar=c(4,4,2,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
+plot(light ~ temp, data = star, pch=19, col=COL[2], xlab = "log(temp)", ylab = "log(light intensity)")
+```
+
+
+## Example of high leverage, high influence
+
+We can data on the surface temperature and light intensity of 47 stars in the
+star cluster CYG OB1, near Cygnus.
+
+```{r, echo=FALSE}
+par(mar=c(4,4,2,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
+plot(light ~ temp, data = star, pch=19, col=COL[2], xlab = "log(temp)", ylab = "log(light intensity)")
+abline(lm(light~temp, data = star), col = "darkgreen", lwd = 3, lty = 2)
+legend("top", inset = 0.05, "w/ outliers", lty = 2, lwd = 2, col = "darkgreen")
+```
+
+
+## Example of high leverage, high influence
+
+We can data on the surface temperature and light intensity of 47 stars in the
+star cluster CYG OB1, near Cygnus.
+
+```{r, echo=FALSE}
+par(mar=c(4,4,2,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
+plot(light ~ temp, data = star, pch=19, col=COL[2], xlab = "log(temp)", ylab = "log(light intensity)")
+abline(lm(light~temp, data = star), col = "darkgreen", lwd = 3, lty = 2)
+abline(lm(light[temp>4]~temp[temp>4], data = star), col = COL[1], lwd = 3)
+legend("top", inset = 0.05, c("w/ outliers","w/o outliers"), lty = c(2,1), lwd = c(2,3), col = c("darkgreen",COL[1]))
+```
+
+
+## Example of high leverage, low influence
+
+```{r, echo=FALSE}
+set.seed(12)
+i <- 2
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+y <- y - mean(y)
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.5,0), cex.lab = 1.25, cex.axis = 1.25, mfrow = c(2,1))
+lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
+```
+
+
+## Quantifying leverage: $h_{ii}$ {.build}
+
+We need a metric for the leverage of $x_i$ that incorporates
+
+1. The distance $x_i$ is away from the bulk of the $x$'s.
+2. The extent to which the fitted regression line is attracted by the given point.
+
+\[ h_{ii} = \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_{j = 1}^n(x_j - \bar{x})^2} \]
+
+
+## $h_{ii}$ values
+
+```{r, echo=FALSE, fig.height=6, fig.width=7, fig.align='center'}
+m1 <- lm(y ~ x)
+plot(x, y, col = COL[2], pch = 16)
+abline(m1, col = COL[1], lwd = 3)
+h <- lm.influence(lm(y ~ x))$hat
+for(i in c(1, 16, 25, 26)) {
+  text(x[i], y[i] + .3, round(h[i], 2))
+}
+```
+
+
+## What is "high" leverage?
+
+**Rule of Thumb**: in simple regression, a point has "high leverage" if
+$h_{ii} > 4/n$.
+
+```{r, fig.height=3.5, echo=1:2}
+m1 <- lm(y ~ x)
+h <- lm.influence(lm(y ~ x))$hat
+hist(h)
+abline(v = 4/length(y), col = "red")
+```
+
+
+## From leverage to influence
+
+**Leverage** measures the weight given to each point in determining the regression
+line.
+
+**Influence** measures how different the regression line would be without a given
+point.
+
+```{r, echo=FALSE, fig.height=4, }
+i <- 5
+x <- runif(n[i])
+y <- m[i]*x + rnorm(n[i])
+x <- c(x,xr[[i]])
+y <- c(y,yr[[i]])
+par(mfrow = c(1, 2))
+plot(x, y, col = COL[2], pch = 16)
+abline(lm(y ~ x), col = COL[1], lwd = 3)
+x2 <- x[1:70]
+y2 <- y[1:70]
+plot(x2, y2, col = COL[2], pch = 16, xlim = range(x), ylim = range(y))
+abline(lm(y2 ~ x2), col = COL[1], lwd = 3)
+```
+
+
+## Cook's Distance {.build}
+
+A widely-used measure of influence:
+
+\[ D_i = \frac{\sum_{j = 1}^n (\hat{y}_{j(i)} - \hat{y}_j)^2}{2S^2} \]
+
+where $\hat{y}_{j(i)}$ is the $j^{th}$ fitted value based on the fit with the 
+$i^{th}$ case removed.
+
+
+## Cook's Distance {.build}
+
+An alternate form:
+
+\[ D_i = \frac{r_i^2}{2} \frac{h_{ii}}{1 - h_{ii}} \]
+
+To be influential a point must:
+
+1. Have high leverage $h_{ii}$ *and*
+2. Have a high standardized residual $r_i$
+
+
+## Cook's Distance in R
+
+```{r, echo=FALSE}
+par(mar=c(4,4,2,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.25, cex.axis = 1.25)
+plot(light ~ temp, data = star, pch=19, col=COL[2], xlab = "log(temp)", ylab = "log(light intensity)")
+m1 <- lm(light~temp, data = star)
+abline(m1, col = "darkgreen", lwd = 3, lty = 2)
+abline(lm(light[temp>4]~temp[temp>4], data = star), col = COL[1], lwd = 3)
+legend("top", inset = 0.05, c("w/ outliers","w/o outliers"), lty = c(2,1), lwd = c(2,3), col = c("darkgreen",COL[1]))
+```
+
+
+## Cook's Distance in R
+
+```{r}
+m1 <- lm(light ~ temp, data = star)
+par(mfrow = c(1, 2))
+plot(m1, 4:5)
+```
+
+

@@ -113,5 +113,7 @@ forums, etc.  Please email me if you any questions come up.
 - Diagnostics for SLR: slides ([html](week6A-diagnostics.html)) ([Rmd](week6A-diagnostics.Rmd))
 - Activity 4 ([Rmd](week6A-diag-activity.Rmd))
 
+#### Wednesday
+- Outliers, Leverage, and Influence: slides ([html](week6B-outliers.html)) ([Rmd](week6B-outliers.Rmd))
 
 
