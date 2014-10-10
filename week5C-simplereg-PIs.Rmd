@@ -1,11 +1,3 @@
----
-title: "Simple Linear Regression"
-output:
-  ioslides_presentation:
-    incremental: true
----
-
-
 ## Intervals for $\hat{y}^*$ and $Y^*$
 
 
