@@ -1,18 +1,18 @@
 ---
-title: "week6C_flies"
-author: "Andrew Bray"
-date: "October 10, 2014"
+title: "Activity 5: Classifying Midges"
 output: html_document
 ---
 
-In  1981,	two	new	varieties	of	a	tiny	biting	insect	called a	midge	were	
+### The Problem
+
+In  1981,	two	new	varieties	of	a	tiny	biting	insect	called a	midge	were
 discovered	by	biologists	W.	L.	Grogan	and	W.	W.	Wirth	in	the	jungles	
-of	Brazil.	They	dubbed	one	kind	of	midge	an	Apf midge	and	the	other	an	
-Af midge.	The	biologists	found	out	that the	Apf midge	is	a	carrier	of	a	
+of	Brazil.	They	dubbed	one	kind	of	midge	an	Apf midge	and	the	other	an
+Af midge.	The	biologists	found	out	that the	Apf midge	is	a	carrier	of a
 debilitating	disease	that	causes	swelling	of	the	brain	when	a	human	is
-bitten	by	an	infected	midge.	Although	the	disease	is	rarely	fatal,	
-the	disability	caused	by	the	swelling	may	be	permanent.	The	other	form	
-of	the	midge,	the	Af,	is	quite	harmless	and	a	valuable	pollinator.	In	
+bitten	by	an	infected	midge.	Although	the	disease	is	rarely	fatal,
+the	disability	caused	by	the	swelling	may	be	permanent.	The	other	form
+of	the	midge,	the	Af,	is	quite	harmless	and	a	valuable	pollinator.	In
 an	effort	to	distinguish	the	two	varieties,	the	biologist	took	measurements
 on	the	midges	they	caught.	The	two	measurements	taken	were of	wing	length
 (WL)	and	antennae	length	(AL),	both	measured	in	centimeters.  You can load
@@ -22,6 +22,8 @@ the data with the following command.
 midges <- read.csv("http://andrewpbray.github.io/data/midges.csv")
 ```
 
+
+#### Your Mission
 
 Is	it	possible	to	distinguish	an	Af	midge	from	an	Apf	midge	on	the	
 basis	of	wing	and	antenna	length?		Your	group’s	task	is	to	develop	

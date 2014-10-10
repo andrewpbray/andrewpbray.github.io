@@ -116,4 +116,5 @@ forums, etc.  Please email me if you any questions come up.
 #### Wednesday
 - Outliers, Leverage, and Influence: slides ([html](week6B-outliers.html)) ([Rmd](week6B-outliers.Rmd))
 
-
+#### Friday
+- Activity 5: Classifying Midges ([Rmd](week6C_midges.Rmd))
