@@ -29,3 +29,10 @@ Is	it	possible	to	distinguish	an	Af	midge	from	an	Apf	midge	on	the
 basis	of	wing	and	antenna	length?		Your	group’s	task	is	to	develop	
 **specific** instructions	that a	naturalist	in	the	field	could	use to	classify
 a	midge	he or she	has	just	captured.
+
+Once you've come up with a rule, apply your method to three specimens with 
+(antenna, wing) lengths (1.24, 1.80), (1.28, 1.84), (1.40, 2.04).
+
+Assume that species Af is a valuable pollinator and species Apf is a carrier
+of a debilitating disease. Would you modify your classification scheme
+and if so, how?
