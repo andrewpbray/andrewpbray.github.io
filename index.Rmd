@@ -118,3 +118,12 @@ forums, etc.  Please email me if you any questions come up.
 
 #### Friday
 - Activity 5: Classifying Midges ([Rmd](week6C_midges.Rmd))
+
+
+### Week 7: Tranformations
+Homework #5: Ch. 3 exercises 4 (a, b), 5 (not a), and 8.  Due Sunday 3 pm. Project topics due next
+Wednesday.
+
+#### Wednesday
+- Transformations: slides ([html](week7B-transformations.html)) ([Rmd](week7B-transformations.Rmd))
+
