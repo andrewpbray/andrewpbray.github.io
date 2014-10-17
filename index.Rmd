@@ -103,10 +103,11 @@ Happy Mountain Day!
 
 
 ### Week 6: Diagnostics for Simple Linear Regression
-The quiz this week will cover: visualizing data, fitting a linear model, assessing whether the
-assumptions are reasonable, and inference (CIs, PIs). It will be posted this evening on moodle
-and due Friday evening. You may utlize resources such as the book, the internet, notes, slides, etc.
-You must do the work yourself however; no asking questions of other students,
+The quiz this week will cover: visualizing data, fitting a linear model, 
+assessing whether the assumptions are reasonable, and inference (CIs, PIs). 
+It will be posted this evening on moodle and due Friday evening. You may 
+utlize resources such as the book, the internet, notes, slides, etc. You 
+must do the work yourself however; no asking questions of other students,
 forums, etc.  Please email me if you any questions come up.
 
 #### Monday
@@ -121,9 +122,14 @@ forums, etc.  Please email me if you any questions come up.
 
 
 ### Week 7: Tranformations
-Homework #5: Ch. 3 exercises 4 (only the first a and b), 5 (not a), and 8.  Due Sunday 3 pm. Project topics due next
-Wednesday.
+Homework #5: Ch. 3 exercises 4 (only the first a and b), 5 (not a), and 8.  Due 
+Sunday 3 pm. Project topics due next Wednesday.
 
 #### Wednesday
 - Transformations: slides ([html](week7B-transformations.html)) ([Rmd](week7B-transformations.Rmd))
+
+#### Friday
+- Activity 6: LA homes ([Rmd](week7C-LA-activity.Rmd))
+
+
 
