@@ -46,7 +46,7 @@ it, it needs to be a valid model.
 3. Cleo, Yujia, Grace
 4. Shelbie, Shanda, Sylvia
 5. Jacqui, Whitney, Melissa S
-6. Rose, JungWon, Dana
+6. Rose, JungWon, Dana:
 7. Amanda, Michelle, Buyan
 8. Celine, Sara, Akchheta
 9. Caiyun, Prarthana, Milani
@@ -79,7 +79,7 @@ colleges relate to town and school characteristics?
 6. Dani, Kate, Thao
 7. Fei, Tu, Steph
 8. Kelu, Siyao
-9. Anne W., Liz
+9. Anne W., Liz, Rebecca
 
 
 ## In your groups {.build}
