@@ -134,5 +134,5 @@ Sunday 3 pm. Project topics due next Wednesday.
 ### Week 8: Multiple Linear Regression
 
 #### Monday
-- Polynomials: slides ([html](week8a_polynomial-r2.html)) ([Rmd](week8a_polynomial-r2.Rmd))
+- Polynomials: slides ([html](week8A_polynomial-r2.html)) ([Rmd](week8A_polynomial-r2.Rmd))
 
