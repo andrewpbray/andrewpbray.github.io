@@ -131,7 +131,9 @@ Sunday 3 pm. Project topics due next Wednesday.
 #### Friday
 - Activity 6: LA homes ([Rmd](week7C-LA-activity.Rmd))
 
+
 ### Week 8: Multiple Linear Regression
+Homework #6: Ch. 5 exercises 1 and 3.
 
 #### Monday
 - Polynomials: slides ([html](week8A-polynomial-r2.html)) ([Rmd](week8A-polynomial-r2.Rmd))
