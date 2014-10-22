@@ -1,0 +1,176 @@
+---
+title: "Analysis of Covariance"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## Warm Up
+**Activity #7 Part I**
+
+- Revisit the RailTrail data set from Activity 4.
+- Consider two models: a) SLR model to predict ridership by 
+temperature, b) same approach but with added quadratic term.
+- Discuss the relative merits of the two models.
+
+
+## Disclaimer
+
+For the rest of the week, we won't talk at all about assessing model validity (looking
+at residual plots). that step is **absolutely vital**, but we're putting it on
+hold till next week.
+
+
+## Example: Textbooks
+
+![textbooks](http://www.phartoonz.com/wp-content/uploads/2010/11/boy_heavy_books.jpg)
+
+
+## 
+Consider a sample of 15 textbooks. How well can we predict weight by volume?
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(DAAG)
+data(allbacks)
+plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+```
+
+
+## 
+Consider a sample of 15 textbooks. How well can we predict weight by volume?
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(DAAG)
+data(allbacks)
+plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+m1 <- lm(weight ~ volume, data = allbacks)
+abline(m1, lwd = 2)
+```
+
+
+##
+
+```{r}
+summary(m1)
+```
+
+
+## Adding a categorical predictor {.build}
+
+```{r}
+allbacks[c(1, 2, 9, 10), ]
+```
+
+We should be able to better predict the weight if we use both the volume *and*
+knowledge of the type of cover.
+
+
+## Adding a categorical predictor {.build}
+
+```{r}
+class(allbacks$cover)
+levels(allbacks$cover)
+m2 <- lm(weight ~ volume + cover, data = allbacks)
+```
+
+- Categorial variables in R are of the class `factor`. Check with `class()`,
+coerce with `as.factor()`.
+- Modeling a continuous variable used a continuous variable and a categorical
+variable is known as Analysis of Covariance.
+
+
+## How R thinks of his model
+
+```{r}
+summary(m2)$coef
+```
+
+\[ \widehat{weight} = 197.96 + 0.712 volume - 184.047 coverpb \]
+
+- Whichever level is first alphabetically (`hb`) becomes the reference level.
+- `coverpb` represents the average difference in weight between two books of the
+same weight but of different covers.
+- Again, every row is a t-test that that parameter is zero.
+
+
+## Simple linear legression
+
+```{r echo=FALSE}
+plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+abline(m1, lwd = 2)
+```
+
+\[ \widehat{weight} = 107.70 + 0.71 volume \]
+
+
+##
+
+```{r echo=FALSE, warning=FALSE}
+plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+abline(m1, lwd = 2, lty = 2, col = "darkgray")
+abline(m2$coef[1] + m2$coef[3], m2$coef[2], lwd = 2, col = "tomato")
+abline(m2, lwd = 2, col = "goldenrod")
+legend("bottomright", c("hardback", "paperback"), lwd = 2,
+       col = c("goldenrod", "tomato"), bty = "n")
+```
+
+\[
+\widehat{weight}_{hb} = 197.96 + 0.72 volume \\
+\widehat{weight}_{pb} = 13.91 + 0.72 volume
+\]
+
+
+## Comparing explanatory power
+
+```{r}
+summary(m1)$r.squared
+summary(m2)$r.squared
+summary(m1)$adj.r.squared
+summary(m2)$adj.r.squared
+```
+
+
+## Adding more complexity?
+
+We've established that this data is best modeled with two intercepts, but 
+should the two lines have their own slopes as well?
+
+\[ \widehat{weight} = \beta_0 + \beta_1 volume + \beta_2 coverpb + \beta_3 volume * coverpb \]
+
+
+##
+
+```{r echo=FALSE, warning=FALSE}
+plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+m3 <- lm(weight ~ volume * cover, data = allbacks)
+abline(m3$coef[1] + m3$coef[3], m3$coef[2] + m3$coef[4], lwd = 2, col = "tomato")
+abline(m3$coef[1], m3$coef[2], lwd = 2, col = "goldenrod")
+legend("bottomright", c("hardback", "paperback"), lwd = 2,
+       col = c("goldenrod", "tomato"), bty = "n")
+```
+
+\[
+\widehat{weight}_{hb} = 161.586 + 0.76 volume \\
+\widehat{weight}_{pb} = 11.37 + 0.68 volume
+\]
+
+
+## 
+```{r}
+m3 <- lm(weight ~ volume * cover, data = allbacks)
+summary(m3)
+```
+
+
+## Which is better? {.build}
+
+The interaction terms is insignificant, suggesting that the two classes of books
+might not follow different trends between their volume and weights.
+
+Note that it also made the intercept term insignificant as well.
+
+
+## Activity #7 Part II
+- Revisit the twins data set from the quiz.
+- Is there evidence that the relationship between IQs differs
+between the social status groups (intercepts or slopes)?
