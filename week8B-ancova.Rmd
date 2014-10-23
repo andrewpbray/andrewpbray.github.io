@@ -145,6 +145,8 @@ should the two lines have their own slopes as well?
 ```{r echo=FALSE, warning=FALSE}
 plot(weight ~ volume, data = allbacks, pch = 16, col = colvec)
 m3 <- lm(weight ~ volume * cover, data = allbacks)
+# you could also use this notation, which gives the exact same model:
+m3 <- lm(weight ~ volume + cover + volume:cover, data = allbacks)
 abline(m3$coef[1] + m3$coef[3], m3$coef[2] + m3$coef[4], lwd = 2, col = "tomato")
 abline(m3$coef[1], m3$coef[2], lwd = 2, col = "goldenrod")
 legend("bottomright", c("hardback", "paperback"), lwd = 2,
