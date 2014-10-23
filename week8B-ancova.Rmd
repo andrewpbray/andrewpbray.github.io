@@ -106,7 +106,9 @@ abline(m1, lwd = 2)
 ##
 
 ```{r echo=FALSE, warning=FALSE}
-plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+colvec <- rep("tomato", length(allbacks$weight))
+colvec[allbacks$cover == "hb"] <- "goldenrod"
+plot(weight ~ volume, data = allbacks, pch = 16, col = colvec)
 abline(m1, lwd = 2, lty = 2, col = "darkgray")
 abline(m2$coef[1] + m2$coef[3], m2$coef[2], lwd = 2, col = "tomato")
 abline(m2, lwd = 2, col = "goldenrod")
@@ -141,7 +143,7 @@ should the two lines have their own slopes as well?
 ##
 
 ```{r echo=FALSE, warning=FALSE}
-plot(weight ~ volume, data = allbacks, pch = 16, col = "steelblue")
+plot(weight ~ volume, data = allbacks, pch = 16, col = colvec)
 m3 <- lm(weight ~ volume * cover, data = allbacks)
 abline(m3$coef[1] + m3$coef[3], m3$coef[2] + m3$coef[4], lwd = 2, col = "tomato")
 abline(m3$coef[1], m3$coef[2], lwd = 2, col = "goldenrod")
