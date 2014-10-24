@@ -133,10 +133,15 @@ Sunday 3 pm. Project topics due next Wednesday.
 
 
 ### Week 8: Multiple Linear Regression
-Homework #6: Ch. 5 exercises 1 and 3.
+Homework #6: Ch. 5 exercises 1 and 3. Reading: Chapter 5.  Helpful review of matrix 
+multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
+[webpage](http://www.purplemath.com/modules/mtrxmult.htm).
 
 #### Monday
 - Polynomials: slides ([html](week8A-polynomial-r2.html)) ([Rmd](week8A-polynomial-r2.Rmd))
 
 #### Wednesday
 - Analysis of Covariance: slides ([html](week8B-ancova.html)) ([Rmd](week8B-ancova.Rmd))
+
+#### Friday
+- Survey and Activity 7: slides (will be posted this afternoon)

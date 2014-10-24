@@ -61,7 +61,7 @@ between the social status groups (intercepts or slopes)?
 
 ## Model 1: slr
 
-```{r}
+```{r echo=FALSE}
 twins <- read.csv("http://andrewpbray.github.io/data/twins.csv")
 colvec <- rep("tomato", dim(twins)[1])
 colvec[twins$Social == "low"] <- "seagreen3"
@@ -87,12 +87,12 @@ summary(m1)
 
 ## Model 2: parallel lines
 
-```{r}
+```{r echo=FALSE}
 m2 <- lm(Foster ~ Biological + Social, data = twins)
 plot(Foster ~ Biological, data = twins, col = colvec, pch = 16)
 legend("bottomright", c("high", "middle", "low"), pch = 16, bty = "n",
        col = c("tomato", "seagreen3", "steelblue"))
-abline(m1, col = "darkgray", lty = 2)
+abline(0, 1, col = "darkgray", lty = 2)
 abline(m2$coef[1], m2$coef[2], col = "tomato", lwd = 2)
 abline(m2$coef[1] + m2$coef[4], m2$coef[2], col = "seagreen3", lwd = 2)
 abline(m2$coef[1] + m2$coef[3], m2$coef[2], col = "steelblue", lwd = 2)
@@ -108,7 +108,7 @@ summary(m2)
 
 ## Model 3: 2 intercepts, 2 slopes
 
-```{r}
+```{r echo=FALSE}
 m3 <- lm(Foster ~ Biological * Social, data = twins)
 plot(Foster ~ Biological, data = twins, col = colvec, pch = 16)
 legend("bottomright", c("high", "middle", "low"), pch = 16, bty = "n",
@@ -127,6 +127,32 @@ summary(m3)
 ```
 
 
+## Conclusions {.build}
 
+- Although we find that in this data set the intercepts decrease with increasing
+class, this could just be due to sampling variability and not indicative of an 
+actual difference.  I.e. $\hat{\beta}_2$ and $\hat{\beta}_3$ are not statistically significant.
+
+- This data set provides no strong indication that the slopes differ between the
+social groups.
+
+- This data is best described with a simple linear regression model.
+
+\[ \widehat{Foster} = \hat{\beta}_0 + \hat{\beta}_1 Biological \]
+
+
+## Some notes {.build}
+
+- Interaction terms can be added whole-hog using `Foster ~ Biological * Social` or 
+individually with ` Foster ~ Biological + Social + Biological:Social`.
+- Categorical predictor (like `Social`) with $n$ levels get separated by R out
+into $n - 1$ dummy variables that that 1 if that condition is met and 0 if not.
+- These dummy variables are the estimated difference between the intercept of that
+level and that of the reference level.
+- An interaction term between a continuous predictor and a dummy variable (such 
+as `Biological:Sociallow`) is the estimated difference between the slope for
+that continuous variable for that level, and the slope for the reference level.
+- Different reference levels can lead to differing p-values because you're making
+different comparisons.
 
 
