@@ -4,8 +4,129 @@ output:
     incremental: true
 ---
 
-```{r}
-3
+# Midsemester survey results
+
+## Time spent outside of class
+
+```{r echo=FALSE}
+survey <- read.csv("http://andrewpbray.github.io/data/midsemester-surveys.csv")
+hist(survey$hrs, xlab = "number of hours/week", col = "steelblue", main = "")
 ```
+
+
+## How challenging?
+
+```{r echo=FALSE}
+d1 <- density(survey$concept)
+d2 <- density(survey$comp)
+d3 <- density(survey$math)
+plot(1, 0, xlim = c(0, 6), ylim = c(0, .6), type = "n", yaxt = "n",
+     xlab = "challenge (high = difficult)", ylab = "", bty = "n")
+COL <- c("tomato", "orange", "steelblue")
+lines(d1$x, d1$y, col = COL[1], lwd = 2)
+abline(v = mean(survey$concept), col = COL[1], lty = 2)
+lines(d2$x, d2$y, col = COL[2], lwd = 2)
+abline(v = mean(survey$comp), col = COL[2], lty = 2)
+lines(d3$x, d3$y, col = COL[3], lwd = 2)
+abline(v = mean(survey$math), col = COL[3], lty = 2)
+legend("topright", c("concepts", "computing", "math"), col = COL, lwd = 2,
+       lty = 1, bty = "n")
+```
+
+
+## One thing you like {.build}
+
+- Integration of computing (Learning R)
+- Group activities
+- Slides online
+
+
+## One thing you'd like to change {.build}
+
+- Have homework due Sunday night.
+- Have homework due Sunday night.
+- Have homework due Sunday night.
+- Have homework due Sunday night.
+
+**All homeworks are now due Sunday 11:55 pm**
+
+- Post slides earlier.
+
+
+# Activity 7 Part II
+- Revisit the twins data set from the quiz.
+- Is there evidence that the relationship between IQs differs
+between the social status groups (intercepts or slopes)?
+
+
+## Model 1: slr
+
+```{r}
+twins <- read.csv("http://andrewpbray.github.io/data/twins.csv")
+colvec <- rep("tomato", dim(twins)[1])
+colvec[twins$Social == "low"] <- "seagreen3"
+colvec[twins$Social == "middle"] <- "steelblue"
+plot(Foster ~ Biological, data = twins, col = colvec, pch = 16)
+legend("bottomright", c("high", "middle", "low"), pch = 16, bty = "n",
+       col = c("tomato", "seagreen3", "steelblue"))
+# you could also make the plot using the mplot() function
+# require(mosaic)
+# mplot(twins)
+# ggplot(data=twins, aes(x=Biological, y=Foster)) + geom_point()  + aes(colour=Social) + theme(legend.position="right") + labs(title="")
+m1 <- lm(Foster ~ Biological, data = twins)
+abline(m1)
+```
+
+
+## Model 1: slr
+
+```{r}
+summary(m1)
+```
+
+
+## Model 2: parallel lines
+
+```{r}
+m2 <- lm(Foster ~ Biological + Social, data = twins)
+plot(Foster ~ Biological, data = twins, col = colvec, pch = 16)
+legend("bottomright", c("high", "middle", "low"), pch = 16, bty = "n",
+       col = c("tomato", "seagreen3", "steelblue"))
+abline(m1, col = "darkgray", lty = 2)
+abline(m2$coef[1], m2$coef[2], col = "tomato", lwd = 2)
+abline(m2$coef[1] + m2$coef[4], m2$coef[2], col = "seagreen3", lwd = 2)
+abline(m2$coef[1] + m2$coef[3], m2$coef[2], col = "steelblue", lwd = 2)
+```
+
+
+## Model 2: parallel lines
+
+```{r}
+summary(m2)
+```
+
+
+## Model 3: 2 intercepts, 2 slopes
+
+```{r}
+m3 <- lm(Foster ~ Biological * Social, data = twins)
+plot(Foster ~ Biological, data = twins, col = colvec, pch = 16)
+legend("bottomright", c("high", "middle", "low"), pch = 16, bty = "n",
+       col = c("tomato", "seagreen3", "steelblue"))
+abline(m1, col = "darkgray", lty = 2)
+abline(m3$coef[1], m3$coef[2], col = "tomato", lwd = 2)
+abline(m3$coef[1] + m3$coef[4], m3$coef[2] + m3$coef[6], col = "seagreen3", lwd = 2)
+abline(m3$coef[1] + m3$coef[3], m3$coef[2] + m3$coef[5], col = "steelblue", lwd = 2)
+```
+
+
+## Model 3: 2 intercepts, 2 slopes
+
+```{r}
+summary(m3)
+```
+
+
+
 
 
