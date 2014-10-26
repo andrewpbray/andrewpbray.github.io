@@ -1,0 +1,70 @@
+---
+title: 'Activity: Vectors'
+author:
+output:
+  html_document:
+    css: workshop.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+require(knitr)
+opts_chunk$set(warning=FALSE,message=FALSE)
+```
+
+1. Consider the vector `x <- c(12,15,8,11,24)`.  How do we create a vector of the
+differences between adjacent elements?
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+```
+
+SOLUTION:
+
+
+2. How can you subset the following vector to exclude both elements less than 10 
+and all even elements? (hint: `%%`)
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+```
+
+
+SOLUTION:
+
+
+3.  Build the following vectors using the colon operator: `:`.
+
+\[
+\{-1, 0, 1, 2\} \\
+\{2, 1, 0, -1\}
+\]
+
+SOLUTION:
+
+
+4.   Build the following vectors using `seq()`.
+
+\[
+\{-1, 0, 1, 2\} \\
+\{2, 4, 6, 8, 10, 12\} \\
+\{2, 3.5, 5, 6.5\}
+\]
+
+SOLUTION:
+
+
+5.   Build the following vectors using `rep()`.
+
+\[
+\{1, 2, 3, 1, 2, 3, 1, 2, 3\} \\
+\{1, 1, 2, 2, 3, 3\} \\
+\{1, 1, 2, 3, 3\} \\
+\{1, 2, 3, 1, 2, 3, 1\} \\
+\{1, 1, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3, 1, 1, 2, 2, 3, 3\}
+\]
+
+SOLUTION:
+

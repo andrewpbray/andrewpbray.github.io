@@ -1,0 +1,261 @@
+## Intervals for $\hat{y}^*$ and $Y^*$
+
+
+## A note on notation
+
+- Capital letters are random variables (e.g. $X$ and $Y$) while lower case letters
+are the values that those variables have taken.
+- If the $x$ or the $y$ has a subscript, it's referring to that coordinate of one
+of the observations.  e.g. $x_i$, $x_n$.
+- If it has a hat, that means it's an estimate.  e.g. $\hat{y}_i$, $\hat{\beta}_1$.
+- If it has an asterisk, that means it's a new specific value that's not in the 
+data set. e.g. $x^*$.
+
+- What does $\hat{y}^*$ mean?
+- What does $Y^*$ mean?
+
+
+## Considering a single data set
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+set.seed(447)
+n <- 60
+beta_0 <- 12
+beta_1 <- .7
+sigma <- 2
+x <- rnorm(n, mean = 20, sd = 3)
+f_mean <- beta_0 + beta_1 * x # mean function
+f_data <- f_mean + rnorm(n, mean = 0, sd = sigma) # data generating function
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+m1 <- lm(f_data~x)
+abline(m1, lwd = 2, col = "darkgreen")
+text(27, 32, expression(hat(y)))
+```
+
+## Interval for $\hat{y}^*$
+
+What value would we predict for a new $x^*$?
+
+\[ \hat{y}^* = \hat{\beta}_0 + \hat{\beta}_1 * x^* \]
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+abline(m1, lwd = 2, col = "darkgreen")
+lines(c(24, 24), c(17, 35), lty = 2, col = "darkgrey")
+text(27, 32, expression(hat(y)))
+text(25, 20, "x* = 24")
+lines(c(12, 28), rep(m1$coef[1] + m1$coef[2] * 24, 2), lty = 2, col = "darkgrey")
+text(13, m1$coef[1] + m1$coef[2] * 24 + 1, expression(paste(hat(y)[textstyle("*")])))
+```
+
+
+## Interval for $\hat{y}^*$ {.build}
+
+How much uncertainty do we have in that prediction?
+
+\[ \hat{y}^* = \hat{\beta}_0 + \hat{\beta}_1 * x^* \]
+
+Two sources of uncertainty:
+
+1. estimating $\beta_0$
+2. estimating $\beta_1$
+
+We can calculate $SE(\hat{y}^*)$:
+
+\[ S \sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{SXX}}  \]
+
+
+## Interval for $\hat{y}^*$ {.build}
+
+We know that $\hat{y}^*$ will also be  t-distributed, so we can form a CI:
+
+\[ \hat{y}^* \pm t * SE(\hat{y}^*) \]
+
+```{r}
+m1 <- lm(f_data~x)
+x_star <- 24
+m1$coef[1] + m1$coef[2] * x_star
+predict(m1, data.frame(x = x_star), interval = "confidence")
+```
+
+
+## Interval for $\hat{y}^*$
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+abline(m1, lwd = 2, col = "darkgreen")
+lines(c(24, 24), c(17, 35), lty = 2, col = "darkgrey")
+text(27, 32, expression(hat(y)))
+text(25, 20, "x* = 24")
+lines(c(12, 28), rep(m1$coef[1] + m1$coef[2] * 24, 2), lty = 2, col = "darkgrey")
+text(13, m1$coef[1] + m1$coef[2] * 24 + 1, expression(paste(hat(y)[textstyle("*")])))
+ci <- predict(m1, data.frame(x = x_star), interval = "confidence")
+points(x_star, ci[1], col = "green", pch = 16)
+lines(rep(x_star, 2), ci[2:3], col = "green", lwd = 2)
+lines(c(x_star - .3, x_star + .3), rep(ci[2], 2), col = "green")
+lines(c(x_star - .3, x_star + .3), rep(ci[3], 2), col = "green")
+```
+
+
+## 
+
+Consider the SE term:
+
+\[ SE(\hat{y}^*) =  S \sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{SXX}}  \]
+
+For what values of $x^*$ would you expect the interval for $\hat{y}^*$ to be the
+narrowest?
+
+
+##
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+abline(m1, lwd = 2, col = "darkgreen")
+xx <- seq(12, 28, .2)
+int_mat <- predict(m1, data.frame(x = xx), interval = "confidence")
+lines(xx, int_mat[, 2], lty = 2, col = "darkgreen")
+lines(xx, int_mat[, 3], lty = 2, col = "darkgreen")
+lines(c(24, 24), c(17, 35), lty = 2, col = "darkgrey")
+text(25, 20, "x* = 24")
+ci <- predict(m1, data.frame(x = x_star), interval = "confidence")
+points(x_star, ci[1], col = "green", pch = 16)
+lines(rep(x_star, 2), ci[2:3], col = "green", lwd = 2)
+lines(c(x_star - .3, x_star + .3), rep(ci[2], 2), col = "green")
+lines(c(x_star - .3, x_star + .3), rep(ci[3], 2), col = "green")
+```
+
+Look familiar?
+
+
+## Prediction interval for $Y^*$ {.build}
+
+$Y^*$ represents the *actual values* that you might be observed in the y.  This comes not
+from the estimated mean function:
+
+\[ \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 * x \]
+
+But from the estimated data generating function:
+
+\[ Y = \hat{\beta}_0 + \hat{\beta}_1 * x + e\]
+
+Which has *three* sources of uncertainty:
+
+1. estimating $\beta_0$.
+2. estimating $\beta_1$.
+3. the random error $e$.
+
+
+## Prediction interval for $Y^*$ {.build}
+
+The SE for the CI:
+
+\[ SE(\hat{y}^*) =  S \sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{SXX}}  \]
+
+gains an extra term for the PI:
+
+\[ SE(Y^*) =  S \sqrt{1 + \frac{1}{n} + \frac{(x^* - \bar{x})^2}{SXX}}  \]
+
+
+## Prediction interval for $Y^*$ {.build}
+
+What is the 95% prediction interval for $x^* = 24$?
+
+\[ \hat{y}^* \pm t * SE(Y^*) \]
+
+```{r}
+m1 <- lm(f_data~x)
+x_star <- 24
+m1$coef[1] + m1$coef[2] * x_star
+predict(m1, data.frame(x = x_star), interval = "prediction")
+```
+
+
+## Prediction interval for $Y^*$
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+abline(m1, lwd = 2, col = "darkgreen")
+lines(c(24, 24), c(17, 35), lty = 2, col = "darkgrey")
+text(27, 32, expression(hat(y)))
+text(25, 20, "x* = 24")
+lines(c(12, 28), rep(m1$coef[1] + m1$coef[2] * 24, 2), lty = 2, col = "darkgrey")
+text(13, m1$coef[1] + m1$coef[2] * 24 + 1, expression(paste(hat(y)[textstyle("*")])))
+pi <- predict(m1, data.frame(x = x_star), interval = "prediction")
+lines(rep(x_star, 2), pi[2:3], col = "violetred", lwd = 2)
+lines(c(x_star - .3, x_star + .3), rep(pi[2], 2), col = "violetred", lwd = 2)
+lines(c(x_star - .3, x_star + .3), rep(pi[3], 2), col = "violetred", lwd = 2)
+ci <- predict(m1, data.frame(x = x_star), interval = "confidence")
+points(x_star, ci[1], col = "green", pch = 16)
+lines(rep(x_star, 2), ci[2:3], col = "green", lwd = 2)
+lines(c(x_star - .3, x_star + .3), rep(ci[2], 2), col = "green")
+lines(c(x_star - .3, x_star + .3), rep(ci[3], 2), col = "green")
+```
+
+
+## Comparing intervals
+
+```{r, echo=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, 1)) # add generated data
+abline(m1, lwd = 2, col = "darkgreen")
+ci_mat <- predict(m1, data.frame(x = xx), interval = "confidence")
+lines(xx, ci_mat[, 2], lty = 2, col = "darkgreen")
+lines(xx, ci_mat[, 3], lty = 2, col = "darkgreen")
+pi_mat <- predict(m1, data.frame(x = xx), interval = "prediction")
+lines(xx, pi_mat[, 2], lty = 2, col = "violet")
+lines(xx, pi_mat[, 3], lty = 2, col = "violet")
+legend(24, 21.5, legend = c("CI", "PI"), col = c("darkgreen", "violet"),
+       lty = 2, lwd = 2, bty = "n")
+```
+
+
+## Boardwork to revisit representing data with smooth functions
+
+
+## Regression Assumptions {.build}
+
+1. $Y$ is related to $x$ by a simple linear regression model.
+\[ E(Y|X) = \beta_0 + \beta_1 * x \]
+
+2. The errors $e_1, e_2, \ldots, e_n$ are independent of one another.
+
+3. The errors have a common variance $\sigma^2$.
+
+4. The errors are normally distributed: $e \sim N(0, \sigma^2)$
+
+Said another way...
+
+\[ f(Y|X = x) \sim N(\beta_0 + \beta_1 * x, \sigma^2) \]
+
+Regression is a *functional* smooth summary of the structure of the *conditional 
+distribution* of $Y|X$.
+
+
+## Simulating from the conditional density function
+
+```{r, echo=TRUE, eval=TRUE}
+n <- 60
+beta_0 <- 12
+beta_1 <- .7
+sigma <- 2
+x <- rnorm(n, mean = 20, sd = 3)
+f_mean <- beta_0 + beta_1 * x # mean function
+f_data <- f_mean + rnorm(n, mean = 0, sd = sigma) # data generating function
+```
+
+```{r, echo=FALSE, eval=FALSE}
+plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+abline(a = beta_0, b = beta_1, col = "orange", lwd = 2) # add mean function
+
+f_data <- f_mean + rnorm(n, mean = 0, sd = sigma) # data generating function
+points(x, f_data, pch = 16, col = rgb(70/255, 130/255, 180/255, .3)) # add generated data
+```
+
+
+

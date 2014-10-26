@@ -1,0 +1,109 @@
+---
+title: 'Simple Linear Regression Quiz'
+output: html_document
+---
+
+### Part One: Twins and IQ
+In the mid 20th century, a study was conducted that tracked down identical
+twins that were separated at birth: one child was raised in the home of their 
+biological parents and the other in a foster home.  In an attempt to answer the 
+question of whether intelligence is result of nature or nurture, both children 
+were given IQ tests. You can load in the data with the following command:
+
+```{r}
+twins <- read.csv("http://andrewpbray.github.io/data/twins.csv")
+```
+
+The IQ of the foster child is recorded in `Foster`, the IQ of the 
+biologically-raised child in `Biological`.  The socieoeconomic status of the 
+biological family was also recorded in `Social`.
+
+1) Create a plot of the relationship between the IQs of the two children and 
+describe the relationship in words (there is no clear independent variable here,
+so just put `Biological` on the x-axis).
+
+
+2. Fit a linear model to this data and have a look at the summary of the model.
+Which one of the following is *false*?
+    A) For each 10 point increase in the biological twin's IQ, we expect the 
+    foster twin's IQ to increase on average by roughly 9 points.
+    B) The linear model (the estimated mean function) is approximately 
+    $\hat{y} = 9.2 + 0.9 \times x$.
+    C) Foster children with higher than average IQs (average of the foster 
+    children) will have biological twins with higher than average IQs as well
+    (average of the biological children).
+
+
+3. Is it reasonable to draw conclusions from this model?  Please assess the 
+conditions for a valid model.
+
+
+4. This study was used to weigh in on the question of whether IQ is a result of
+nature (your genes) or nurture (your environment).  If IQ was purely a result of 
+nurture, what slope would you expect to see in your linear model?  Phrase that 
+hypothetical question in terms of a hypothesis test and interpret the p-value
+in the context of this problem.
+
+
+5. At the other end of the argument, the distribution of IQ might be entirely
+determined by genes.  Use a 95% confidence interval on your slope to assess
+whether this claim is reasonable given your data set.
+
+
+6. Now consider how the association between IQs would change if social class were
+taken into account.  Create a plot that illustrates the relationship between
+all three variables. Just by looking at the plot (and without fitting any models),
+does it appear that the relationship between the IQs is the same for high social
+class children as it is for low social class children?
+
+
+**Endnote**: The researcher that collected this data was named [Cyril Burt](http://en.wikipedia.org/wiki/Cyril_Burt), and his work was the subject of some controversy.
+
+
+* * *
+
+### Part Two: Education and Ethnicity in LA
+Researchers in demography were interested in capturing the relationship between
+the ethnic make up of neighborhoods and the level of education.  To gather data
+they took a random sample of 100 neighborhoods and recorded the proportion of 
+residents in each that identified as hispanic and the proportion of residents 
+that had graduated from college.  The data can be loaded with the following command:
+
+```{r}
+LA <- read.csv("http://andrewpbray.github.io/data/LAed.csv")
+```
+
+1. Plot the relationship between ethnicity and education, keeping in mind the norm
+of putting the independent variable on the x-axis.  Please describe the structure
+in the plot as well as any unusual observations.
+
+
+2. Fit a linear model to this scatterplot.  Have you found a predictor that is 
+statistically significant?  In your regression output, what do you look for as 
+evidence and how do you interpret it?
+
+
+3.  Was your inference conclusion based on a valid model?  Please use plots to 
+assess the conditions for regression.
+
+
+4. Say you work in state program that works to improve the number of 
+under-represented individuals who graduate from college.  You are deployed to one of
+20 neighborhoods (not in this sample) in LA that is half hispanic.  You'd like 
+to get a sense of the range in the graduation rate for such a neighborhood. Please
+create the appropriate interval to capture that variation.
+
+
+* * * 
+
+#### Optional challenge problem
+
+[This is a more challenging problem that will stretch your ability.  Don't let
+it frustrate you too much, but if you'd like, give it the old college try.  You 
+can turn in paper and pencil work under my office door by Friday evening if
+you're old school like that.]
+
+Number 4 from the end of Chapter 2 exercises.
+
+
+

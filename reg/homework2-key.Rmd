@@ -1,0 +1,206 @@
+---
+title: 'Homework #2'
+author: 
+output: html_document
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# this chunk sets the chunk options for the whole document
+require(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+## Describing data using graphics
+
+The following exercises use a data set called `diamonds`, which can be found in
+the `ggplot2` package.  You can load it in with the following code.
+
+```{r}
+require(ggplot2)
+data(diamonds)
+```
+
+1. How many observations (rows) are there in this data set?  What does each row
+represent?
+
+SOLUTION:
+
+There are `r nrow(diamonds)` rows in this data set, where each row refers to a 
+different diamond (see ?diamonds for more details).
+
+
+2. Consider the `cut` of these diamonds.  Where does this variable fall in the
+taxonomy of data?  Please create a graphic of its distribution and describe it in words.
+
+SOLUTION:
+
+`cut` is a categorical variable with a distribution that can be visualized using
+a barplot.
+
+```{r}
+barplot(table(diamonds$cut))
+```
+
+The most common cut in this data set is "ideal" and the distribution is 
+skewed-left towards the less-desirable cuts.
+
+3. Next please address the same questions for the `price` variable.
+
+SOLUTION:
+
+`price` can be considered as a continuous numerical variable, with a distribution
+that can be visualized with a histogram or a density plot (we show the latter).
+
+```{r}
+qplot(data=diamonds, x=price, geom="line", stat="density", adjust=0.4)
+```
+
+The median price is `r median(diamonds$price)` and the distribution is skewed to
+the right, with comparatively few expensive diamonds.
+
+
+4. What is the average `price` of diamonds that are of `Good` cut?  What about `Very Good`?
+
+SOLUTION:
+
+```{r, echo=FALSE}
+mu_g <- mean(diamonds$price[diamonds$cut == "Good"])
+mu_vg <- mean(diamonds$price[diamonds$cut == "Very Good"])
+med_g <- median(diamonds$price[diamonds$cut == "Good"])
+med_vg <- median(diamonds$price[diamonds$cut == "Very Good"])
+```
+
+The mean price of diamonds of good cut is `r mu_g`, while the mean of the very 
+good cut is `r mu_vg`.  Since the distribution of price within each group is
+right-skewed, it may be more meaningful to compare the medians, which are `r med_g`
+for good diamonds and `r med_vg` for very good (note that the price ranks change
+with the selection of what we mean by "average").
+
+
+5. What would you expect to be the relationship between `cut` and `price`?  Please
+create the appropriate graphic to visualize this relationship and describe its
+structure.
+
+SOLUTION:
+
+We would expect that as the cut of a diamond increases in grade, that the price
+would increase corresondingly.  We can visualize their relationship be constructing
+side-by-side boxplots.
+
+```{r, echo=FALSE}
+ggplot(data=diamonds, aes(x=cut, y=price)) +
+  geom_boxplot() 
+```
+
+As it turns out, when comparing the medians, the typical ideal diamond is less
+expensive than any of the other grades.  This doesn't seem to make sense! Regarding
+the shape of the price distribution within each cut category, they all have 
+similar right-skews.
+
+
+6. What would you expect to be the relationship between `carat` and `price`?  Please
+create the appropriate graphic to visualize this relationship and describe its
+structure.
+
+SOLUTION:
+
+We would expect that price to increase as the carat increases, as carat corresponds
+to the size of the diamond.  We can visualize their relationship with a scatterplot.
+
+```{r, echo=FALSE}
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point(alpha = 1/10)
+```
+
+Sure enough, the two variables have a positive relationship.  The trend doesn't
+appear to be quite linear: the slope increases as carat increases.  Some transparency
+has been added to control for overplotting.  The vertical banding suggests that 
+many diamonds are sized to be at a whole carat or just above. The trend between 
+carat and price is fairly strong, however as magnitudes increase, so does the
+variation.
+
+
+7.  When comparing diamonds of the same `carat`, what is the relationship between
+`cut` and `price`? Please create the appropriate plot and interpret it.
+
+SOLUTION:
+
+```{r}
+ggplot(data=diamonds, aes(x=carat, y=price)) +
+  geom_point(alpha = 1/4) + 
+  aes(colour=cut)
+```
+
+The scatterplot above shows the relationships between carat and price with the 
+observations colored according to their cut.  Transparency has been added to address
+overplotting.  If we consider any vertical slice of this scatterplot, the distribution
+of price appears to increase as the cut quality increases.
+
+We can visualize this more directly by using side-by-side box plots to compare the
+price distribution of the different cuts are two different carat grades.  Below
+we plot the relationship amongst diamonds of approximately .5 carats.
+
+```{r}
+dp5 <- diamonds[diamonds$carat < .55 & diamonds$carat > .45, ]
+ggplot(data=dp5, aes(x=cut, y=price)) + 
+  geom_boxplot()
+```
+
+We see that all of the distributions are right skewed and that the median price
+*increases* with increasing cut quality.  A similar structure is seem if we just
+look at the diamonds that are approximately 1.5 carats.
+
+```{r}
+d1p5 <- diamonds[diamonds$carat < 1.55 & diamonds$carat > 1.45, ]
+ggplot(data=d1p5, aes(x=cut, y=price)) + 
+  geom_boxplot()
+```
+
+The price distributions have shifted right across all cuts, but the trend between
+the median prices and cut quality is the same.
+
+That this is a startling finding in light of what we got for number 5! This is best
+explained by noting that most of the higher grade diamonds are smaller (of lower
+carat), and to see that relationship between cut quality and price, we need to be
+sure to compare diamonds of the same size.
+
+
+8. When comparing diamonds of the same `cut`, what is the relationship between
+`carat` and `price`? Please create the appropriate plot and interpret it.
+
+SOLUTION:
+
+We can compare diamonds of the same cut by creating different facets for each
+category.
+
+```{r, echo=FALSE}
+ggplot(data=diamonds, aes(x=carat, y=price)) +
+  geom_point(alpha = 1/5) +
+  facet_wrap(~cut, ncol=3)
+```
+
+There is a similar relationship between carat and price within each category, showing
+a linear or super-linear trend within increasing variance as magnitude increases.
+The relationships appear to differ, though, in that as the cut increases, the 
+slope of the trend line also increases.  Said another way, the price of ideal 
+diamonds is more responsive to carat than that of lower-grade diamonds.
+
+* * *
+
+## Data Visualization done right and wrong
+
+Please identify two data visualizations that appear in a published scientific
+journal (e.g. Science, Nature, New England Journal of Medicine).  The first graphic
+should be one that strikes you as well done and the second as poorly constructed.
+Please comment on the reason for your selections, what they are trying to display,
+and what sort of graphic is being employed.
+
+To submit these graphics, the easiest way will probably be to bring the graphic 
+up on your computer and take a screenshot.  You can then link to them (.jpg, .png,
+.gif are all good) using markdown syntax (for the reference guide, click the `?` at
+the top of the markdown editor).  When you submit this .Rmd on moodle, you will 
+also have to include both of those image files.
+
+
+
+

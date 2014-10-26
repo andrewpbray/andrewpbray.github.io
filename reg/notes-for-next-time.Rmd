@@ -1,0 +1,22 @@
+---
+title: "Notes for next time"
+author: "Andrew Bray"
+date: "September 17, 2014"
+output: html_document
+---
+
+### Week 1
+- have the dataframe be the central data structure, not the vector
+- use dplyr for data manipulation
+
+### Week 2
+- distinguish between plotting the data (dotplot, scatterplot, barchart, mosaic 
+plot) and functional summaries of the data (histogram, density plots).
+- densities as a way to approximate the true/population distribution.
+- show the visualization approximations of $f_hist (x)$, $f_kd (x)$, $f_kd (x, y)$, 
+$f_kd (y | x)$.
+- the assocation we see in a scatterplot is essentially answering the question of
+what we'd expect for $f_kd (y | x)$ for a series of x's.
+- From data to distributions
+- Assign more readings/hw during the first two weeks.  Have some sort of rigorous
+assessment at the end of week 2.

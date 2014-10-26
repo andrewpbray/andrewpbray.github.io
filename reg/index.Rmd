@@ -1,0 +1,149 @@
+---
+output: html_document
+---
+
+# Applied Regression Methods
+
+#### [Syllabus](syllabus.html)
+
+### Week 1
+
+#### Homework 1 (due Friday)
+- Please [sign up](https://docs.google.com/a/mtholyoke.edu/spreadsheets/d/1d6T28DhkwoZT6AyXh6BDY4G24h4asFC7WXyqcD9ajMI/edit#gid=0)
+for an office visit. 
+- Short Reading (if an article is blocked in your browser, search for the title using
+Google).
+    - "[New Truths that only one can see](http://www.nytimes.com/2014/01/21/science/new-truths-that-only-one-can-see.html?_r=0)",
+    New York Times.
+    - "[Unreliable Research: trouble at the lab](http://www.economist.com/news/briefing/21588057-scientists-think-science-self-correcting-alarming-degree-it-not-trouble)", 
+    the Economist.
+    - [Austerity's Spreadsheet Error](http://thecolbertreport.cc.com/videos/dcyvro/austerity-s-spreadsheet-error)
+- Please complete this [short survey](https://docs.google.com/a/mtholyoke.edu/forms/d/1MM1RmeS38qd_Mi34p7Beud4GNX2FteG3bpAh2YKa_tU/viewform).
+- Also, please bring your laptop on Friday.  There will be machines to borrow for those
+without.
+
+#### Friday
+- [Research Reports with R Markdown Prezi](http://prezi.com/8pwudebf9jof/reproducible-20/)
+- [Markdown Demo File (.html)](markdown-demo.html)
+- [Markdown Demo File (.Rmd)](markdown-demo.Rmd)
+
+
+### Week 2
+
+This week we'll be going over the fundamentals of the R language, so please bring your laptops. [Homework #1](homework1.Rmd) is due Friday (adapted from materials developed by Olaf Hall-Holt and Paul Roback.)
+
+#### Monday
+- [Slides (.Rpres)](week2A-RI.Rpres)
+- [Activity (.Rmd)](week2A-RI-activity.Rmd)
+- Helpful videos by Nick Horton (Amherst College):
+    - [Getting started with RStudio: logging in to the server](https://www.youtube.com/watch?v=bStxuxtnIsQ&feature=youtu.be)
+    - [Getting started with RStudio: first steps in R](https://www.youtube.com/watch?v=3Y_i3PxIKfg&feature=youtu.be)
+- Introductory browser-based R course: [Datacamp](https://www.datacamp.com/courses/introduction-to-r)
+
+#### Wednesday
+- From vectors to matrices to dataframes: slides ([html](week2B-RMatrices.html)) ([Rmd](week2B-RMatrices.Rmd))
+
+#### Friday
+- Dataframes ([html](week2C-RDataframes.html)) ([Rmd](week2C-RDataframes.Rmd))
+
+
+### Week 3: Describing Data
+[Homework 2](homework2.Rmd) will be due Sunday afternoon. Solutions to Homework 1 are now posted on moodle.
+
+#### Monday
+- Describing data I: slides ([html](week3A-describing-dataI.html)) ([Rmd](week3A-describing-dataI.Rmd))
+- Activity 2 [Rmd](week3A-viz-activity.Rmd)
+- [nat geo video](http://www.youtube.com/watch?v=4B2xOvKFFz4)
+
+#### Wednesday
+- Describing data in high dimensions: slides ([html](week3B-describing-dataII.html)) ([Rmd](week3B-describing-dataII.Rmd))
+
+#### Friday
+- From Data to Distributions ([html](week3C-data-to-dists.html)) ([Rmd](week3C-data-to-dists.Rmd))
+- [Data Art](http://www.memo.tv/forms/)
+
+
+### Week 4: Simple Linear Regression
+Homework 3 will be due Sunday afternoon: Chapter 2, exercises 1(a, b, d), 2(a), 3(a, b), 7.
+
+#### Monday
+- Readings for next time: 2.1 - 2.4
+- SLR: slides ([html](week4A-simplereg.html)) ([Rmd](week4A-simplereg.Rmd))
+
+#### Wednesday
+- Readings for next time: 2.73 and 2.74
+- SLR II: slides ([html](week4B-simpleregII.html)) ([Rmd](week4B-simpleregII.Rmd))
+- Activity 3 ([Rmd](week4B-lm-activity.Rmd))
+
+#### Friday
+- Inference on SLR: slides ([html](week4C-simplereg-inf.html)) ([Rmd](week4C-simplereg-inf.Rmd))
+- If you need to review CI's and H-testing, see Ch. 2 and 4 in [OpenIntro Statistics](http://www.openintro.org/download.php?file=isrs1&referrer=/stat/textbook.php).
+- Helpful web app for visualizing what the t-table is telling you, or how pt() and qt() work. [link](http://spark.rstudio.com/minebocek/dist_calc/)
+
+
+### Week 5: Simple Linear Regression continued
+Homework 4 is an extension of Homework 3.  It is your chance to complete the parts 
+from HW 3 that you may have left incomplete and to add in the addtional parts:
+1(c), 2(b), 3(c).  This homework must be done in markdown.  Please add at the top
+of the homework three areas of interest for the group project.  These will be three
+fields (e.g. public health, childhood psychology, sports/tennis, voting behavior,
+ecology) that you would be excited to work in for your project, which will include
+tracking down data and constructing a regression model.
+
+#### Monday
+Happy Mountain Day!
+
+#### Wednesday
+- Hypothesis testing for regression: slides ([html](week5B-simplereg-PIs.html)) ([Rmd](week5B-simplereg-PIs.Rmd))
+- [New York Times](http://www.nytimes.com/2014/09/30/science/the-odds-continually-updated.html) article on Bayesian Statistics.
+
+#### Friday
+- Reading for next week: A Modern Approach: 3.1, 3.2.5, 3.2.6, OpenIntro: Ch. 5 (particularly 5.4).
+- Intervals for E(Y|X) and Y|X: slides ([html](week5C-simplereg-PIs.html)) ([Rmd](week5C-simplereg-PIs.Rmd))
+
+
+### Week 6: Diagnostics for Simple Linear Regression
+The quiz this week will cover: visualizing data, fitting a linear model, 
+assessing whether the assumptions are reasonable, and inference (CIs, PIs). 
+It will be posted this evening on moodle and due Friday evening. You may 
+utlize resources such as the book, the internet, notes, slides, etc. You 
+must do the work yourself however; no asking questions of other students,
+forums, etc.  Please email me if you any questions come up.
+
+#### Monday
+- Diagnostics for SLR: slides ([html](week6A-diagnostics.html)) ([Rmd](week6A-diagnostics.Rmd))
+- Activity 4 ([Rmd](week6A-diag-activity.Rmd))
+
+#### Wednesday
+- Outliers, Leverage, and Influence: slides ([html](week6B-outliers.html)) ([Rmd](week6B-outliers.Rmd))
+
+#### Friday
+- Activity 5: Classifying Midges ([Rmd](week6C_midges.Rmd))
+
+
+### Week 7: Tranformations
+Homework #5: Ch. 3 exercises 4 (only the first a and b), 5 (not a), and 8.  Due 
+Sunday 3 pm. Project topics due next Wednesday.
+
+#### Wednesday
+- Transformations: slides ([html](week7B-transformations.html)) ([Rmd](week7B-transformations.Rmd))
+
+#### Friday
+- Activity 6: LA homes ([Rmd](week7C-LA-activity.Rmd))
+
+
+### Week 8: Multiple Linear Regression
+Homework #6: Ch. 5 exercises 1 and 3. Reading: Chapter 5.  Helpful review of matrix 
+multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
+[webpage](http://www.purplemath.com/modules/mtrxmult.htm).
+
+#### Monday
+- Polynomials: slides ([html](week8A-polynomial-r2.html)) ([Rmd](week8A-polynomial-r2.Rmd))
+
+#### Wednesday
+- Analysis of Covariance: slides ([html](week8B-ancova.html)) ([Rmd](week8B-ancova.Rmd))
+
+#### Friday
+- Survey and Activity 7: slides ([html](week8C-surveys.html)) ([Rmd](week8C-surveys.Rmd))
+
+

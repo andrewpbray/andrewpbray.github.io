@@ -1,0 +1,263 @@
+---
+title: 'Quiz: Simple Linear Regression'
+output: html_document
+---
+
+## Part One: Twins and IQ
+In the mid 20th century, a study was conducted that tracked down identical
+twins where one child was raised in the home of their biological parents and
+the other in a foster home.  In an attempt to answer the question of whether 
+intelligence is result of nature or nurture, both children were given IQ tests.
+You can load in the data with the following command:
+
+```{r}
+twins <- read.csv("http://andrewpbray.github.io/data/twins.csv")
+```
+
+The IQ of the fosterer child is recorded in `Foster`, the IQ of the biologically-
+raised child in `Biological`.  The socieoeconomic status of the biological family
+was also recorded in `Social`.
+
+1) Create a plot of the relationship between the IQs of the two children and 
+describe the relationship in words (there is no clear independent variable here,
+so just put `Biological` on the x-axis).
+
+```{r}
+plot(Foster ~ Biological, data = twins)
+```
+
+*(2 points) There appears to be a positive linear relationship of moderate strength between
+the IQ of the biological children and the IQ of the foster children.*
+
+
+2. Fit a linear model to this data and have a look at the summary of the model.
+Which one of the following is *false*?
+    A) For each 10 point increase in the biological twin's IQ, we expect the 
+    foster twin's IQ to increase on average by roughly points.
+    B) The linear model is approximately $\hat{y} = 9.2 + 0.9 \times x$.
+    C) Foster children with higher than average IQs will have biological twins
+    with higher than average IQs as well.
+
+```{r}
+m1 <- lm(Foster ~ Biological, data = twins)
+summary(m1)
+```
+
+*(2 points) A) is true: that's essentially the definition of the slope.  B) is true: that's
+the equation of our fitted model.  C) is false.  Those biological twins will tend
+to have higher than average IQs, but there will be variation.  Our model says
+that it's possible to observe a twin pair with the foster IQ above average and 
+the biological IQ below average.*
+
+
+3. Is it reasonable to draw conclusions from this model?  Please assess the 
+conditions for a valid model.
+
+```{r}
+plot(m1, 1)
+```
+
+*(3 points) We use the residual vs fitted plot to investigate whether the linear trend 
+assumption seems reasonable.  Although the red line has a suggestion of a 
+quadratic trend, it is slight and is susceptible to variation towards the edges
+where there isn't much data.  The linear trend assumption is probably fine.*
+
+```{r}
+plot(m1, 2)
+```
+
+*We use the QQ plot to assess whether it's reasonable to assume that the errors
+are normally distributed.  As the points follow the identity line quite well, 
+this is a reasonable assumption.*
+
+```{r}
+plot(m1, 3)
+```
+
+*The scale-location plot is used to assess the constant variance assumption.  There
+is no evidence of non-constant variance based on this plot.*
+
+*The assumption of independent errors appears reasonable since it's difficult to
+think of a scenario where twin pairs would be dependent.  One possibility that
+we would want to rule out is that we don't have pairs with foster or biological
+members that were raised in the same family (a foster family with two twins, for
+example).*
+
+*In sum, though we might want to consider a quadratic model for comparison, this
+appears to be a valid model to draw inferences from.  You were not required to
+comment on influential observations for this quiz, but if you did:*
+
+```{r}
+plot(m1, 5)
+```
+
+*None of our observations have usually high influence, so that is not a concern 
+here.*
+
+
+4. This study was used to weigh in on the question of whether IQ is a result of
+nature (your genes) or nurture (your environment).  If IQ was purely a result of 
+nurture, what slope would you expect to see in your linear model?  Phrase that 
+hypothetical question in terms of a hypothesis test and interpret the p-value
+in the context of this problem.
+
+```{r}
+summary(m1)
+```
+
+*(3 points) If IQ was a result purely of nuture, then we would expect a slope of zero. In 
+testing terms, $H_0: \beta_1 = 0$, $H_A: \beta_1 \ne 0$.  The regression output
+tests this hypothesis by default, yielding a p-value of `r summary(m1)$coef[2, 4]`.
+As a result, we reject that null hypothesis and conclude that Biological IQ can 
+be considered a significant predictor of Foster IQ.  This refutes the more general
+hypothesis that IQ is entirely determined by your environment.*
+
+
+5. At the other end of the argument, the distribution of IQ might be entirely
+determined by genes.  Use a 95% confidence interval on your slope to assess
+whether this claim is reasonable given your data set.
+
+```{r}
+ci <- confint(m1, "Biological")
+```
+
+*(3 points) The confidence interval for the slope is (`r ci[1]`, `r ci[2]`).  Because it
+includes 1, this data is consistent with the argument that the distribution
+of IQ is entirely due to genes.*
+
+
+6. Now consider how the association between IQs would change if social class were
+taken into account.  Create a plot that illustrates the relationship between
+all three variables. Just by looking at the plot (and without fitting any models),
+does it appear that the relationship between the IQs is the same for high social
+class children as it is for low social class children?
+
+```{r}
+require(ggplot2)
+ggplot(twins, aes(x = Biological, y = Foster, color = Social)) + geom_point()
+```
+
+*(2 points) If we imagine drawing the identity line through this plot, which represents equity
+between biological and foster IQs, we see that in most twin pairs with biological
+parents of low social class, the foster child outperforms the biological child. In
+pairs with parents biological parents of high social class, there is closer parity.
+It looks feasible that the relationship between the two is IQs is the the same 
+for both classes (i.e. the slopes), but that the baseline IQ is different(i.e. the
+intercepts).*
+
+**Endnote**: The researcher that collected this data was named [Cyril Burt](http://en.wikipedia.org/wiki/Cyril_Burt), and his work was the subject of some controversy.
+
+* * *
+
+## Part Two: Education and Ethnicity in LA
+Researchers in demography were interested in capturing the relationship between
+the ethnic make up of neighborhoods and the level of education.  To gather data
+they took a random sample of 100 neighborhoods and recorded the proportion of 
+residents in each that identified as hispanic and the proportion of residents 
+that had graduated from college.  The data can be loaded with the following command:
+
+```{r}
+LA <- read.csv("http://andrewpbray.github.io/data/LAed.csv")
+```
+
+1. Plot the relationship between ethnicity and education, keeping in mind the norm
+of putting the independent variable on the x-axis.  Please describe the structure
+in the plot as well as any unusual observations.
+
+```{r}
+plot(education ~ hispanic, data = LA)
+```
+
+*(2 points) There is a negative linear trend of moderate strength between the proportion of
+hispanic residents in a neighborhood and the proportion of residents that have 
+graduated from college.  There are several unusual observations.  There is an
+observation that appears to have a zero recorded for both variables, suggesting
+either a typo or the inclusion of a neighborhood without any residents.  There
+is also a high outlier with around half hispanic residents but with an education
+proportion around 1.  It is surprising that there are neighborhoods, sometimes 
+several, that register as 0's or 1's on one of these metrics.*
+
+
+2. Fit a linear model to this scatterplot.  Have you found a predictor that is 
+statistically significant?  In your regression output, what do you look for as 
+evidence and how do you interpret it?
+
+```{r}
+m2 <- lm(education ~ hispanic, data = LA)
+summary(m2)
+```
+
+*(3 points) A predictor that is statistically significant is one that has a non-zero slope.
+This is tested by default by running `summary(m2)`, where 
+$H_0: \beta_1 = 0$, $H_A: \beta_1 \ne 0$.  The test yielded a p-value of 
+`r summary(m2)$coef[2, 4]`, which leads to us rejecting the null hypothesis and 
+concluding that the proportion of hispanic residents is a significant predictor
+of the education level.*
+
+
+3.  Was your inference conclusion based on a valid model?  Please use plots to 
+assess the conditions for regression.
+
+```{r}
+plot(m2, 1)
+```
+
+*The assumption of linearity seems reasonable, however there is the possibility
+that a quadratic model would yield a better fit.  We would also want to re-evaulate
+after investigating the influential points.*
+
+```{r}
+plot(m2, 2)
+```
+
+*With the exception of three outliers in the tails, the QQ plot shows that the
+residuals follow a nearly normal distribution.*
+
+```{r}
+plot(m2, 3)
+```
+
+*There is evidence of slightly increasing variance.*
+
+```{r}
+plot(m2, 5)
+```
+
+*Observation 35 is flagged as being an influential point.  We will want to 
+consider if it appears to be a valid datum and if it belongs in this analysis.*
+
+*It is difficult to assess indepedence since we do not know the method that was
+used to collect this data.*
+
+*In summary, the most apparent issue is some increasing variance in the residuals,
+though it is not dramatic.  There is also some evidence of a quadratic trend and
+one influential point (thought that need not be noted for this quiz).*
+
+
+4. Say you work in state program that works to improve the number of under-
+represented individuals who graduate from college.  You are deployed to one of
+a 20 neighborhoods (not in this sample) in LA that is half hispanic.  You'd like 
+to get a sense of the range in the graduation rate for such a neighborhood. Please
+create the appropriate interval to capture that variation.
+
+```{r}
+pi <- predict(m2, data.frame("hispanic" = .5), interval = "prediction")
+```
+
+*We can capture most of the variation in the education level for a neighborhood
+with 50% hispanic residents by constructing a 95% prediction interval:
+(`r pi[2]`, `r pi[3]`).*
+
+* * * 
+
+#### Optional challenge Problem
+
+[This is a more challenging problem that will stretch your ability.  Don't let
+it frustrate you too much, but if you'd like, give it the old college try.  You 
+can turn in paper and pencil work under my office door by Friday evening if
+you're old school like that.]
+
+Number 4 from the end of Chapter 2 exercises.
+
+
+

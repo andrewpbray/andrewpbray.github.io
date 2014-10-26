@@ -1,0 +1,157 @@
+---
+title: "R Vectors and Matrices"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## Vector Indexing
+
+Consider the vector `x <- c(12,15,8,11,24)`.  How do we create a vector of the
+differences between adjacent elements?
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+x[-1] - x[-length(x)]
+```
+
+Work in vectors instead of loops where possible.
+
+
+## Vector Subsetting/Filtering {.build}
+What's going on here?
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+x[x < 10]
+x < 10
+```
+
+We can index our vector with a logical vector of the same length.
+
+
+## Subsetting with logicals {.build}
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+i <- c(F, F, T, F, F)
+x[i]
+which(x < 10)
+x[x < 10] <- 10
+x
+```
+
+
+## Useful fact!  {.build}
+
+```{r}
+i <- c(F, F, T, F, F)
+sum(i)
+mean(i)
+x <- c(12, 15, 8, 11, 24)
+mean(x > 11)
+```
+
+
+## Logical operators
+
+<div class="columns-2">
+`<` less than
+
+`<=` less than or equal
+
+`>` greater than
+
+`>=` greater than or equal
+
+`==` exactly equal to
+
+`!=` not equal to
+
+`!x` not equal to x
+
+`x | y` x or y
+
+`x & y` x and y
+</div>
+
+
+## {.build}
+
+How can you subset the following vector to exclude both elements less than 10 
+and all even elements? (hint: `%%`)
+
+```{r}
+x <- c(12, 15, 8, 11, 24)
+```
+
+
+## Activity: Vector Generation and Subsetting
+
+
+## From Vectors to Matrices {.build}
+
+Consider the vector
+
+```{r}
+v <- letters
+length(v)
+```
+
+we can turn this into a matrix.
+
+```{r}
+m <- matrix(v, nrow = 2)
+length(m)
+dim(m)
+```
+
+
+## From Vectors to Matrices {.build}
+
+```{r}
+m <- matrix(v, nrow = 2)
+m
+```
+
+By default, R will spool the vector into a matrix by first filling the columns.
+Which argument can we tweak to change this? (`?matrix`)
+
+`matrix(v, nrow = 2, byrow = TRUE)`
+
+
+
+## Matrix Subsetting {.build}
+
+Square brackets again, but with [rows, columns].
+
+```{r}
+m[2, 3]
+m[2, 2:4]
+m[, 3]
+```
+
+Leaving a blank means "all".
+
+
+## Data structures in R
+
+1. **Vector:** homogeneous groups of integers, numerics, logicals, characters.
+Scalars are just vectors of length one.
+
+2. **Matrix:** vectors with an additional dimension attributes (also homogeneous).
+
+3. **Dataframe:** matrix of heterogeneous columns of the same length.
+
+
+## Dataframe: nc
+
+![baby](http://smashinghub.com/wp-content/uploads/2013/01/BP-33.jpg)
+
+```{r}
+download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
+load("nc.RData")
+```
+
+- What are the dimensions?
+- What mode of data is in each column? (`head()`)

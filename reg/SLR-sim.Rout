@@ -1,0 +1,54 @@
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ## Simple Linear Regression simulation
+> 
+> n <- 60
+> beta_0 <- 12
+> beta_1 <- .7
+> sigma <- 2
+> x <- rnorm(n, mean = 20, sd = 3)
+> f_mean <- beta_0 + beta_1 * x
+> 
+> f_data <- f_mean + rnorm(n, mean = 0, sd = sigma) # data generating function
+> plot(20, 25, xlim = c(12, 28), ylim = c(17, 35), ylab = "y", xlab = "x", type = "n") # set up an empty plot
+> points(x, f_data, pch = 16, col = "steelblue") # add generated data
+> abline(a = beta_0, b = beta_1, col = "orange", lwd = 2) # add mean function
+> m1 <- lm(f_data ~ x)
+> 
+> it <- 5000
+> coef_mat <- matrix(rep(NA, it * 2), ncol = 2)
+> for(i in 1:it) {
++   f_data <- f_mean + rnorm(n, mean = 0, sd = sigma)
++   coef_mat[i, ] <- lm(f_data ~ x)$coef
++ }
+> 
+> par(mfrow = c(1, 2))
+> hist(coef_mat[, 1])
+> hist(coef_mat[, 2])
+> 
+> 
+> 
+> 
+> ### from estimation
+> d <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/production.txt",
++                 header = T)
+Error in file(file, "rt") : cannot open the connection
+Calls: read.table -> file
+Execution halted

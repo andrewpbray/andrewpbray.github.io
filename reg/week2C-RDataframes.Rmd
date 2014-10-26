@@ -1,0 +1,133 @@
+---
+title: "R Dataframes"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## Dataframe: nc
+<div class="columns-2">
+![baby](http://smashinghub.com/wp-content/uploads/2013/01/BP-33.jpg)
+
+```{r}
+download.file("http://www.openintro.org/stat/data/nc.RData",
+              destfile = "nc.RData")
+load("nc.RData")
+```
+
+- What are the dimensions?
+- What mode of data is in each column? (`head()`)
+</div>
+
+
+
+## Dataframe: nc {.build}
+
+```{r}
+class(nc)
+dim(nc)
+length(nc)
+```
+
+
+## Dataframes
+1. What `attributes()` does this dataframe have?
+2. What happens when you convert this dataframe into a matrix?
+
+
+## Subsetting columns {.build}
+`$` is an operator used to access a column (vector) from a dataframe.
+
+```{r}
+head(nc$fage)
+length(nc$fage)
+```
+
+It can be subsetted just like a vector.
+
+```{r}
+nc$fage[3]
+```
+
+
+## Subsetting as a matrix {.build}
+You can also subset the whole dataframe like a matrix.  What do you think the 
+following commands do?
+
+```{r, eval=FALSE}
+nc[1:10, 1:2]
+nc[1, ]
+nc[nc$gender == "female", "premie"]
+```
+
+Note that the last command could be written also using vector subsetting.
+
+```{r, eval=FALSE}
+nc$premie[nc$gender == "female"]
+```
+
+
+## Two ways to subset {.build}
+
+1. **Subset by index**: specify inside the square bracks exactly which elements
+    you want.
+
+    ```{r, eval=FALSE}
+    nc$gender[1:10]
+    ```
+
+2. **Subset by logical**: specify conditions inside brackets with logical operators
+    that will evaluate to a T/F vector of the same length as that being subsetted.
+
+    ```{r, eval=FALSE}
+    nc$gender[nc$premie == "premie"]
+    ```
+
+    Note that the vector that you're using to specify the condition can be 
+    different from the one you're subsetting, but it has to be of the same length.
+
+
+## Functions on vectors
+
+There are many statistical functions that take a vector as an argument (`mean()`,
+`sum()`, `median()`, `sd()`, `max()`, `min()`, etc.) that can also be used to subset.
+
+```{r}
+nc[nc$mage == max(nc$mage), ]
+```
+
+
+##
+
+Fix the following subsetting errors using data from `nc`.
+
+```{r, eval = FALSE}
+nc[nc$visits = 4, ]
+nc[-1:4, ]
+nc[nc$visits <= 5]
+nc[nc$visits == 4 | 6, ]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,271 @@
+---
+title: "From Data to Distributions"
+output: ioslides_presentation
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+require(knitr)
+require(ggplot2)
+opts_chunk$set(warning=FALSE,message=FALSE)
+```
+
+
+## Two univariate distributions
+
+```{r submit-time-data, echo=FALSE}
+d <- read.csv("submit-times.csv")
+d[,1] <- as.character(d[,1])
+d[,2] <- as.character(d[,2])
+d <- d[d[,1] != "-" & d[,2] != "-",]
+
+a <- d[,1]
+datestamp <- unlist(strsplit(a, ", "))[seq(2, length(a)*3, 3)]
+timestamp <- unlist(strsplit(a, ", "))[seq(3, length(a)*3, 3)]
+x <- paste(datestamp, timestamp)
+dt <- strptime(x, "%d %B %Y %I:%M %p")
+dt <- as.POSIXlt(x, format = "%d %B %Y %I:%M %p")
+a <- dt$min*60 + dt$hour*60*60 + dt$mday*24*60*60
+
+b <- d[,2]
+datestamp <- unlist(strsplit(b, ", "))[seq(2, length(b)*3, 3)]
+timestamp <- unlist(strsplit(b, ", "))[seq(3, length(b)*3, 3)]
+x <- paste(datestamp, timestamp)
+dt <- strptime(x, "%d %B %Y %I:%M %p")
+dt <- as.POSIXlt(x, format = "%d %B %Y %I:%M %p")
+b <- dt$min*60 + dt$hour*60*60 + dt$mday*24*60*60
+
+d <- data.frame(activity = a, homework = b)
+dd <- data.frame(submit_time = c(a, b), assmnt = c(rep("activity", length(a)),
+                                                   rep("homework", length(b))))
+```
+
+```{r, echo=FALSE}
+par(mfrow = c(2,1))
+plot(density(d$activity), xlim = c(1000000, 1500000), main = "")
+plot(density(d$homework), xlim = c(1000000, 1500000), main = "")
+```
+
+
+## Two univariate distributions
+
+```{r, echo=FALSE}
+plot(density(d$activity), xlim = c(1000000, 1500000), ylim = c(0, 1.5*10^(-5)),
+     main = "", col = "orange")
+lines(density(d$homework)$x, density(d$homework)$y, col = "steelblue")
+abline(v = 14*24*60*60 + 15*60*60)
+text(1330000, 1.35*10^(-5), "Homework due")
+```
+
+
+## Bivariate data: scatterplot
+
+```{r, echo=FALSE}
+ggplot(data=d, aes(x=activity, y=homework)) + geom_jitter()  + theme(legend.position="none") + labs(title="")
+```
+
+
+## Marginal and Joint
+
+```{r, echo=FALSE}
+library(gridExtra)
+
+p1 <- ggplot(d,aes(x=activity,y=homework)) + geom_point() +
+  scale_x_continuous(expand=c(0.02,0)) +
+  scale_y_continuous(expand=c(0.02,0)) +
+  theme_bw() +
+  theme(legend.position="none",plot.margin=unit(c(0,0,0,0),"points"))
+
+theme0 <- function(...) theme( legend.position = "none",
+                               panel.background = element_blank(),
+                               panel.grid.major = element_blank(),
+                               panel.grid.minor = element_blank(),
+                               panel.margin = unit(0,"null"),
+                               axis.ticks = element_blank(),
+                               axis.text.x = element_blank(),
+                               axis.text.y = element_blank(),
+                               axis.title.x = element_blank(),
+                               axis.title.y = element_blank(),
+                               axis.ticks.length = unit(0,"null"),
+                               axis.ticks.margin = unit(0,"null"),
+                               panel.border=element_rect(color=NA),...)
+
+p2 <- ggplot(d,aes(x=activity)) + 
+  geom_density(alpha=0.5, color = "orange") + 
+  scale_x_continuous(breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(breaks=NULL,expand=c(0.02,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(1,0,0,2.2),"lines")) 
+
+p3 <- ggplot(d,aes(x=homework)) + 
+  geom_density(alpha=0.5, color = "steelblue") + 
+  coord_flip()  + 
+  scale_x_continuous(labels = NULL,breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(labels = NULL,breaks=NULL,expand=c(0.02,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(0,1,1.2,0),"lines"))
+
+grid.arrange(arrangeGrob(p2,ncol=2,widths=c(3,1)),
+             arrangeGrob(p1,p3,ncol=2,widths=c(3,1)),
+             heights=c(1,3))
+```
+
+
+## Contour plot
+
+```{r, echo=FALSE}
+# install.packages("ks")
+require(ks)
+bd <- kde(as.matrix(d))
+plot(bd)
+```
+
+
+## Image plot / heat map
+
+```{r, echo=FALSE}
+plot(bd, display = "image")
+```
+
+
+## Perspective plot
+
+```{r, echo=FALSE}
+plot(bd, display = "persp")
+```
+
+
+## Fisher's Irises
+
+![iris](http://mirlab.org/jang/books/dcpr/image/iris.gif)
+
+**Fisher's Irises**: Is there a relationship between sepal length and sepal width 
+of irises?  I.e., if you have measurements on one, can you predict what the other
+will be?
+
+
+## Fisher's Irises
+
+```{r, echo=FALSE}
+p1 <- ggplot(iris,aes(x=Sepal.Length,y=Sepal.Width,colour=factor(Species))) + geom_point() +
+  scale_x_continuous(expand=c(0.02,0)) +
+  scale_y_continuous(expand=c(0.02,0)) +
+  theme_bw() +
+  theme(legend.position="none",plot.margin=unit(c(0,0,0,0),"points"))
+
+theme0 <- function(...) theme( legend.position = "none",
+                               panel.background = element_blank(),
+                               panel.grid.major = element_blank(),
+                               panel.grid.minor = element_blank(),
+                               panel.margin = unit(0,"null"),
+                               axis.ticks = element_blank(),
+                               axis.text.x = element_blank(),
+                               axis.text.y = element_blank(),
+                               axis.title.x = element_blank(),
+                               axis.title.y = element_blank(),
+                               axis.ticks.length = unit(0,"null"),
+                               axis.ticks.margin = unit(0,"null"),
+                               panel.border=element_rect(color=NA),...)
+
+p2 <- ggplot(iris,aes(x=Sepal.Length,colour=factor(Species),fill=factor(Species))) + 
+  geom_density(alpha=0.5) + 
+  scale_x_continuous(breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(breaks=NULL,expand=c(0.02,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(1,0,0,2.2),"lines")) 
+
+p3 <- ggplot(iris,aes(x=Sepal.Width,colour=factor(Species),fill=factor(Species))) + 
+  geom_density(alpha=0.5) + 
+  coord_flip()  + 
+  scale_x_continuous(labels = NULL,breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(labels = NULL,breaks=NULL,expand=c(0.02,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(0,1,1.2,0),"lines"))
+
+grid.arrange(arrangeGrob(p2,ncol=2,widths=c(3,1)),
+             arrangeGrob(p1,p3,ncol=2,widths=c(3,1)),
+             heights=c(1,3))
+```
+
+
+## Conditioning
+
+**Question**: what is the relationship between species and sepal width when 
+comparing irises of the same length?
+
+Two step process:
+
+1. Collect (subset) the flowers that are of the same length.
+
+2. Plot the relationship of width and species.
+
+
+## Conditioning
+
+1. Let's consider the flowers around 5.5 cm in length.
+
+```{r}
+nrow(iris)
+iris_slice <- iris[iris$Sepal.Length > 5.0 & iris$Sepal.Length < 6.0, ]
+nrow(iris_slice)
+```
+
+
+## Conditioning
+
+2. Plot (density plots) the relationship between width and species in this slice.
+
+```{r, echo=FALSE}
+ggplot(iris_slice,aes(x=Sepal.Width,colour=factor(Species),fill=factor(Species))) + 
+  geom_density(alpha=0.5) +
+  theme_bw() +
+  coord_flip()
+```
+
+
+## Conditioning
+
+2. Plot (boxplots) the relationship between width and species in this slice.
+
+```{r, echo=FALSE}
+ggplot(data=iris_slice, aes(x=Species, y=Sepal.Width)) + geom_boxplot()  + theme(legend.position="none") + labs(title="") 
+```
+
+
+## 3D scatterplot
+
+```{r, echo=FALSE, eval=FALSE}
+#install.packages("rgl")
+library(rgl)
+plot3d(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length, col="red", size=3)
+```
+
+
+## 3D density plot
+
+```{r, echo=FALSE, eval=FALSE}
+library(ks)
+fhat <- kde(x=iris[,1:3])
+plot(fhat)
+```
+
+
+## Data in yet higher dimensions
+
+[http://www.gapminder.org/world](http://www.gapminder.org/world)
+
+1. How many variables/columns/dimensions are displayed?
+
+2. Is there any structure that is persistent over an entire variable?
+
+3. How would you characterize the relationship between fertility and life
+expectancy during the 1950s and 1960s when comparing the industrialized western
+nations to the rest of the world?
+
+
+## High dimension, high art
+
+[http://www.memo.tv/forms/](http://www.memo.tv/forms/)
+
+
+
+
