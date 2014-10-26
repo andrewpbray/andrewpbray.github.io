@@ -144,4 +144,6 @@ multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
 - Analysis of Covariance: slides ([html](week8B-ancova.html)) ([Rmd](week8B-ancova.Rmd))
 
 #### Friday
-- Survey and Activity 7: slides (will be posted this afternoon)
+- Survey and Activity 7: slides ([html](week8C-surveys.html)) ([Rmd](week8C-surveys.Rmd))
+
+
