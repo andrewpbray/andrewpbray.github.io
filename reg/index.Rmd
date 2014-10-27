@@ -147,3 +147,9 @@ multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
 - Survey and Activity 7: slides ([html](week8C-surveys.html)) ([Rmd](week8C-surveys.Rmd))
 
 
+### Week 9: Matrix Formulation for MLR + Projects
+
+#### Monday
+- Matrices and Projects: slides ([html](week9A-matrices-projects.html)) ([Rmd](week9A-matrices-projects.Rmd))
+- Project proposal guidelines ([pdf](project_proposal.pdf))
+

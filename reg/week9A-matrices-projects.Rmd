@@ -1,0 +1,105 @@
+---
+title: Matrix Notation for Regression
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Matrices
+
+## Generating a matrix in R {.build}
+
+```{r}
+A <- matrix(c(2, -4, 5, 3, -1, -3), nrow = 2)
+A
+```
+
+- The first argument is a vector of numbers.
+- You also need to specify `nrow` or `ncol`.
+- By default, `byrow = FALSE`, so it will spool the numbers down the columns
+first.
+- Can also change a dataframe into a matrix directly with `as.matrix()`.
+
+
+## Matrix multiplication {.build}
+
+```{r}
+B <- matrix(c(2, 1, 0, 0, 1, 4), nrow = 3)
+# A * B
+C <- A %*% B
+```
+
+- The `*` operator will do element-wise multiplication.
+- Use `%*%` for matrix multiplication (inner product).
+
+
+## Other operations {.build}
+
+*Transpose*: `t()`
+
+```{r}
+C
+t(C)
+```
+
+
+## Other operations {.build}
+
+*Inverse*: `solve()`
+
+```{r}
+solve(C)
+C %*% solve(C)
+```
+
+
+# Projects
+
+
+## Project Framework {.build}
+
+- Proposal (25%)
+- Oral Presentation (37.5%)
+- Technical Report (37.5%)
+
+Two components due next week:
+
+1. **Final proposal** due next Wednesday.
+2. **Final clean data set** due next Friday.
+
+
+## Initial Proposals
+In good shape:
+- great diversity in topics.
+- leads on data.
+
+Needs work:
+- what is the observational unit (i.e. the rows of the data frame)?
+- what is the response?
+- build a MLR.
+
+
+## Final Proposal
+
+- See website for full explanation.
+
+
+## General Guidelines {.build}
+
+- *Data types*: continuous response, continuous and categorical predictors.
+- *Size*: > 200 rows, 5 - 20 predictors.
+- *Sampled*: the data as a sample from some greater population to which we'd
+like to make inferences.
+
+
+## Additional models
+
+- *Time series*: time series data is data that was collected over time, such as the 
+price of a particular stock.
+
+- *Logistic regression*: used when you have a binary response (e.g. predicting whether
+an internet user will click on your ad).
+
+
+
+
