@@ -1,0 +1,182 @@
+---
+title: Matrix MLR - least squares and adding variables
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Matrices
+
+## Restaurants in NYC
+
+![zagat](zagat.png)
+
+
+## Restaurants in NYC
+
+```{r}
+nyc <- read.csv("http://andrewpbray.github.io/data/nyc.csv")
+dim(nyc)
+nyc[1:3,]
+```
+
+
+## What determines the price of a meal?
+
+Let's look at the relationship between price, food rating, and decor rating.
+
+```{r echo=FALSE}
+require(rgl)
+plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = "steelblue", 
+       xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
+m1 <- lm(Price ~ Food + Decor, data = nyc)
+coefs <- m1$coef
+planes3d(coefs["Food"], coefs["Decor"], -1, coefs["(Intercept)"],
+         alpha = 0.4, col = "lightgray")
+```
+
+
+## What determines the price of a meal?
+
+\[ Price \sim Food + Decor \]
+
+```{r}
+nyc[1:3, ]
+m1 <- lm(Price ~ Food + Decor, data = nyc)
+```
+
+## Model 1: Food + Decor
+
+```{r}
+summary(m1)
+```
+
+
+## The geometry of regression models {.build}
+
+The mean function is . . .
+
+- A *line* when you have one continuous $x$.
+- *Parallel lines* when you have one continuous $x_1$ and one categorical $x_2$.
+- *Unrelated lines* when you have one continuous $x_1$, one categorical $x_2$, 
+and an interaction term $x_1 * x_2$.
+
+When you have two continuous predictors $x_1$, $x_2$, then your mean function
+is . . .
+
+*a plane*
+
+
+## 3d plot
+
+```{r echo=FALSE}
+plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = "steelblue", 
+       xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
+m1 <- lm(Price ~ Food + Decor, data = nyc)
+coefs <- m1$coef
+planes3d(coefs["Food"], coefs["Decor"], -1, coefs["(Intercept)"],
+         alpha = 0.4, col = "lightgray")
+```
+
+
+## Location, location, location
+
+Does the price depend on where the restaurant is located in Manhattan?
+
+\[ Price \sim Food + Decor + East \]
+
+```{r}
+nyc[1:3, ]
+```
+
+
+## Model 2: Food + Decor + East
+
+```{r}
+m2 <- lm(Price ~ Food + Decor + East, data = nyc)
+summary(nyc)
+```
+
+
+## The geometry of regression models {.build}
+
+- When you have two continuous predictors $x_1$, $x_2$, then your mean function
+is *a plane*.
+- When you have two continuous predictors $x_1$, $x_2$, and a categorical 
+predictor $x_3$, then your mean function represents *parallel planes*.
+
+
+##
+
+```{r}
+m2 <- lm(Price ~ Food + Decor + East, data = nyc)
+colvec <- rep("steelblue", dim(nyc)[1])
+colvec[nyc$East == 1] <- "orange"
+plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = colvec, 
+       xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
+coefs <- m2$coef
+planes3d(coefs["Food"], coefs["Decor"], -1, coefs["(Intercept)"],
+         alpha = 0.4, col = "steelblue")
+planes3d(coefs["Food"], coefs["Decor"], -1, coefs["(Intercept)"] + coefs["East"],
+         alpha = 0.4, col = "orange")
+```
+
+
+## The geometry of regression models {.build}
+
+- When you have two continuous predictors $x_1$, $x_2$, then your mean function
+is *a plane*.
+- When you have two continuous predictors $x_1$, $x_2$, and a categorical 
+predictor $x_3$, then your mean function represents *parallel planes*.
+- When you add in interaction effects, the planes become *tilted*.
+
+
+## Model 3: Food + Decor + East + Decor:East
+
+```{r}
+m3 <- lm(Price ~ Food + Decor + East + Decor:East, data = nyc)
+summary(m3)
+```
+
+
+##
+
+```{r}
+colvec <- rep("steelblue", dim(nyc)[1])
+colvec[nyc$East == 1] <- "orange"
+plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = colvec, 
+       xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
+coefs <- m3$coef
+planes3d(coefs["Food"], coefs["Decor"], -1, coefs["(Intercept)"],
+         alpha = 0.4, col = "steelblue")
+planes3d(coefs["Food"], coefs["Decor"] + coefs["Decor:East"], -1, 
+         coefs["(Intercept)"] + coefs["East"], alpha = 0.4, col = "orange")
+```
+
+
+## Comparing Models
+
+- The `East` term was significant in model 2, suggesting that there is a 
+significant relationship between location and price.
+- That term became nonsignificant when we allowed the slope of `Decor` to vary
+with location, and that difference in slopes was also nonsignificant.
+
+
+# Activity 8
+
+## Activity 8
+Load in the LA homes data set and fit the following model:
+
+\[ logprice \sim logsqft + bed + city \]
+
+1. What appears to be the reference level for `city`?
+
+2. In the context of this problem, what is suggested by the *sign* of the
+coefficient for `logprice`?  Do this make sense to you?
+
+3. Calculate the vector $\hat{beta}$ using the matrix formulation of the least
+squares estimates (useful functions: `cbind()`, `rep()`, `matrix()`, `as.matrix()`,
+`t()`, `solve()`).  Do they agree with the estimates that come out of `lm()`?
+
+4. See if you can plot your full model as geometric structures on a 3D scatterplot
+of the data.
