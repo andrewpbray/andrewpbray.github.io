@@ -153,3 +153,8 @@ multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
 - Matrices and Projects: slides ([html](week9A-matrices-projects.html)) ([Rmd](week9A-matrices-projects.Rmd))
 - Project proposal guidelines ([pdf](project_proposal.pdf))
 
+#### Wednesday
+- Geometry of MLR: slides ([html](week9B-mlr-geometry.html)) ([Rmd](week9B-mlr-geometry.Rmd))
+
+
+
