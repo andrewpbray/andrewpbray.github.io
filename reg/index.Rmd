@@ -148,6 +148,7 @@ multiplication: [video](https://www.youtube.com/watch?v=YtMYfvypgM4),
 
 
 ### Week 9: Matrix Formulation for MLR + Projects
+Homework #7 is to read the paper that has been posted to Moodle and answer the accompanying questions.
 
 #### Monday
 - Matrices and Projects: slides ([html](week9A-matrices-projects.html)) ([Rmd](week9A-matrices-projects.Rmd))
