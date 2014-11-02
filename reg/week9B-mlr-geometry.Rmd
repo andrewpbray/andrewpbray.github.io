@@ -9,7 +9,7 @@ output:
 
 ## Restaurants in NYC
 
-![zagat](zagat.png)
+![zagat](http://andrewpbray.github.io/reg/zagat.png)
 
 
 ## Restaurants in NYC
@@ -25,7 +25,7 @@ nyc[1:3,]
 
 Let's look at the relationship between price, food rating, and decor rating.
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=FALSE}
 require(rgl)
 plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = "steelblue", 
        xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
@@ -69,7 +69,7 @@ is . . .
 
 ## 3d plot
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=FALSE}
 plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = "steelblue", 
        xlab = "Food rating", ylab = "Decor Rating", zlab = "Price")
 m1 <- lm(Price ~ Food + Decor, data = nyc)
@@ -94,7 +94,7 @@ nyc[1:3, ]
 
 ```{r}
 m2 <- lm(Price ~ Food + Decor + East, data = nyc)
-summary(nyc)
+summary(m2)
 ```
 
 
@@ -106,9 +106,9 @@ is *a plane*.
 predictor $x_3$, then your mean function represents *parallel planes*.
 
 
-##
+## 3d Plot
 
-```{r}
+```{r echo = FALSE, eval = FALSE}
 m2 <- lm(Price ~ Food + Decor + East, data = nyc)
 colvec <- rep("steelblue", dim(nyc)[1])
 colvec[nyc$East == 1] <- "orange"
@@ -139,9 +139,9 @@ summary(m3)
 ```
 
 
-##
+## 3d plot
 
-```{r}
+```{r echo=FALSE, eval=FALSE}
 colvec <- rep("steelblue", dim(nyc)[1])
 colvec[nyc$East == 1] <- "orange"
 plot3d(x = nyc$Food, y = nyc$Decor, z = nyc$Price, col = colvec, 
@@ -172,11 +172,47 @@ Load in the LA homes data set and fit the following model:
 1. What appears to be the reference level for `city`?
 
 2. In the context of this problem, what is suggested by the *sign* of the
-coefficient for `logprice`?  Do this make sense to you?
+coefficient for `bed`?  Do this make sense to you?
 
-3. Calculate the vector $\hat{beta}$ using the matrix formulation of the least
+3. Calculate the vector $\hat{\beta}$ using the matrix formulation of the least
 squares estimates (useful functions: `cbind()`, `rep()`, `matrix()`, `as.matrix()`,
 `t()`, `solve()`).  Do they agree with the estimates that come out of `lm()`?
 
+```{r echo=FALSE, eval=FALSE}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+LA <- transform(LA, logprice = log(price), logsqft = log(sqft))
+m1 <- lm(logprice ~ logsqft + bed + city, data = LA)
+
+cityLB <- rep(0, nrow(LA))
+cityLB[LA$city == "Long Beach"] <- 1
+citySM <- rep(0, nrow(LA))
+citySM[LA$city == "Santa Monica"] <- 1
+cityWW <- rep(0, nrow(LA))
+cityWW[LA$city == "Westwood"] <- 1
+x1 <- rep(1, nrow(LA))
+
+X <- as.matrix(LA[, c("logsqft", "bed")])
+X <- cbind(x1, X, cityLB, citySM, cityWW)
+Y <- LA$logprice
+
+beta_hats <- solve(t(X) %*% X) %*% t(X) %*% Y
+m1$coef
+```
+
 4. See if you can plot your full model as geometric structures on a 3D scatterplot
 of the data.
+
+```{r echo=FALSE, eval=FALSE}
+require(rgl)
+plot3d(x = LA2$log_sqft, y = LA2$bed, z = LA2$log_price,
+       xlab="Log Square Feet", ylab="Number of Bedrooms", zlab="Log Price")
+coefs <- m1$coef
+planes3d(coefs["log_sqft"], coefs["bed"], -1, coefs["(Intercept)"], alpha = 0.4,
+         col = "lightgray")
+planes3d(coefs["log_sqft"], coefs["bed"], -1, coefs["(Intercept)"] + 
+           coefs["cityLong Beach"], alpha = 0.4, col = "orange")
+planes3d(coefs["log_sqft"], coefs["bed"], -1, coefs["(Intercept)"] + 
+           coefs["citySanta Monica"], alpha = 0.4, col = "steelblue")
+planes3d(coefs["log_sqft"], coefs["bed"], -1, coefs["(Intercept)"] + 
+           coefs["cityWestwood"], alpha = 0.4, col = 2)
+```
