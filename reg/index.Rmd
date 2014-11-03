@@ -158,4 +158,8 @@ Homework #7 is to read the paper that has been posted to Moodle and answer the a
 - Geometry of MLR: slides ([html](week9B-mlr-geometry.html)) ([Rmd](week9B-mlr-geometry.Rmd))
 
 
+### Week 10: Properties of MLR and Diagnostics
 
+#### Monday
+- Reading for next time: 6.1
+- Properties of the Least Squares Estimates: slides ([html](week10A-LSE-properties.html)) ([Rmd](week10A-LSE-properties.Rmd))

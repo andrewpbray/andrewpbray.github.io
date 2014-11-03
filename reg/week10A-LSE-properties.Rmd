@@ -1,0 +1,42 @@
+---
+title: "Properties of LSE"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Activity Review
+
+## Interpretation of $\hat{\beta}$ {.build}
+
+```{r echo=FALSE}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+LA <- transform(LA, logprice = log(price), logsqft = log(sqft))
+m1 <- lm(logprice ~ logsqft + bed + city, data = LA)
+m1$coef
+```
+
+- Each coefficient/slope/estimate represents the expected increase in the $y$
+that is associated with an increase in the $x$ by one *with other variables held
+constant*.
+- Said another way, if we *control for* the other variables, a one unit increase
+in $x_i$ is associated with a $\beta_i$ increase in the $y$, on average.
+- Being able to control for other variables is the great strength of regression.
+
+
+# Properties of Least Squares Estimates
+
+## Inference on $\beta$ {.build}
+
+CIs and H tests require knowledge of the sampling distribution of $\beta$. Once
+transformed, each $\beta_i$ follows a t-distribution.
+
+\[ T = \frac{\hat{\beta} - \beta}{SE(\hat{\beta})} \sim t_{n - p - 1} \]
+
+```{r}
+summary(m1)$coef
+```
+
+
+# Project time
+
