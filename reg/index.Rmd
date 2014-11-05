@@ -159,7 +159,11 @@ Homework #7 is to read the paper that has been posted to Moodle and answer the a
 
 
 ### Week 10: Properties of MLR and Diagnostics
+Homework for this week will be due next week.
 
 #### Monday
 - Reading for next time: 6.1
 - Properties of the Least Squares Estimates: slides ([html](week10A-LSE-properties.html)) ([Rmd](week10A-LSE-properties.Rmd))
+
+#### Wednesday
+- Diagnostics I - leverage and standardized residuals: slides ([html](week10B-diagnostics1.html)) ([Rmd](week10B-diagnostics1.Rmd))
