@@ -167,3 +167,6 @@ Homework for this week will be due next week.
 
 #### Wednesday
 - Diagnostics I - leverage and standardized residuals: slides ([html](week10B-diagnostics1.html)) ([Rmd](week10B-diagnostics1.Rmd))
+
+#### Friday
+- Diagnostics II - added variable plots and Activity 9: slides ([html](week10C-diagnostics2.html)) ([Rmd](week10C-diagnostics2.Rmd))

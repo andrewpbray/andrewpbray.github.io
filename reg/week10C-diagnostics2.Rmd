@@ -1,0 +1,249 @@
+---
+title: "Diagnostics II"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Building Valid models
+
+
+## MLR Diagnostics {.build}
+
+Last time:
+
+1. **Influence**: use the hat matrix and standardized residuals.
+2. **Normality**: use the qq plot of standardized residuals.
+
+This time:
+
+1. The trouble with MLR residuals plots.
+2. Added variable plots.
+
+
+## Residual plots, SRL vs MLR
+
+In simple linear regression we use residual plots to assess:
+
+1. Does the mean function appear linear?
+2. Is it reasonable to assume that the errors have constant variance?
+
+
+## Residual plots in SLR {.build}
+
+```{r echo=FALSE,message=FALSE, error=FALSE}
+library(alr3)
+data(caution)
+m1 <- lm(y~x1+x2, data = caution)
+plot(m1, 1)
+```
+
+If this was a SLR model, we could conclude that the mean function looks fairly
+linear but there the errors appear to have increasing variance.
+
+
+
+##  Residual plots in MLR {.build}
+
+We fit the model:
+
+\[ y \sim x_1 + x_2 \]
+
+But this is synthetic data generated from a model with **constant variance**.
+
+Whaaaaaa?
+
+```{r echo=FALSE}
+StanRes1 <- rstandard(m1)
+par(mfrow=c(2,2))
+plot(caution$x1,StanRes1, ylab="Standardized Residuals")
+plot(caution$x2,StanRes1, ylab="Standardized Residuals")
+```
+
+
+## Residual plots in MLR {.build}
+
+In MLR, in general, you **cannot infer** the structure you see in the residuals
+vs fitted plot as being the structure that was misspecified.
+
+- Non-constant variance in the residuals doesn't neccessarily suggest 
+non-constant variance in the errors.
+- Non-linear structures don't necessarily suggest a non-linear mean function.
+
+The only conclusion you can draw is that *something* is misspecified.
+
+
+## Residual plots in MLR {.build}
+
+So now what?
+
+- Although several types of invalid models can create non-constant variance
+in the residuals, a valid model will always be structureless.
+- If you can be sure you have a good mean function, then the residual plot
+is more informative.
+- Marginal Model Plots
+- Added Variable Plots
+
+
+## Added variable plots {.build}
+
+The objective of constructing an added variable plot is to assess how much
+each variable adds to your model.
+
+Consider the nyc restaurant data, where we'd like to build the model:
+
+\[ Price \sim Food + Decor + Service + East \]
+
+We can assess the isolated effect of each predictor on the response with a 
+series of simple scatterplots...
+
+##
+
+```{r echo=FALSE, fig.align='center', fig.height=6}
+nyc <- read.csv("http://andrewpbray.github.io/data/nyc.csv")
+par(mfrow=c(2,2))
+plot(Price ~ Food, data = nyc)
+abline(lsfit(nyc$Food,nyc$Price))
+plot(Price ~ Decor, data = nyc)
+abline(lsfit(nyc$Decor,nyc$Price))
+plot(Price ~ Service, data = nyc)
+abline(lsfit(nyc$Service,nyc$Price))
+plot(Price ~ East, data = nyc)
+abline(lsfit(nyc$East,nyc$Price))
+```
+
+
+##
+
+```{r fig.align='center', fig.height=6}
+pairs(Price ~ Food + Decor + Service + East, data = nyc)
+```
+
+
+##  Added variable plots {.build}
+
+An added variable plot tells you how much a given predictor $x_i$ can explain the response
+after the other predictors have been taken into account.  They plot:
+
+- On the y-axis, the residuals from the model predicting the response without $x_i$.
+- On the x-axis, the residuals from predicting $x_i$ using those same predictors.
+
+
+## Added variable plot for Food {.build}
+
+First, get the residuals from the model
+
+\[ Price \sim Decor + Service + East \]
+
+```{r}
+resY <- lm(Price ~ Decor + Service + East, data = nyc)$res
+```
+
+Second, get the residuals from the model
+
+\[ Food \sim Decor + Service + East \]
+
+```{r}
+resX <- lm(Food ~ Decor + Service + East, data = nyc)$res
+```
+
+The plot them against each other...
+
+
+##
+
+```{r fig.align='center', fig.height=5}
+plot(resY ~ resX)
+```
+
+
+##
+
+```{r fig.align='center', fig.height=5}
+library(car)
+m1 <- lm(Price ~ Food + Decor + Service + East, data = nyc)
+avPlot(m1,variable = "Food")
+```
+
+
+## Something to notice... {.build}
+
+If we fit a line through the AVP, the slope should look familiar...
+
+```{r}
+AVPm1 <- lm(resY ~ resX)
+AVPm1$coef
+m1$coef
+```
+
+
+##
+
+```{r echo=FALSE, fig.align='center', fig.height=6}
+nyc <- read.csv("http://andrewpbray.github.io/data/nyc.csv")
+par(mfrow=c(2,2))
+plot(Price ~ Food, data = nyc)
+abline(lsfit(nyc$Food,nyc$Price))
+plot(Price ~ Decor, data = nyc)
+abline(lsfit(nyc$Decor,nyc$Price))
+plot(Price ~ Service, data = nyc)
+abline(lsfit(nyc$Service,nyc$Price))
+plot(Price ~ East, data = nyc)
+abline(lsfit(nyc$East,nyc$Price))
+```
+
+
+##
+
+```{r fig.align='center', fig.height=5}
+avPlots(m1)
+```
+
+
+## How to use AVP {.build}
+
+1. AVPs can be used to assess whether it makes sense to include an additional
+variable in the model (similar to looking at the p-value of the predictor).
+2. They're a bit more informative, though, since they would also indicate if the
+relationship between that predictor and the response is linear in the context of
+the other variables.
+
+
+# Activity 
+
+## Activity 9 (Part I)
+
+```{r echo = FALSE, fig.align='center'}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+plot(price ~ sqft, data = LA, col = "steelblue")
+m1 <- lm(price ~ sqft + bed + city, data = LA)
+```
+
+In the data set LA, this scatterplot suggests two influential points but are
+they influential in a MLR model?
+
+
+##
+
+In the data set LA, this scatterplot suggests two influential points but are
+they influential in a MLR model?
+
+1. Fit the model $\hat{price} \sim sqrt + bed + city$.
+2. By the rules of thumb, are those two points high leverage?  Outliers?
+(you can extract the hat values using `influence(m1)$hat`.)
+3. Calculate the Cook's distance of those two observations using the equation:
+$D_i = ((r_i^2)/2) * ((h_{ii})/(1 - h_{ii}))$.
+4. Generate the Cook's distance plot to double check that the values that you
+calculated in 3 seem correct.
+5. Now fit the more appropriate model, with $logprice$ and $logsqrt$ and construct
+added variable plots.  What do you learn about the relative usefulness of $logsqft$
+and $bed$ as predictors?
+
+
+
+
+
+
+
+
+
