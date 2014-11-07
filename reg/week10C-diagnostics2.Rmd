@@ -228,7 +228,7 @@ they influential in a MLR model?
 In the data set LA, this scatterplot suggests two influential points but are
 they influential in a MLR model?
 
-1. Fit the model $\hat{price} \sim sqrt + bed + city$.
+1. Fit the model $price \sim sqft + bed + city$.
 2. By the rules of thumb, are those two points high leverage?  Outliers?
 (you can extract the hat values using `influence(m1)$hat`.)
 3. Calculate the Cook's distance of those two observations using the equation:

@@ -254,7 +254,7 @@ AVPm1$coef</pre>
 <p>In the data set LA, this scatterplot suggests two influential points but are they influential in a MLR model?</p>
 
 <ol class = 'build'>
-<li>Fit the model \(\hat{price} \sim sqrt + bed + city\).</li>
+<li>Fit the model \(price \sim sqft + bed + city\).</li>
 <li>By the rules of thumb, are those two points high leverage? Outliers? (you can extract the hat values using <code>influence(m1)$hat</code>.)</li>
 <li>Calculate the Cook&#39;s distance of those two observations using the equation: \(D_i = ((r_i^2)/2) * ((h_{ii})/(1 - h_{ii}))\).</li>
 <li>Generate the Cook&#39;s distance plot to double check that the values that you calculated in 3 seem correct.</li>
