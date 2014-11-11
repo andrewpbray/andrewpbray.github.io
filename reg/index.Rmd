@@ -170,3 +170,10 @@ Homework for this week will be due next week.
 
 #### Friday
 - Diagnostics II - added variable plots and Activity 9: slides ([html](week10C-diagnostics2.html)) ([Rmd](week10C-diagnostics2.Rmd))
+
+
+### Week 11: More Diagnostics
+
+#### Monday
+- Reading for next time: 6.4
+- Diagnostics III - y v y-hat, mmp: slides ([html](week11A-diagnostics3.html)) ([Rmd](week11A-diagnostics3.Rmd))

@@ -1,0 +1,104 @@
+---
+title: "Diagnostics III"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Projects
+
+## Proposals recap {.build}
+
+- Many groups are `merge()`ing data, which is great.  Make sure the rows align!
+- Population, sample, and the observational unit.
+
+
+## This week {.build}
+
+- *Data cleaning*
+- *Exploratory Data Analysis*: use the tools we started this class with (`mplot()`,
+`ggplot2`, `lattice`) to explore the structure in your data.  Distribution of 
+your variables (histograms, density plots), predictors vs response, relationships
+between predictors.  Use scatterplots, boxplots, etc.
+- *Work in Markdown!!!* be sure all your plots and data manipulation is completely
+transparent and reproducible.
+
+
+# Activity 9
+
+##
+
+1. Fit the model $price \sim sqft + bed + city$.
+2. By the rules of thumb, are those two points high leverage?  Outliers?
+(you can extract the hat values using `influence(m1)$hat`.)
+3. Calculate the Cook's distance of those two observations using the equation:
+$D_i = ((r_i^2)/(p + 1)) * ((h_{ii})/(1 - h_{ii}))$.
+4. Generate the Cook's distance plot to double check that the values that you
+calculated in 3 seem correct.
+5. Now fit the more appropriate model, with $logprice$ and $logsqrt$ and construct
+added variable plots.  What do you learn about the relative usefulness of $logsqft$
+and $bed$ as predictors?
+
+
+## High leverage?
+
+```{r}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+m1 <- lm(price ~ sqft + bed + city, data = LA)
+levs <- influence(m1)$hat
+```
+
+
+## High leverage?
+
+```{r, echo=FALSE}
+hist(levs)
+abline(v = 2 * length(m1$coef) / nrow(LA), col = "red")
+tail(sort(levs))
+```
+
+
+## High residual?
+
+```{r}
+e_hat <- m1$res
+s <- sqrt(1/(nrow(LA) - length(m1$coef)) * sum(e_hat^2))
+r <- e_hat/(s * sqrt(1 - levs))
+head(r)
+head(rstandard(m1))
+```
+
+
+## High residual?
+
+```{r}
+hist(r)
+tail(sort(r))
+```
+
+
+## Influence
+
+```{r}
+cdist <- (r^2 / length(m1$coef)) * (levs/(1 - levs))
+tail(sort(cdist))
+```
+
+
+## Influence
+
+```{r}
+plot(m1, 5)
+```
+
+
+## AVPs
+
+```{r}
+LA <- transform(LA, logprice = log(price), logsqft = log(sqft))
+m2 <- lm(logprice ~ logsqft + bed + city, data = LA)
+library(car)
+avPlots(m2)
+```
+
+

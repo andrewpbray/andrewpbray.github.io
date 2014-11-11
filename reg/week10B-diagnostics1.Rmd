@@ -192,7 +192,7 @@ plot(m1, 2)
 
 An alternate form:
 
-\[ D_i = \frac{r_i^2}{2} \frac{h_{ii}}{1 - h_{ii}} \]
+\[ D_i = \frac{r_i^2}{p + 1} \frac{h_{ii}}{1 - h_{ii}} \]
 
 To be influential a point must:
 

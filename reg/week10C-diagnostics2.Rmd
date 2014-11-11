@@ -211,7 +211,7 @@ the other variables.
 
 # Activity 
 
-## Activity 9 (Part I)
+## Activity 9
 
 ```{r echo = FALSE, fig.align='center'}
 LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
@@ -232,7 +232,7 @@ they influential in a MLR model?
 2. By the rules of thumb, are those two points high leverage?  Outliers?
 (you can extract the hat values using `influence(m1)$hat`.)
 3. Calculate the Cook's distance of those two observations using the equation:
-$D_i = ((r_i^2)/2) * ((h_{ii})/(1 - h_{ii}))$.
+$D_i = (r_i^2/(p + 1)) * ((h_{ii})/(1 - h_{ii}))$.
 4. Generate the Cook's distance plot to double check that the values that you
 calculated in 3 seem correct.
 5. Now fit the more appropriate model, with $logprice$ and $logsqrt$ and construct
