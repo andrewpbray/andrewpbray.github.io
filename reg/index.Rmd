@@ -159,7 +159,7 @@ Homework #7 is to read the paper that has been posted to Moodle and answer the a
 
 
 ### Week 10: Properties of MLR and Diagnostics
-Homework for this week will be due next week.
+No homework this week.
 
 #### Monday
 - Reading for next time: 6.1
@@ -173,6 +173,7 @@ Homework for this week will be due next week.
 
 
 ### Week 11: More Diagnostics
+Homework #8: Ch. 6 exercises 1, 2, 5.
 
 #### Monday
 - Reading for next time: 6.4
