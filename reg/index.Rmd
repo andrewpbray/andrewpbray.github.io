@@ -177,4 +177,7 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 
 #### Monday
 - Reading for next time: 6.4
-- Diagnostics III - y v y-hat, mmp: slides ([html](week11A-diagnostics3.html)) ([Rmd](week11A-diagnostics3.Rmd))
+- Projects + Activity 9: slides ([html](week11A-diagnostics3.html)) ([Rmd](week11A-diagnostics3.Rmd))
+
+#### Wednesday
+- Diagnostics II - y vs y-hat, MMP, multicollinearity: slides ([html](week11A-diagnostics4.html)) ([Rmd](week11A-diagnostics4.Rmd)) 

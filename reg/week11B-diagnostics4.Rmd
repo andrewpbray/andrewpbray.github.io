@@ -1,0 +1,444 @@
+---
+title: "Diagnostics III"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## Last time {.build}
+
+We learned how structure in a residual plot can generally not be used to make
+specific inferences about where the model is misspecified.  So we need other tools:
+
+2. *$Y$ versus $\hat{Y}$*: used to assess whether the mean function is being 
+modeled well.
+3. *Marginal model plots*: used to assess whether the mean function between
+each predictor and the response is being modeled well.
+
+
+## Naive model
+
+```{r, echo=FALSE}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+LA <- transform(LA, logprice = log(price), logsqft = log(sqft))
+```
+
+```{r, fig.align='center', fig.height=4.3, fig.width=4.3}
+m1 <- lm(price ~ sqft + bed + city, data = LA)
+plot(LA$price ~ m1$fit, col = "steelblue")
+abline(0, 1)
+```
+
+
+## Improved model
+
+```{r, fig.align='center', fig.height=4.3, fig.width=4.3}
+m2 <- lm(logprice ~ logsqft + bed + city, data = LA)
+plot(LA$logprice ~ m2$fit, col = "steelblue")
+abline(0, 1)
+```
+
+
+## $Y$ versus $\hat{Y}$
+
+Used to assess whether your model is doing a good job of modeling the response. 
+If it is, you'll see points along the identity line.  If it's not, there will be
+non-linear structure try to correct by transforming the response and assess on a
+predictor-by-predictor basis using *marginal model plots*.
+
+
+# Marginal Model Plots
+
+
+## Defective widgets
+
+<img src="http://www.epa.gov/recyclecity/images/factory.png" height="500px" width="700px" />
+
+
+##
+
+```{r}
+defects <- read.table("http://www.stat.tamu.edu/~sheather/book/docs/datasets/defects.txt",
+                      header = TRUE)
+head(defects)
+```
+
+
+##
+
+```{r}
+pairs(Defective ~ Temperature + Density + Rate, data = defects)
+```
+
+
+## A first try
+
+\[ \widehat{Defective} \sim Temperature + Density + Rate \]
+
+```{r, echo=FALSE}
+m1 <- lm(Defective ~ Temperature + Density + Rate, data = defects)
+summary(m1)$coef
+```
+
+
+##
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=6.5}
+par(mfrow = c(2, 2))
+plot(m1)
+```
+
+
+## 
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=6.5}
+par(mfrow = c(2, 2))
+r <- rstandard(m1)
+plot(r ~ defects$Temperature)
+plot(r ~ defects$Density)
+plot(r ~ defects$Rate)
+```
+
+
+## $Y$ versus $\hat{Y}$
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=5.5}
+plot(defects$Defective ~ m1$fit)
+abline(0, 1)
+```
+
+
+## Where to go from here? {.build}
+
+The standardized residual plots and the plot of $y$ on $\hat{y}$ suggest that 
+something is amiss, but what?  We need to be sure that the structure in the 
+*data* is being mirrored well by the structure in our *model*.  This comparison
+is made for each predictor using the **marginal model plot**.
+
+
+## Marginal relationships
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=5.5}
+plot(Defective ~ Temperature, data = defects)
+```
+
+
+## Marginal relationships
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=5.5}
+plot(Defective ~ Temperature, data = defects)
+lines(sort(defects$Temperature), sort(m1$fit), lwd = 2)
+```
+
+
+## Nonparametric methods
+
+LOESS: locally-weighted scatterplot smoothing.
+
+
+## Marginal relationships
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=5.5}
+plot(Defective ~ Temperature, data = defects)
+lines(sort(defects$Temperature), sort(m1$fit), lwd = 2)
+l1 <- loess(m1$fit ~ defects$Temperature)
+lines(sort(l1$x), sort(l1$fit), lwd = 2, col = "red", lty = 2)
+```
+
+
+## Marginal relationships
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=5.5}
+plot(Defective ~ Temperature, data = defects)
+lines(sort(defects$Temperature), sort(m1$fit), lwd = 2)
+l1 <- loess(m1$fit ~ defects$Temperature)
+lines(sort(l1$x), sort(l1$fit), lwd = 2, col = "red", lty = 2)
+l2 <- loess(Defective ~ Temperature, data = defects)
+lines(sort(l2$x), sort(l2$fit), lwd = 2, col = "blue", lty = 2)
+```
+
+
+## Marginal model plot
+
+Used to assess the marginal relationship between each predictor and the response.
+It compares the fit from the model with the nonparametric fit to the scatterplot.
+If your model is well-specified, these two lines will be close to coincident.
+
+You can build them by hand using `loess()` or use `mmp()` in the `car` package.
+
+##
+
+```{r, echo=FALSE, fig.align='center', fig.height=6}
+par(mfrow=c(2, 2))
+library(car)
+mmp(m1, defects$Temperature)
+mmp(m1, defects$Density)
+mmp(m1, defects$Rate)
+```
+
+##
+
+```{r, fig.align='center', fig.height=5.5, fig.width=5.5}
+scatterplotMatrix(~ Defective + Temperature + Density + Rate, data = defects)
+```
+
+
+## An alternative model
+
+\[ \widehat{\sqrt{Defective}} \sim Temperature + Density + Rate  \]
+
+```{r}
+defects <- transform(defects, sqrtDefective = sqrt(Defective))
+m2 <- lm(sqrtDefective ~ Temperature + Density + Rate, data = defects)
+summary(m2)$coef
+```
+
+
+## 
+
+```{r, echo=FALSE, fig.align='center', fig.height=6}
+par(mfrow = c(2, 2))
+mmp(m2, defects$Temperature)
+mmp(m2, defects$Density)
+mmp(m2, defects$Rate)
+```
+
+
+## Comparing m1 and m2
+
+```{r, echo=FALSE, fig.align='center', fig.height=4.75, fig.width=8.5}
+par(mfrow = c(1, 2))
+plot(defects$Defective ~ m1$fit)
+plot(defects$sqrtDefective ~ m2$fit)
+```
+
+
+## MMP vs AVP
+
+- **Marginal model plots**: are useful in checking to see that you're doing a good
+job of modeling the marginal relationship between a given predictor and the response.
+- **Added variable plots**: assess how much variation in the response can be 
+explained by a given predictor after the other predictors have already been taken
+into account (links to p-values).
+
+
+# Multicollinearity
+
+## Car seat position
+
+<img src="http://www.oneshift.com/articles/uploads/large-news_4825.jpg" height="400px" width="600px" />
+
+##
+
+```{r, message=FALSE, error=FALSE}
+library(faraway)
+data(seatpos)
+head(seatpos)
+```
+
+
+# Modeling hipcenter
+
+```{r}
+m1 <- lm(hipcenter ~ ., data = seatpos)
+# the dot in the formula notation means 'all other variables'
+summary(m1)$coef
+```
+
+
+##
+
+```{r, echo=FALSE, fig.align='center', fig.height=6.5, fig.width=6.5}
+pairs(hipcenter ~ ., data = seatpos)
+```
+
+
+## High multicollinearity
+
+```{r, echo=FALSE, fig.align='center', fig.height = 5.5}
+library(MASS)
+n <- 60
+mu <- c(5, -2, 7)
+ryx1 <- .7
+ryx2 <- .75
+rho <- .95
+Sigma <- matrix(c(1, ryx1, ryx2, ryx1, 1, rho, ryx2, rho, 1), nrow = 3)
+d <- data.frame(mvrnorm(n, mu, Sigma))
+names(d) <- c("Y", "X1", "X2")
+pairs(d)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+library(rgl)
+plot3d(x = d$X1, y = d$X2, z = d$Y, col = "steelblue", 
+       xlab = "X1", ylab = "X2", zlab = "Y")
+m1 <- lm(Y ~ X1 + X2, data = d)
+coefs <- m1$coef
+planes3d(coefs["X1"], coefs["X2"], -1, coefs["(Intercept)"],
+         alpha = 0.4, col = "lightgray")
+```
+
+
+## 
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=8.5}
+library(scatterplot3d)
+nr <- 2
+nc <- 3
+par(mfrow = c(nr, nc))
+for(i in 1:(nr * nc)) {
+  d <- data.frame(mvrnorm(n, mu, Sigma))
+  names(d) <- c("Y", "X1", "X2")
+  s3d <- scatterplot3d(x = d$X1, y = d$X2, z = d$Y, color = "red", pch = 16,
+                       xlab = "X1", ylab = "X2", zlab = "Y", cex.symbols = 1.3)
+  m1 <- lm(Y ~ X1 + X2, data = d)
+  coefs <- m1$coef
+  s3d$plane3d(coefs["(Intercept)"], coefs["X1"], coefs["X2"])
+}
+```
+
+
+## Low multicollinearity
+
+```{r, echo=FALSE, fig.align='center', fig.height = 5.5}
+rho <- .2
+Sigma <- matrix(c(1, ryx1, ryx2, ryx1, 1, rho, ryx2, rho, 1), nrow = 3)
+d <- data.frame(mvrnorm(n, mu, Sigma))
+names(d) <- c("Y", "X1", "X2")
+pairs(d)
+```
+
+
+## 
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=8.5}
+nr <- 2
+nc <- 3
+par(mfrow = c(nr, nc))
+for(i in 1:(nr * nc)) {
+  d <- data.frame(mvrnorm(n, mu, Sigma))
+  names(d) <- c("Y", "X1", "X2")
+  s3d <- scatterplot3d(x = d$X1, y = d$X2, z = d$Y, color = "red", pch = 16, 
+                       xlab = "X1", ylab = "X2", zlab = "Y", cex.symbols = 1.3)
+  m1 <- lm(Y ~ X1 + X2, data = d)
+  coefs <- m1$coef
+  s3d$plane3d(coefs["(Intercept)"], coefs["X1"], coefs["X2"])
+}
+```
+
+
+## Consequences of multicollinearity
+
+When the predictors are highly correlated, the model has difficulty deciding which
+of the them is responsibility for the variability in the response.  In one data set,
+you'll find it attributes the significant positive slope to $X1$, in the next, it
+will attribute it to $X2$.
+
+Geometrically, the plane is unstable and will vascillate wildly when fit to a new
+data set.  The multicollinearity increases the variance of your slope estimates, 
+so it becomes difficult to get good/stable/significant estimates.
+
+
+## Assessing multicollinearity
+
+- **Pairs plot**: look for strong linear relationships between predictors.
+- **Correlation matrix**: calculate the correlation between your predictors
+using `cor()`.
+- **Variance Inflation Factors (VIF)**:
+
+
+## Correlation matrix
+
+```{r}
+cor(d)
+```
+
+Correlations above 0.7 will often induce considerable variance in your slopes.
+
+
+## Variance Inflation Factor {.build}
+
+The variance of a given slope can be written:
+
+\[ Var(\hat{\beta}_j) = \frac{1}{1 - R^2_j} \times \frac{\sigma^2}{(n - 1) S^2_{x_j}} \]
+
+Where $R^2_j$ is the $R^2$ from predicting $x_j$ using the other predictors and
+$S^2_{x_j}$ is the variance of $x_j$.
+
+The first term is called the **VIF**: $1 / (1 - R^2_j)$
+
+
+## Variance Inflation Factor
+
+```{r}
+library(car)
+vif(m1)
+```
+
+Rule of thumb: VIFs greater than 5 should be addressed.
+
+
+##  VIF for seatpos
+
+```{r}
+m1 <- lm(hipcenter ~ ., data = seatpos)
+vif(m1)
+```
+
+
+## Addressing Multicollinearity {.build}
+
+Multicollinearity suggests that you have multiple predictors that are conveying
+the same information, so you probably don't need both in the model.
+
+*Occam's Razor*: since the model with all of the predictors doesn't add any
+descriptive power, we should favor the simpler model.
+
+Best way to decide which to remove: *subject area knowledge*.
+
+
+## Simplifying seatpos {.build}
+
+```{r}
+round(cor(seatpos), 2)
+```
+
+Since most of these variables measure some version of height, we can just use
+one of them.
+
+
+## Simplifying seatpos
+
+```{r}
+m2 <- lm(hipcenter ~ Age + Weight + Ht, data = seatpos)
+summary(m2)
+vif(m2)
+```
+
+
+# Diagnostics Summary
+
+## Diagnostics Summary {.build}
+
+Before drawing any conclusions from a regression model, we must be confident it
+is a valid way to model the data.  Our model assumes:
+
+- **Linearity**: the conditional mean of the response is a linear function of the
+predictors.
+- The errors have **constant variance** and are **uncorrelated**.
+- The errors are **normally distributed with mean zero**.
+
+It's also sensible to build a model with:
+
+- No highly influential points.
+- Low multicollinearity.
+
+
+
+
+
+
+
+
+
+
