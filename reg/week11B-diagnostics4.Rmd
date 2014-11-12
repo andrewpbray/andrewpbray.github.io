@@ -237,7 +237,7 @@ head(seatpos)
 ```
 
 
-# Modeling hipcenter
+## Modeling hipcenter
 
 ```{r}
 m1 <- lm(hipcenter ~ ., data = seatpos)
