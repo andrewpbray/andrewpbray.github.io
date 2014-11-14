@@ -1,0 +1,303 @@
+---
+title: "Case Study: Critics and Wine"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+## Meet Robert Parker
+
+<div class="columns-2">
+
+<img src="http://cdn.cstatic.net/images/gridfs/50c602ebf92ea110d20394e1/robert-parker-sells-out.jpg" height="500px" width="350px" />
+
+The most influential critic in the world today happens to be a critic of wine. 
+His name is Robert Parker.
+
+</div>
+
+<!---
+These characters are introduced on p. 8 of the textbook
+-->
+
+
+## Meet Clive Coates {.build}
+
+<div class="columns-2">
+
+<img src="http://www.comtes-lafon.fr/images/verticale/CCportrait.jpg" height="500px" width="350px" />
+
+Clive Coates, Master of Wine, is one of the world's leading wine authorities.
+    
+Parker is the wine writer who matters. Clives Coates is very serious and 
+well-respected, but in terms of commercial impact his influence is zero.
+
+</div>
+
+    
+## The data
+
+```{r}
+wine <- read.csv("http://andrewpbray.github.io/data/Bordeaux.csv")
+dim(wine)
+names(wine)
+```
+
+<!---
+We have data on 72 wines and their prices at auction in London.  Parker uses a 
+100-point ranking system, Coates' is out of 20 points. `P95andAbove` is a dummy
+variable that is 1 if the wine scored over 95 in ParkerPoins and zero otherwise.
+FirstGrowth is a dummy variable which is 1 if the wine is a First Growth and 0
+otherwise.  This is a traditional classification for the best wines from Bodeaux.
+CultWine takes a value of 1 if it's a cult wine, where demand >> supply. Pomerol
+is a dummy variable that indicates if the wine is from that most prized region of
+Bordeaux.  VintageSuperstar is special designation given by Parker to select 
+wines.
+-->
+
+
+## The mission
+
+Develop a regression model to estimate the percentage effect on price of a 1%
+increase in ParkerPoints and a 1% increase in CoatesPoins using a subset of or all
+seven predictors.
+
+
+
+## Exploratory Data Analysis
+
+```{r, fig.align='center', fig.height=5, fig.width=5}
+library(car)
+scatterplotMatrix(wine[, 2:4])
+```
+
+<!---
+Every modeling project should begin by doing some exploratory data analysis: using
+plots to look at the data to get a sense of it's shape and structure, get some
+leads on how you might model it, and get a heads up if there appears to be anything
+amiss with the data.  A good first step is to look at pairwise plots of the continuous
+variables and the response.  We'd like to see a linear relationship between each 
+of the  predictors and the response and no strong multicollinearity between the 
+predictors. We see the latter, but the former is tougher to tell.  We can look 
+at the density plots in the middle and see a long right tail in the distribution
+of Price. Because of that skew and because it's measuring price - an economic 
+variable - there's the sense that we may need to log transform the response.
+-->
+
+
+## EDA
+
+```{r, echo=FALSE, fig.align = 'center'}
+par(mfrow = c(2, 3))
+boxplot(Price ~ P95andAbove, data = wine, xlab = "P95andAbove")
+boxplot(Price ~ FirstGrowth, data = wine, xlab = "FirstGrowth")
+boxplot(Price ~ CultWine, data = wine, xlab = "Cult Wine")
+boxplot(Price ~ Pomerol, data = wine, xlab = "Pomerol")
+boxplot(Price ~ VintageSuperstar, data = wine, xlab = "Vintage Superstar")
+```
+
+
+## Fitting the simplest model.
+
+\[ \widehat{Price} \sim ParkerPoints + CoatesPoints + P95andAbove \\+ FirstGrowth +
+CultWine + Pomerol + VintageSuperstar \]
+
+```{r}
+m1 <- lm(Price ~ . - Wine, data = wine)
+```
+
+<!---
+Although we have some sense that a transformation of the response may be in order,
+lets see how bad the simplest model is. Notice the formula notation here: the dot
+indicates that we want to include all of the other columns, but that would include
+that column with the of the wine, so we can remove that with the negative sign.
+After fitting the model, we can pull up the traditional quartet of diagnostic plots.
+-->
+
+## 
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=6}
+par(mfrow = c(2, 2))
+plot(m1)
+```
+
+
+<!---
+Ok, these certainly look problematic.  The two residual plots certainly look bad:
+the res v fitted shows what looks like strongly increasing variance, which is 
+confirmed by the scale-loc plot where the red line is steadily increasing.  In the
+res vs fitted plot we also see a trace a quadratic trend in the mean function. The
+qq plot shows long tails in the distribution of the residuals, calling the normality
+assumption into question, and the cook's distance plot flags several observations
+(particularly 67) as being highly influential (recall points beyond the .5 contours
+are often considered influential).
+
+As we have discussed, the problem with these residual plots is that in the MLR 
+setting, we're not able to know if fact there is increasing variance or not.  All
+we know is that some part of our model is messed up, but we don't really yet know 
+what.
+
+To check the mean function, we can check the plot of Y-vs Yhat.
+-->
+
+
+## $Y$ versus $\hat{Y}$
+
+```{r, fig.align='center', fig.height=6, fig.width=6}
+plot(wine$Price ~ m1$fit, data = wine)
+abline(0, 1)
+```
+
+<!---
+So here's we're looking at the relationship between Y and Yhat, which should give
+us an indication of if our assumption that Y = XB is a good one.  Similar to last
+time, the points aren't following the identity line: it looks like the Y's are some
+function, probably an exponential, of the Yhat.  In other words, Y = g(Yhat), or
+Y = g(xBetahat), where g is the exponential.  This is another indication that log-
+transforming the response might help - logging both sides will undo the g function
+and get us to log(Y) = Xbetahat, so we're back in the land of linear mean functions.
+-->
+
+
+## A second model {.build}
+
+```{r}
+wine <- transform(wine, logPrice = log(Price),
+                  logParkerPoints = log(ParkerPoints),
+                  logCoatesPoints = log(CoatesPoints))
+m2 <- lm(logPrice ~ . - Price - Wine - ParkerPoints - CoatesPoints,
+         data = wine)
+```
+
+**Recall**: logging the predictors of interest as well as the response allows
+us to interpret the estimates slopes as the percentage increase in the $Y$ 
+associated with a 1% increase in the $x$.
+
+
+## SLR residual plots
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=6}
+par(mfrow = c(2, 2))
+plot(m2)
+```
+
+<!---
+See p 204 for plot interpretations
+-->
+
+
+## MLR standardized res plots
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=6}
+stanRes <- rstandard(m2)
+par(mfrow=c(2, 2))
+plot(stanRes ~ wine$logParkerPoints, ylab="Standardized Residuals")
+plot(stanRes ~ wine$logCoatesPoints, ylab="Standardized Residuals")
+boxplot(stanRes ~ wine$P95andAbove, ylab="Standardized Residuals",xlab="P95andAbove")
+boxplot(stanRes ~ wine$FirstGrowth, ylab="Standardized Residuals",xlab="FirstGrowth")
+```
+
+
+## MLR standardized res plots
+
+```{r, echo=FALSE, fig.align='center', fig.height=5.5, fig.width=6}
+par(mfrow=c(2, 2))
+boxplot(stanRes ~ wine$CultWine, ylab = "Standardized Residuals", xlab = "CultWine")
+boxplot(stanRes ~ wine$Pomerol, ylab = "Standardized Residuals", xlab = "Pomerol")
+boxplot(stanRes ~ wine$VintageSuperstar, ylab = "Standardized Residuals", xlab="VintageSuperstar")
+```
+
+
+## $Y$ versus $\hat{Y}$
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=6}
+plot(wine$logPrice ~ m2$fit)
+abline(0, 1)
+```
+
+
+## MMPs
+
+```{r, echo=FALSE, fig.align='center', fig.height=4, fig.width=8}
+library(car)
+par(mfrow = c(1, 2))
+mmp(m2, wine$logParkerPoints)
+mmp(m2, wine$logCoatesPoints)
+```
+
+<!---
+Recall MMPs are used to assess how well we're modeling the marginal relationship between each
+predictor and the response.  In this case, the loess line from our models matches
+the loess lines from the scatterplot, suggesting that we're doing a fine job.
+-->
+
+
+## AVPs
+
+```{r, echo=FALSE, fig.align='center', fig.height=4, fig.width=8}
+par(mfrow = c(1, 2))
+avPlot(m2, "logParkerPoints")
+avPlot(m2, "logCoatesPoints")
+```
+
+<!---
+AVPs are used as a graphical equivalent to the p-values on the regression output.
+They show how much variation in the response a given predictor is able to explain
+after taking into account all other variables in the model. Both AVPs show non-zero
+slopes, suggesting that both of these continuous variables add explanatory power
+to the model.
+-->
+
+
+## Multicollinearity
+
+```{r}
+vif(m2)
+```
+
+One value exceeds the traditional cutoff of 5, but not by too much.  Multicollinearity
+is a minor issue here.
+
+
+## Model validity
+
+We're confident we're working with a valid model.
+
+- **Linearity**: the conditional mean of the response is a linear function of the
+predictors. (See $Y$ vs $\hat{Y}$ and mmps)
+- The errors have **constant variance** and are **uncorrelated**. (See standardized
+residual plots vs predictors)
+- The errors are **normally distributed with mean zero**. (see QQ plot)
+
+It's also sensible to build a model with:
+
+- No highly influential points. (see Cook's dist plot)
+- Low multicollinearity. (see VIF)
+
+
+## Model summary {.build}
+
+```{r, echo=FALSE}
+summary(m2)$coef
+```
+
+Note that all of the predictors are signficant at the .05 level (another reason
+to not worry too much about the borderline VIF), with the exception of `P95andAbove`.
+
+We could consider dropping it from the model to remove redudancy with `logParkerPrice`.
+
+
+## Updated model summary
+
+```{r}
+m3 <- update(m2, . ~ . - P95andAbove)
+summary(m3)$coef
+```
+
+Since the parameter estimates barely budged, this is essentially the same model
+as the previous one: no need to re-check diagnostic plots.
+
+<!---
+We can use the update function to drop or add variables to an existing model.
+-->
+

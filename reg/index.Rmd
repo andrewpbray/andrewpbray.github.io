@@ -181,3 +181,6 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 
 #### Wednesday
 - Diagnostics II - y vs y-hat, MMP, multicollinearity: slides ([html](week11B-diagnostics4.html)) ([Rmd](week11B-diagnostics4.Rmd)) 
+
+#### Friday
+- Case study - The war of the wine critics: slides ([html](week11C-wine-case-study.html)) ([Rmd](week11C-wine-case-study.Rmd))
