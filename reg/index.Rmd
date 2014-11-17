@@ -184,3 +184,11 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 
 #### Friday
 - Case study - The war of the wine critics: slides ([html](week11C-wine-case-study.html)) ([Rmd](week11C-wine-case-study.Rmd))
+
+
+### Week 12: Model Selection
+
+#### Monday
+- Project presentations ([pdf](project_presentations.pdf))
+- Model selection: slides ([html](week12A-model-selection1.html)) ([Rmd](week12A-model-selection1.Rmd))
+
