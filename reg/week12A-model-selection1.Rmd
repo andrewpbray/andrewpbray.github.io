@@ -8,20 +8,6 @@ output:
 # Projects
 
 
-# Homework review
-
-
-## PGA Tour
-![pgatour](http://www.pgatour.com/content/dam/pgatour/editorial/2013/01/08/johnson.driver.badz.jpg)
-
-
-## PGA Tour
-
-```{r}
-#pga <- read.csv("http:")
-```
-
-
 # Model Selection
 
 
@@ -217,8 +203,10 @@ m6 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6))
 m7 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7))
 AICs <- c(AIC(m1), AIC(m2), AIC(m3), AIC(m4), AIC(m5), AIC(m6), AIC(m7))
 BICs <- c(BIC(m1), BIC(m2), BIC(m3), BIC(m4), BIC(m5), BIC(m6), BIC(m7))
-plot(1:7, AICs, col = "green", pch = 16, ylab = "IC value", xlab = "order")
-points(1:7, BICs, col = "red", pch = 16)
+plot(1:7, AICs, col = "green", ylab = "IC value", xlab = "degree of polynomial")
+lines(1:7, AICs, lty = 3, lwd = 2, col = "green")
+points(1:7, BICs, col = "red")
+lines(1:7, BICs, lty = 3, lwd = 2, col = "red")
 legend("topright", legend = c("AIC", "BIC"), col = c("green", "red"), pch = 16, bty = "n")
 ```
 
