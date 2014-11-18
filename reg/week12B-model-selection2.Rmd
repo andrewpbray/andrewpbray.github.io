@@ -1,0 +1,214 @@
+---
+title: "Model Selection"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Projects
+
+
+# Model Selection
+
+
+## The Problem of Model Selection {.build}
+
+<div class="columns-2">
+
+<img src="http://www.evilenglish.net/wp-content/uploads/2014/07/needle_haystack.jpg" height="450px" width="350px" />
+
+A given data set can conceivably have been generated from uncountably
+many models.  Identifying the true model is like finding a piece of hay in a 
+haystack. Said another way, the model space is massive and the criterion for
+what constitutes the "best" model is ill-defined.
+
+</div>
+
+
+## The Problem of Model Selection {.build}
+
+**Best strategy**: Use domain knowledge to constrain the model space and/or
+build models that help you answer specific scientific questions.
+
+**Another common strategy:**
+
+1. Pick a criterion for "best".
+2. Decide how to explore the model space.
+3. Select "best" model in search area.
+
+**Tread Carefully!!!**  The second strategy can lead to myopic analysis, 
+overconfidence, and wrong-headed conclusions.
+
+
+## What do we mean by "best"? {.build}
+
+While we'd like to find the "true" model, in practice we just hope we're doing
+a good job at:
+
+1. Prediction
+2. Description
+
+
+## Synthetic example
+
+How smooth should our model be?
+
+```{r, echo=FALSE, fig.align='center', fig.width=6, fig.height=5}
+betas <- c(0, 1, 1, -4, 1)
+sigma <- 5
+n <- 40
+set.seed(110)
+x <- runif(n, 0, 5)
+EyGx <- betas[1] + betas[2]*x + betas[3]*x^2 + betas[4]*x^3 + betas[5]*x^4
+y <- EyGx + rnorm(n, 0, sigma)
+plot(y ~ x, pch = 16, col = "steelblue")
+```
+
+
+## Four candidates {.build}
+
+```{r}
+m1 <- lm(y ~ x)
+m2 <- lm(y ~ x + I(x^2))
+m3 <- lm(y ~ x + I(x^2) + I(x^3))
+m4 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+```
+
+
+## Four candidates
+
+```{r, echo=FALSE}
+# plotting function
+plot_m <- function(x, y, m) {
+  plot(y ~ x, pch = 16, col = "steelblue")
+  x_range <- par("xaxp")[1:2]
+  xx <- seq(x_range[1], x_range[2], length.out = 300)
+  yy <- predict(m, newdata = data.frame("x" = xx))
+  lines(xx, yy, lwd = 2, col = "orange")
+}
+```
+
+```{r, echo=FALSE, fig.align='center', fig.width=8, fig.height=6}
+par(mfrow = c(2, 2))
+plot_m(x, y, m1)
+plot_m(x, y, m2)
+plot_m(x, y, m3)
+plot_m(x, y, m4)
+```
+
+
+## Likelihood
+
+**Def:** the joint probability (actually: density) of all of the data given a 
+particular model.  If our $Y$s are independent of each other given the $X$, then:
+
+\[ P(Y_. | X_.) = P(y_1 | x_1) P(y_2 | x_2) \ldots P(y_n | x_n) \]
+
+```{r}
+L1 <- prod(dnorm(m1$res, mean = 0, sd = summary(m1)$sigma))
+```
+
+
+## Comparing Likelihoods {.build}
+
+```{r}
+L1 <- prod(dnorm(m1$res, mean = 0, sd = summary(m1)$sigma))
+L2 <- prod(dnorm(m2$res, mean = 0, sd = summary(m2)$sigma))
+L3 <- prod(dnorm(m3$res, mean = 0, sd = summary(m3)$sigma))
+L4 <- prod(dnorm(m4$res, mean = 0, sd = summary(m4)$sigma))
+c(L1, L2, L3, L4)
+```
+
+The observed data is most probable under the model with a quartic term.  So
+that's the best model, right?
+
+
+## The BEST model!
+
+```{r, echo=FALSE, fig.align='center', fig.width=6, fig.height=5}
+mBEST <- lm(y ~ poly(x, 20))
+plot_m(x, y, mBEST)
+```
+
+
+## The BEST model! {.build}
+
+```{r}
+mBEST <- lm(y ~ poly(x, 20))
+LBEST <- prod(dnorm(mBEST$res, mean = 0, sd = summary(mBEST)$sigma))
+c(L1, L2, L3, L4, LBEST)
+```
+
+But surely that's not the best model...
+
+
+## Four Criteria
+
+1. $R^2_{adj}$
+2. $AIC$
+3. $AIC_C$
+4. $BIC$
+
+There are many others...
+
+
+## $R^2_{adj}$
+
+A measure of explanatory power of model:
+
+\[ R^2 = SSreg/SST= 1 - RSS/SST \]
+
+But like likelihood, it only goes up with added predictors, therefore we add a
+penalty.
+
+\[ R^2_{adj} = 1 - \frac{RSS/(n - (p + 1))}{SST/(n - 1)} \]
+
+Nonetheless, choosing the model that has the highest $R^2_{adj}$ can lead to *overfitting*.
+
+
+## $AIC$
+
+*Akaike Information Criterion*: `AIC`, a balance of goodness of fit and complexity using
+information theory.
+
+\[ AIC = 2[-log(\textrm{likelihood of model}) + (p + 2)] \]
+
+which can be simplified to,
+
+\[ AIC = n log(\frac{RSS}{n}) + 2p \]
+
+Smaller = better. Tends to overfit in small sample sizes.
+
+
+## $AIC_C$
+
+*AIC Corrected*: a bias-corrected version for use on small sample sizes.
+
+\[ AIC_C = AIC + \frac{2(p + 2)(p + 3)}{n - (p + 1)} \]
+
+
+## $BIC$
+
+*Bayesian Information Criterion*: `BIC`, for all but the very smallest data sets, 
+takes a heavier penalty for complexity.
+
+\[ BIC = -2 log(\textrm{likelihood of model}) + (p + 2) log(n) \]
+
+
+## Criteria compared
+
+```{r, echo=FALSE}
+m5 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5))
+m6 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6))
+m7 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7))
+AICs <- c(AIC(m1), AIC(m2), AIC(m3), AIC(m4), AIC(m5), AIC(m6), AIC(m7))
+BICs <- c(BIC(m1), BIC(m2), BIC(m3), BIC(m4), BIC(m5), BIC(m6), BIC(m7))
+plot(1:7, AICs, col = "green", ylab = "IC value", xlab = "degree of polynomial")
+lines(1:7, AICs, lty = 3, lwd = 2, col = "green")
+points(1:7, BICs, col = "red")
+lines(1:7, BICs, lty = 3, lwd = 2, col = "red")
+legend("topright", legend = c("AIC", "BIC"), col = c("green", "red"), pch = 16, bty = "n")
+```
+
+
+

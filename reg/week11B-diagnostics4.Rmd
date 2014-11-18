@@ -257,10 +257,10 @@ pairs(hipcenter ~ ., data = seatpos)
 
 ```{r, echo=FALSE, fig.align='center', fig.height = 5.5}
 library(MASS)
-n <- 60
-mu <- c(5, -2, 7)
+n <- 40
+mu <- c(3, 3, 3)
 ryx1 <- .7
-ryx2 <- .75
+ryx2 <- .7
 rho <- .95
 Sigma <- matrix(c(1, ryx1, ryx2, ryx1, 1, rho, ryx2, rho, 1), nrow = 3)
 d <- data.frame(mvrnorm(n, mu, Sigma))
