@@ -192,3 +192,6 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 - Project presentations ([pdf](project_presentations.pdf))
 - Model selection: slides ([html](week12A-model-selection1.html)) ([Rmd](week12A-model-selection1.Rmd))
 
+#### Wednesday
+- Slides tba
+
