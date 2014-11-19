@@ -145,11 +145,11 @@ models <- list(m1, m2, m3, m4, m5)
 
 ## Compare best models
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE}
 # load plotting function
 plot_ics <- function(model_list) {
   AICs <- unlist(lapply(model_list, extractAIC))[seq(2, length(model_list) * 2, 2)]
-  BICs <- unlist(lapply(model_list, extractAIC, k = log(n)))[seq(2, length(model_list) * 2, 2)]
+  BICs <- unlist(lapply(model_list, extractAIC, k = log(length(models[[1]]$res))))[seq(2, length(model_list) * 2, 2)]
   plot(c(1, length(AICs)), range(c(AICs, BICs)), ylab = "IC value",
        xlab = "# of predictors", type = "n")
   points(1:length(AICs), AICs, col = "green")
@@ -182,15 +182,15 @@ statistical significance*.
 
 ## Backward elimination
 
-```{r, eval = FALSE}
+```{r}
 backAIC <- step(m5, direction = "backward", data = bridge)
-backBIC <- step(m5, direction = "backward", data = bridge, k = log(n))
+backBIC <- step(m5, direction = "backward", data = bridge, k = log(nrow(bridge)))
 ```
 
 
 ## Forward selection
 
-```{r, eval=FALSE}
+```{r}
 mint <- lm(log(Time) ~ 1, data = bridge)
 forwardAIC <- step(mint,
                    scope = list(lower = ~1, upper = ~log(DArea) + log(CCost) + 
@@ -199,7 +199,7 @@ forwardAIC <- step(mint,
 forwardBIC <- step(mint,
                    scope = list(lower = ~1, upper = ~log(DArea) + log(CCost) + 
                                   log(Dwgs) + log(Length) + log(Spans)),
-                   direction = "forward", data = bridge,k = log(n))
+                   direction = "forward", data = bridge,k = log(nrow(bridge)))
 ```
 
 

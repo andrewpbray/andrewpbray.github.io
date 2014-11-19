@@ -201,13 +201,19 @@ takes a heavier penalty for complexity.
 m5 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5))
 m6 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6))
 m7 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7))
-AICs <- c(AIC(m1), AIC(m2), AIC(m3), AIC(m4), AIC(m5), AIC(m6), AIC(m7))
-BICs <- c(BIC(m1), BIC(m2), BIC(m3), BIC(m4), BIC(m5), BIC(m6), BIC(m7))
-plot(1:7, AICs, col = "green", ylab = "IC value", xlab = "degree of polynomial")
-lines(1:7, AICs, lty = 3, lwd = 2, col = "green")
-points(1:7, BICs, col = "red")
-lines(1:7, BICs, lty = 3, lwd = 2, col = "red")
-legend("topright", legend = c("AIC", "BIC"), col = c("green", "red"), pch = 16, bty = "n")
+models <- list(m1, m2, m3, m4, m5, m6, m7) # models in ascending order
+plot_ics <- function(model_list) {
+  AICs <- unlist(lapply(model_list, extractAIC))[seq(2, length(model_list) * 2, 2)]
+  BICs <- unlist(lapply(model_list, extractAIC, k = log(length(models[[1]]$res))))[seq(2, length(model_list) * 2, 2)]
+  plot(c(1, length(AICs)), range(c(AICs, BICs)), ylab = "IC value",
+       xlab = "# of predictors", type = "n")
+  points(1:length(AICs), AICs, col = "green")
+  lines(1:length(AICs), AICs, lty = 3, lwd = 2, col = "green")
+  points(1:length(BICs), BICs, col = "red")
+  lines(1:length(BICs), BICs, lty = 3, lwd = 2, col = "red")
+  legend("topright", legend = c("AIC", "BIC"), col = c("green", "red"), pch = 16, bty = "n")
+}
+plot_ics(models)
 ```
 
 
