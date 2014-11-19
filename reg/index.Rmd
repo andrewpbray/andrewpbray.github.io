@@ -193,5 +193,5 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 - Model selection: slides ([html](week12A-model-selection1.html)) ([Rmd](week12A-model-selection1.Rmd))
 
 #### Wednesday
-- Slides tba
+- Model Search: slides ([html](week12B-model-selection2.html)) ([Rmd](week12B-model-selection2.Rmd))
 
