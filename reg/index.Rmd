@@ -189,9 +189,23 @@ Homework #8: Ch. 6 exercises 1, 2, 5.
 ### Week 12: Model Selection
 
 #### Monday
-- Project presentations ([pdf](project_presentations.pdf))
+- Project presentations ([pdf](project_presentation.pdf))
 - Model selection: slides ([html](week12A-model-selection1.html)) ([Rmd](week12A-model-selection1.Rmd))
 
 #### Wednesday
 - Model Search: slides ([html](week12B-model-selection2.html)) ([Rmd](week12B-model-selection2.Rmd))
+
+
+### Week 13: Happy Thanksgiving!
+
+
+### Week 14:
+
+#### Monday
+- Exam Review
+- Project Technical Report ([pdf](project_report.pdf))
+
+#### Wednesday
+- Logistic Regression
+
 
