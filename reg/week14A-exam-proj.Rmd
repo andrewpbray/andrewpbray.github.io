@@ -1,0 +1,16 @@
+---
+title: "Exam + Projects"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Exam Review
+
+# Projects
+
+Schedule a Rehearsal:
+
+- Tuesday 1:30 - 4
+- Thursday 1 - 4:15
+- Saturday 1:30 - 4:30

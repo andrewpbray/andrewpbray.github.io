@@ -1,0 +1,36 @@
+---
+title: "Logistic Regression"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+# Example: Downburst
+
+# 
+```{r}
+library(alr3)
+data(blowBF)
+blowBF <- transform(blowBF, logD = log(D, 2))
+dead <- density(blowBF[blowBF$y == 0, "logD"])
+alive <- density(blowBF[blowBF$y == 1, "logD"])
+plot(3, 0, xlim = c(2, 5.5), ylim = c(0, .9), ylab = "survived",
+     xlab = "logDiameter", type = "n")
+lines(dead$x, dead$y, col = "tomato", lwd = 2)
+lines(alive$x, alive$y, col = "green", lwd = 2)
+```
+
+```{r}
+library(alr3)
+data(blowBF)
+blowBF <- transform(blowBF, logD = log(D, 2))
+plot(jitter(y, amount = .03) ~ jitter(logD, amount = .05), data = blowBF, xlab = "Diameter", ylab = "survived", col = "steelblue")
+abline(lm(y ~ logD, data = blowBF), lty = 2, lwd = 2)
+m1 <- glm(y~logD, data = blowBF, family = binomial)
+xx <- seq(2.2, 5, .001)
+yy <- predict(m1, data.frame(logD = xx), type = "response")
+lines(xx, yy, col = "orange", lwd = 2)
+```
+
+
+

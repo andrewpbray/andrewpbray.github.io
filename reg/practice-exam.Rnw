@@ -1,0 +1,491 @@
+\documentclass[9pt]{article}
+
+\usepackage{graphicx, color}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    9in
+\textwidth     6in %6in
+%\headheight    0in
+%\headsep       0in
+%\footskip      0.5in
+
+\pagestyle{fancy}
+
+\lhead{\textsc{Name:}}
+\chead{\textsc{STAT 340 Exam}}
+\rhead{\textsc{11/24/2014}}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\newcommand{\shortans}{\vspace{1in}}
+\newcommand{\mediumans}{\vspace{1.5in}}
+\newcommand{\longans}{\vspace{2in}}
+
+\begin{document}
+
+%\maketitle
+
+\begin{center}
+
+\vspace{1in}
+
+\Large Applied Regression Analysis\\
+
+
+\vspace{0.5in}
+
+Practice Exam
+
+
+\vspace{0.5in}
+
+{\Large
+\begin{tabular}{|c|c|c|}
+  \hline
+  Question & Points & Max Points \\
+  \hline
+  1-10 & & 30 \\
+	\hline
+	11 & & 12 \\
+	\hline
+	12 & & 24 \\
+	\hline
+	13 & & 13 \\
+	\hline
+	14 & & 21 \\
+	\hline
+	\hline
+	Total & & 100 \\
+	\hline
+\end{tabular}
+}
+\end{center}
+
+\vspace{1in}
+
+\noindent\textsc{Instructions:}
+The examination lasts XX minutes and all books/devices are closed.  You may use 
+a single notecard. Cell phones may not be used at any point. No interaction with 
+anyone except the instructor is allowed.  
+
+Please circle the option corresponding to the correct answer for the multiple 
+choice questions. There is only one correct answer intended for each question. 
+In case of potential errors or ambiguity on the exam, please note them and state
+your assumptions.  
+\\\\
+
+\noindent\textsc{Honor Code Statement:}
+Mount Holyoke College expects all students adhere to the Honor Code: I will honor myself, 
+my fellow students, and Mount Holyoke College by acting responsibly, honestly, 
+and respectfully in both my words and deeds.
+
+Students and faculty at MHC are part of an academic community defined by its 
+commitment to scholarship, which depends on scrupulous and attentive acknowledgement 
+of all sources of information, and honest and respectful use of college resources.
+\\\\
+
+\noindent\textsc{Dishonest Examination Behavior:}
+The unauthorized giving or receiving of information during examinations or quizzes 
+(this applies to all types, such as written, oral, lab or take-home) is dishonest 
+examination behavior. 
+
+
+\newpage
+
+
+\subsection*{Multiple Choice Questions (X pts each)}
+
+\begin{enumerate}
+
+  \itemsep0.1in
+
+  \item The correlation coefficient provides a measure of:
+  \begin{enumerate}
+    \item the strength of the linear relationship between two quantitative variables. 
+    \item the extent to which changes in one variable cause changes in another 
+variable. 
+    \item the extent to which a quantitative and a qualitative variable have a linear relationship. 
+    \item the strength of the relationship (not necessarily linear) between two
+quantitative variables. 
+  \end{enumerate}
+  
+%   \item In linear regression, if a predictor is statistically significant at the 5\% level, that means that:
+%   \begin{enumerate}
+%   \item We are 95\% confident in our estimate of that predictor's slope.
+%   \item There is no collinearity between that predictor and the other predictors in the model.
+%   \item It would be very unlikely to observe our estimated slope if in fact that predictor's slope was zero.
+%   \item The probability of a type I error is less than 0.05.  
+%   \end{enumerate}
+  
+  \item What type of unusual observations are the most problematic in linear regression?
+  \begin{enumerate}
+  \item Outliers
+  \item Points with high influence
+  \item Points with high leverage
+  \item They are all different terms for the same phenomenon
+  \end{enumerate}
+  
+  \item A MLR model is inappropriate when
+  \begin{enumerate}
+    \item you have a mixture of numerical and categorical explanatory variables. 
+    \item you want to make predictions for one variable based on information about other variables. 
+    \item your variable of interest, i.e. response, is continuous numerical.
+    \item there is non-constant variance in the scatter plot. 
+  \end{enumerate}
+
+  \item Which of the following is FALSE? The Hat matrix:
+  \begin{enumerate}
+    \item has dimensions $(p + 1)$ by $(p + 1)$
+    \item is idempotent
+    \item contains information on leverage
+    \item is symmetric
+  \end{enumerate}
+  
+
+%   \item The regression equation for predicting number of speeding tickets ($tickets$) from information about driver age ($age$) is $\widehat{tickets} = 5.57  -0.065 \cdot age $. How many tickets would you predict for a twenty-year-old?
+%   \begin{enumerate}
+%     \item 6
+%     \item 4.27
+%     \item 5.57
+%     \item 1
+%   \end{enumerate}
+ 
+ \item Heteroscedasticity (non-constant variance) occurs when
+ \begin{enumerate}
+  \item there are larger values of $X$ than $Y$.
+  \item there is a linear relationship between $X$ and $Y$.
+  \item more error is accounted for than remains.
+  \item variability in $Y$ depends on the value of $X$.
+  \end{enumerate}
+ 
+ \newpage
+ 
+ \item In a simple linear regression model for $y$ in terms of $x$, the residual is defined as the difference between:
+ \begin{enumerate}
+  \item the observed value of $y$ and the expected value of $y$
+  \item the observed value of $x$ and the expected value of $x$
+  \item the observed value of $y$ and the expected value of $x$
+  \item the observed value of $x$ and the expected value of $y$
+  \end{enumerate}
+
+  \item In a multiple regression model, the mean of the errors is assumed to be:
+  \begin{enumerate}
+    \item 1.0
+    \item 0.0
+    \item $p$, where $p$ is the number of predictors variables included in the model.
+    \item None of these choices.
+  \end{enumerate}
+
+%   \item For a multiple regression model the following statistics are given: Total variation in the response $(SST) = 250, SSE = 50, k = 4$, and $n = 20$. Then, the adjusted $R^2$ is:
+%   \begin{enumerate}
+%     \item 0.800
+%     \item 0.747
+%     \item 0.840
+%     \item 0.775
+%   \end{enumerate}
+
+\newpage 
+
+%\subsection*{Short Answer Questions}
+
+%   \item (30 pts) The graph shows schematically a hypothesized relationship between how fast an adult runs and the person's age and gender. 
+%   
+% Consider the model 
+% $$
+%   \widehat{speed} = \hat{\beta}_0 + \hat{\beta}_1 \cdot age + \hat{\beta}_2 \cdot isWoman + \hat{\beta}_3 \cdot age \cdot isWoman \, ,
+% $$
+% where $isWoman$ is a binary indicator variable that takes on the value 1 if the person is a woman, and 0 otherwise.
+% 
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{../exam1/speed}
+% \end{center}
+%   
+%   \item What will be the sign of the coefficient on $age$?
+%   \begin{enumerate}
+%     \item Negative
+%     \item Zero
+%     \item Positive
+%     \item No way to tell, even roughly, from the information given
+%   \end{enumerate}
+% 
+%   \item What will be the sign of the coefficient on $isWoman$? 
+%   \begin{enumerate}
+%     \item Negative
+%     \item Zero
+%     \item Positive
+%   \end{enumerate}
+% 
+%   \item What will be the sign of the interaction coefficient? 
+%   \begin{enumerate}
+%     \item Negative
+%     \item Zero
+%     \item Positive
+%     \item There is no interaction coefficient.
+%     \item No way to tell, even roughly, from the information given
+%   \end{enumerate}
+% 
+% \newpage
+
+
+\newpage
+
+\item (X pts) Demographers are interested in modeling the population growth across
+the world to see how it relates to other demographics.  They turn to a data set
+from the United Nations that describes health, welfare, and education over 
+210 countries.
+
+<<message=FALSE,echo=TRUE,fig.height=3>>=
+library(alr3)
+data(UN3)
+head(UN3)
+@
+
+Where \texttt{ModernC} is the percent of unmarried women using contraception, \texttt{Change}
+is the annual population growth rate, \texttt{PPgdp} is the per capita GDP in 2001, 
+\texttt{Frate} is the percent of females over age 15 that are economically active, \texttt{Pop}
+is the population, in thousands, \texttt{Fertility} is the expected number of live births
+per female, 2000, and \texttt{Purban} is the percent of the population that is urban.
+
+ \begin{enumerate}
+ \item The particular measure that the researchers plan to model/predict is \texttt{Fertility}.
+  Have a look at the pairwise scatterplots and density plots below.
+
+<<message=FALSE,echo=FALSE,fig.width=8>>=
+scatterplotMatrix(UN3)
+@
+  
+  \newpage
+  
+  List three specific aspects of this data that you expect will need to be addressed
+  in order to fit a valid MLR model.
+  
+  \vspace{55mm}
+  
+  \item The researchers are specifically interested in the effect that wealth
+  might have on fertility, so they consider the following model (which controls
+  for the urbanicity of the country) and generate the traditional quartet of residual plots
+  along with a plot of $y$ on $\hat{y}$.
+
+<<message=FALSE,echo=FALSE,fig.width=8>>=
+m1 <- lm(Fertility ~ PPgdp + Purban, data = UN3)
+par(mfrow = c(2, 2))
+plot(m1)
+@
+
+\newpage
+
+<<message=FALSE,echo=FALSE,fig.height=5,fig.width=5, fig.align='center'>>=
+par(mfrow = c(1, 1))
+Y <- UN3$Fertility[-c(m1$na.action)] # remove missing rows
+plot(Y ~ m1$fit)
+abline(0, 1)
+@
+
+  Does this model appear to be a valid model?  If not, how does it appear to be
+  misspecified?
+  
+  \vspace{55mm}
+
+  \item The researchers sought an improved model in the following form.  They
+  also generated a full sequence of diagnostics plots.
+
+\[ \widehat{logFertility} \sim \beta_0 + \beta_1 logPPgdp + \beta_2 Purban \]
+
+<<message=FALSE,echo=FALSE,fig.width=8>>=
+m2 <- lm(log(Fertility) ~ log(PPgdp) + Purban, data = UN3)
+par(mfrow = c(2, 2))
+plot(m2)
+@
+
+<<message=FALSE,echo=FALSE,fig.height=4,fig.width=4, fig.align='center'>>=
+par(mfrow = c(1, 1))
+Y <- log(UN3$Fertility)[-c(m2$na.action)] # remove missing rows
+plot(Y ~ m2$fit)
+abline(0, 1)
+@
+
+<<message=FALSE,echo=FALSE,fig.height=4,fig.align='center'>>=
+mmps(m2, fitted = FALSE)
+vif(m2)
+@
+
+  Based  on the series of diagnostics plots, is this an improved model?  Describe
+  any reservations that you have about this model.
+  
+  \vspace{60mm}
+  
+  \item Assume for the remaining questions that the model was deemed valid.  We can look at the
+  summary of our model.
+  
+<<message=FALSE>>=
+summary(m2)$coef
+@
+  
+  \newpage 
+  
+  Please provide an interpretation for the slope of \texttt{log(PPgpd)}.
+
+  \vspace{30mm}
+  
+  \item If we were to construct added variable plots for the two predictors, which
+  one would you expect to have more structure?
+
+  \vspace{15mm}
+  
+  \item Consider the nature of how this data was collected.  What does the p-value
+  for $Purban$ mean?  What are we to conclude based on the slope of $Purban$, if
+  anything? 
+  
+  
+  \end{enumerate}
+  
+
+
+% \item (X pts) The major European bank publishes a report the contains information
+% on earnings and prices from across the world.  We have data on 70 cities from 2003.
+% 
+% The Big Mac is considered a good general measure of the cost of goods in
+%   a country.  Consider the plot below, where Big Mac is the minutes of labor
+%   to buy a Big Mac based on an average wage, and Food price is a more general
+%   index of how expensive food is.
+%   
+% <<message=FALSE,echo=TRUE,fig.height=3>>=
+% library(alr3)
+% data(BigMac2003)
+% plot(BigMac ~ FoodIndex, data = BigMac2003)
+% @
+% 
+% Qualitatively, how would you describe this trend?
+% 
+
+% 
+% 
+%   \item  (12 pts) Consider a parallel slopes model for world record time in the 100m freestyle for both men and women. The model is specified by
+% $$
+%   \widehat{time} = b_0 + b_1 \cdot year + b_2 \cdot sex
+% $$
+% Use the plots shown below to assess the following conditions from this multiple regression model. In each case, be explicit about which plot you are interpretting. 
+% 
+% <<message=FALSE,echo=FALSE,fig.height=3>>=
+% require(mosaic)
+% trellis.par.set(theme=col.mosaic())
+% palette = trellis.par.get("superpose.symbol")$col
+% ds=subset(SwimRecords, year < 1945)
+% fm = lm(time ~ year + sex, data=ds)
+% p1 = xyplot(time ~ year, groups=sex, xlab="Year", ylab="Time (s)", auto.key=list(columns=2), data=ds
+%             , panel = function (x,y,...) {
+%               panel.xyplot(x,y,...)
+%               panel.abline(coef(fm)["(Intercept)"], coef(fm)["year"], col=palette[1])
+%               panel.abline(coef(fm)["(Intercept)"] + coef(fm)["sexM"], coef(fm)["year"], col=palette[2])
+%             }
+%             )
+% p2 = histogram(~residuals(fm), xlab="residuals", fit="normal", data=ds)
+% p3 = xyplot(residuals(fm) ~ fitted.values(fm), xlab="predicted value", type=c("p", "r", "smooth"), ylab="residuals", lwd=3, data=ds)
+% p4 = xyplot(residuals(fm) ~ year, xlab="Year", 
+%   type=c("p", "r", "smooth"), ylab="residuals", lwd=3, data=ds)
+% print(p1, position=c(0, 0, 1/2, 1), more=TRUE)
+% print(p2, position=c(1/2, 0, 1, 1))
+% print(p3, position=c(0, 0, 1/2, 1), more=TRUE)
+% print(p4, position=c(1/2, 0, 1, 1))
+% @
+% 
+%   \begin{enumerate}
+%     \itemsep0.8in
+%     \item Linearity:
+%     \item Normality of Residuals:
+%     \item Constant Variance:
+%   \end{enumerate}
+% 
+% \newpage
+
+%   \item (24 pts) From a very young age, shoes for boys tend to be wider than shoes for girls. Is this because boys have wider feet, or because it is assumed that girls, even in elementary school, are willing to sacrifice comfort for fashion? To assess the former, a statistician measures kids' feet (in centimeters). Consider the regression model for the width of a child's foot in relation to its length, and the gender of the child. Here, $sexG$ is an indicator variable for the event that the child is a girl and assume that the conditions for regression have been verified as reasonable.
+% 
+% <<message=FALSE>>=
+% require(mosaic)
+% summary(lm(width ~ length + sex, data=KidsFeet))
+% @
+% 
+% \begin{enumerate}
+%   \itemsep1.75in
+%   \item Interpret the coefficient of $length$ in the context of the real-world problem.
+%   \item Interpret the coefficient of $sexG$ in the context of the real-world problem.
+%   \item Calculate the predicted foot width for Cam, a boy whose foot is 27 cm long.
+%   \item Julie's foot is 26 cm long and 9.3 cm wide. What is Julie's residual in this model?
+%   \item What does this model suggest in terms of the claim that boys have wider feet than girls? Write at least one complete English sentence to your parents evaluating this claim. 
+%   \item Why is this model preferable to simply doing a hypothesis test on the difference in mean foot width between boys and girls?
+% \end{enumerate}
+% 
+% <<eval=FALSE, echo=FALSE>>=
+% mod = lm(width ~ length + sex, data=KidsFeet)
+% predict(mod, newdata = data.frame(length = 27, sex = "B"))
+% residuals(mod)[15]
+% @
+% 
+% 
+% \newpage
+% 
+%   \item  (13 pts) Using your general knowledge about the world, think about the relationship
+% between these variables:
+% \begin{description}
+% \item[speed] of a bicyclist
+% \item[steepness] of the road (a numerical continuous variable measured by the grade -- aka rise over run).  0 means flat, positive values mean uphill, negative values mean downhill.
+% \item[fitness] of the rider, a categorical variable with two levels:
+% \texttt{average} and \texttt{athletic}
+% \end{description}
+% 
+% Sketch out a graph of speed versus steepness (be sure to label your axes and lines) for reasonable models of each of these forms:
+% \begin{enumerate}
+% 	\itemsep2.25in
+% 	\item Model 1: $\widehat{speed} \sim b_0 + b_1 \cdot steepness$
+% 	\item Model 2: $\widehat{speed} \sim b_0 + b_1 \cdot steepness + b_2 \cdot fitness$
+%   \item If you wanted to estimate the parameters for Model 2, you might consider collecting some data.  What would you select as your observational unit, i.e. what would constitute a single case, i.e what is represented in each row of the data set? Be as specific as you can. 
+% \end{enumerate}
+% 
+% 
+%   \newpage
+% 
+% \item (21 pts) Lawyers were asked to rate 43 state judges in the US Superior Court on a variety of charateristics including their integrity, the number of shared contacts between the lawyer and the judge, their demeanor, their promptness in issuing decisions, their familarity with the law, and their physical health.  The ratings in each category range from 1-12 and were averaged across all lawyers.  A political scientist fit the following model to describe the manner in which these characteristics influence the perceived integrity of a judge.
+% 
+% <<echo=FALSE>>=
+% data(USJudgeRatings)
+% judge <- USJudgeRatings[,c(2,1,3,6,8,11)]
+% names(judge) <- c("integrity", "contacts", "demeanor", "promptness", "familiarity", "physical")
+% @
+% <<fig.show='hold', fig.width=4, fig.height=3, size='footnotesize'>>=
+% m1 <- lm(integrity ~ contacts + demeanor + promptness + familiarity + physical, data = judge)
+% summary(m1)
+% @
+% 
+%   \begin{enumerate}
+%     \itemsep1.75in 
+%     \item Assuming for a moment that all conditions for this model are reasonable, what does this model output suggest about the characteristics that are associated with integrity?
+%     \item Now check to be sure this is a reasonable model by taking a look at following diagnostic plots.  What do you conclude? What reservations might you have about using this model? 
+%     \item If you find the the conditions to be problematic, how would you go about addressing them to create a more appropriate model?
+%     \vspace{2in}
+%   \end{enumerate}
+% <<fig.height=7>>=
+% par(mfrow=c(2,2))
+% plot(m1)
+% par(mfrow=c(1,1))
+% pairs(judge)
+% @
+% 
+% 
+% 
+\end{enumerate}
+% 
+% \vspace{0.5in}
+% 
+% \begin{center}
+%   \includegraphics[width=0.8\textwidth]{correlation}
+% \end{center}
+
+\end{document}

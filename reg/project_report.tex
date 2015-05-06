@@ -1,0 +1,50 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr,url}
+\usepackage{graphicx}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    8.9in
+\textwidth     6in %6in
+%\headheight    0in
+%\headsep       0in
+%\footskip      0.5in
+
+\pagestyle{fancy}
+
+\lhead{\textsc{Prof. Bray}}
+\chead{\textsc{Stat 340: Tech Report}}
+\rhead{\textsc{Fall 2014}}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\begin{document}
+
+\section*{Project Technical Report}
+
+Your technical report will be a R Markdown file (\texttt{.Rmd}) that contains your R code interspersed with explanations of what the code is doing and what it tells you about the problem.  
+	
+\paragraph{Content}
+You do not need to present \emph{all} of the R code that you wrote throughout the process of working on this project. Rather, the technical report should contain the \emph{minimal} set of R code that is necessary to understand your results and findings in full. If you make a claim, it \emph{must} be justified by explicit calculation. A knowledgeable reviewer should be able to compile your \texttt{.Rmd} file without modification, and verify every statement that you have made. All of the R code necessary to produce your figures and tables \emph{must} appear in the technical report. In short, the technical report should enable a reviewer to reproduce your work in full.
+	
+\paragraph{Tone} Unlike the presentation, which is aimed at a general audience, this document should be written for reviewers who comprehend statistics at least as well as you do. You should aim for a level of complexity that is more statistically sophisticated than an article in the Science section of \textit{The New York Times}, but less sophisticated than an academic journal. (\textit{Chance} magazine might provide a good example.) For example, you may use terms that that you will likely never see in the \textit{Times} (e.g. residuals), but should not dwell on technical points with no obvious ramifications for the reader (e.g. reporting $t$-statistics). Your goal for this paper is to convince a statistically-minded reader (e.g. a student in this class, or a student from another school who has taken a statistics class) that you have addressed an interesting research question in a meaningful way. Even a reader with no background in statistics should be able to read your paper and get the gist of it.  
+
+\paragraph{Format}
+Your technical report should follow this basic format:
+	\begin{enumerate}
+		\item Abstract: a short, one paragraph explanation of your project. The abstract should not consist of more than 5 or 6 sentences, but should relate what you studied and what you found. It need only convey a general sense of what you actually did. The purpose of the abstract is to give a prospective reader enough information to decide if they want to read the full paper. 
+		\item Introduction: an overview of your project. In a few paragraphs, you should explain \emph{clearly} and \emph{precisely} what your research question is, why it is interesting, and what contribution you have made towards answering that question. You should give an overview of the specifics of your model, but not the full details. Most readers never make it past the introduction, so this is your chance to hook the reader, and is in many ways the most important part of the paper.
+		\item Data: a brief description of your data set. What variables are included? Where did they come from? What are units of measurement? What is the population that was sampled? How was the sample collected? You should also include some basic univariate analysis. 
+		\item Results: an explanation of what your model tells us about the research question. You should interpret relevant coefficients in context. What does your model tell us that we didn't already know before? You may want to include negative results, but be careful about how you interpret them. For example, you may want to say something along the lines of: ``we found no evidence that explanatory variable $x$ is associated with response variable $y$", or ``explanatory variable $x$ did not provide any additional explanatory power above what was already conveyed by explanatory variable $z$." On other hand, you probably shouldn't claim: ``there is no relationship between $x$ and $y$."
+		\item Conclusion: a summary of your findings and a discussion of their limitations. First, remind the reader of the question that you originally set out to answer, and summarize your findings. Second, discuss the limitations of your model, and what could be done to improve it. You might also want to do the same for your data. This is your last opportunity to clarify the scope of your findings before a journalist misinterprets them and makes wild extrapolations! Protect yourself by being clear about what is \emph{not} implied by your research.
+\end{enumerate}
+
+
+\end{document}
