@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+_site
+.DS_Store
+Gemfile.lock
+andrewpbray.github.io.Rproj
