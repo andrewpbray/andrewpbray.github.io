@@ -1,0 +1,13 @@
+---
+title: "Introduction to Probability and Statistics"
+output:
+  html_document:
+    css: ../stylesheets/styles.css
+---
+*MTH 141, Fall 2015*  
+*Professor Andrew Bray*  
+
+#### [Syllabus](syllabus.html)
+
+
+

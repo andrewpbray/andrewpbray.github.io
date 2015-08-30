@@ -1,0 +1,10 @@
+---
+title: "Applied Regression Methods: Syllabus"
+output:
+  html_document:
+    css: ../stylesheets/styles.css
+---
+
+*STAT 340, Fall 2014*  
+*Instructor: Andrew Bray*  
+
