@@ -4,7 +4,7 @@ output:
   html_document:
     css: ../stylesheets/styles.css
 ---
-*MTH 141, Fall 2015*  
+*MATH 141, Fall 2015*  
 *Instructor: [Andrew Bray](https://andrewpbray.github.io/)*  
 
 #### [Syllabus](syllabus.html)
@@ -13,9 +13,14 @@ output:
 ### Week One
 
 #### Monday, Aug. 31
-- Sign up for an office visit.
+- Data taxonomy
+- **HW**: 
+    - Sign up for an office visit at [nb.mit.edu](http://nb.mit.edu/f/24222).
+    - Confirm that you can log in to [https://rstudio.reed.edu/](https://rstudio.reed.edu/).
+    If you're not able to log in, please email me.
 
 #### Tuesday, Sep. 1
+- Lab 0 : Intro to R and RStudio
 
 #### Wednesday, Sep. 2
 
