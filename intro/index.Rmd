@@ -5,9 +5,30 @@ output:
     css: ../stylesheets/styles.css
 ---
 *MTH 141, Fall 2015*  
-*Professor Andrew Bray*  
+*Instructor: [Andrew Bray](https://andrewpbray.github.io/)*  
 
 #### [Syllabus](syllabus.html)
 
 
+### Week One
 
+#### Monday, Aug. 31
+- Sign up for an office visit.
+
+#### Tuesday, Sep. 1
+
+#### Wednesday, Sep. 2
+
+#### Friday, Sep. 4
+
+* * *
+
+### Week Two
+
+#### [Monday, Sep. 7] No Class
+
+#### Tuesday, Sep. 8
+
+#### Wednesday, Sep. 9
+
+#### Friday Sep. 11
