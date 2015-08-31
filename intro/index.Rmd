@@ -14,6 +14,7 @@ output:
 
 #### Monday, Aug. 31
 - Data taxonomy
+- From description to inference ([maps](figs/kidney_slides.pdf))
 - **HW**: 
     - Sign up for an office visit at [nb.mit.edu](http://nb.mit.edu/f/24222).
     - Confirm that you can log in to [https://rstudio.reed.edu/](https://rstudio.reed.edu/).
