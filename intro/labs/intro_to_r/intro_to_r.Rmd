@@ -40,7 +40,6 @@ To get you started, enter the following commands at the R prompt (i.e. right aft
 from this document.
 
 ```{r load-abrbuthnot-data, eval=TRUE, message = FALSE}
-devtools::install_github("andrewpbray/oilabs")
 library(oilabs)
 library(dplyr)
 library(ggplot2)
