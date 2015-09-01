@@ -1,0 +1,57 @@
+---
+title: 'Lab 0: Intro to R and RStudio'
+author: "Your name goes here"
+date: "September 1, 2015"
+output: html_document
+---
+
+```{r load-data, echo=FALSE, message=TRUE}
+library(oilabs)
+library(dplyr)
+library(ggplot2)
+data(arbuthnot)
+```
+
+### Exercise 1
+
+```{r extract-girls}
+arbuthnot$girls
+```
+
+
+### Exercise 2
+
+```{r plot-girls}
+qplot(x = year, y = girls, data = arbuthnot, geom = "line")
+```
+
+In general, the number of girls born has increased over time, though there was a
+sharp decline between the 1640 and 1660 as well as a dip around 1720. There is 
+also considerable year-to-year variation.
+
+
+### Exercise 3
+
+```{r prop-boys}
+arbuthnot <- mutate(arbuthnot, prop_boys = boys / (boys + girls))
+qplot(x = year, y = prop_boys, data = arbuthnot, geom = "line")
+```
+
+Type your interpretation of the plot right here.
+
+
+* * *
+
+## On Your Own
+
+```{r load-present}
+data(present)
+```
+
+### Question 1
+
+### Question 2
+
+### Question 3
+
+### Question 4
