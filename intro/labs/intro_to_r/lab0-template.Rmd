@@ -5,11 +5,10 @@ date: "September 1, 2015"
 output: html_document
 ---
 
-```{r load-data, echo=FALSE, message=TRUE}
-library(oilabs)
+```{r load-data, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
-data(arbuthnot)
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 ### Exercise 1
@@ -50,8 +49,24 @@ data(present)
 
 ### Question 1
 
+```{r q1}
+
+```
+
+
 ### Question 2
+
 
 ### Question 3
 
+```{r q3}
+
+```
+
+
 ### Question 4
+
+```{r q4}
+
+```
+
