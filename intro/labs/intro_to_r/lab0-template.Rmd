@@ -8,7 +8,8 @@ output: html_document
 ```{r load-data, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
-source("http://www.openintro.org/stat/data/arbuthnot.R")
+library(oilabs)
+data(arbuthnot)
 ```
 
 ### Exercise 1

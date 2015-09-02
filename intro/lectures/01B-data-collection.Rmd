@@ -1,0 +1,31 @@
+---
+title: ''
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## {.flexbox .vcenter}
+
+<img src="../figs/shoebill-1.png" alt="shoebill1" width="750">
+
+
+## {.flexbox .vcenter}
+
+<img src="../figs/shoebill-2.png" alt="shoebill1" width="750">
+
+
+## {.flexbox .vcenter}
+
+<img src="../figs/shoebill-3.png" alt="shoebill1" width="750">
+
+
+#
+
+
+## {.flexbox .vcenter}
+
+<img src="../figs/landon-fdr.png" alt="shoebill1" width="750">
+
