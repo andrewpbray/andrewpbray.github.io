@@ -9,12 +9,14 @@ output:
 
 #### [Syllabus](syllabus.html)
 
+My office hours: M/Tu 2-5, W 2 - 4  
+DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
+
 
 ### Week One
 
 #### Monday, Aug. 31
 - Data taxonomy
-- From description to inference ([maps](figs/kidney_slides.pdf))
 - **HW**: 
     - Sign up for an office visit at [nb.mit.edu](http://nb.mit.edu/f/24222).
     - Confirm that you can log in to [https://rstudio.reed.edu/](https://rstudio.reed.edu/).
@@ -23,12 +25,17 @@ output:
 #### Tuesday, Sep. 1
 - Lab 0 : Intro to R and RStudio
     - [Lab](labs/intro_to_r/intro_to_r.html) ([Rmd](labs/intro_to_r/intro_to_r.Rmd))
-    - [Template](labs/intro_to_r/lab0-template.Rmd)
-    
 
 #### Wednesday, Sep. 2
+- Review reading group and lab submission procedures.
+- Descriptive vs inferential statistics
+- Principles of data collection
 
 #### Friday, Sep. 4
+- Experimental design
+- **PS1**: Please work through problems 1, 4, 6, 8, 10, 11, 15, 16, 17, 19, 22 in the
+exercises at the end of chapter one (the first one is labeled 1.1 on page 43). These
+will be collected at the beginning of class next Wednesday.
 
 * * *
 
