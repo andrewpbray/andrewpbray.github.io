@@ -1,6 +1,8 @@
 ---
 title: ''
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    incremental: true
 ---
 
 ```{r setup, include=FALSE}
@@ -28,4 +30,30 @@ knitr::opts_chunk$set(echo = FALSE)
 ## {.flexbox .vcenter}
 
 <img src="../figs/landon-fdr.png" alt="shoebill1" width="750">
+
+
+## Landon v. FDR, 1936
+
+Literary Digest polled 10 million Americans, 2.4 million responded.
+
+N = 128 million, n = 2.4 million
+
+**Prediction**: 43% for FDR
+
+**Result**: 62% for FDR
+
+## What went wrong? {.build}
+
+Literary Digest surveyed
+
+- magazine subscribers
+- registered car owners
+- registered telephone owners
+
+These groups have a much higher income on average than the typical
+american. In 1936 the Great Depression is still in full swing, so the 
+typical (poorer) american was more supportive of FDR.
+
+Their sampling method was **biased** (not representative).
+
 
