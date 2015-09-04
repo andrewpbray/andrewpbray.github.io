@@ -34,7 +34,7 @@ also considerable year-to-year variation.
 
 ```{r prop-boys}
 arbuthnot <- mutate(arbuthnot, prop_boys = boys / (boys + girls))
-qplot(x = year, y = prop_boys, data = arbuthnot, geom = "line")
+qplot(x = year, y = prop_boys, data = arbuthnot, geom = "line", ylim = c(0,1))
 ```
 
 Type your interpretation of the plot right here.
