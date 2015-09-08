@@ -97,18 +97,18 @@ and graphics.
 Let's start with some histograms. We can create a the histogram for the age of
 our respondents with the following command:
 
-```{r hist-age-geom}
-qplot(x = age, data = cdc, geom = "histogram")
-```
-
-This functions says to plot `age` on the x-axis. It also defines a `geom` (short for 
-geometric object), which describes the type of plot you will produce. 
-
-Actually, since the default `geom` for a single numerical variable is a histogram, 
-we could get away with not defining a `geom` and still get the same plot:
-
 ```{r hist-age}
 qplot(x = age, data = cdc)
+```
+
+Unlike the scatter or line plot from the Intro to R lab, here we only have one
+variable that we want to visualize, `age`, so we don't fill in the `y =` 
+argument. `qplot()` makes a smart guess at the type of plot that you want based
+on the data you've given it. If you want to be more explicit, you can specify
+the geometry that you'd like the data to take.
+
+```{r hist-age-geom}
+qplot(x = age, data = cdc, geom = "histogram")
 ```
 
 It's a good idea to be explicit in our code and always define all options (and not
@@ -119,16 +119,15 @@ distribution, but that shape can change depending on how the data is split
 between the different bins. You can easily define the binwidth you want to use:
 
 ```{r hist-bmi}
-qplot(x = age, data = cdc, binwidth = 1)
-qplot(x = age, data = cdc, binwidth = 20)
+qplot(x = age, data = cdc, geom = "histogram", binwidth = 1)
+qplot(x = age, data = cdc, geom = "histogram", binwidth = 20)
 ```
 
-How do these histograms with the various binwidths compare?
 
 ### Summary statistics
 
-As a simple example, the function `summary` returns a numerical 
-summary: minimum, first quartile, median, mean, third quartile, maximum.
+As a simple example, the function `summary()` returns a numerical summary: minimum,
+first quartile, median, mean, third quartile, maximum.
 
 To calculate the summary statistics for `weight`, type
 
@@ -158,14 +157,14 @@ of Q3 - Q1.
 ```
 
 You can also individually calculate summary statistics, and make your own customized list
-of them using the `summarise` function:
+of them using the `summarize` function:
 
 ```{r summary-custom-list}
 cdc %>%
-  summarise(mean_wt = mean(weight), sd_wt = sd(weight), mean_ht = mean(height), sd_ht = sd(height))
+  summarize(mean_wt = mean(weight), sd_wt = sd(weight), mean_ht = mean(height), sd_ht = sd(height))
 ```
 
-Note that in the `summarise` function we created a list of four elements. The names
+Note that in the `summarize` function we created a list of four elements. The names
 of these elements are user defined, like `mean_wt`, `sd_wt`, etc. and you could
 customize these names as you like (just don't use spaces in your names). Calculating
 these summary statistics also require that you know the function calls. Some useful
@@ -187,13 +186,14 @@ various groups in your dataset. For example, we can modify the above command usi
 ```{r summary-custom-list-gender}
 cdc %>%
   group_by(gender) %>%
-  summarise(mean_wt = mean(weight), sd_wt = sd(weight), mean_ht = mean(height), sd_ht = sd(height))
+  summarize(mean_wt = mean(weight), sd_wt = sd(weight), mean_ht = mean(height), sd_ht = sd(height))
 ```
 
 Here, we first grouped the data by gender, and then calculated the summary statistics.
 
-2.  Calculate the median and interquartile range for `weight`s of people who
+2.  Calculate the median and interquartile range for weights of people who
     did and did not exercise in the last month.
+    
     
 ### Tables
 
