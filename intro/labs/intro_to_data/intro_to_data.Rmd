@@ -250,7 +250,7 @@ How are these two variables related?
 
 ### Between two categorical variables
 
-To create a segmented bar plots we can use the following two optoons.
+To create a segmented bar plots we can use the following two options.
 
 ```{r mosaic-smoke-gender}
 qplot(x = gender, fill = smoke100, data = cdc)
@@ -270,7 +270,8 @@ men and women with
 qplot(y = height, x = gender, data = cdc, geom = "boxplot")
 ```
 
-Note that because we specified a categorical variable to be on the x-axis, 
+Note that because we specified a categorical variable to be on the x-axis, each
+category has its own boxplot for the `height` of the people within that category.
 
 Next let's consider a new variable that doesn't show up directly in this data 
 set: Body Mass Index (BMI) 

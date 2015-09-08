@@ -80,8 +80,11 @@ img {
 <div id="getting-started" class="section level2">
 <h2>Getting started</h2>
 <p>The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey of 350,000 people in the United States. As its name implies, the BRFSS is designed to identify risk factors in the adult population and report emerging health trends. For example, respondents are asked about their diet and weekly physical activity, their HIV/AIDS status, possible tobacco use, and even their level of healthcare coverage. The BRFSS Web site (<a href="http://www.cdc.gov/brfss"><a href="http://www.cdc.gov/brfss" class="uri">http://www.cdc.gov/brfss</a></a>) contains a complete description of the survey, including the research questions that motivate the study and many interesting results derived from the data.</p>
-<p>We will focus on a random sample of 20,000 people from the BRFSS survey conducted in 2000. While there are over 200 variables in this data set, we will work with a small subset. You can load the data set with</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(cdc)</code></pre>
+<p>We will focus on a random sample of 20,000 people from the BRFSS survey conducted in 2000. While there are over 200 variables in this data set, we will work with a small subset. You can load the data set (and the packages we’ll use) with</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(oilabs)
+<span class="kw">data</span>(cdc)</code></pre>
 <p>The data set <code>cdc</code> that shows up in your workspace is a <em>data matrix</em>, with each row representing a <em>case</em> and each column representing a <em>variable</em>. R calls this data format a <em>data frame</em>, which is a term that will be used throughout the labs.</p>
 <p>To view the names of the variables, type the command</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cdc)</code></pre>
@@ -173,7 +176,7 @@ img {
 </div>
 <div id="between-two-categorical-variables" class="section level3">
 <h3>Between two categorical variables</h3>
-<p>To create a segmented bar plots we can use the following two optoons.</p>
+<p>To create a segmented bar plots we can use the following two options.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> gender, <span class="dt">fill =</span> smoke100, <span class="dt">data =</span> cdc)
 <span class="kw">qplot</span>(<span class="dt">x =</span> gender, <span class="dt">fill =</span> smoke100, <span class="dt">data =</span> cdc, <span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre>
 <ol start="5" style="list-style-type: decimal">
@@ -184,7 +187,7 @@ img {
 <h3>Between a numerical and a categorical variable</h3>
 <p>The purpose of a boxplot is to provide a thumbnail sketch of a variable for the purpose of comparing across several categories. So we can, for example, compare the heights of men and women with</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">y =</span> height, <span class="dt">x =</span> gender, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre>
-<p>Note that because we specified a categorical variable to be on the x-axis,</p>
+<p>Note that because we specified a categorical variable to be on the x-axis, each category has its own boxplot for the <code>height</code> of the people within that category.</p>
 <p>Next let’s consider a new variable that doesn’t show up directly in this data set: Body Mass Index (BMI) (<a href="http://en.wikipedia.org/wiki/Body_mass_index"><a href="http://en.wikipedia.org/wiki/Body_mass_index" class="uri">http://en.wikipedia.org/wiki/Body_mass_index</a></a>). BMI is a weight to height ratio, and can be calculated as:</p>
 <p><span class="math">\[ BMI = \frac{weight~(lb)}{height~(in)^2} * 703 \]</span></p>
 <p>703 is the approximate conversion factor to change units from metric (meters and kilograms) to imperial (inches and pounds).</p>
