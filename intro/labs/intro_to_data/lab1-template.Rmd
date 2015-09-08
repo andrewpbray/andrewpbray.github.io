@@ -1,0 +1,63 @@
+---
+title: "Lab 1: Intro to data"
+author: "Enter author name here"
+date: "Enter date here"
+output: 
+  html_document: 
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+# DO NOT ALTER CODE IN THIS CHUNK
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+```
+
+* * *
+
+
+## Exercises:
+
+#### Exercise 1: 
+
+
+#### Exercise 2: 
+
+
+#### Exercise 3: 
+
+
+#### Exercise 4: 
+
+
+#### Exercise 5: 
+
+
+#### Exercise 6:
+
+
+#### Exercise 7:
+
+
+* * *
+
+## On your own:
+
+#### 1: 
+
+
+#### 2: 
+
+
+#### 3: 
+
+
+#### 4: 
+
+
+#### 5: 
+
+
+#### 6:
