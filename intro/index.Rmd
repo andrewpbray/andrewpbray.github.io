@@ -12,6 +12,22 @@ output:
 My office hours: M/Tu 2-5, W 2 - 4  
 DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
+* * *
+
+### Week Two
+
+#### [Monday, Sep. 7] No Class
+
+#### Tuesday, Sep. 8
+- Lab 1 : Intro to Data
+    - [Lab](labs/intro_to_data/intro_to_data.html) ([Rmd](labs/intro_to_data/intro_to_data.Rmd))
+
+
+#### Wednesday, Sep. 9
+
+#### Friday Sep. 11
+
+* * *
 
 ### Week One
 
@@ -37,14 +53,3 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 exercises at the end of chapter one (the first one is labeled 1.1 on page 43). These
 will be collected at the beginning of class next Wednesday.
 
-* * *
-
-### Week Two
-
-#### [Monday, Sep. 7] No Class
-
-#### Tuesday, Sep. 8
-
-#### Wednesday, Sep. 9
-
-#### Friday Sep. 11
