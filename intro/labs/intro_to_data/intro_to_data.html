@@ -77,9 +77,6 @@ img {
 
 
 <p>Some define Statistics as the field that focuses on turning information into knowledge. The first step in that process is to summarize and describe the raw information - the data. In this lab, you will gain insight into public health by generating simple graphical and numerical summaries of a data set collected by the Centers for Disease Control and Prevention (CDC). As this is a large data set, along the way you’ll also learn the indispensable skills of data processing and subsetting.</p>
-<div id="boxedtext">
-<strong>A note on expectations:</strong> For each exercise and on your own question you answer include any relevant output (tables, summary statistics, plots) in your answer. Doing this is easy! Just place any relevant R code in a code chunk, and hit Knit HTML.
-</div>
 <div id="getting-started" class="section level2">
 <h2>Getting started</h2>
 <p>The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone survey of 350,000 people in the United States. As its name implies, the BRFSS is designed to identify risk factors in the adult population and report emerging health trends. For example, respondents are asked about their diet and weekly physical activity, their HIV/AIDS status, possible tobacco use, and even their level of healthcare coverage. The BRFSS Web site (<a href="http://www.cdc.gov/brfss"><a href="http://www.cdc.gov/brfss" class="uri">http://www.cdc.gov/brfss</a></a>) contains a complete description of the survey, including the research questions that motivate the study and many interesting results derived from the data.</p>
@@ -102,34 +99,26 @@ img {
 <h3>Histograms</h3>
 <p>The BRFSS questionnaire is a massive trove of information. A good first step in any analysis is to distill all of that information into a few summary statistics and graphics.</p>
 <p>Let’s start with some histograms. We can create a the histogram for the age of our respondents with the following command:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;histogram&quot;</span>)</code></pre>
-<p>This functions says to plot <code>age</code> on the x-axis. It also defines a <code>geom</code> (short for geometric object), which describes the type of plot you will produce.</p>
-<p>Actually, since the default <code>geom</code> for a single numerical variable is a histogram, we could get away with not defining a <code>geom</code> and still get the same plot:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc)</code></pre>
+<p>Unlike the scatter or line plot from the Intro to R lab, here we only have one variable that we want to visualize, <code>age</code>, so we don’t fill in the <code>y =</code> argument. <code>qplot()</code> makes a smart guess at the type of plot that you want based on the data you’ve given it. If you want to be more explicit, you can specify the geometry that you’d like the data to take.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;histogram&quot;</span>)</code></pre>
 <p>It’s a good idea to be explicit in our code and always define all options (and not rely on default settings), especially when we’re first learning a new language.</p>
 <p>Histograms are generally a very good way to see the shape of a single distribution, but that shape can change depending on how the data is split between the different bins. You can easily define the binwidth you want to use:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">binwidth =</span> <span class="dv">1</span>)
-<span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">binwidth =</span> <span class="dv">20</span>)</code></pre>
-<p>How do these histograms with the various binwidths compare?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;histogram&quot;</span>, <span class="dt">binwidth =</span> <span class="dv">1</span>)
+<span class="kw">qplot</span>(<span class="dt">x =</span> age, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;histogram&quot;</span>, <span class="dt">binwidth =</span> <span class="dv">20</span>)</code></pre>
 </div>
-<div id="summary-statistics" class="section level3">
-<h3>Summary statistics</h3>
-<p>As a simple example, the function <code>summary</code> returns a numerical summary: minimum, first quartile, median, mean, third quartile, maximum.</p>
-<p>To calculate the summary statistics for <code>weight</code>, type</p>
+<div id="summary-statistics-through-a-data-pipeline" class="section level3">
+<h3>Summary statistics through a data pipeline</h3>
+<p>A very useful paradigm for working with data is to sketch out a data pipeline. This should always start with the original data frame and usually ends with numerical summaries, plots, or a newly modified data frame.</p>
+<p>As a simple example, lets create a pipeline (also called a chain) that returns some information about the <code>weight</code> variable. We’ll use the function <code>summary()</code>, which returns a numerical summary including the minimum, first quartile, median, mean, third quartile, and maximum.</p>
 <pre class="sourceCode r"><code class="sourceCode r">cdc %&gt;%
 <span class="st">  </span><span class="kw">select</span>(weight) %&gt;%
 <span class="st">  </span><span class="kw">summary</span>()</code></pre>
-<div id="boxedtext">
-<p><strong>A note on piping:</strong> Note that we can read these three lines of code as the following:</p>
-<p><em>“Take the <code>cdc</code> dataset and <strong>pipe</strong> it into the <code>select</code> function. Using this function select the variable called <code>weight</code>, and <strong>pipe</strong> this variable into the <code>summary</code> function.”</em></p>
-The <code>%&gt;%</code> operator is called the <strong>piping</strong> operator. Basically, it takes the output of the current line and pipes it into the following line of code.
-</div>
-<p>Since R also functions like a very fancy calculator, you can use these statistics to then calculate the interquartile range for the respondents’ weight, as the value of Q3 - Q1.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">190</span> -<span class="st"> </span><span class="dv">140</span></code></pre>
-<p>You can also individually calculate summary statistics, and make your own customized list of them using the <code>summarise</code> function:</p>
+<p>The <code>%&gt;%</code> operator is called the <strong>piping</strong> operator and all it does is take the output of the current line and pipes it into the following line of code. It can be read as “then”, so these three lines of code could be read: “Take the <code>cdc</code> data set then select the <code>weight</code> variable then summarize it.”</p>
+<p>You can also individually calculate summary statistics, and make your own customized list of them using the <code>summarize</code> function:</p>
 <pre class="sourceCode r"><code class="sourceCode r">cdc %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_wt =</span> <span class="kw">mean</span>(weight), <span class="dt">sd_wt =</span> <span class="kw">sd</span>(weight), <span class="dt">mean_ht =</span> <span class="kw">mean</span>(height), <span class="dt">sd_ht =</span> <span class="kw">sd</span>(height))</code></pre>
-<p>Note that in the <code>summarise</code> function we created a list of four elements. The names of these elements are user defined, like <code>mean_wt</code>, <code>sd_wt</code>, etc. and you could customize these names as you like (just don’t use spaces in your names). Calculating these summary statistics also require that you know the function calls. Some useful function calls for summary statistics for a single numerical variable are as follows:</p>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_wt =</span> <span class="kw">mean</span>(weight), <span class="dt">sd_wt =</span> <span class="kw">sd</span>(weight), <span class="dt">mean_ht =</span> <span class="kw">mean</span>(height), <span class="dt">sd_ht =</span> <span class="kw">sd</span>(height))</code></pre>
+<p>Note that in the <code>summarize</code> function we created a list of four elements. The names of these elements are user defined, like <code>mean_wt</code>, <code>sd_wt</code>, etc. and you could customize these names as you like (just don’t use spaces in your names). Calculating these summary statistics also require that you know the function calls. Some useful function calls for summary statistics for a single numerical variable are as follows:</p>
 <ul>
 <li><code>mean</code></li>
 <li><code>median</code></li>
@@ -143,10 +132,10 @@ The <code>%&gt;%</code> operator is called the <strong>piping</strong> operator.
 <p>Another useful functionality is being able to quickly calculate summary statistics for various groups in your dataset. For example, we can modify the above command using the <code>group_by</code> function to get the same summary stats for males and females:</p>
 <pre class="sourceCode r"><code class="sourceCode r">cdc %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(gender) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_wt =</span> <span class="kw">mean</span>(weight), <span class="dt">sd_wt =</span> <span class="kw">sd</span>(weight), <span class="dt">mean_ht =</span> <span class="kw">mean</span>(height), <span class="dt">sd_ht =</span> <span class="kw">sd</span>(height))</code></pre>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_wt =</span> <span class="kw">mean</span>(weight), <span class="dt">sd_wt =</span> <span class="kw">sd</span>(weight), <span class="dt">mean_ht =</span> <span class="kw">mean</span>(height), <span class="dt">sd_ht =</span> <span class="kw">sd</span>(height))</code></pre>
 <p>Here, we first grouped the data by gender, and then calculated the summary statistics.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Calculate the median and interquartile range for <code>weight</code>s of people who did and did not exercise in the last month.</li>
+<li>Calculate the median weights of people who did and did not exercise in the last month.</li>
 </ol>
 </div>
 <div id="tables" class="section level3">

@@ -22,12 +22,6 @@ by the Centers for Disease Control and Prevention (CDC). As this is a large
 data set, along the way you'll also learn the indispensable skills of data 
 processing and subsetting.
 
-<div id="boxedtext">
-**A note on expectations:** For each exercise and on your own question you answer
-include any relevant output (tables, summary statistics, plots) in your answer. Doing 
-this is easy! Just place any relevant R code in a code chunk, and hit Knit HTML.
-</div>
-
 ## Getting started
 
 The Behavioral Risk Factor Surveillance System (BRFSS) is an annual telephone 
@@ -124,12 +118,16 @@ qplot(x = age, data = cdc, geom = "histogram", binwidth = 20)
 ```
 
 
-### Summary statistics
+### Summary statistics through a data pipeline
 
-As a simple example, the function `summary()` returns a numerical summary: minimum,
-first quartile, median, mean, third quartile, maximum.
+A very useful paradigm for working with data is to sketch out a data pipeline.
+This should always start with the original data frame and usually ends with 
+numerical summaries, plots, or a newly modified data frame.
 
-To calculate the summary statistics for `weight`, type
+As a simple example, lets create a pipeline (also called a chain) that returns 
+some information about the `weight` variable. We'll use the function `summary()`,
+which returns a numerical summary including the minimum, first quartile, median,
+mean, third quartile, and maximum.
 
 ```{r summary-weight}
 cdc %>%
@@ -137,24 +135,10 @@ cdc %>%
   summary()
 ```
 
-<div id="boxedtext">
-**A note on piping:** Note that we can read these three lines of code as the following: 
-
-*"Take the `cdc` dataset and **pipe** it into the `select` function. Using this 
-function select the variable called `weight`, and **pipe** this 
-variable into the `summary` function."*
-
-The `%>%` operator is called the **piping** operator. Basically, it takes the output
-of the current line and pipes it into the following line of code.
-</div>
-
-Since R also functions like a very fancy calculator, you can use these statistics
-to then calculate the interquartile range for the respondents' weight, as the value
-of Q3 - Q1.
-
-```{r weight-range-arith}
-190 - 140
-```
+The `%>%` operator is called the **piping** operator and all it does is take the 
+output of the current line and pipes it into the following line of code. It can 
+be read as "then", so these three lines of code could be read: "Take the `cdc` 
+data set then select the `weight` variable then summarize it."
 
 You can also individually calculate summary statistics, and make your own customized list
 of them using the `summarize` function:
@@ -181,7 +165,7 @@ function calls for summary statistics for a single numerical variable are as fol
 
 Another useful functionality is being able to quickly calculate summary statistics for
 various groups in your dataset. For example, we can modify the above command using the
-`group_by` function  to get the same summary stats for males and females:
+`group_by` function to get the same summary stats for males and females:
 
 ```{r summary-custom-list-gender}
 cdc %>%
@@ -191,8 +175,8 @@ cdc %>%
 
 Here, we first grouped the data by gender, and then calculated the summary statistics.
 
-2.  Calculate the median and interquartile range for weights of people who
-    did and did not exercise in the last month.
+2.  Calculate the median weights of people who did and did not exercise in the 
+last month.
     
     
 ### Tables
