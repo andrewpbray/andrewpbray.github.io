@@ -149,8 +149,8 @@ img {
 <span class="st">  </span><span class="kw">select</span>(smoke100) %&gt;%
 <span class="st">  </span><span class="kw">table</span>()/<span class="dv">20000</span></code></pre>
 <p>Notice how R automatically divides all entries in the table by 20,000 in the command above.</p>
-<p>To make a bat plot of these data, use the following:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> smoke100, <span class="dt">data =</span> cdc)</code></pre>
+<p>We can visualize these counts by constructing a bar plot.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> smoke100, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Compute the relative frequency distribution for <code>gender</code> and also for <code>genhlth</code>. How many males are in the sample? What proportion of the sample reports being in excellent health?</li>
 </ol>
@@ -184,7 +184,7 @@ img {
 <h3>Between a numerical and a categorical variable</h3>
 <p>The purpose of a boxplot is to provide a thumbnail sketch of a variable for the purpose of comparing across several categories. So we can, for example, compare the heights of men and women with</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">y =</span> height, <span class="dt">x =</span> gender, <span class="dt">data =</span> cdc, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre>
-<p>The notation here is new. <code>geom</code>, short for geometric objects, describe the type of plot you will produce. So we’re asking R to give us a box plots of heights where the groups are defined by gender.</p>
+<p>Note that because we specified a categorical variable to be on the x-axis,</p>
 <p>Next let’s consider a new variable that doesn’t show up directly in this data set: Body Mass Index (BMI) (<a href="http://en.wikipedia.org/wiki/Body_mass_index"><a href="http://en.wikipedia.org/wiki/Body_mass_index" class="uri">http://en.wikipedia.org/wiki/Body_mass_index</a></a>). BMI is a weight to height ratio, and can be calculated as:</p>
 <p><span class="math">\[ BMI = \frac{weight~(lb)}{height~(in)^2} * 703 \]</span></p>
 <p>703 is the approximate conversion factor to change units from metric (meters and kilograms) to imperial (inches and pounds).</p>
@@ -212,7 +212,7 @@ img {
 <p>Using these, we can create a subset of the <code>cdc</code> dataset for just the men, and save this as a new dataset called <code>males</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">males &lt;-<span class="st"> </span>cdc %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(gender ==<span class="st"> &quot;m&quot;</span>)</code></pre>
-<p>Here, we’ve created a new object, called <code>males</code>. The special symbol <code>&lt;-</code> performs an <em>assignment</em>, taking the output of one line of code and saving it into this new object that you defined.</p>
+<p>Here the output of our data pipeline is a new dataset called <code>males</code>. The special symbol <code>&lt;-</code> performs an <em>assignment</em>, taking the output of one line of code and saving it into this new object that you defined. If you had run the data pipeline without the assignment, it would simply have printed the filtered dataset to your console instead of capturing it for future use.</p>
 <p>We can take look at the contents of this object by clicking on it in the <em>Environment</em> tab, or by typing the following command we can view the first few lines of it</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(males)</code></pre>
 <p>We don’t want to print the entire dataset since it’s pretty large, taking a look at just the first few lines should give you a good idea of what it looks like.</p>
@@ -230,14 +230,14 @@ img {
 </div>
 <div id="recap" class="section level2">
 <h2>Recap</h2>
-<p>At this point, we’ve done a good first pass at analyzing the information in the BRFSS questionnaire. We’ve found an interesting association between smoking and gender, and we can say something about the relationship between people’s assessment of their general health and their own BMI. We’ve also picked up essential computing tools – summary statistics, subsetting, and plots – that will serve us well throughout this course.</p>
+<p>At this point, we’ve done a good first pass at analyzing the information in the BRFSS questionnaire. We’ve found an interesting association between smoking and gender, and we can say something about the relationship between people’s assessment of their general health and their own BMI. We’ve also picked up essential computing tools – summary statistics, subsetting, plots, and the idea of a data pipeline – that will serve us well throughout this course.</p>
 <hr />
 <div class="oyo">
 <h2>On Your Own</h2>
 <ul>
 <li><p>Make a scatterplot of weight versus desired weight. Describe the relationship between these two variables.</p></li>
 <li><p>Let’s consider a new variable: the difference between desired weight (<code>wtdesire</code>) and current weight (<code>weight</code>). Create this new variable by subtracting the two columns in the data frame and assigning them to a new variable in the <code>cdc</code> dataset called <code>wdiff</code>.</p></li>
-<li><p>What type of data is <code>wdiff</code>? If an observation <code>wdiff</code> is 0, what does this mean about the person’s weight and desired weight. What if <code>wdiff</code> is positive or negative? <em>Hint:</em> This is the only exercise in this lab that doesn’t require code to answer.</p></li>
+<li><p>What type of data is <code>wdiff</code>? If an observation <code>wdiff</code> is 0, what does this mean about the person’s weight and desired weight? What if <code>wdiff</code> is positive or negative? <em>Hint:</em> This is the only exercise in this lab that doesn’t require code to answer.</p></li>
 <li><p>Describe the distribution of <code>wdiff</code> in terms of its center, shape, and spread, including any plots and numerical summaries you use. What does this tell us about how people feel about their current weight?</p></li>
 <li><p>Using numerical summaries and a side-by-side box plots, determine if men tend to view their weight differently than women.</p></li>
 <li><p>Now it’s time to get creative. Find the mean and standard deviation of <code>weight</code> and determine what proportion of the weights are within one standard deviation of the mean.</p></li>

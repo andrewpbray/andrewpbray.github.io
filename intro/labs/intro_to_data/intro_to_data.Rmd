@@ -36,9 +36,13 @@ study and many interesting results derived from the data.
 
 We will focus on a random sample of 20,000 people from the BRFSS survey 
 conducted in 2000. While there are over 200  variables in this data set, we will
-work with a small subset. You can load the data set with
+work with a small subset. You can load the data set (and the packages we'll use)
+with
 
 ```{r load-data}
+library(dplyr)
+library(ggplot2)
+library(oilabs)
 data(cdc)
 ```
 
@@ -205,10 +209,10 @@ cdc %>%
 Notice how R automatically divides all entries in the table by 20,000 in the 
 command above. 
 
-To make a bat plot of these data, use the following:
+We can visualize these counts by constructing a bar plot.
 
 ```{r table-smoke-barplot}
-qplot(x = smoke100, data = cdc)
+qplot(x = smoke100, data = cdc, geom = "bar")
 ```
 
 3.  Compute the relative frequency distribution for `gender` and also for `genhlth`. 
@@ -266,9 +270,7 @@ men and women with
 qplot(y = height, x = gender, data = cdc, geom = "boxplot")
 ```
 
-The notation here is new. `geom`, short for geometric objects, describe the type of 
-plot you will produce. So we're asking R to give us a box plots of heights where 
-the groups are defined by gender. 
+Note that because we specified a categorical variable to be on the x-axis, 
 
 Next let's consider a new variable that doesn't show up directly in this data 
 set: Body Mass Index (BMI) 
@@ -329,9 +331,11 @@ males <- cdc %>%
   filter(gender == "m")
 ```
 
-Here, we've created a new object, called `males`. The special symbol `<-` 
-performs an *assignment*, taking the output of one line of code and saving it 
-into this new object that you defined.
+Here the output of our data pipeline is a new dataset called `males`. The special
+symbol `<-` performs an *assignment*, taking the output of one line of code and 
+saving it into this new object that you defined. If you had run the data pipeline
+without the assignment, it would simply have printed the filtered dataset to 
+your console instead of capturing it for future use.
 
 We can take look at the contents of this object by clicking on it in the 
 *Environment* tab, or by typing the following command we can view the first few 
@@ -382,8 +386,8 @@ At this point, we've done a good first pass at analyzing the information in the
 BRFSS questionnaire. We've found an interesting association between smoking and
 gender, and we can say something about the relationship between people's 
 assessment of their general health and their own BMI. We've also picked up 
-essential computing tools -- summary statistics, subsetting, and plots -- that 
-will serve us well throughout this course.
+essential computing tools -- summary statistics, subsetting, plots, and the idea
+of a data pipeline -- that will serve us well throughout this course.
 
 * * *
 
@@ -400,7 +404,7 @@ will serve us well throughout this course.
     variable in the `cdc` dataset called `wdiff`.
 
 -   What type of data is `wdiff`? If an observation `wdiff` is 0, what does 
-    this mean about the person's weight and desired weight. What if `wdiff` is 
+    this mean about the person's weight and desired weight? What if `wdiff` is 
     positive or negative? *Hint:* This is the only exercise in this lab that
     doesn't require code to answer.
 
