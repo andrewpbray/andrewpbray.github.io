@@ -1,125 +1,242 @@
 ---
-title: "Experimental Design"
-output: ioslides_presentation
+title: "Describing Data"
+output:
+  ioslides_presentation:
+    incremental: true
 ---
 
 ```{r setup, include=FALSE}
+library(knitr)
+options(digits=2)
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
 ```
 
-## Stratified sampling {.smaller}
+## Describing Distributions {.build}
 
-```{r strat-samp}
-teams <- c(rep("yankees", 40), rep("padres", 40), rep("mariners", 40), rep("dodgers", 40))
-salary <- c(rnorm(40, mean = 25), rnorm(40, 16), rnorm(40, 23), rnorm(40, 15))
-df <- data.frame(teams, salary)
-head(df)
+- **Shape**: modality, skewness
+- **Center**: mean, median, mode
+- **Spread**: variance, sd, range, IQR
+- **Unusual observations**: outliers
+
+
+## Shape {.build}
+
+**Modality**
+
+<img src="../../figs/modality.png" alt="modality" width="750">
+
+**Skewness**
+
+<img src="../../figs/skewness.png" alt="skewness" width="750">
+
+
+## Shape Q
+
+Which of these variables do you expect to be uniformly distributed?
+
+1. weights of adult females
+2. salaries of a random sample of people from Oregon
+3. house prices
+4. birthdays of classmates (day of the month)
+
+
+## Center: mean {.build}
+
+```{r}
+X <- c(8, 11, 7, 7, 8, 11, 9, 6, 10, 7, 9)
 ```
 
 
-## Population view
 
-```{r plot-strat, echo = FALSE, message=FALSE}
-library(mosaic)
-densityplot(~salary, groups = teams, data = df, auto.key = TRUE)
+\[ \frac{8 + 11 + 7 + 7 + 8 + 11 + 9 + 6 + 10 + 7 + 9}{11} = \frac{93}{11} = 8.45 \\
+  \\
+\]
+
+**Sample mean**: the arithmetic mean of the data (vs *pop mean*)
+
+\[ \bar{x} = \frac{x_1 + x_2 + \ldots + x_n}{n} \quad \quad \textrm{vs.} \quad \quad \mu\]
+
+```{r}
+mean(X)
 ```
 
-## SRS vs Stratified
 
-```{r sim}
-# population mean
-mean(~salary, data = df)
-# SRS
-mean(~salary, data = sample(df, 40))
-# Stratified sample
-strat.samp <- rbind(sample(subset(df, teams == "yankees"), 10), sample(subset(df,
-    teams == "padres"), 10), sample(subset(df, teams == "mariners"), 10), sample(subset(df,
-    teams == "dodgers"), 10))
-mean(~salary, data = strat.samp)
+## Center: median {.build}
+
+**Median**: the middle value of a sorted data set.
+
+```{r}
+sort(X)
+median(X)
 ```
 
-## Long-run performance
+Break ties by averaging middle two if necessary.
 
-```{r comp, echo=FALSE}
-# Comparison
-SRS <- do(1000) * mean(~salary, data = df)
-STR <- do(1000) * mean(~salary, data = rbind(sample(subset(df, teams == "yankees"), 10),
-                                             sample(subset(df, teams == "padres"), 10),
-                                             sample(subset(df, teams == "mariners"), 10),
-                                             sample(subset(df, teams == "dodgers"), 10)))
-sim <- data.frame(SRS, STR)
-names(sim) = c("SRS", "STR")
-densityplot(~SRS + STR, data = sim, auto.key = TRUE)
+
+## Center: mode {.build}
+
+**Mode**: the most frequently observed value in the data set.
+
+```{r}
+table(X)
 ```
 
-#
 
-## 
+## The Typical Human
 
-<img src="../figs/corrs1.png" alt="corrs1" width="750">
+(https://www.youtube.com/watch?v=4B2xOvKFFz4)
 
-
-## 
-
-<img src="../figs/corrs2.png" alt="corrs2" width="750">
+Keep note of the measures of "typical" that are reported - they come quick!
 
 
-## If you learn one thing in this class...
+## Spread: variance {.build}
 
-![corr](../figs/xkcd-correlation.png)
+**Sample variance**: roughly, the mean squared deviation from the mean.
 
+\[ s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}\]
 
-## Principles of Experimental Design {.build}
-
-**Control**: Compare treatment of interest to a control group.
-
-**Randomization**: Randomly assign subjects to treatments.
-
-**Replication**: Within a study, replicate by collecting a sufficiently large sample. Or replicate the entire study.
-
-**Blocking**: If there are variables that are known or suspected to affect the response variable, first group subjects into blocks based on these variables, and then randomize cases within each block to treatment groups.
+Compare to the *population variance*, $\sigma^2$, which divides by $n$.
 
 
-## Replication
+## Spread: variance {.build}
 
-<img src="../figs/psych.png" alt="psych" width="750">
-
-
-## Blocking
-
-A study is designed to test the effect of light level and noise level on exam performance of students. The researcher also believes that light and noise levels might have different effects on males and females, so wants to make sure both genders are represented equally under different conditions. Which of the below is correct?
-
-1. There are 3 explanatory variables (light, noise, gender) and 1 response variable (exam performance)
-2. There are 2 explanatory vars (light and noise), 1 blocking var (gender), and 1 response var (exam performance)
-3. There is 1 explanatory var (gender) and 3 response vars (light, noise, exam performance)
-4. There are 2 blocking vars (light and noise), 1 explanatory var (gender), and 1 response var (exam performance)
+```{r}
+X - mean(X)
+(X - mean(X))^2
+sum((X - mean(X))^2) / (length(X) - 1)
+var(X)
+```
 
 
-## Other key ideas {.build}
+## Spread: standard deviation {.build}
 
-**Placebo**: fake treatment, often used as the control group for medical studies
+**Sample standard deviation**: the square root of the variance. Used because
+units are the same as the data.
 
-**Placebo effect**: experimental units showing improvement simply because they believe they are receiving a special treatment
+\[ s = \sqrt(s^2) \]
 
-**Blinding**: when experimental units do not know whether they are in the control or treatment group
+```{r}
+sqrt(var(X))
+sd(X)
+```
 
-**Double-blind**: when both the experimental units and the researchers do not know who is in the control and who is in the treatment group
-
-
-## Consider acupuncture {.build}
-
-<img src="../figs/acupuncture.png" alt="acupuncture" width="500">
-
-How do you test if acupuncture reduces pain?
-
-"Sham acupuncture" is a good control.
+Compared to the *population standard deviation*, $\sigma$.
 
 
-# Practice
+## Spread: IQR {.build}
+
+**Inner Quartile Range**: the range of the middle 50% of the data.
+
+\[ IQR = Q3 - Q1 \]
+
+```{r}
+sort(X)
+IQR(X)
+```
+
+
+## Spread: range {.build}
+
+**Range**: the range of the full data set.
+
+\[ range = max - min \]
+
+```{r}
+max(X) - min(X)
+range(X)
+```
+
+
+## Spread Q
+
+Which measure(s) of spread would be sensitive to the presence of outliers?
+
+1. variance
+2. standard deviation
+3. IQR
+4. Range
+
+
+## Spread Q {.build}
+
+```{r, echo=FALSE}
+Y <- X
+Y[1] <- 37
+```
+
+
+```{r}
+X
+Y
+var(X)
+var(Y)
+```
+
+
+## Spread Q {.build}
+
+```{r}
+IQR(X)
+IQR(Y)
+range(X)
+range(Y)
+```
+
+
+## Spread Q
+
+Which measure(s) of spread would be sensitive to the presence of outliers?
+
+1. **variance**
+2. **standard deviation**
+3. IQR
+4. **Range**
+
+
+## Center Q
+
+Which measure(s) of center would be sensitive to the presence of outliers?
+
+1. mean
+2. median
+3. mode
+
+
+## Center Q
+
+Which measure(s) of center would be sensitive to the presence of outliers?
+
+1. **mean**
+2. median
+3. mode
+
+
+## Mean vs median {.build}
+
+<img src="../../figs/skew-sym.png" alt="skewsym" width="750">
+
+The mean (red line) is sensitive to extreme values, so it gets pulled towards 
+the tail. The median (dashed line) is less sensitive.
+
+For symmetric dists, use *mean* and *sd*.
+
+For skewed dists, use *median* and *iqr*.
+
+```{r echo = FALSE, eval = FALSE}
+x <- c(rgamma(50, 2, 3),
+       5 - rgamma(50, 2, 3),
+       rnorm(50))
+y <- factor(rep(c("ls", "rs", "sym"), each = 50))
+df <- data.frame(x, y)
+ggplot(df, aes(x = x, groups = y)) + geom_density()
+```
+
 
 ## Practice
 
-1. Find your numerical pair
-2. Introduce yourself (name, year, major, hometown)
-3. Discuss the problems on the handout and record your thoughts.
+- Find your numerical pair
+- Work through the practice problems
+
 
