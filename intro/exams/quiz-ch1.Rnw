@@ -13,7 +13,7 @@
 \pagestyle{fancy}
 
 \lhead{\textsc{MATH 141}}
-\chead{\textsc{Practice}}
+\chead{\textsc{Chapter 1 Quiz}}
 \lfoot{}
 \cfoot{}
 %\cfoot{\thepage}
@@ -29,12 +29,15 @@
 \author{Prof. Bray}
 \date{Fall 2015}
 
-\rhead{\textsc{September 9, 2014}}
+\rhead{\textsc{September 11, 2014}}
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
+\begin{enumerate}
 
+\item 
 
+\end{enumerate}
 
 \end{document}
