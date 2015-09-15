@@ -1,0 +1,45 @@
+---
+title: "Probability I"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=2)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+# Quiz Review
+
+
+## Question 2
+
+<img src="../figs/q2.png" alt="q2" width="750">
+
+
+## Question 2
+
+<img src="../figs/q1.png" alt="q1" width="750">
+
+
+## Question 2
+
+<img src="../figs/q3.png" alt="q3" width="750">
+
+
+## Question 3 {.build}
+
+The most common answer:
+
+\[ \frac{1}{n} \sum_{i = 1}^{n} (x_i - q_{.5})^2 \]
+
+
+Other creative answers:
+
+- "modal range": \[ mode_{upper\,quartile} - mode_{lower\,quartile}\]
+- meta-variance: take the mean of the variance, sd, IQR, and range
+- look at the max height of the density plot

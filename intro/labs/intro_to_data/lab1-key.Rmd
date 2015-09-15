@@ -1,0 +1,211 @@
+---
+title: 'Lab 1: Intro to data'
+author: "Key"
+output:
+  html_document:
+    highlight: pygments
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+# DO NOT ALTER CODE IN THIS CHUNK
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+```
+
+* * *
+
+
+## Exercises:
+
+#### Exercise 1: 
+
+There are 20,000 cases and 9 variables in this data set. `genhlth` is ordinal
+categorical; `exerany`, `hlthplan`, and `smoke100` are categorical; `height`, 
+`weight`, `wtdesire`, and `age` are continuous, though they've been measured
+discretely; `gender` is categorical.
+
+
+#### Exercise 2: 
+
+```{r ex2}
+cdc %>%
+  group_by(exerany) %>%
+  summarize(median_wt = median(weight))
+```
+
+The median weight of subjects who exercised in the last month and those who did
+not were the same: 165 lb.
+
+
+#### Exercise 3: 
+
+```{r ex3}
+cdc %>%
+  select(gender) %>%
+  table()
+
+cdc %>%
+  select(gender) %>%
+  table()/20000
+
+cdc %>%
+  select(genhlth) %>%
+  table()/20000
+```
+
+There are 9569 males in the sample. 23.3% of the sample reports being in excellent
+health. This exercise was poorly worded, so you may have also looked at the joint 
+distribution of these two variables, which is fine.
+
+
+#### Exercise 4: 
+
+```{r ex4}
+cdc %>%
+  select(gender, smoke100) %>%
+  table()
+```
+
+`r round(5022 / (5022 + 4547))` percent of men are smokers as are `r round(4419 / (4419/6012))`
+ percent of women. `r round(5022 / 20000)` percent of the sample are male smokers
+ while `r round(4419 / 20000)` percent of the sample are female smokers. The first
+ pair of statistics is more useful in determining if men or women are more likely
+ to be smokers since it controls for the possibility that there are different
+ numbers of men and women in the sample.
+ 
+
+#### Exercise 5: 
+
+```{r ex5}
+qplot(x = gender, fill = smoke100, data = cdc)
+qplot(x = gender, fill = smoke100, data = cdc, position = "fill")
+```
+
+The first plot shows only the counts of smokers/non-smokers in each gender while
+the second plot controls for the number of males and females and shows the 
+proportion of smokers/non-smokers in each group. Similar to the reasoning in 
+exercise 4, this second plot gives better insight into the relative proportion
+of smokers in the two groups.
+
+
+#### Exercise 6:
+
+```{r ex6}
+cdc <- cdc %>%
+  mutate(bmi = (weight / height^2) * 703)
+
+qplot(y = bmi, x = exerany, data = cdc, geom = "boxplot")
+```
+
+Body mass index is likely effected by the level of physical activity so I chose
+to compare `bmi` to the `exerany` variable. The distribution of BMI in both
+groups is right skewed with many outliers. The exercisers had a lower median and
+Q3 BMI as well as a slightly lower Q1 BMI. This agrees with the intuition that 
+those that exercise more will have a lower BMI, on average. There is a notable
+outlier, though: the highest BMI belongs to an exerciser.
+
+
+#### Exercise 7:
+
+```{r}
+under23_and_smoke <- cdc %>%
+  filter(smoke100 == TRUE & age < 23)
+dim(under23_and_smoke)
+```
+
+There are 620 subjects that fit the criteria of being smokers and under the age
+of 23.
+
+
+* * *
+
+## On your own:
+
+#### 1: 
+
+```{r oyo1}
+qplot(x = weight, y = wtdesire, data = cdc, geom = "point")
+```
+
+There is a positive and roughly linear association between subjects' weight and
+their desired weight. Notably, most of the points fall below the identity line,
+suggesting most people desire a weight that is lower than their recorded weight.
+
+*please provide interp*
+
+
+#### 2: 
+
+```{r oyo2}
+cdc <- cdc %>%
+  mutate(wdiff = wtdesire - weight)
+```
+
+#### 3: 
+
+`wdiff` is a continuous variable that has been measured discretely. A positive
+`wdiff` means that person wishes to gain weight; a negative `wdiff` means that
+person wishes to lose weight; and a `wdiff` of zero indicates that person is 
+happy with their current weight.
+
+
+#### 4: 
+
+```{r oyo4}
+qplot(x = wdiff, data = cdc, geom = "histogram")
+summary(cdc$wdiff)
+```
+
+The `wdiff` data is centered at a median of -10 lb, meaning that the majority of
+people wish to lose weight. The IQR is 21 lb, though there is a low outlier at 
+-300 lb and a high outlier at 500 lb. Excluding the outliers, the data appears
+to have a slight left skew.
+
+
+#### 5: 
+
+```{r oyo5}
+qplot(x = gender, y = wdiff, data = cdc, geom = "boxplot")
+```
+
+The outliers dominate the range of the plot, so it's difficult to compare the
+two groups. Looking closely, women have a lower Q1 and median `wdiff` than do men,
+suggesting more women wish to lose more weight than men.
+
+Note: these plots can be improve by restricting the limits of the y-axis using 
+the following additional argument.
+
+```{r oyo5b}
+qplot(x = gender, y = wdiff, data = cdc, geom = "boxplot", ylim = c(-100, 100))
+```
+
+
+#### 6:
+
+```{r oyo6}
+within_one_sd <- cdc %>%
+  select(weight) %>%
+  filter(weight < (mean(weight) + sd(weight)) &
+           weight > (mean(weight) - sd(weight)))
+dim(within_one_sd)
+```
+
+`r 14152 / 20000` percent of the sample falls within one standard deviation of 
+the mean weight.
+
+FYI: you can create a single pipeline to create that proportion using something
+we haven't seen yet - the `ifelse` function.
+
+```{r oyo6b}
+cdc %>%
+  mutate(within_one_sd = ifelse(weight < (mean(weight) + sd(weight)) & 
+                                  weight > (mean(weight) - sd(weight)),
+                                "yes", "no")) %>%
+  group_by(within_one_sd) %>%
+  summarize(n = n()) %>%
+  mutate(prop = n / sum(n))
+```
+
