@@ -14,6 +14,24 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 * * *
 
+### Week Three
+
+#### [Monday, Sep. 14]
+- Review Quiz
+- Probability I
+
+#### Tuesday, Sep. 15
+- [Lab 3: Probability](labs/probability/probability.html)
+
+#### Wednesday, Sep. 16
+- Probability II: conditional probability
+
+#### Friday Sep. 18
+- Probability III: random variables
+- Quiz 2
+
+* * *
+
 ### Week Two
 
 #### [Monday, Sep. 7] No Class
