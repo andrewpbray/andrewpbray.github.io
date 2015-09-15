@@ -110,13 +110,13 @@ use the custom function `calc_streak` to calculate them, and store the results
 in a data frame called `kobe_streak` as the `length` variable.
 
 ```{r calc-streak-kobe}
-kobe_streak <- calc_streak(kobe$basket)
+kobe_streak <- data.frame(length = calc_streak(kobe$basket))
 ```
 
 We can then take a look at the distribution of these streak lengths.
 
 ```{r plot-streak-kobe}
-qplot(data = kobe_streak, x = length, geom = "histogram", binwidth = 1)
+qplot(x = length, data = kobe_streak, geom = "histogram", binwidth = 1)
 ```
 
 2.  Describe the distribution of Kobe's streak lengths from the 2009 NBA finals. 
