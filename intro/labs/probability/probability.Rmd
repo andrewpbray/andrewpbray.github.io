@@ -110,9 +110,7 @@ use the custom function `calc_streak` to calculate them, and store the results
 in a data frame called `kobe_streak` as the `length` variable.
 
 ```{r calc-streak-kobe}
-kobe_streak <- kobe %>%
-  select(basket) %>%
-  calc_streak()
+kobe_streak <- calc_streak(kobe$basket)
 ```
 
 We can then take a look at the distribution of these streak lengths.

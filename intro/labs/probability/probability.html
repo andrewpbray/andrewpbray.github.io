@@ -115,9 +115,7 @@ img {
 <li>What does a streak length of 1 mean, i.e. how many hits and misses are in a streak of 1? What about a streak length of 0?</li>
 </ol>
 <p>Counting streak lengths manually for all 133 shots would get tedious, so we’ll use the custom function <code>calc_streak</code> to calculate them, and store the results in a data frame called <code>kobe_streak</code> as the <code>length</code> variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r">kobe_streak &lt;-<span class="st"> </span>kobe %&gt;%
-<span class="st">  </span><span class="kw">select</span>(basket) %&gt;%
-<span class="st">  </span><span class="kw">calc_streak</span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">kobe_streak &lt;-<span class="st"> </span><span class="kw">calc_streak</span>(kobe$basket)</code></pre>
 <p>We can then take a look at the distribution of these streak lengths.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">data =</span> kobe_streak, <span class="dt">x =</span> length, <span class="dt">geom =</span> <span class="st">&quot;histogram&quot;</span>, <span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre>
 <ol start="2" style="list-style-type: decimal">
