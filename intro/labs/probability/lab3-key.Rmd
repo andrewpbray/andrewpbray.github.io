@@ -1,0 +1,38 @@
+---
+title: "Lab 3 - Probability"
+author: "Enter team name here"
+output: 
+  html_document: 
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+# DO NOT ALTER CODE IN THIS CHUNK
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+**Load Hot Hand files:**
+
+```{r}
+load(url("https://github.com/andrewpbray/andrewpbray.github.io/blob/master/intro/data/hot_hand.RData?raw=true")) 
+```
+
+* * *
+
+## On your own:
+
+#### 1: 
+
+
+#### 2: 
+
+
+#### 3: 
+
+
+#### 4: 
+
+
+#### 5:
