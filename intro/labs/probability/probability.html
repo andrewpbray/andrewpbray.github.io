@@ -96,19 +96,20 @@ img {
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
 <p>Our investigation will focus on the performance of one player: Kobe Bryant of the Los Angeles Lakers. His performance against the Orlando Magic in the 2009 NBA finals earned him the title <em>Most Valuable Player</em> and many spectators commented on how he appeared to show a hot hand. Let’s load some necessary files that we will need for this lab.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://github.com/andrewpbray/andrewpbray.github.io/blob/master/intro/data/hot_hand.RData?raw=true&quot;</span>)) </code></pre>
-<p>You should see in your Environment tab that two new objects appear: <code>kobe_basket</code> and <code>calc_streak</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/kobe.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;kobe.RData&quot;</span>)
+<span class="kw">load</span>(<span class="st">&quot;kobe.RData&quot;</span>)</code></pre>
+<p>You should see in your Environment tab that two new objects appear: <code>kobe</code> and <code>calc_streak</code>:</p>
 <ul>
-<li><code>kobe_basket</code>: a data frame of 133 observations and 6 variables, where every row records a shot taken by Kobe Bryant. The <code>shot</code> variable in this dataset indicates whether the shot was a hit (<code>H</code>) or a miss (<code>M</code>).</li>
+<li><code>kobe</code>: a data frame of 133 observations and 6 variables, where every row records a shot taken by Kobe Bryant. The <code>basket</code> variable in this dataset indicates whether the shot was a hit (<code>H</code>) or a miss (<code>M</code>).</li>
 <li><code>calc_streak</code>: a custom function that we will use to calculate streak lengths of shots (more on this later).</li>
 </ul>
 <p>Just looking at the string of hits and misses, it can be difficult to gauge whether or not it seems like Kobe was shooting with a hot hand. One way we can approach this is by considering the belief that hot hand shooters tend to go on shooting streaks. For this lab, we define the length of a shooting streak to be the <em>number of consecutive baskets made until a miss occurs</em>.</p>
 <p>For example, in Game 1 Kobe had the following sequence of hits and misses from his nine shot attempts in the first quarter:</p>
 <p><span class="math">\[ \textrm{H M | M | H H M | M | M | M} \]</span></p>
 <p>To verify this use the following command:</p>
-<pre class="sourceCode r"><code class="sourceCode r">kobe_basket %&gt;%
+<pre class="sourceCode r"><code class="sourceCode r">kobe %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(game ==<span class="st"> </span><span class="dv">1</span>, quarter ==<span class="st"> </span><span class="dv">1</span>) %&gt;%
-<span class="st">  </span><span class="kw">select</span>(shot)</code></pre>
+<span class="st">  </span><span class="kw">select</span>(basket)</code></pre>
 <p>Within the nine shot attempts, there are six streaks, which are separated by a “|” above. Their lengths are one, zero, two, zero, zero, zero (in order of occurrence).</p>
 <ol style="list-style-type: decimal">
 <li>What does a streak length of 1 mean, i.e. how many hits and misses are in a streak of 1? What about a streak length of 0?</li>

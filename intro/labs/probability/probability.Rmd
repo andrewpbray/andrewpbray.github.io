@@ -66,14 +66,15 @@ commented on how he appeared to show a hot hand. Let's load some necessary files
 that we will need for this lab.
 
 ```{r load-data}
-load(url("https://github.com/andrewpbray/andrewpbray.github.io/blob/master/intro/data/hot_hand.RData?raw=true")) 
+download.file("http://www.openintro.org/stat/data/kobe.RData", destfile = "kobe.RData")
+load("kobe.RData")
 ```
 
-You should see in your Environment tab that two new objects appear: `kobe_basket` 
+You should see in your Environment tab that two new objects appear: `kobe` 
 and `calc_streak`:
 
-- `kobe_basket`: a data frame of 133 observations and 6 variables, where every
-row records a shot taken by Kobe Bryant. The `shot` variable in this dataset
+- `kobe`: a data frame of 133 observations and 6 variables, where every
+row records a shot taken by Kobe Bryant. The `basket` variable in this dataset
 indicates whether the shot was a hit (`H`) or a miss (`M`).
 - `calc_streak`: a custom function that we will use to calculate streak lengths
 of shots (more on this later).
@@ -92,9 +93,9 @@ his nine shot attempts in the first quarter:
 To verify this use the following command:
 
 ```{r first9}
-kobe_basket %>%
+kobe %>%
   filter(game == 1, quarter == 1) %>%
-  select(shot)
+  select(basket)
 ```
 
 Within the nine shot attempts, there are six streaks, which are separated by a 
