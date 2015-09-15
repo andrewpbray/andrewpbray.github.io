@@ -107,7 +107,8 @@ occurrence).
 
 Counting streak lengths manually for all 133 shots would get tedious, so we'll
 use the custom function `calc_streak` to calculate them, and store the results
-in a data frame called `kobe_streak` as the `length` variable.
+in a data frame called `kobe_streak` as the `length` variable. Here we see an
+example of *nesting* one function inside another.
 
 ```{r calc-streak-kobe}
 kobe_streak <- data.frame(length = calc_streak(kobe$basket))
