@@ -110,8 +110,8 @@ use the custom function `calc_streak` to calculate them, and store the results
 in a data frame called `kobe_streak` as the `length` variable.
 
 ```{r calc-streak-kobe}
-kobe_streak <- kobe_basket %>%
-  select(shot) %>%
+kobe_streak <- kobe %>%
+  select(basket) %>%
   calc_streak()
 ```
 
