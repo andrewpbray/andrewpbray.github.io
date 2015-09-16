@@ -19,6 +19,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 #### Monday, Sep. 14
 - Review Quiz
 - Probability I
+- [Problem Set 3](problem-sets/ps3.pdf)
 
 #### Tuesday, Sep. 15
 - [Lab 3: Probability](labs/probability/probability.html)
