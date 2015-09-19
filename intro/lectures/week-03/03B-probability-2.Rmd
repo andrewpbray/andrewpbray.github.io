@@ -1,0 +1,77 @@
+---
+title: "Probability II"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=2)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+# Honest Liars
+
+## The managers
+
+First, we need two managers.
+
+```{r eval = FALSE}
+students <- c("Aidan", "Leah", "Mary", "Laura", "Rose", "Marc", "Jamie",
+              "Dashiel", "Sophie", "Julien", "Aliyyah", "Raphaela", 
+              "Mason", "Lauren", "Kathryn", "Hannah", "Karl", "Anna", 
+              "Sarah", "Sarah", "Gabe", "Delenn", "Sierra", "Renee")
+sample(students, size = 2)
+```
+
+```{r eval=FALSE, echo=FALSE}
+students <- c("Aiman", "Edwin", "Sara", "Alex", "Carolyn", "Zackary", 
+              "Katie", "Alexandra", "Grace", "Daniel", "Nikki", "Ryan",
+              "Haley", "Kate", "Malcolm", "John", "Ryan", "Jack", 
+              "Jiahui", "Gabriel")
+sample(students, size = 2)
+```
+
+
+## The employees
+
+You will need two random digits between 0-9.
+
+- Digit 1: Last digit of your Reed ID #
+- Digit 2: 5th digit of your phone num (excluding area code)
+
+Please write these on a sheet of paper.
+
+
+## The context
+
+<img src="../figs/employee-theft.png" alt="theft" width="750">
+
+
+## Honest or thief? {.build}
+
+It is thought that 10% of retail employees are thieves. To simulate this, using
+your first random digit:
+
+- If your digit = 0, write "thief" above your first digit.
+- If your digit = 1-9, write "honest" above your first digit.
+
+
+## Pass or fail? {.build}
+
+Your managers now administer a lie detector test that is 80% accurate;
+there is an 80% change that thieves will fail the test and an 80% chance that 
+honest folk will pass the test. Using your second random digit,
+
+- Thieves
+    - If your digit = 0 or 1, write "pass" above that digit.
+    - If your digit = 2 - 9, write "fail" above that digit.
+- Honest folk
+    - If your digit = 0 or 1, write "fail" above that digit.
+    - If your digit = 2 - 9, write "pass" above that digit.
+    
+    
+# Moment of truth

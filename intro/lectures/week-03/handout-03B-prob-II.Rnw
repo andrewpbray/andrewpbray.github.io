@@ -1,0 +1,102 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr,url,hyperref}
+\usepackage{enumerate}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    9in
+\textwidth     6in %6in
+
+\pagestyle{fancy}
+
+\lhead{\textsc{MATH 141}}
+\chead{\textsc{Practice}}
+\lfoot{}
+\cfoot{}
+%\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\newcommand{\ans}{\vspace{0.25in}}
+\newcommand{\R}{{\sf R}\xspace}
+\newcommand{\cmd}[1]{\texttt{#1}}
+
+\title{MATH 141:\\Intro to Probability and Statistics}
+\author{Prof. Bray}
+\date{Fall 2015}
+
+\rhead{\textsc{September 16, 2014}}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\paragraph{Lots of babies}
+
+Given that a family has four children, which of the following sequences of boys
+and girls is most likely?
+\begin{enumerate}[(a)]
+\item \texttt{bbbb}
+\vspace{7mm}
+\item \texttt{bgbg}
+\vspace{7mm}
+\item \texttt{gggg}
+\vspace{7mm}
+\end{enumerate}
+
+
+\paragraph{Education and Gender}
+
+The table below shows the distribution of education level attained by US 
+residents by gender based on data collected during the 2010 American Community 
+Survey.
+\begin{center}
+\begin{tabular}{l p{7cm} c c }
+&                                       & \multicolumn{2}{c}{\textit{Gender}} \\
+\cline{3-4}
+&                                                   & Male  & Female \\
+\cline{2-4}
+& Less than 9th grade                               & 0.07  & 0.13 \\
+& 9th to 12th grade, no diploma                     & 0.10  & 0.09 \\
+\textit{Highest}    & HS graduate (or equivalent)   & 0.30  & 0.20 \\
+\textit{education}  & Some college, no degree       & 0.22  & 0.24 \\ 
+\textit{attained}   & Associate's degree            & 0.06  & 0.08 \\
+& Bachelor's degree                                 & 0.16  & 0.17 \\
+& Graduate or professional degree                   & 0.09  & 0.09 \\
+\cline{2-4} 
+& Total                                             & 1.00  & 1.00
+\end{tabular}
+\end{center}
+\begin{enumerate}[a]
+\item What is the probability that a randomly chosen man has at least a 
+Bachelor's degree?
+\vspace{11mm}
+\item What is the probability that a randomly chosen woman has at least a 
+Bachelor's degree?
+\vspace{11mm}
+\item What is the probability that a man and a woman getting married both have at 
+least a Bachelor's degree? Note any assumptions you must make to answer this 
+question.
+\vspace{11mm}
+\item If you made an assumption in part~(c), do you think it was reasonable? If 
+you didn't make an assumption, double check your earlier answer and then return 
+to this part.
+\end{enumerate}
+
+\newpage
+
+\paragraph{HIV in Swaziland}
+
+Swaziland has the highest HIV prevalence in the world: 26\% of this country's 
+population is infected with HIV. The ELISA test is one of the first and 
+most accurate tests for HIV. For those who carry HIV, the ELISA test is 99\% 
+accurate. For those who do not carry HIV, the test is 93\% accurate. If an 
+individual from Swaziland has tested positive, what is the probability that he 
+carries HIV?
+
+
+\end{document}
