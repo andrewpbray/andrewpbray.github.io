@@ -1,0 +1,34 @@
+---
+title: "Foundations for Inference"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=2)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+# Quiz Review
+
+
+## Outside a women's college... {.build}
+
+**More than 60%** of women with breast cancer are under 60 years old. Get 
+screened today.
+
+$$P(\textrm{under 60 y.o.} \, | \, \textrm{breast cancer})$$
+
+vs.
+
+$$P(\textrm{breast cancer} \, | \, \textrm{under 60 y.o.})$$
+
+
+# Foundations for Inference
+
+
+
