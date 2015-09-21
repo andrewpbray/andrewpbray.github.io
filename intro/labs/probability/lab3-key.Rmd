@@ -16,8 +16,48 @@ library(ggplot2)
 **Load Hot Hand files:**
 
 ```{r}
-load(url("https://github.com/andrewpbray/andrewpbray.github.io/blob/master/intro/data/hot_hand.RData?raw=true")) 
+download.file("http://www.openintro.org/stat/data/kobe.RData", destfile = "kobe.RData")
+load("kobe.RData")
 ```
+
+#### Exercise 1
+
+A streak of length one means that there was one H then a M. A streak of length
+zero is a solitary M (directly following another M).
+
+#### Exercise 2
+
+```{r ex2}
+kobe_streak <- data.frame(length = calc_streak(kobe$basket))
+qplot(x = length, data = kobe_streak, geom = "histogram", binwidth = 1)
+summary(kobe_streak$length)
+```
+
+The distribution of Kobe's streak is right-skewed, with a max streak of 4. His
+median streak length was zero.
+
+
+#### Exercise 3
+
+```{r ex3}
+coin_outcomes <- c("heads", "tails")
+set.seed(302)
+sim_unfair_coin <- sample(coin_outcomes, size = 100, replace = TRUE, 
+                          prob = c(0.2, 0.8))
+table(sim_unfair_coin)
+```
+
+Heads came up 82 times.
+
+
+#### Exercise 4
+
+```{r ex4}
+shot_outcomes <- c("H", "M")
+sim_basket <- sample(shot_outcomes, size = 133, replace = TRUE,
+                     prob = c(0.45, 0.55))
+```
+
 
 * * *
 
@@ -25,11 +65,27 @@ load(url("https://github.com/andrewpbray/andrewpbray.github.io/blob/master/intro
 
 #### 1: 
 
+```{r oyo1}
+sim_streak <- data.frame(length = calc_streak(sim_basket))
+```
+
 
 #### 2: 
 
+```{r oyo2}
+qplot(x = length, data = sim_streak, geom = "histogram", binwidth = 1)
+summary(sim_streak$length)
+```
+
+The distribution of streak lengths for the simulated no-hot hands shooter is 
+right-skewed with a typical (median) length of 0 and a maximum of 6.
+
 
 #### 3: 
+
+I would expect the distribution to be similar in shape, spread, and center (e.g.
+still right-skewed), however there will be some variation since we have 
+conducted the simulation afresh and each shot makes a basket probabilistically.
 
 
 #### 4: 
