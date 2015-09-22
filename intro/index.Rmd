@@ -20,7 +20,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 #### Monday, Sep. 21
 - Review Quiz
 - Foundations for Inference
-- Problem Set 3 Solutions (check back soon)
+- [Problem Set 3 Solutions](problem-sets/ps3-key.pdf)
 - [Lab 3 Solutions](labs/probability/lab3-key.html)
 - **Reading for next time**: p. [61-81](http://nb.mit.edu/f/25158)
 - **PS4**: Chapter Two, numbers 1, 2, 3, 5, 7, 10, 13, 16, 18, 20, 29
