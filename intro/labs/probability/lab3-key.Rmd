@@ -1,6 +1,6 @@
 ---
 title: "Lab 3 - Probability"
-author: "Enter team name here"
+author: "Your name"
 output: 
   html_document: 
     highlight: pygments
@@ -34,7 +34,9 @@ summary(kobe_streak$length)
 ```
 
 The distribution of Kobe's streak is right-skewed, with a max streak of 4. His
-median streak length was zero.
+median streak length was zero. You may also have decided to use the "bar" 
+geometry instead of the "histogram" so that it is clearer which bar belows to 
+which number.
 
 
 #### Exercise 3
@@ -78,7 +80,8 @@ summary(sim_streak$length)
 ```
 
 The distribution of streak lengths for the simulated no-hot hands shooter is 
-right-skewed with a typical (median) length of 0 and a maximum of 6.
+right-skewed with a typical (median) length of 0 and a maximum of 6. Its spread
+is best measured by the IQR, which is 1.
 
 
 #### 3: 
@@ -90,5 +93,18 @@ conducted the simulation afresh and each shot makes a basket probabilistically.
 
 #### 4: 
 
+Results may vary, but on average: Kobe's streak length distribution is quite 
+similar to that of the independent shooter (If anything, the independent shooter
+has slightly longer streak lengths). This suggests that Kobe's performance
+is difficult to distinguish for a player with no-hand-hands going on. If he
+\emph{did} have hot hands, we would have expected to see longer streak lengths
+in Kobe's data, which we did not.
 
 #### 5:
+
+In the section of probability, we have discussed notions of independence and
+conditional probability. In chapter 1, we also discussed ways to describe 
+distributions both graphically and numerically. We hadn't seen simulation as a 
+technique yet, but now we're seeing it in Ch. 2. The comparison of data to
+a model (in this case the independent shooter model) is in spirit the same
+thing that we've discussed with our model of the shoebill bird.

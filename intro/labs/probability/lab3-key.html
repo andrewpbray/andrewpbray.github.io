@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Enter team name here" />
+<meta name="author" content="Your name" />
 
 
 <title>Lab 3 - Probability</title>
@@ -73,7 +73,7 @@ img {
 
 <div id="header">
 <h1 class="title">Lab 3 - Probability</h1>
-<h4 class="author"><em>Enter team name here</em></h4>
+<h4 class="author"><em>Your name</em></h4>
 </div>
 
 
@@ -92,7 +92,7 @@ img {
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(kobe_streak$length)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.0000  0.0000  0.0000  0.7632  1.0000  4.0000</code></pre>
-<p>The distribution of Kobe’s streak is right-skewed, with a max streak of 4. His median streak length was zero.</p>
+<p>The distribution of Kobe’s streak is right-skewed, with a max streak of 4. His median streak length was zero. You may also have decided to use the “bar” geometry instead of the “histogram” so that it is clearer which bar belows to which number.</p>
 </div>
 <div id="exercise-3" class="section level4">
 <h4>Exercise 3</h4>
@@ -126,7 +126,7 @@ sim_basket &lt;-<span class="st"> </span><span class="kw">sample</span>(shot_out
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(sim_streak$length)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.0000  0.0000  0.0000  0.7867  1.0000  6.0000</code></pre>
-<p>The distribution of streak lengths for the simulated no-hot hands shooter is right-skewed with a typical (median) length of 0 and a maximum of 6.</p>
+<p>The distribution of streak lengths for the simulated no-hot hands shooter is right-skewed with a typical (median) length of 0 and a maximum of 6. Its spread is best measured by the IQR, which is 1.</p>
 </div>
 <div id="section-2" class="section level4">
 <h4>3:</h4>
@@ -134,9 +134,11 @@ sim_basket &lt;-<span class="st"> </span><span class="kw">sample</span>(shot_out
 </div>
 <div id="section-3" class="section level4">
 <h4>4:</h4>
+<p>Results may vary, but on average: Kobe’s streak length distribution is quite similar to that of the independent shooter (If anything, the independent shooter has slightly longer streak lengths). This suggests that Kobe’s performance is difficult to distinguish for a player with no-hand-hands going on. If he  have hot hands, we would have expected to see longer streak lengths in Kobe’s data, which we did not.</p>
 </div>
 <div id="section-4" class="section level4">
 <h4>5:</h4>
+<p>In the section of probability, we have discussed notions of independence and conditional probability. In chapter 1, we also discussed ways to describe distributions both graphically and numerically. We hadn’t seen simulation as a technique yet, but now we’re seeing it in Ch. 2. The comparison of data to a model (in this case the independent shooter model) is in spirit the same thing that we’ve discussed with our model of the shoebill bird.</p>
 </div>
 </div>
 
