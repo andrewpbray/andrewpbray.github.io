@@ -1,0 +1,145 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr,url,hyperref}
+\usepackage{graphicx,xspace}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,through}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    9in
+\textwidth     6in %6in
+%\headheight    0in
+%\headsep       0in
+%\footskip      0.5in
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}{Observation}
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\newtheorem{conjecture}{Conjecture}
+
+\pagestyle{fancy}
+
+\lhead{\textsc{Prof. Bray}}
+\chead{\textsc{MTH 220: Lecture notes}}
+\lfoot{}
+\cfoot{}
+%\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\title{MTH 220:\\Intro to Probability and Statistics}
+\author{Prof. Bray}
+\date{Spring 2014}
+
+\newcommand{\ans}{\vspace{0.25in}}
+\newcommand{\R}{{\sf R}\xspace}
+\newcommand{\cmd}[1]{\texttt{#1}}
+
+\rhead{\textsc{February 7, 2014}}
+
+\begin{document}
+
+\paragraph{Agenda}
+\begin{enumerate}
+  \itemsep0em
+  \item Bivariate representations of data
+  \item Inference through Randomization
+  \item Reading for Monday: OI, Ch. 2.3
+  \item By 11 am on Monday: ARTIST Measures of Spread 
+\end{enumerate}
+
+\paragraph{Bivariate Graphics}
+
+ \begin{itemize}
+  \itemsep0em
+  \item Two quantitative variables: scatterplot [{\tt xyplot()}]
+  \item Quantitative response and a categorical explanatory variable:
+  \begin{itemize}
+    \item Side-by-side box plots [{\tt bwplot()}]
+    \item Multiple density plots [\cmd{densityplot()} with \cmd{groups} argument or \cmd{|}]
+  \end{itemize}
+  \item Two categorical variables: mosaic plot [\cmd{mosaicplot()}]: 
+\end{itemize}
+
+<<fig.width=10, fig.height=4, message=FALSE, eval=FALSE, fig.show='hold'>>=
+require(mosaic)
+xyplot(length ~ width, data=KidsFeet)
+bwplot(length ~ sex, data = KidsFeet)
+densityplot(~length, groups=sex, data = KidsFeet, auto.key=TRUE)
+densityplot(~length | sex, data = KidsFeet)
+mosaicplot(domhand ~ sex, data = KidsFeet)
+@
+
+\paragraph{Inference through Randomization}
+
+Researchers suspect that the attack on a plant by one organism induces resistance to subsequent attacks by a different organism.  Individually potted cotton plants were randomly allocated to two groups: one group that was infested by spider mites; and another group that was not.  After two weeks the mites were dutifully removed by a conscientious research assistant, and both groups were inoculated with Verticillium, a fungus that causes wilt disease.  
+
+The following table shows the number of plants that developed symptoms of wilt disease.
+
+<<eval=TRUE, message=FALSE>>=
+require(mosaic)
+mites = c(rep(1, 11), rep(0, 17), rep(1, 15), rep(0, 4))
+wilt = c(rep(1, 28), rep(0, 19))
+ds = data.frame(mites, wilt)
+tally(~ wilt + mites, data=ds)
+@
+
+Big question: Is there a relationship between infestation and wilt disease? 
+
+\newpage
+
+
+\paragraph{Activity: Simulation Design}
+
+Your objective is to answer the big question using a simulation of your own design.  You may want to refer back to the yawning activity that we did on the first day of class.  You're welcome to use the markers and cards in whatever manner is most useful.  Outline your procedure in detail below, and be sure to touch on the following questions.
+
+
+\begin{itemize}
+  \item What does each card represent?
+  \item Upon what assumptions does your simulation rely?
+  \item What role does randomization play in the simulation?
+  \item What statistic will you be recording from each simulation?
+\end{itemize}
+
+\newpage
+
+\paragraph{Results}
+Record your simulated statistics below, first as a table, then as a dot plot.
+
+\vspace{100mm}
+
+\begin{enumerate}
+  \itemsep0.5in
+  \item Describe the center, shape, and spread of this randomization distribution.
+  \item In roughly what range would you expect to generate statistics under this model?  What range would be very unusual?
+  \item Where does the observed statistic fall in this distribution?  What conclusions do you draw concerning the association of mites and wilt disease?
+\end{enumerate}
+
+
+\newpage
+% 
+% \subsection*{Instructor's Notes}
+% \begin{itemize}
+% \item Graphics bit will have to be quick to leave plenty of room for activity.
+% \item To segue from graphics into inference, discuss the mosaic plot - how different is different enough?
+% \item Assign groups of three students.
+% \item Have them get instructor approval of their design before they start simulating.
+% \item Consider having them work on different statistics (either assign or have them choose).
+% \item Select two groups with different statistics to sketch their randomization distribution and do a quick presentation in front of the class and discuss.
+% \end{itemize}
+
+
+\end{document}
