@@ -1,0 +1,50 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{fancyhdr,url,hyperref}
+\usepackage{enumerate}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    9in
+\textwidth     6in %6in
+
+\pagestyle{fancy}
+
+\lhead{\textsc{MATH 141}}
+\chead{\textsc{Practice}}
+\lfoot{}
+\cfoot{}
+%\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\newcommand{\ans}{\vspace{0.25in}}
+\newcommand{\R}{{\sf R}\xspace}
+\newcommand{\cmd}[1]{\texttt{#1}}
+
+\title{MATH 141:\\Intro to Probability and Statistics}
+\author{Prof. Bray}
+\date{Fall 2015}
+
+\rhead{\textsc{September 23, 2014}}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\textbf{Is Yawning Contagious?} Recall the randomized simulation that we performed in the last class. Our goal was to assess the claim that being in the seeded group was associated, \emph{to a statistically significant} degree, with an increase in the likelihood that a study participant would yawn.
+
+\begin{enumerate}
+  \itemsep1in
+  \item What was the \emph{null hypothesis} for your simulation?
+  \item What was the \emph{test statistic}?
+  \item Where did the test statistic lie in the \emph{null distribution}? 
+  \item Did this evidence cause you to \emph{reject} or \emph{fail to reject} the null hypothesis?
+  \item Write \emph{one} sentence to President Kroger summarizing what you've learned about yawning being contagious?
+  \ans
+\end{enumerate}
+
+\end{document}
