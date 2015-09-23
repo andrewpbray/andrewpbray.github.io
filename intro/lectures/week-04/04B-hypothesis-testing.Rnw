@@ -1,0 +1,109 @@
+\documentclass[10pt]{article}
+
+\input{../../brayTeachingStyle}
+
+\rhead{\textsc{February 10, 2014}}
+
+\begin{document}
+
+\paragraph{Agenda}
+\begin{enumerate}
+  \itemsep0em
+  \item Hypothesis Testing
+  \item Randomization test recap
+  \item ARTIST Data Representation and Measures of Center
+  \item HW \#3 TBA today (see Moodle)
+\end{enumerate}
+
+\paragraph{Randomization test recap}
+
+Recall the randomized simulation that we performed in the last class. Our goal was to assess the likelihood that exposure to mites was associated, \emph{to a statistically significant} degree, with a decrease in wilt disease after a exposure to Verticillium, a fungus that causes wilt disease. 
+
+\begin{enumerate}
+  \itemsep1in
+  \item What was the \emph{null hypothesis} for your simulation?
+  \item What was the \emph{test statistic}?
+  \item Where did the test statistic lie in the \emph{null distribution}? 
+  \item Did this evidence cause you to \emph{reject} or \emph{fail to reject} the null hypothesis?
+  \item Write \emph{one} sentence to President McCarthy summarizing what you've learned about mites and wilt disease.  
+  \ans
+\end{enumerate}
+
+<<eval=TRUE, message=FALSE, warning=FALSE>>=
+require(mosaic)
+data(Mites)
+tally(~ treatment + outcome, data=Mites)
+obs_diff_p <- 17/21 - 11/26
+@
+
+<<eval=TRUE, fig.height=4, fig.width=10>>=
+diffp <- rep(NA, 10000)
+for (i in 1:10000) {
+  tab <- tally(~ shuffle(treatment) + outcome, data=Mites)
+  tab2 <- tab/rowSums(tab)
+  diffp[i] <- diff(tab2[1:2, 2])
+}
+
+hist(diffp)
+quantile(diffp, c(0.025, 0.975))
+mean(diffp > obs_diff_p)
+@
+
+\paragraph{ARTIST Review}
+
+\newpage
+
+% \subsection*{Instructor's Notes}
+% 
+% 
+% \paragraph{Tests of Significance}
+% 
+% \begin{itemize}
+%   \item Important concepts in hypothesis testing:
+%   \begin{itemize}
+%     \item $H_0$: null hypothesis - the state of the world that you assume is true. Typically, this is a world of ``no effect," in which probability distributions are easy to calculate.
+%     \item $H_A$: alternative hypothesis - a state of the world different from the null. Typically, this is a world in which the effect you are testing is real
+%     \item test statistic: the estimate that you are testing. Typically, this is a something that you have computed from data and are trying to understand in the context of the null hypothesis.
+%     \item $p$-value: probability of observing something as strange or stranger as what you observed, \emph{under the assumption that the null hypothesis is true}
+%     \item $\alpha$-level: a threshold beyond which you begin to doubt the null hypothesis. This is a line in the sand that you draw to purposefully gauge your dubiousness.
+%   \end{itemize}
+%   \item Connection between significance tests and confidence intervals: 
+%   \begin{center}
+%     95\% CI for a population parameter does not include the null value\\
+%     $\Updownarrow$\\
+%     $p$-value associated with the test statistic is less than $0.05$
+%   \end{center}
+%   \item Two possible outcomes: 
+%   \begin{itemize}
+%     \item Reject $H_0$ at $\alpha$-significance level: observations are so unlikely under the null hypothesis, that it is likely false
+%     \item Fail to reject $H_0$ at $\alpha$-significance level: observations are reasonably likely under null hypothesis, so can't rule out possibility that it is true
+%   \end{itemize}
+%   \item Important: we never confirm the null hypothesis -- we only fail to reject!
+%   \item Always report $p$-values and a confidence interval
+%   \item One-sided vs. two-sided tests: one-sided test are almost never used in practice
+% \end{itemize}
+% 
+% \paragraph{Testing Outcomes}
+% 
+% For a defendant on trial:
+% \begin{itemize}
+%   \item $H_0$: innocent until proven guilty
+%   \item Type I error: $\Pr(\text{reject} | H_0)$ - convicting an innocent person
+%   \item Type II error: $\Pr(\text{fail to reject} | H_0^c) = 1- Power$ - letting a guilty person go free
+% \end{itemize}
+% 
+% \begin{table}[b]
+% \centering
+% \begin{tabular}{|c|c|c|}
+%   \hline
+%   Decision \textbackslash Truth & $H_0$ is true & $H_0$ is false \\
+%   \hline
+%   Reject & \hspace{1.5in} & \hspace{1.5in} \\
+%   \hline
+%   Fail to Reject &  & \\
+%   \hline
+% \end{tabular}
+% \end{table}
+
+
+\end{document}

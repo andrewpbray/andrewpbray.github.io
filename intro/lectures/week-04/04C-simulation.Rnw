@@ -1,0 +1,79 @@
+\documentclass[10pt]{article}
+
+\input{../../brayTeachingStyle}
+
+\rhead{\textsc{February 12, 2014}}
+
+\begin{document}
+
+\paragraph{Agenda}
+\begin{enumerate}
+  \itemsep0em
+  \item Artist Review
+  \item Pick a Card
+  \item Simulation group 
+  \item Why .05? (http://www.openintro.org/why05)
+\end{enumerate}
+
+\paragraph{NB review}
+
+Update from David Diez, author of \textit{OpenIntro}: 
+\begin{quotation}
+  it's worth noting that we're also seeing an influx of very helpful comments and suggestions from students through the textbook's feedback form at \url{http://openintro.org/2014}, more than we've had with any other textbook.
+  \end{quotation}
+
+\paragraph{ARTIST Review}
+
+\paragraph{Millenials and Marriage}
+In the national debate on same-sex marriage, it is commonly stated that half of all americans favor same-sex marriage.  In 2014, Pew research conducted a poll of millenials (americans born after 1980) and found that 66\% answered yes when asked: ``Do you favor same-sex marriage?''  The poll was a random sample of 75 millenials.  Does this poll provide convincing evidence that the opinion of millenials is difference from those of americans at large?
+
+\begin{enumerate}
+  \itemsep1in
+  \item Explain how you could use cards, a coin, or a die to simulate the above statement.
+  \item Write out the \emph{null hypothesis} and the \emph{alternative hypothesis} that are being evaluated, using proper notation.
+  \item What was the value of the observed \emph{test statistic}?
+  \item In the null distribution below, label the axes, indicate with a vertical line the location of the observed test statistic, and shade the area under the curve corresponding to the p-value.
+  
+<<echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.height=7,>>=
+require(mosaic)
+set.seed(53)
+p_hats <- do(10000) * rflip(n = 75)
+tab <- table(p_hats$prop)
+bar_labs <- as.character(round(as.numeric(names(tab)), 2))
+barplot(tab, col = "white", xlab = "", ylab = "", xaxt = "n", names.arg = bar_labs, xlim = c(0, 37))
+axis(1, at = seq(1, 37, length.out = 5), labels = seq(.3, .7, length.out = 5))
+@
+
+  \item Using $\alpha = .05$, what is your decision regarding the viability of the null hypothesis?
+  \item Write \emph{one} sentence to President McCarthy summarizing what you've learned about the millenials and opinions on same-sex marriage.  
+  \ans
+\end{enumerate}
+
+
+% 
+% \newpage
+% 
+% \subsection*{Instructor's Notes}
+% 
+% <<>>=
+% pdata(0.66, vals = ~prop, data = p_hats, lower.tail = FALSE) * 2
+% @
+% 
+% \paragraph{Card Activity}
+% 
+% \noindent \emph{Learning goals:} gain intuition on establishing and discarding hypotheses based on data, have students generate definition of p-value, insight into why alpha = .05 is used.\\
+% 
+% \noindent \emph{Materials:} Two decks of cards, a prize of some sort.\\
+% 
+% Announce that the class is going to play a simple game where every one will have the chance to win the prize. The rules are announced as follows: the instructor will select one student randomly to be the first player.  They'll pick a card from the shuffled deck.  If they pick a red card, they win the prize.  The game keeps going until someone wins the prize.
+% 
+% Before the class comes in, create a deck of cards that is all black.  Be sure not to show the class while shuffling and fanning the cards for students to choose.  As student after student chooses a black card, you'll start to hear grumbles about how unfair the game is.  They start to get more vocal and articulate after 4 or five cards.
+% 
+% Once they insist the game stop, you can walk through what happened by writing ``null hypothesis: fair deck; P(red) = 0.5", with the appropriate alternative hypothesis.  In asking why they threw out the null, you'll be able to get them to define a p-value, which you can define formally on the board.  Then you can put up the following probabilities and discuss how .05 is about where they threw out the null.
+% 
+% <<>>=
+% dbinom(0,c(1:5),.5)
+% @
+% 
+
+\end{document}
