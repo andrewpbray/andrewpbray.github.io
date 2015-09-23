@@ -215,7 +215,7 @@ warming?
 \item P(earth is warming or liberal Democrat) = \\
 = P(earth is warming) + P(liberal Democrat) - P(earth is warming and liberal Democrat) \\
 = 0.60 + 0.20 - 0.18 = 0.62 \\
-\item P(earth is warming | liberal Democrat) = $\frac{.18}{.20} = .33$
+\item P(earth is warming | liberal Democrat) = $\frac{.18}{.20} = .9$
 \item P(earth is warming | conservative Republican) = $\frac{.11}{.33} = .33$
 \item No, the two appear to be dependent.  The percentages of conservative Republicans and liberal
 Democrats who believe that there is solid evidence that the average temperature on earth has
