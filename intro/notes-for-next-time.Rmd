@@ -1,0 +1,14 @@
+---
+title: "Notes for Next Time"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Textbook
+
+- **Definition of p-value** (ch. 2): What's this business about "favorable to 
+the null hypothesis?" For decisions, can we move to "data is consistent/inconsistent
+with the model"?
