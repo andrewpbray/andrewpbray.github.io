@@ -40,11 +40,10 @@
 \begin{enumerate}
   \itemsep1in
   \item What was the \emph{null hypothesis} for your simulation?
+  \item What was the \emph{alternative hypothesis} for your simulation?
   \item What was the \emph{test statistic}?
-  \item Where did the test statistic lie in the \emph{null distribution}? 
-  \item Did this evidence cause you to \emph{reject} or \emph{fail to reject} the null hypothesis?
-  \item Write \emph{one} sentence to President Kroger summarizing what you've learned about yawning being contagious?
-  \ans
+  \item Where did the observed test statistic lie in the \emph{null distribution}? 
+  \item Was this data consistent or inconsistent the null hypothesis? That is, do you \emph{reject} or \emph{fail to reject} the null hypothesis?
 \end{enumerate}
 
 \end{document}
