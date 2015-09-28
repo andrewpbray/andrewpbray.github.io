@@ -19,7 +19,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 #### Monday, Sep. 28
 - The Normal Distribution
-- [Problem Set 4 Solutions](problem-sets/ps4-key.pdf)
+- [Problem Set 4 Solutions](problem-sets/ps4_key.pdf)
 - **Reading for next time**: p. 102-107
 - **PS5**: Chapter Two, TBA
 
