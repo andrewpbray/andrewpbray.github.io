@@ -15,6 +15,25 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 * * *
 
+### Week Five
+
+#### Monday, Sep. 28
+- The Normal Distribution
+- [Problem Set 4 Solutions](problem-sets/ps4-key.pdf)
+- **Reading for next time**: p. 102-107
+- **PS5**: Chapter Two, TBA
+
+#### Tuesday, Sep. 29
+- **Lab 5**
+
+#### Wednesday, Sep. 30
+- Confidence Intervals
+
+#### Friday Oct. 2
+- Midterm I: Ch. 1, 2, and probability appendix
+
+* * *
+
 ### Week Four
 
 #### Monday, Sep. 21
@@ -23,18 +42,19 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - [Problem Set 3 Solutions](problem-sets/ps3-key.pdf)
 - [Lab 3 Solutions](labs/probability/lab3-key.html)
 - **Reading for next time**: p. [61-81](http://nb.mit.edu/f/25158)
-- **PS4**: Chapter Two, numbers 1, 2, 3, 5, 7, 10, 13, 16, 18, 20, 29
+- **PS4**: Chapter Two, numbers 1, 2, 3, 5, 7, 10, [13, 16, 18, 20, 29]
 
 #### Tuesday, Sep. 22
 - **No Lab**
-
 
 #### Wednesday, Sep. 23
 - Hypothesis Tests
 - Data Analysis in R workshop this afternoon 4-5 pm in ETC 211.
 
 #### Friday Sep. 25
-- The Normal Model
+- Hypothesis Tests II: Simulation and the Binomial
+- **Reading for next time**: p. [81-102](http://nb.mit.edu/f/25270)
+
 
 
 * * *
