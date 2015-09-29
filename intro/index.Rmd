@@ -23,7 +23,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - **PS5**: Chapter Two, 13, 16, 18, 20, 29, 37, 38, 39, 40
 
 #### Tuesday, Sep. 29
-- **Lab 5**
+- [Lab 5: The Normal Distribution](labs/05-normal-dist/normal_distribution.html)
 
 #### Wednesday, Sep. 30
 - Confidence Intervals
