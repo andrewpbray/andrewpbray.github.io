@@ -1,0 +1,26 @@
+\documentclass[10pt]{article}
+
+\input{../brayTeachingStyle}
+
+\begin{document}
+
+\paragraph{Speeding on the I-5}
+The distribution of passenger vehicle speeds traveling on the Interstate 5 Freeway (I-5) in California is nearly normal with a mean of 72.6 miles/hour and a standard deviation of 4.78 miles/hour.
+\begin{enumerate}
+  \itemsep1in
+  \item What percent of passenger vehicles travel slower than 80 miles/hour?
+  \item What percent of passenger vehicles travel between 60 and 80 miles/hour?
+  \item How fast do the fastest 5\% of passenger vehicles travel?
+  \item The speed limit on this stretch of the I-5 is 70 miles/hour. Approximate what percentage of the passenger vehicles travel above the speed limit on this stretch of the I-5.
+  \vspace{1in}
+\end{enumerate}
+
+\paragraph{Find the SD}
+Find the standard deviation of the distribution in the following situations.
+\begin{enumerate}
+  \itemsep1in
+  \item MENSA is an organization whose members have IQs in the top 2\% of the population. IQs are normally distributed with mean 100, and the minimum IQ score required for admission to MENSA is 132.
+  \item Cholesterol levels for women aged 20 to 34 follow an approximately normal distribution with mean 185 milligrams per deciliter (mg/dl). Women with cholesterol levels above 220 mg/dl are considered to have high cholesterol and about 18.5\% of women fall into this category.
+\end{enumerate}
+
+\end{document}
