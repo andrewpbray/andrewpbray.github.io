@@ -14,181 +14,58 @@ library(ggplot2)
 ```
 
 
-# Simulation
-
-
-## {.flexbox .vcenter}
-
-Randomization
-
-vs. 
-
-Simulation
-
-
-## The procedure {.build}
-
-```{r prelim, echo=FALSE, message=FALSE}
-library(ggplot2)
-set.seed(53)
-```
-
-1. Let a coin flip represent selecting a random American. Heads = in favor.
-2. Flip a coin 75 times and compute the proportion of heads.
-3. Repeat step 2 many many times, logging the sample proportions
-
-```{r sim, message=FALSE}
-library(mosaic)
-p_hats <- do(10000) * rflip(n = 75)
-head(p_hats)
-```
-
-
-## The Hypotheses {.build}
-
-Let $p$ be the true proportion of Americans who favor same-sex marriage.
-
-$$H_0: p = 0.5$$
-
-$$H_A: p \ne 0.5$$
-
-
-## The Data
-
-The *observed test statistic* was
-
-$$\hat{p} = 0.66$$
-
-
-## The Null Distribution
-
-```{r dist}
-qplot(x = prop, data = p_hats, geom = "bar", 
-      binwidth = .0135, fill = I("white"), col = I("darkgreen"))
-```
-
-
-## The Null Distribution
-
-```{r dist2, echo = FALSE, message=FALSE}
-library(dplyr)
-p_hats <- 
-  p_hats %>%
-  mutate(in_tail = ifelse(prop > .66 | prop < (1 - .66),
-                          TRUE, FALSE))
-qplot(x = prop, data = p_hats, geom = "bar", fill = in_tail, 
-      binwidth = .0135, fill = I("white"), col = I("darkgreen")) +
-  theme(legend.position = "none") +
-  scale_fill_manual(values = c("white", "darkgreen")) +
-  geom_vline(xintercept = .66, col = "goldenrod")
-```
-
-```{r, eval=FALSE, echo=FALSE}
-mean(p_hats$in_tail)
-```
-
-$$p.val \approx 0.006$$
-
-
-## The decision {.build}
-
-$$ \alpha = .05; \quad p.val \approx .006 $$
-
-Since
-
-$$ p.val < \alpha$$
-
-we find the data is inconsistent with our model, aka, we reject the null hypothesis.
-
-
-#
-
-
-## Ways to find a Null Distribution {.flexbox .vcenter .build}
-
-1. Randomization
-2. Simulation
-3. Probability Theory
-
-
-## Probability Theory {.build}
-
-Let $X$ be the total number of people in a sample of size 75 that favor same-sex
-marriage if the true population proportion that favor is 0.5.
-
-$x_{obs} = 75 \times 0.66 = 50$
-
-What is $P(X > x_{obs})$?
-
-
-## Let's simplify
+## Small n {.build}
 
 Let $X$ be the total number of people in a sample of size 3 that favor same-sex
 marriage if the true population proportion that favor is 0.5.
 
-<center>
-<img src="../figs/binom1.png" alt="binom1" height = 370>
-</center>
+$$ X \sim Bin(n = 3, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p))}$$
 
-
-## Let's simplify
-
-Let $X$ be the total number of people in a sample of size 3 that favor same-sex
-marriage if the true population proportion that favor is 0.5.
-
-<center>
-<img src="../figs/binom2.png" alt="binom2" height = 370>
-</center>
-
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
 x1  <- 0:3
 df <- data.frame(x = x1, y = dbinom(x1, 3, 0.5))
-qplot(x, y, data = df) + geom_bar(stat = "identity", col = "darkgreen", fill = "white")
+qplot(x, y, data = df, ylim = c(0, .6), xlim = c(-1, 4)) + 
+  geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
+  stat_function(fun = dnorm, args = list(mean = 1.5, sd = sqrt(3/4)), 
+                col = "goldenrod", lwd = 1.2)
 ```
 
 
-## Let's simplify
-
-Let $X$ be the total number of people in a sample of size 3 that favor same-sex
-marriage if the true population proportion that favor is 0.5.
-
-<center>
-<img src="../figs/binom3.png" alt="binom3" height = 370>
-</center>
-
-
-## Binomial distribution {.build}
-
-The sum of independent trials that succeed with probability $p$ will be 
-distributed as a binomial random variable, X;
-
-$$ X \sim Bin(n, p) $$
-
-$$ P(X = x) = \binom{n}{x}p^x(1-p)^{n-x} $$
-
-
-## Binomial Distribution {.build}
+## Large n {.build}
 
 Let $X$ be the total number of people in a sample of size 75 that favor same-sex
 marriage if the true population proportion that favor is 0.5.
 
-$x_{obs} = 75 \times 0.66 = 50$
+$$ X \sim Binom(n = 75, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p)})$$
 
-What is $P(X > x_{obs})$?
-
-$$ X \sim Binom(n = 74, p = .5) $$
-
-
-## The Null Distribution
-
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
 x1  <- 0:75
 df <- data.frame(x = x1, y = dbinom(x1, 75, 0.5))
-qplot(x, y, data = df) + geom_bar(stat = "identity", col = "darkgreen", fill = "white")
+qplot(x, y, data = df) + 
+  geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
+  stat_function(fun = dnorm, args = list(mean = 75/2, sd = sqrt(74/4)), 
+                col = "goldenrod", lwd = 1.2)
 #(1 - pbinom(50, 75, .5)) * 2
 ```
 
-$$p.val = 0.002$$
+
+## How large is large enough? {.build}
+
+Rule of thumb:
+
+$$ np ≥ 10 \\
+\textrm{and} \\
+n(1 − p) ≥ 10 $$
+
+The number of expected successes and failures are each greater than 10.
+
+
+## Why use the Normal at all? {.build}
+
+- Simulation and exact Binomial can be computationally expensive.
+- Normal is sometimes more generally applicable.
+- Normal is fast.
+
 
 
 
