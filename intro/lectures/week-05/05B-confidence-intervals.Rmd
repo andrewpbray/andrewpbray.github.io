@@ -1,5 +1,5 @@
 ---
-title: "The Normal Distribution"
+title: "Hypothesis Tests, rev."
 output:
   ioslides_presentation:
     incremental: true
@@ -14,58 +14,106 @@ library(ggplot2)
 ```
 
 
-## Small n {.build}
+## What is it good for? {.build}
 
-Let $X$ be the total number of people in a sample of size 3 that favor same-sex
-marriage if the true population proportion that favor is 0.5.
+Hypothesis test have been shown to be valuable contributors to science (p < .05)
+but are sometimes abused (p < .05).
 
-$$ X \sim Bin(n = 3, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p))}$$
+Used to assess the degree to which data is consistent with a particular model.
 
-```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
-x1  <- 0:3
-df <- data.frame(x = x1, y = dbinom(x1, 3, 0.5))
-qplot(x, y, data = df, ylim = c(0, .6), xlim = c(-1, 4)) + 
-  geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
-  stat_function(fun = dnorm, args = list(mean = 1.5, sd = sqrt(3/4)), 
-                col = "goldenrod", lwd = 1.2)
-```
+The most widely used tool in statistical inference.
 
 
-## Large n {.build}
+## Step 1 {.build}
 
-Let $X$ be the total number of people in a sample of size 75 that favor same-sex
-marriage if the true population proportion that favor is 0.5.
+Lay out your model(s).
 
-$$ X \sim Binom(n = 75, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p)})$$
+**$H_0$**: null model, business as usual  
+**$H_A$**: alternative model, business not as usual
 
-```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
+- Hypotheses are statments about the TRUE STATE of the world and should involve
+*parameters*, not *statistics*.
+- Hypotheses should suggest a *test statistic* that has some bearing on the claim.
+- Always use two-tailed tests.
+
+
+## Step 2 {.build}
+
+Contruct the appropriate null distribution.
+
+```{r, echo=FALSE, eval=TRUE, fig.height=2.5}
 x1  <- 0:75
 df <- data.frame(x = x1, y = dbinom(x1, 75, 0.5))
 qplot(x, y, data = df) + 
   geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
   stat_function(fun = dnorm, args = list(mean = 75/2, sd = sqrt(74/4)), 
                 col = "goldenrod", lwd = 1.2)
-#(1 - pbinom(50, 75, .5)) * 2
 ```
 
-
-## How large is large enough? {.build}
-
-Rule of thumb:
-
-$$ np ≥ 10 \\
-\textrm{and} \\
-n(1 − p) ≥ 10 $$
-
-The number of expected successes and failures are each greater than 10.
+1. Randomization
+2. Simulation
+3. Exact Probability Theory
+4. Normal Approximation
 
 
-## Why use the Normal at all? {.build}
+## Step 3 {.build}
 
-- Simulation and exact Binomial can be computationally expensive.
-- Normal is sometimes more generally applicable.
-- Normal is fast.
+Calculate a measure of consistency between the observed test statistic (the data)
+and the null distribution (i.e., a p-value).
+
+- If your observed test stat is in the tails > low p-val > data is inconsistent
+with null hypothesis > "reject null hypothesis".
+- If your observed test stat is in the body > high p-val > data is consistent with
+the null hypothesis > "fail to reject the null hypothesis".
+
+What can go wrong?
 
 
+# Confidence Intervals
 
 
+## {.flexbox .vcenter .build}
+
+**Confidence Interval**: a plausible range of values for a population parameter.
+
+
+##
+<center>
+<img src="../figs/pew-headline.png" alt="pew1" height = 370>
+</center>
+
+
+##
+<center>
+<img src="../figs/pew-table.png" alt="pew2" height = 370>
+</center>
+
+
+## Construction of a CI {.build}
+
+If the distribution of the point estimate can be well approximated by the Normal:
+
+$$ \textrm{point estimate} \pm \textrm{margin of error} $$
+$$ \textrm{point estimate} \pm 1.96 \times SE $$
+
+- *point estimate*: $\hat{p}$, $\bar{x}$
+- *standard error (SE)*: standard deviation of the sampling distribution.
+
+
+## Question
+
+"The proportion of Americans who want to maintain planned parenthood is estimated
+to be between 57.1% and 62.9% with 95% confidence." Which of the following interpretations
+are reasonable?
+
+1. The interval [.571, .629] provides a plausible range for $\hat{p}$
+2. We are certain that the population proportion lies within this interval.
+3. If we took many more samples of the same size and computed many $\hat{p}$s and
+many CIs, around 95% of those CIs would contain the population proportion.
+
+
+## {.flexbox .vcenter}
+
+<center>
+<img src="../figs/ci.png" alt="ci" height = 370>
+</center>
