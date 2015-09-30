@@ -1,0 +1,71 @@
+---
+title: "The Normal Distribution"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=2)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+
+## Small n {.build}
+
+Let $X$ be the total number of people in a sample of size 3 that favor same-sex
+marriage if the true population proportion that favor is 0.5.
+
+$$ X \sim Bin(n = 3, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p))}$$
+
+```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
+x1  <- 0:3
+df <- data.frame(x = x1, y = dbinom(x1, 3, 0.5))
+qplot(x, y, data = df, ylim = c(0, .6), xlim = c(-1, 4)) + 
+  geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
+  stat_function(fun = dnorm, args = list(mean = 1.5, sd = sqrt(3/4)), 
+                col = "goldenrod", lwd = 1.2)
+```
+
+
+## Large n {.build}
+
+Let $X$ be the total number of people in a sample of size 75 that favor same-sex
+marriage if the true population proportion that favor is 0.5.
+
+$$ X \sim Binom(n = 75, p = .5) \, \textrm{vs} \, X \sim N(\mu = np, \sigma = \sqrt{np(1 - p)})$$
+
+```{r, echo=FALSE, eval=TRUE, fig.height=3.7}
+x1  <- 0:75
+df <- data.frame(x = x1, y = dbinom(x1, 75, 0.5))
+qplot(x, y, data = df) + 
+  geom_bar(stat = "identity", col = "darkgreen", fill = "white") +
+  stat_function(fun = dnorm, args = list(mean = 75/2, sd = sqrt(74/4)), 
+                col = "goldenrod", lwd = 1.2)
+#(1 - pbinom(50, 75, .5)) * 2
+```
+
+
+## How large is large enough? {.build}
+
+Rule of thumb:
+
+$$ np ≥ 10 \\
+\textrm{and} \\
+n(1 − p) ≥ 10 $$
+
+The number of expected successes and failures are each greater than 10.
+
+
+## Why use the Normal at all? {.build}
+
+- Simulation and exact Binomial can be computationally expensive.
+- Normal is sometimes more generally applicable.
+- Normal is fast.
+
+
+
+
