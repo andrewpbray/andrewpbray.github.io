@@ -12,3 +12,17 @@ knitr::opts_chunk$set(echo = TRUE)
 - **Definition of p-value** (ch. 2): What's this business about "favorable to 
 the null hypothesis?" For decisions, can we move to "data is consistent/inconsistent
 with the model"?
+
+- **Consider removing 2.3.6**: Isn't it simpler to say, "always use two-sided
+tests?" If we spend time on how not to lie with statistics, I'd opt for a discussion
+of multiple comparisons.
+
+
+# General
+
+- Spend more time on data visualization before continuing on to probability/inference.
+Consider moving around sampling/design a bit.
+
+- Don't forget to use the Salish Sea Feet example for hypothesis testing.
+
+- Gather examples from previous senior theses
