@@ -266,7 +266,7 @@ sdata <- fdims %>%
   select(sdata)
 p7 <- ggplot(sdata, aes(x = sdata)) +
   geom_histogram() + 
-  ggtitle("Histogram for general age")
+  ggtitle("Histogram for female che.de")
 p2 <- qplot(sample = sdata, data = sdata, stat = "qq") +
   ggtitle("Normal QQ plot A")
 
