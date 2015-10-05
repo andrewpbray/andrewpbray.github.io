@@ -14,6 +14,25 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 * * *
 
+### Week Six
+
+#### Monday, Oct. 5
+- Midterm I Review
+- Inference for Categorical Data
+- **Reading for next time**: p. [128-133]
+- **PS6**: Chapter Three, TBA
+
+#### Tuesday, Oct. 6
+- [Lab 6]()
+
+#### Wednesday, Oct 7
+- Inference for Cat. Data 2
+
+#### Friday Oct. 9
+- The Chi-squared
+
+* * *
+
 ### Week Five
 
 #### Monday, Sep. 28
