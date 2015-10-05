@@ -19,6 +19,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 #### Monday, Oct. 5
 - Midterm I Review
 - Inference for Categorical Data
+- [Lab 5 Solutions](labs/05-normal-dist/normal_distribution_key.html)
 - **Reading for next time**: p. [128-133]
 - **PS6**: Chapter Three, TBA
 
