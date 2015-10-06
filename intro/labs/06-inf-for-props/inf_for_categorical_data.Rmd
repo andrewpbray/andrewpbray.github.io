@@ -77,10 +77,10 @@ calculations made from the sample of 51,927 people. What we'd like, though, is
 insight into the population *parameters*. You answer the question, "What 
 proportion of people in your sample reported being atheists?" with a 
 statistic; while the question "What proportion of people on earth would report 
-being atheists" is answered with an estimate of the parameter.
+being atheists?" is answered with an estimate of the parameter.
 
-The inferential tools for estimating population proportion are analogous to 
-those used for means in the last chapter: the confidence interval and the 
+The inferential tools for estimating population proportion are the two that we've
+become familiar with by now: the confidence interval and the 
 hypothesis test.
 
 5.  Write out the conditions for inference to construct a 95% confidence
@@ -140,7 +140,8 @@ against each other to reveal their relationship.
 n <- 1000
 p <- seq(0, 1, 0.01)
 ME <- 1.96 * sqrt(p * (1 - p)/n)
-plot(ME ~ p, ylab = "Margin of Error", xlab = "Population Proportion")
+qplot(x = p, y = ME, geom = "line",
+      ylab = "Margin of Error", xlab = "Population Proportion")
 ```
 
 8.  Describe the relationship between `p` and `ME`.
@@ -148,7 +149,7 @@ plot(ME ~ p, ylab = "Margin of Error", xlab = "Population Proportion")
 ## Success-failure condition
 
 The textbook emphasizes that you must always check conditions before making 
-inference. For inference on proportions, the sample proportion can be assumed 
+inferences. For inference on proportions, the sample proportion can be assumed 
 to be nearly normal if it is based upon a random sample of independent 
 observations and if both $np \geq 10$ and $n(1 - p) \geq 10$. This rule of 
 thumb is easy enough to follow, but it makes one wonder: what's so special 
@@ -176,7 +177,7 @@ for(i in 1:5000){
   p_hats[i] <- sum(samp == "atheist")/n
 }
 
-hist(p_hats, main = "p = 0.1, n = 1040", xlim = c(0, 0.18))
+qplot(x = p_hats, geom = "histogram", main = "p = 0.1, n = 1040", xlim = c(0, 0.18))
 ```
 
 These commands build up the sampling distribution of $\hat{p}$ using the 
@@ -195,17 +196,9 @@ distribution.
 
 10. Repeat the above simulation three more times but with modified sample
     sizes and proportions: for $n = 400$ and $p = 0.1$, $n = 1040$ and 
-    $p = 0.02$, and $n = 400$ and $p = 0.02$. Plot all four histograms
-    together by running the `par(mfrow = c(2, 2))` command before creating the 
-    histograms. You may need to expand the plot window to accommodate the 
-    larger two-by-two plot. Describe the three new sampling distributions. 
-    Based on these limited plots, how does $n$ appear to affect the 
+    $p = 0.02$, and $n = 400$ and $p = 0.02$. Describe the three new sampling 
+    distributions (either histograms or density plots). Based on these limited plots, how does $n$ appear to affect the 
     distribution of $\hat{p}$? How does $p$ affect the sampling distribution?
-
-Once you're done, you can reset the layout of the plotting window by using the 
-command `par(mfrow = c(1, 1))` command or clicking on "Clear All" above the 
-plotting window (if using RStudio). Note that the latter will get rid of all 
-your previous plots.
 
 11. If you refer to Table 6, you'll find that Australia has a sample 
     proportion of 0.1 on a sample size of 1040, and that Ecuador has a sample 
