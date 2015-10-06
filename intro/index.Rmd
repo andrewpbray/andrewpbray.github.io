@@ -23,11 +23,11 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - **Reading for next time**: p. [128-133]
 - **PS6**: Chapter Three, TBA
 
-#### Tuesday, Oct. 6
+#### Tuesday, Oct. 6 
 - [Lab 6](labs/06-inf-for-props/inf_for_categorical_data.html)
 
 #### Wednesday, Oct 7
-- Inference for Cat. Data 2
+- Inference for Categorical Data 2
 
 #### Friday Oct. 9
 - The Chi-squared
