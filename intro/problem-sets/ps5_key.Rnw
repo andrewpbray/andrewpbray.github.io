@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{enumerate,amsmath}
+
+\begin{document}
+
+\section*{Problem Set 5 Key}
+Chapter 4:  1, 2, 3, 5, 7, 10,
+
+\vspace{8mm}
+
+\noindent \textbf{2} \\
+
+\begin{enumerate}[(a)]
+\item $\hat{p}_{treatment} = 45/69 \approx 0.65$ \\
+$\hat{p}_{control} = 30/34 \approx 0.88$
+
+\item \begin{enumerate}[i.]
+\item $H_0: \hat{p}_{treatment} - \hat{p}_{control} = 0 \\
+H_A: \hat{p}_{treatment} - \hat{p}_{control} \ne 0 $
+\item 28, 75, 69, 34, 0, less than our observed difference.
+\end{enumerate}
+\item The difference that we observed was $0.65 - 0.88 = -0.23$, which is less
+than any of the simulated differences. This suggests that transplants are an
+effective treatment.
+\end{enumerate}
+
+\vspace{8mm}
+
+\noindent \textbf{10} \\
+
+\begin{enumerate}[(a)]
+\item $H_0: p_{success} = 0.31 \\
+H_A: p_{success} = 0.40$
+
+\item One possibility: take 100 cards and write ``success" on 31 of them and
+``failure" on the remaining 69. Shuffle the cards, deal out 30 of them, and record
+the proportion that have ``success" on them, $\hat{p}_{sim}$. Repeat this process 
+many many times. Count the proportion of $\hat{p}_{sim}$s that equal or exceed 
+0.40 and multiple this proportion by two for a two-tailed p-value.
+
+\item Two-tailed p-value: $\approx 0.46$. Considering how consistent this data
+is with a true success rate of 0.31, we fail to reject the null hypothesis.
+
+\item This is an inappropriate statement. This analysis does not establish that
+the clinic does not have a success rate of $0.40$. They may well have a higher 
+success rate, but with a sample size of only 30, this success rate could also 
+have been observed if their true success rate was no different than the national 
+average.
+
+\end{enumerate}
+
+\end{document}
