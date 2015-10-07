@@ -15,13 +15,6 @@ library(oilabs)
 ```
 
 
-## {.flexbox .vcenter}
-
-<center>
-<img src="../figs/ci.png" alt="ci" height = 370>
-</center>
-
-
 ## Checking Conditions{.build}
 <center>
 <img src="../figs/lab6a.png" width = 600>
@@ -29,15 +22,26 @@ library(oilabs)
 
 <br />  
   
-The Central Limit kicks in when
+$\hat{p} \sim N(\mu = p, \sigma = \sqrt{\frac{p(1-p)}{n}})$ if
 
 1. Observations are independent
-2. The number of expected successes and failures is less than 10.
+2. The number of observed successes and failures is more than 10.
 
 $$
 np \ge 10 \\
 n(1 - p) \ge 10
 $$
+
+## Question {.build}
+
+We are given that $n = 1002, \hat{p} = 0.05$. Which of the
+below is the correct calculation of the 95% confidence interval?
+
+1. $0.05 \pm 1.96 \sqrt{(.05 \times .095)/1002}$
+2. $0.05 \pm 1.65 \sqrt{(.05 \times .095)/1002}$
+3. $0.05 \pm 1.96 ((.05 \times .095)/\sqrt{1002})$
+4. $50 \pm 1.96 \sqrt{(50 \times 952)/1002}$
+
 
 ## Constructing a CI {.build}
 
@@ -61,12 +65,192 @@ c(p_hat - MoE, p_hat + MoE)
 
 ## {.build}
 
-```{r ciforus, fig.height=4}
+```{r ciforus, fig.height=2}
 inference(y = us12$response, est = "proportion", type = "ci", 
           method = "theoretical", success = "atheist")
 ```
 
 
+## `inference()` function {.build}
+
+<center>
+<img src="../figs/spidey.jpg" width = 275>
+</center>
+
+<br/>
+
+Your great responsibility:
+
+1. Understand what's going on inside the black box.
+2. Ensure the conditions for inference are reasonable.
 
 
+## When conditions *aren't* reasonable {.build}
 
+<center>
+<img src="../figs/ecuador.png" width = 600>
+</center>
+
+$$
+n = 400 \\
+\hat{p} = 0.02 \\
+np = 8 < 10
+$$
+
+Are they doing inference?
+
+Yes! "In general, the ..."
+
+<center>
+<img src="../figs/atheistMoE.png" width = 600>
+</center>
+
+
+## Simulate the sampling dist.
+
+```{r ecuador}
+p <- 0.02
+n <- 400
+p_hats <- rep(0, 1000)
+
+for (i in 1:10000) {
+  samp <- sample(c("atheist", "non_atheist"), size = n,
+                 replace = TRUE, prob = c(p, 1 - p))
+  p_hats[i] <- sum(samp == "atheist") / n
+}
+```
+
+
+## Simulate the sampling dist.
+
+```{r ecuadorplot, warning = FALSE, message = FALSE, echo = FALSE}
+qplot(x = p_hats, geom = "density", adjust = 1.7, ylim = c(0, 60))
+```
+
+
+## A poor approximation
+
+```{r ecuadorplot2, warning = FALSE, message = FALSE, echo = FALSE}
+qplot(x = p_hats, geom = "density", adjust = 1.7, ylim = c(0, 60)) +
+  stat_function(fun = dnorm, args = c(mean = p, sd = sqrt((p*(1-p))/n)), col = "tomato")
+```
+
+
+## Double the sample size...
+
+```{r ecuador2}
+p <- 0.02
+n <- 800
+p_hats <- rep(0, 1000)
+
+for (i in 1:10000) {
+  samp <- sample(c("atheist", "non_atheist"), size = n,
+                 replace = TRUE, prob = c(p, 1 - p))
+  p_hats[i] <- sum(samp == "atheist") / n
+}
+```
+
+
+## A better approximation
+
+```{r ecuadorplot3, warning = FALSE, message = FALSE, echo = FALSE}
+qplot(x = p_hats, geom = "density", adjust = 1.7) +
+  stat_function(fun = dnorm, args = c(mean = p, sd = sqrt((p*(1-p))/n)), col = "tomato")
+```
+
+
+## Increase p...
+
+```{r ecuador3}
+p <- 0.25
+n <- 800
+p_hats <- rep(0, 1000)
+
+for (i in 1:10000) {
+  samp <- sample(c("atheist", "non_atheist"), size = n,
+                 replace = TRUE, prob = c(p, 1 - p))
+  p_hats[i] <- sum(samp == "atheist") / n
+}
+```
+
+
+## A better approximation
+
+```{r ecuadorplot4, warning = FALSE, message = FALSE, echo = FALSE}
+qplot(x = p_hats, geom = "density", adjust = 1.7) +
+  stat_function(fun = dnorm, args = c(mean = p, sd = sqrt((p*(1-p))/n)), col = "tomato")
+```
+
+
+# Making decisions with confidence intervals
+
+
+## A reasonable claim? {.build}
+
+*A full 10% of Americans are atheist.*
+
+### Claim
+$p = 0.10$
+
+### 95% CI
+$(0.0364 , 0.0634)$
+
+The claim is *inconsistent* with our estimate of $p$.
+
+
+# Extending to two proportions
+
+
+## Question
+
+Scientists predict that global warming may have big effects on the polar regions within the next 100 years. One of the possible effects is that the northern ice cap may completely melt. Would this bother you a great deal, some, a little, or not at all if it actually happened?
+
+1. A great deal
+2. Some
+3. A little
+4. Not at all
+
+
+## {.build}
+
+*Are Reed Students different from a random sample of Americans?*
+
+GSS Survey data (2010)
+
+response     | count
+-------------|------
+A great deal | 454 
+Some         | 124 
+A little     | 52 
+Not at all   | 50
+Total        | 680
+
+$$\hat{p}_{US} = 454/680 \approx 0.67$$
+
+
+## {.build}
+
+### Parameter of interest
+Difference between the proportions of *all* Reed students and *all* Americans 
+who would be bothered a great deal by the northern ice cap completely melting.
+
+$$p_{Reed} - p_{US}$$
+
+### Point estimate
+Difference between the proportions of *sampled* Reed students and *sampled*
+Americans who would be bothered a great deal by the northern ice cap completely melting.
+
+$$\hat{p}_{Reed} - \hat{p}_{US}$$
+
+
+## Constructing a CI for $p_1 - p_2$ {.build}
+
+Details same as before:
+
+1. check conditions for using the normal approximation
+2. point estimate $\pm$ margin of error
+3. standard error
+
+$$ SE_{\hat{p}_1 - \hat{p}_2} = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}} $$
+
+We swap in $\hat{p}_1$ and $\hat{p}_1$ for $p_1$ and $p_2$.
