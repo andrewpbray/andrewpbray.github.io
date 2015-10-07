@@ -17,6 +17,9 @@ with the model"?
 tests?" If we spend time on how not to lie with statistics, I'd opt for a discussion
 of multiple comparisons.
 
+- **Null vs Sampling Distribution**: Seems like we could be clearer about the (small)
+difference between these two distributions.
+
 
 # General
 
