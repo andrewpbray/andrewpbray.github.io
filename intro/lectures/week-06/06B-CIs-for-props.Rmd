@@ -37,9 +37,9 @@ $$
 We are given that $n = 1002, \hat{p} = 0.05$. Which of the
 below is the correct calculation of the 95% confidence interval?
 
-1. $0.05 \pm 1.96 \sqrt{(.05 \times .095)/1002}$
-2. $0.05 \pm 1.65 \sqrt{(.05 \times .095)/1002}$
-3. $0.05 \pm 1.96 ((.05 \times .095)/\sqrt{1002})$
+1. $0.05 \pm 1.96 \sqrt{(.05 \times 0.95)/1002}$
+2. $0.05 \pm 1.65 \sqrt{(.05 \times 0.95)/1002}$
+3. $0.05 \pm 1.96 ((.05 \times 0.95)/\sqrt{1002})$
 4. $50 \pm 1.96 \sqrt{(50 \times 952)/1002}$
 
 
