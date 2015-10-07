@@ -21,13 +21,13 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - Inference for Categorical Data
 - [Lab 5 Solutions](labs/05-normal-dist/normal_distribution_key.html)
 - **Reading for next time**: p. [128-133]
-- **PS6**: Chapter Three, TBA
+- **PS6**: Chapter Three, 1, 11, 12, 15, 20, 24, 28, 30, 35
 
 #### Tuesday, Oct. 6 
 - [Lab 6](labs/06-inf-for-props/inf_for_categorical_data.html)
 
 #### Wednesday, Oct 7
-- Inference for Categorical Data 2
+- Inference for Categorical Data 2 ([r code](lectures/week-06/06B-CIs-for-props.R))
 
 #### Friday Oct. 9
 - The Chi-squared
