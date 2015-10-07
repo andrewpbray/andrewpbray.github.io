@@ -28,7 +28,7 @@ inference(y = us12$response, est = "proportion", type = "ci",
 ## ----ecuador-------------------------------------------------------------
 p <- 0.02
 n <- 400
-p_hats <- rep(0, 1000)
+p_hats <- rep(0, 10000)
 
 for (i in 1:10000) {
   samp <- sample(c("atheist", "non_atheist"), size = n,
@@ -46,7 +46,7 @@ qplot(x = p_hats, geom = "density", adjust = 1.7, ylim = c(0, 60)) +
 ## ----ecuador2------------------------------------------------------------
 p <- 0.02
 n <- 800
-p_hats <- rep(0, 1000)
+p_hats <- rep(0, 10000)
 
 for (i in 1:10000) {
   samp <- sample(c("atheist", "non_atheist"), size = n,
@@ -61,7 +61,7 @@ qplot(x = p_hats, geom = "density", adjust = 1.7) +
 ## ----ecuador3------------------------------------------------------------
 p <- 0.25
 n <- 800
-p_hats <- rep(0, 1000)
+p_hats <- rep(0, 10000)
 
 for (i in 1:10000) {
   samp <- sample(c("atheist", "non_atheist"), size = n,
