@@ -4,49 +4,85 @@
 \begin{document}
 
 \section*{Problem Set 5 Key}
-Chapter 4:  1, 2, 3, 5, 7, 10,
+Chapter 2:   16, 18, 20, 38, 40
 
 \vspace{8mm}
 
-\noindent \textbf{2} \\
+\noindent \textbf{16} \\
+
+<<>>=
+1 - pnorm(-1.13)
+pnorm(.18)
+1 - pnorm(8)
+pnorm(.5) - pnorm(-.5)
+@
+
+Note that there are different formulations to get these numbers. They may also
+have used the z - table or empirical rule. They should also have shaded normal curves accompanying each of these numbers.
+
+\vspace{8mm}
+
+\noindent \textbf{18} \\
 
 \begin{enumerate}[(a)]
-\item $\hat{p}_{treatment} = 45/69 \approx 0.65$ \\
-$\hat{p}_{control} = 30/34 \approx 0.88$
-
-\item \begin{enumerate}[i.]
-\item $H_0: \hat{p}_{treatment} - \hat{p}_{control} = 0 \\
-H_A: \hat{p}_{treatment} - \hat{p}_{control} \ne 0 $
-\item 28, 75, 69, 34, 0, less than our observed difference.
-\end{enumerate}
-\item The difference that we observed was $0.65 - 0.88 = -0.23$, which is less
-than any of the simulated differences. This suggests that transplants are an
-effective treatment.
+\item $N(\mu = 4313, \sigma = 538)$ for men and $N(\mu = 5261, \sigma = 807)$ for women.
+\item $$z_{Leo} = \frac{4948 - 4313}{538} = 1.18 \quad
+z_{Mary} = \frac{5513 - 5261}{807} = 0.31$$
+The z-score tells us how many standard deviations above or below the mean a given
+observation is.
+\item The z-scores indicate that relative to women, Mary had a faster race than Leo did relative to men. This is a valid comparison because we'e taken into account the difference
+in the mean and standard deviation of the two distributions.
+\item 
+<<>>=
+1 - pnorm(1.18)
+@
+\item
+<<>>=
+1 - pnorm(0.31)
+@
+\item If the distribution of finishing times is not nearly normal, that we could
+still calculate z-scores and they'd still have the same interpretation (b), 
+however, the percentiles would change (c - e) since the shape of the
+distributions would be different.
 \end{enumerate}
 
 \vspace{8mm}
 
-\noindent \textbf{10} \\
+\noindent \textbf{20} \\
+
+<<>>=
+qnorm(.05, mean = 4313, sd = 583)
+qnorm(.10, mean = 5261, sd = 807)
+@
+
+\vspace{8mm}
+
+\noindent \textbf{38} \\
+<<>>=
+qnorm(.005)
+@
+
+$0.52 \pm 2.58 \times .024 = (0.458, 0.582)$
+
+
+We are 99\% confident that the proportion of all US adult twitter users that get
+at least some news on Twitter is between 0.458 and 0.582, OR, if we were to take
+many such samples of the same size, we'd expect 99\% of the resulting intervals
+to capture the proportion of all US adult twitter users that get
+at least some news on Twitter.
+
+\vspace{8mm}
+
+\noindent \textbf{40} \\
 
 \begin{enumerate}[(a)]
-\item $H_0: p_{success} = 0.31 \\
-H_A: p_{success} = 0.40$
-
-\item One possibility: take 100 cards and write ``success" on 31 of them and
-``failure" on the remaining 69. Shuffle the cards, deal out 30 of them, and record
-the proportion that have ``success" on them, $\hat{p}_{sim}$. Repeat this process 
-many many times. Count the proportion of $\hat{p}_{sim}$s that equal or exceed 
-0.40 and multiple this proportion by two for a two-tailed p-value.
-
-\item Two-tailed p-value: $\approx 0.46$. Considering how consistent this data
-is with a true success rate of 0.31, we fail to reject the null hypothesis.
-
-\item This is an inappropriate statement. This analysis does not establish that
-the clinic does not have a success rate of $0.40$. They may well have a higher 
-success rate, but with a sample size of only 30, this success rate could also 
-have been observed if their true success rate was no different than the national 
-average.
-
+\item FALSE. Our confidence interval spans .5, meaning that values of the parameter
+greater than and less than .5 are considered plausible with 99\% confidence.
+\item FALSE. We are provided with no such information, but if did have almost
+all of the population in our sample, then our SE would likely be much much smaller.
+\item FALSE. Collecting \emph{more} data will reduce the standard error.
+\item FALSE. It will be narrower since we're able to make more precise claim (narrower
+intervals) if we reduce our confidence that the interval has captured the parameter.
 \end{enumerate}
 
 \end{document}
