@@ -32,3 +32,6 @@ Consider moving around sampling/design a bit.
 
 - Add questions to problem sets from outside of the book (e.g. stat literacy read
 this news/journal article and comment).
+
+- Be more explicit about RV notation (Bernoulli, Binomial, Poisson) with E and V
+for each.
