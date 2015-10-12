@@ -1,6 +1,6 @@
 ---
 title: "Data Wrangling"
-author: "Andrew Bray (from the CRAN tutorial)"
+author: "Andrew Bray"
 output:
   ioslides_presentation:
     incremental: true
@@ -9,11 +9,13 @@ output:
 ```{r echo = FALSE}
 knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
 library(oilabs)
+# with conetent from CRAN tutorial and pnwflights14 by chester ismay.
 ```
 
-## Two paradigms
 
-### R {.build}
+## Two paradigms {.build}
+
+### R
 ```{r}
 fdims <- bdims[bdims$sex == "f", ]
 mean(fdims$hgt)
@@ -78,6 +80,22 @@ fdims %>% summarize(mean = mean(hgt))
 - This, too, can be put into a chain.
 
 
+## Two paradigms {.build}
+
+### R
+```{r}
+fdims <- bdims[bdims$sex == "f", ]
+mean(fdims$hgt)
+```
+
+### R with dplyr
+```{r}
+library(dplyr)
+fdims <- filter(bdims, sex == "f")
+summarize(fdims, mean = mean(hgt))
+```
+
+
 ## Why dplyr?
 
 Data sets are often of high *volume* (lots of rows) and high *variety* (lots
@@ -104,13 +122,13 @@ and **fast**.
 
 Allows you to select a subset of the **rows** of a data frame. The first
 argument is the name of the data frame, the following arguments are the
-filters that you'd like to apply
+filters that you'd like to apply.
 
 For all flights on January 1st:
 
 ```{r message = FALSE, warning = FALSE}
 library(dplyr)
-library(nycflights13)
+library(pnwflights14)
 filter(flights, month == 1, day == 1)
 ```
 
@@ -128,7 +146,7 @@ filter(flights, month == 1 | month == 2)
 ```
 
 
-## Your turn
+## Exercise 1
 
 Construct filters to isolate:
 
@@ -153,7 +171,7 @@ than 5 hours.
 filter(flights, month == 3, day == 17)
 filter(flights, dest == "ORD")
 filter(flights, dest == "ORD", carrier == "UA")
-filter(flights, distance > 2000 | air_time > 5*60)
+filter(flights, distance > 2000 | air_time > 5 * 60)
 ```
 
 
@@ -180,7 +198,7 @@ arrange(flights, desc(arr_delay))
 
 Often you work with large datasets with many columns where only a few are 
 actually of interest to you. `select()` allows you to rapidly zoom in on a useful
-subset using operations that usually only work on numeric variable positions:
+subset:
 
 ```{r eval=FALSE}
 select(flights, year, month, day)
@@ -216,9 +234,9 @@ mutate(flights, gain = arr_delay - dep_delay)
 ```
 
 
-## summarise() and sample_n()
+## summarize() and sample_n()
 
-`summarise()` collapses a data frame to a single row. It's not very useful yet. 
+`summarize()` collapses a data frame to a single row. It's not very useful yet. 
 `sample_n()` provides you with a random sample of the rows.
 
 ```{r}
@@ -227,7 +245,7 @@ sample_n(flights, 10)
 ```
 
 
-## Your turn
+## Exercise 2
 
 **Mutate** the data into a new variable that contains the average speed traveled
 by the plane for each flight. **Select** that new variable and save it, along with
@@ -280,14 +298,14 @@ speed %>%
 ```
 
 
-## Your turn
+## Exercise 3
 
-Form a chain that creates a data frame containing only carrier and their
+Form a chain that creates a dataframe containing only carrier and their
 mean departure delay time. Which carriers have the highest and lowest mean
 delays?
 
 
-## Your turn
+## 
 
 ```{r}
 flights %>%
@@ -300,7 +318,7 @@ flights %>%
 ## Your turn again
 
 Say you're curious about the relationship between the number of flights each
-plane made in 2013, the mean distance that each of those planes flew, and the
+plane made in 2014, the mean distance that each of those planes flew, and the
 mean arrival delay. You also want to exclude the edge cases from your analysis,
 so focus on the planes that have logged more than 20 flights and flown an average
 distance of less than 2000 miles. Please form the chain that creates this dataset.
@@ -328,5 +346,8 @@ ggplot(delay, aes(dist, delay)) +
  scale_size_area()
 ```
 
+##
+
+Say I fly very often between PDX airport in Portland and JFK airport in New York. Based on the 2014 data, which day of the week would you recommend that I buy a ticket for if I want to minimize delays? Any tips for the best airlines go through?
 
 
