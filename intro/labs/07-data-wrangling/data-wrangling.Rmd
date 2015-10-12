@@ -1,128 +1,81 @@
 ---
-title: "Working with Data in R"
+title: "Data Wrangling"
 author: "Andrew Bray (from the CRAN tutorial)"
-date: "March 4, 2015"
 output:
   ioslides_presentation:
     incremental: true
 ---
 
-##
-
-Most of this material can be found at:
-
-http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
-
-
-## Welcome to R
-
-> Whenever you're learning a new tool, for a long time you're going to suck ...
-> but the good news is that is typical, that's something that happens to everyone, 
-> and it's only temporary.
-
--Hadley Wickham
-
-
-## Welcome to R
-
-- New users: go to `rstudio.mtholyoke.edu` and enter your campus login info.
-
-- Experienced users: either login to the server or bring up R/RStudio on your
-laptop.
-
-
-# Part I: Getting the data
-
-
-## What does a data set *look like*?
-
-- **Observations** down the rows
-- **Variables** across the columns
-- Flat file versus relational database.
-
-
-## Reading in data from a file
-
-Hosted online:
-
-```{r load_from_file, eval = FALSE}
-LAhomes <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+```{r echo = FALSE}
+knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
+library(oilabs)
 ```
 
-Hosted locally:
-```{r load_local, eval = FALSE}
-LAhomes <- read.csv("LA.csv")
+## Two paradigms
+
+### R {.build}
+```{r}
+fdims <- bdims[bdims$sex == "f", ]
+mean(fdims$hgt)
 ```
 
-Things to note:
-
-- The assign arrow is used to create **objects** in R, which are stored in your
-environment.
-- Object names don't have to correspond to file names.
-- Be sure R knows where to look for the file!
-
-
-## Viewing data - the viewer
-
-- `View()` can be used in RStudio to bring up an excel-style spreadsheet. Only
-for viewing, not editing!
-- The dimensions of the data can be found in the environment pane.
-- The names of the variables can be seen at the top of the viewer.
-
-
-## Viewing data - the console
-
-- `head()` can be used to print the first several lines of the dataset to the
-console.
-- `dim()` can be used to find the dimensions (rows then columns).
-- `names()` can be used to find the names of the variables.
-- DANGER ZONE : don't type the name of the data set at the console and hit enter! :
-DANGER ZONE
-
-
-## Your turn {.emphasized}
-
-There is a data set called `poverty.txt` in the same website directory as `LA.csv`.
-Please download that file to your machine (upload to the server) and read it in.
-
-Running in to problems? Ask your neighbor or try google!
-
-1. What are the dimensions of the data set?
-2. What appears to be the unit of observation?
-3. What are the variables?
-
-
-## 
-
-```{r eval = FALSE}
-poverty <- read.table("poverty.txt")
-dim(poverty)
-head(poverty)
-names(poverty)
+### R with dplyr
+```{r}
+library(dplyr)
+fdims <- filter(bdims, sex == "f")
+summarize(fdims, mean = mean(hgt))
 ```
 
 
-## Reading in data from a package
+## R Subsetting {.build}
 
-1. Download and install the package from CRAN (on a non-server version).
-    ```{r, eval = FALSE}
-    install.packages("nycflights13")
-    ```
-2. Load the package.
-    ```{r}
-    library(nycflights13)
-    ```
-3. Make the data set visible.
-    ```{r}
-    data(flights)
-    ```
-4. Get help.
-    ```{r eval = FALSE}
-    ?flights
-    ```
+```{r}
+fdims <- bdims[bdims$sex == "f", ]
+```
+
+- Square brackets are used to subset dataframes.
+- `[rows, columns]`
 
 
-# Part II: Slice and dice with dplyr
+## R Summaries {.build}
+
+```{r}
+mean(fdims$hgt)
+```
+
+- Many commands operate on a *vector* (column) of data extracted from a dataframe
+using the `$`.
+
+
+## dplyr Subsetting {.build}
+
+```{r}
+fdims <- filter(bdims, sex == "f")
+```
+
+- `dplyr` contains separate functions to *filter* the rows and *select* the columns.
+
+```{r}
+fdims <- bdims %>% filter(sex == "f")
+```
+
+- Can also *chain* commands using the pipe.
+
+
+## dplyr Summaries
+
+```{r}
+summarize(fdims, mean = mean(hgt))
+```
+
+- Any numerical summary that you want to apply to a column of a dataframe
+is specified within `summarize()`.
+
+```{r}
+fdims %>% summarize(mean = mean(hgt))
+```
+
+- This, too, can be put into a chain.
 
 
 ## Why dplyr?
@@ -132,11 +85,11 @@ of columns). This is overwhelming to visualize and analyze, so we find ourselves
 chopping the data set up into more manageable and meaningful chunks. We also 
 often need to perform operations to organize and clean our data.
 
-This is all possible in base R, but with `dplyr`, it is simple, readible, and
-fast.
+This is all possible in base R, but with `dplyr`, it is **simple**, **readible**, 
+and **fast**.
 
 
-## The Seven Verbs
+## The Seven Verbs (commands)
 
 - filter
 - arrange
@@ -157,6 +110,7 @@ For all flights on January 1st:
 
 ```{r message = FALSE, warning = FALSE}
 library(dplyr)
+library(nycflights13)
 filter(flights, month == 1, day == 1)
 ```
 
