@@ -1,0 +1,109 @@
+---
+title: "Inference for many proportions"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=3)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+```
+
+
+# $\chi^2$ Goodness of Fit
+
+
+## {.build}
+Ethnicity   | Asian | Black | Hispanic | White | Other | Total
+------------|-------|-------|----------|-------|-------|-------
+Obs. data   |  46   |   31  |   42     |  258  |  35   |  412
+Exp. counts |  17.716 |  8.24 |   51.5   |  317.24  | 17.304  |   412
+
+$$
+Z_{asian}^2 = (46 - 17.7)^2/17.7 = 45.16 \\
+Z_{black}^2 = (31 - 8.24)^2/8.24 = 62.8 \\
+Z_{hispanic}^2 = (42 - 51.5)^2/51.5 = 1.75 \\
+Z_{white}^2 = (258 - 317.24)^2/317.24 = 11.82 \\
+Z_{other}^2 = (35 - 17.3)^2/17.3 = 18.11
+$$
+
+$$
+Z_{asian}^2 + Z_{black}^2 + Z_{hispanic}^2 + Z_{white}^2 + Z_{other}^2 = 139.64 = \chi^2_{obs}
+$$
+
+
+## Question {.build}
+
+Which of the following is an appropriate null hypothesis?
+
+1. Ethnic diversity and choice of college are independent of one another.
+2. Ethnic diversity and home-state are independent of one another.
+3. $p_{asian} = p_{black} = p_{hispanic} = p_{white} = p_{other}$.
+4. The first-year class at Reed is sampled from a population that shares
+the same ethnic distribution as Oregon.
+
+
+## Goodness of Fit Test {.build}
+
+**$H_0$**: The first-year class at Reed is sampled from a population that shares
+*the same* ethnic distribution as Oregon.
+
+**$H_A$**: The first-year class at Reed is sampled from a population that has a 
+*different* ethnic distribution than Oregon.
+
+
+## Constructing the Null Distribution {.build}
+
+1. **Simulation**: simulate many first-year Oregonian Reedie classes and 
+calculate the $\chi^2$ for each.
+2. **Probability Theory**: multinomial distribution. $X \sim \textrm{multinom}(n, p_1, p_2, p_3, p_4, p_5)$.
+3. **Chi-Squared Approximation**: if conditions are reasonable, the $\chi^2$ will
+follow a known distribution under the null hypothesis.
+
+```{r sim3, echo = FALSE}
+n <- 412
+p <- c(.043, .02, .125, .042, .77)
+chisqs <- rep(0, 1000)
+set.seed(405)
+
+for(i in 1:1000) {
+  samp <- sample(c("asian", "black", "hispanic", "other", "white"), 
+       size = n, replace = TRUE, prob = p)
+  obs <- c(table(samp))
+  chisqs[i] <- chisq.test(obs, correct = FALSE, p = p)$statistic
+}
+```
+
+```{r, echo=FALSE, fig.height=3}
+library(ggplot2)
+qplot(chisqs, geom = "density") +
+  stat_function(fun = dchisq, args = c(df = 4), col = "tomato")
+```
+
+
+## Conditions for the $\chi^2$ approximation. {.build}
+
+1. Independent observations
+2. Each cell count has a count $\ge$ 5
+3. $k \ge 3$
+
+then our statistic can be well-approximated by the $\chi^2$ distribution with 
+$k - 1$ degrees of freedom.
+
+
+## Finding a p-value {.build}
+
+What is the probability of observing our data or more extreme ($\chi^2 = 139.64$) under
+the null hypothesis that Reedies share the same ethnicity proportions as Oregon?
+
+About zero.
+
+```{r}
+1 - pchisq(139.64, df = 4)
+```
+
