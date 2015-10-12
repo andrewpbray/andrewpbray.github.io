@@ -35,3 +35,5 @@ this news/journal article and comment).
 
 - Be more explicit about RV notation (Bernoulli, Binomial, Poisson) with E and V
 for each.
+
+- Collapse approaches to inference to "computational" and "theoretical".
