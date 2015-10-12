@@ -17,10 +17,9 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 ### Week Seven
 
 #### Monday, Oct. 12
-- Testing Independence between two categorical variables
-- [Lab 6 Solutions](labs/05-normal-dist/normal_distribution_key.html)
-- **Reading for next time**: p. []
-- **PS6**: Chapter Three, . Chapter Four: 
+- Testing Independence between two categorical variables ([r code](lectures/week-07/07A-Xsq-ind.R))
+- **Reading for next time**: p. 163-176
+- **PS6**: Chapter Three, 37, 39, 42. Chapter Four: 5, 14, 30
 
 #### Tuesday, Oct. 13
 - [Lab 7]()
@@ -50,7 +49,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - Inference for Categorical Data 2 ([r code](lectures/week-06/06B-CIs-for-props.R))
 
 #### Friday Oct. 9
-- The Chi-squared
+- The Chi-squared ([r code](lectures/week-06/06C-Xsq.GoF.R))
 
 * * *
 
