@@ -8,7 +8,6 @@ output:
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(warnings = FALSE, message = FALSE)
-library(oilabs)
 # with conetent from CRAN tutorial and pnwflights14 by chester ismay.
 ```
 
@@ -17,6 +16,7 @@ library(oilabs)
 
 ### R
 ```{r}
+library(oilabs)
 fdims <- bdims[bdims$sex == "f", ]
 mean(fdims$hgt)
 ```
@@ -56,6 +56,7 @@ fdims <- filter(bdims, sex == "f")
 ```
 
 - `dplyr` contains separate functions to *filter* the rows and *select* the columns.
+- The dataframe is one argument and the column names are another (no `$`).
 
 ```{r}
 fdims <- bdims %>% filter(sex == "f")
@@ -64,7 +65,7 @@ fdims <- bdims %>% filter(sex == "f")
 - Can also *chain* commands using the pipe.
 
 
-## dplyr Summaries
+## dplyr Summaries {.build}
 
 ```{r}
 summarize(fdims, mean = mean(hgt))
@@ -88,7 +89,7 @@ fdims <- bdims[bdims$sex == "f", ]
 mean(fdims$hgt)
 ```
 
-### R with dplyr
+### R with dplyr {.build}
 ```{r}
 library(dplyr)
 fdims <- filter(bdims, sex == "f")
@@ -96,7 +97,7 @@ summarize(fdims, mean = mean(hgt))
 ```
 
 
-## Why dplyr?
+## Why dplyr? {.build}
 
 Data sets are often of high *volume* (lots of rows) and high *variety* (lots
 of columns). This is overwhelming to visualize and analyze, so we find ourselves
@@ -107,18 +108,18 @@ This is all possible in base R, but with `dplyr`, it is **simple**, **readible**
 and **fast**.
 
 
-## The Seven Verbs (commands)
+## The Seven Verbs (commands) {.build}
 
 - filter
 - arrange
 - select
 - distinct
 - mutate
-- summarise
+- summarize
 - sample_n
 
 
-## filter()
+## filter() {.build}
 
 Allows you to select a subset of the **rows** of a data frame. The first
 argument is the name of the data frame, the following arguments are the
@@ -127,13 +128,12 @@ filters that you'd like to apply.
 For all flights on January 1st:
 
 ```{r message = FALSE, warning = FALSE}
-library(dplyr)
 library(pnwflights14)
 filter(flights, month == 1, day == 1)
 ```
 
 
-## Constructing filters
+## Constructing filters {.build}
 
 Filters are constructed of **logical operators**: `<`, `>`, `<=`, `>=`, `==`,
 `!=` (and some others).
@@ -146,7 +146,7 @@ filter(flights, month == 1 | month == 2)
 ```
 
 
-## Exercise 1
+## Exercise 1 {.build}
 
 Construct filters to isolate:
 
@@ -158,7 +158,7 @@ United Airlines.
 than 5 hours.
 
 
-##
+## {.build}
 
 1. Flights that left on St. Patrick's Day.
 2. Flights that were destined for Chicago's primary airport.
@@ -175,7 +175,7 @@ filter(flights, distance > 2000 | air_time > 5 * 60)
 ```
 
 
-## arrange()
+## arrange() {.build}
 
 `arrange()` works similarly to `filter()` except that instead of filtering or 
 selecting rows, it reorders them. It takes a data frame, and a set of column 
@@ -194,7 +194,7 @@ arrange(flights, desc(arr_delay))
 ```
 
 
-## select()
+## select() {.build}
 
 Often you work with large datasets with many columns where only a few are 
 actually of interest to you. `select()` allows you to rapidly zoom in on a useful
@@ -211,7 +211,7 @@ select(flights, -(year:day))
 ```
 
 
-## distinct()
+## distinct() {.build}
 
 A common use of `select()` is to find out which values a set of variables takes. 
 This is particularly useful in conjunction with the `distinct()` verb which only 
@@ -224,7 +224,7 @@ distinct(select(flights, origin, dest))
 ```
 
 
-## mutate()
+## mutate() {.build}
 
 As well as selecting from the set of existing columns, it's often useful to add 
 new columns that are functions of existing columns. This is the job of `mutate()`:
@@ -234,33 +234,33 @@ mutate(flights, gain = arr_delay - dep_delay)
 ```
 
 
-## summarize() and sample_n()
+## summarize() and sample_n() {.build}
 
 `summarize()` collapses a data frame to a single row. It's not very useful yet. 
 `sample_n()` provides you with a random sample of the rows.
 
 ```{r}
-summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
+summarize(flights, delay = mean(dep_delay, na.rm = TRUE))
 sample_n(flights, 10)
 ```
 
 
-## Exercise 2
+## Exercise 2 {.build}
 
 **Mutate** the data into a new variable that contains the average speed traveled
 by the plane for each flight. **Select** that new variable and save it, along with
-tailnum, as a new dataframe object.
+tailnum, as a new dataframe object called `speed`.
 
 
-## Your turn
+##
 
 ```{r}
-flights2 <- mutate(flights, speed = distance/(air_time/60))
+flights2 <- mutate(flights, speed = distance / (air_time / 60))
 speed <- select(flights2, tailnum, speed)
 ```
 
 
-## Aggregation aka group_by()
+## Aggregation aka group_by() {.build}
 
 These verbs become really powerful when you combine them with the idea of 
 "group by", repeating the operation individually on groups of observations 
@@ -271,7 +271,7 @@ You can then use the resulting object in exactly the same functions as above;
 they'll automatically work "by group" when the input is a grouped.
 
 
-## group_by()
+## group_by() {.build}
 
 We can find the fastest airplanes in the bunch:
 
@@ -284,7 +284,7 @@ arrange(avg_speed, desc(avg_speed))
 ```
 
 
-## Chaining
+## Chaining {.build}
 
 Instead of applying each verb step-by-step, we can chain them into a single
 data pipeline, connected with the `%>%` operator. You start the pipeline with
@@ -298,15 +298,14 @@ speed %>%
 ```
 
 
-## Exercise 3
+## Exercise 3 {.build}
 
 Form a chain that creates a dataframe containing only carrier and their
-mean departure delay time. Which carriers have the highest and lowest mean
+average departure delay time. Which carriers have the highest and lowest mean
 delays?
 
 
-## 
-
+##  {.build}
 ```{r}
 flights %>%
   group_by(carrier) %>%
@@ -315,39 +314,25 @@ flights %>%
 ```
 
 
-## Your turn again
-
-Say you're curious about the relationship between the number of flights each
-plane made in 2014, the mean distance that each of those planes flew, and the
-mean arrival delay. You also want to exclude the edge cases from your analysis,
-so focus on the planes that have logged more than 20 flights and flown an average
-distance of less than 2000 miles. Please form the chain that creates this dataset.
-
-
-## Your turn again
-
-```{r}
-delay <- flights %>%
-  group_by(tailnum) %>%
-  summarise(count = n(),
-            dist = mean(distance, na.rm = TRUE), 
-            delay = mean(arr_delay, na.rm = TRUE)) %>%
-  filter(count > 20, dist < 2000)
-```
- 
- 
-## Visualizing the data
- 
-```{r eval = TRUE, message = FALSE, warning = FALSE, echo = FALSE}
+## Pipe into a plot {.build}
+```{r fig.height = 3}
 library(ggplot2)
-ggplot(delay, aes(dist, delay)) +
- geom_point(aes(size = count), alpha = 1/2) +
- geom_smooth() +
- scale_size_area()
+flights %>%
+  group_by(carrier) %>%
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  arrange(desc(avg_delay)) %>%
+  qplot(x = carrier, y = avg_delay, data = ., geom = "point")
 ```
 
-##
 
-Say I fly very often between PDX airport in Portland and JFK airport in New York. Based on the 2014 data, which day of the week would you recommend that I buy a ticket for if I want to minimize delays? Any tips for the best airlines go through?
+## The `.`
+When forming a chain, the `%>%` operator will default to putting the output of
+one function into the first argument of the next. You can change where this argument
+"lands" by using `.`
 
+```{r fig.height = 3}
+flights %>%
+  filter(origin == "PDX") %>%
+  qplot(x = carrier, data = ., geom = "bar")
+```
 
