@@ -246,7 +246,7 @@ sample_n(flights, 10)
 
 ## Exercise 2 {.build}
 
-**Mutate** the data into a new variable that contains the average speed traveled
+**Mutate** the data so that it includes a new variable that contains the average speed traveled
 by the plane for each flight. **Select** that new variable and save it, along with
 tailnum, as a new dataframe object called `speed`.
 
@@ -254,8 +254,8 @@ tailnum, as a new dataframe object called `speed`.
 ##
 
 ```{r}
-flights2 <- mutate(flights, speed = distance / (air_time / 60))
-speed <- select(flights2, tailnum, speed)
+flights <- mutate(flights, speed = distance / (air_time / 60))
+speed <- select(flights, tailnum, speed)
 ```
 
 
@@ -276,7 +276,7 @@ We can find the fastest airplanes in the bunch:
 
 ```{r}
 by_tailnum <- group_by(speed, tailnum)
-avg_speed <- summarise(by_tailnum, 
+avg_speed <- summarize(by_tailnum, 
                        count = n(), 
                        avg_speed = mean(speed, na.rm = TRUE))
 arrange(avg_speed, desc(avg_speed))
@@ -292,7 +292,7 @@ a dataframe and then pass it to each function in turn.
 ```{r}
 speed %>%
   group_by(tailnum) %>% 
-  summarise(count = n(), avg_speed = mean(speed, na.rm = TRUE)) %>%
+  summarize(count = n(), avg_speed = mean(speed, na.rm = TRUE)) %>%
   arrange(desc(avg_speed))
 ```
 
@@ -308,7 +308,7 @@ delays?
 ```{r}
 flights %>%
   group_by(carrier) %>%
-  summarise(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
   arrange(desc(avg_delay))
 ```
 
@@ -318,7 +318,7 @@ flights %>%
 library(ggplot2)
 flights %>%
   group_by(carrier) %>%
-  summarise(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
   arrange(desc(avg_delay)) %>%
   qplot(x = carrier, y = avg_delay, data = ., geom = "point")
 ```
