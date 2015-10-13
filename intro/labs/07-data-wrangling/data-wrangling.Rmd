@@ -1,6 +1,5 @@
 ---
 title: "Data Wrangling"
-author: "Andrew Bray"
 output:
   ioslides_presentation:
     incremental: true
