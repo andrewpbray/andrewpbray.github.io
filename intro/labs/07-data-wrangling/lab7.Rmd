@@ -26,28 +26,25 @@ library(pnwflights14)
 
 * * *
 
-<div class="oyo">
-
 ## On your own
 
 For the following questions, it may be helpful to sketch out what you want the
 final data set to look like (what are the rows? what are the columns?), then
 work backwards to figure out how to create that dataset from the original data.
 
-<center>
-<img src="ggplot.png" width = 500>
-</center>
-
-- The plot above displays the relationship between the mean arrival delay and the mean distance travelled by every plane in the data set. It also shows the total
+- The plot below displays the relationship between the mean arrival delay and the mean distance travelled by every plane in the data set. It also shows the total
 number of flights made by each plane by the size of the plotted circle. Please
 form the chain necessary to create the dataset that lies underneath this plot. 
 You will also want to exclude the edge cases from your analysis, so focus on the
 planes that have logged more than 20 flights and flown an average distance of 
 less than 2000 miles.
 
+<center>
+<img src="ggplot.png" width = 500>
+</center>
+
 - Once you have that dataset, you can check your answer by using the following 
 code to generate the plot. What does the relationship appear to be between mean distance that planes fly and their mean arrival delay?
-
 ```{r eval = FALSE}
 ggplot(delay, aes(dist, delay)) +
  geom_point(aes(size = count), alpha = 1/2) +
@@ -63,7 +60,6 @@ define them)
 New York. Which day of the week would you recommend that I buy a ticket for if I
 want to minimize delays? Any tips for the best airlines to go through?
 
-</div>
 
 **Challenge**: Remake two plots that show up in the slides - the points plot of average
 delays by carrier and the bar chart of total count of flights by carrier out of PDX - 
