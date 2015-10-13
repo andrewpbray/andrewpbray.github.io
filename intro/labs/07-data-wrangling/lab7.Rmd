@@ -10,7 +10,7 @@ output:
 <div id="boxedtext">
 This lab is a bit different from the others. We'll be working through the exercises
 together as a class, but be sure to record them in your lab report like normal. 
-You can find these exercises in the slides, which are posted on the class website. 
+You can find these exercises in the slides, which are posted [here](data-wrangling.html). 
 The On Your Own component will be as usual, on your own (or in pairs). To be sure you
 have all the necessary packages loaded, be sure to add the following chunk at the top
 of your lab report.
