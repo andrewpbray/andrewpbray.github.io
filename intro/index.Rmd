@@ -22,7 +22,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - **PS6**: Chapter Three, 37, 39, 42. Chapter Four: 5, 14, 30
 
 #### Tuesday, Oct. 13
-- [Lab 7]()
+- [Lab 7](labs/07-data-wrangling/lab7.html)
 
 #### Wednesday, Oct 14
 - Inference for Means
