@@ -1,0 +1,59 @@
+---
+title: "Data Wrangling"
+output:
+  html_document:
+    theme: cerulean
+    highlight: pygments
+    css: ../lab2.css
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+library(pnwflights14)
+```
+
+### Exercise 1
+```{r eval = FALSE}
+filter(flights, month == 3, day == 17)
+filter(flights, dest == "ORD")
+filter(flights, dest == "ORD", carrier == "UA")
+filter(flights, distance > 2000 | air_time > 5 * 60)
+```
+
+### Exercise 2
+```{r}
+flights2 <- mutate(flights, speed = distance/(air_time/60))
+speed <- select(flights2, tailnum, speed)
+```
+
+### Exercise 3
+```{r}
+flights %>%
+  group_by(carrier) %>%
+  summarise(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  arrange(desc(avg_delay))
+```
+
+
+
+* * *
+
+<div class="oyo">
+
+## On your own
+
+- Say you're curious about the relationship between the number of flights each
+plane made in 2014, the mean distance that each of those planes flew, and the
+mean arrival delay. You also want to exclude the edge cases from your analysis,
+so focus on the planes that have logged more than 20 flights and flown an average
+distance of less than 2000 miles. Please form the chain that creates this dataset.
+
+- Say I fly very often between PDX airport in Portland and JFK airport in New York. 
+Based on the 2014 data, which day of the week would you recommend that I buy a
+ticket for if I want to minimize delays? Any tips for the best airlines to go 
+through?
+
+</div>
