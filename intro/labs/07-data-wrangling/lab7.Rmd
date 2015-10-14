@@ -1,10 +1,11 @@
 ---
 title: "Data Wrangling"
 output:
+  pdf_document: default
   html_document:
-    theme: cerulean
-    highlight: pygments
     css: ../lab2.css
+    highlight: pygments
+    theme: cerulean
 ---
 
 <div id="boxedtext">
