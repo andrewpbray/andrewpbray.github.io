@@ -50,6 +50,7 @@ packages and the data set into R with the following command.
 
 ```{r load-data, message=FALSE}
 library(oilabs)
+library(ggplot2)
 library(dplyr)	
 data(atheism)
 ```
@@ -72,7 +73,7 @@ the same number using the `atheism` data.
 ```{r us-atheism}
 us12 <- 
   atheism %>% 
-  filter(nationality == "United States" & year == "2012")
+  filter(nationality == "United States" & year == 2012)
 ```
 
 ```{r ex4}
@@ -141,12 +142,12 @@ the error margin for surveys of this kind is $\pm$ 3-5% at 95% confidence."
 ```{r ex7, tidy = FALSE}
 ita12 <- 
   atheism %>% 
-  filter(nationality == "Italy" & year == "2012")
+  filter(nationality == "Italy" & year == 2012)
 inference(y = ita12$response, est = "proportion", type = "ci", 
           method = "theoretical", success = "atheist")
 ind12 <- 
   atheism %>% 
-  filter(nationality == "India" & year == "2012")
+  filter(nationality == "India" & year == 2012)
 inference(y = ind12$response, est = "proportion", type = "ci", 
           method = "theoretical", success = "atheist")
 ```
@@ -294,6 +295,7 @@ qplot(x = p_hatsC, geom = "histogram", main = "p = 0.02, n = 400", xlim = c(0, 0
 *Using the normal approximation should be reasonable for Australia, but for Ecuador, the expected number of successes is only $0.02 \times 400 = 8$, so it doesn't meet that condition. The effect is apparent in the right skew of the sampling distribution.*
 
 * * *
+
 ## On your own
 
 The question of atheism was asked by WIN-Gallup International in a similar 
@@ -310,14 +312,52 @@ from 2005 and 2012 for 39 countries.
     *Hint:* Create a new data set for respondents from Spain. Form
     confidence intervals for the true proportion of athiests in both
     years, and determine whether they overlap.
+    
+```{r oyo1a}
+spain05 <- atheism %>%
+  filter(nationality == "Spain" & year == 2005)
+inference(y = spain05$response, est = "proportion", type = "ci",
+          method = "theoretical", success = "atheist")
+spain12 <- atheism %>%
+  filter(nationality == "Spain" & year == 2012)
+inference(y = spain12$response, est = "proportion", type = "ci",
+          method = "theoretical", success = "atheist")
+```
+
+*The 95% confidence intervals for the true proportion of atheists are (.083, .118)
+for 2005 and (.073 and .107) for 2012. Because there is so much overlap, this
+doesn't provide strong evidence that there has been a chance in Spain's atheism
+index over this time period.*
 
     **b.** Is there convincing evidence that the United States has seen a
     change in its atheism index between 2005 and 2012?
+    
+```{r oyo1b}
+us05 <- atheism %>%
+  filter(nationality == "United States" & year == 2005)
+inference(y = us05$response, est = "proportion", type = "ci",
+          method = "theoretical", success = "atheist")
+us12 <- atheism %>%
+  filter(nationality == "United States" & year == 2012)
+inference(y = us12$response, est = "proportion", type = "ci",
+          method = "theoretical", success = "atheist")
+```
+
+*The 95% CI for the proportion of atheists in 2005 was (.004,.016) and in 2012 it
+was (.036, .063). These two intervals have no overlap, which suggests that,
+unlike Spain, there has been a change in the atheism index in the US between 
+2005 to 2012.*
 
 -   If in fact there has been no change in the atheism index in the countries 
     listed in Table 4, in how many of those countries would you expect to 
     detect a change (at a significance level of 0.05) simply by chance?\
     *Hint:* Look in the textbook index under Type 1 error.
+    
+*There are 39 countries listed in Table 4. If in fact there had been no change,
+we still would have detected them with probability 0.05 in each case. Since we're
+concerned with the total number of "successes" in a series of n = 39 independent
+trials, we're dealing with a binomially distributed random variable. The 
+expected value of the binomial is $np = 39 \times 0.05 = 1.95$ countries.*
 
 -   Suppose you're hired by the local government to estimate the proportion of 
     residents that attend a religious service on a weekly basis. According to 
@@ -327,6 +367,23 @@ from 2005 and 2012 for 39 countries.
     guidelines?\
     *Hint:* Refer to your plot of the relationship between $p$ and margin of 
     error. Do not use the data set to answer this question.
+    
+*The key is to realize that the margin of error is maximized when $p = 0.5$. So
+to ensure that we end up with a margine of error less than or equal to 0.01, we
+need to assume that the true $p$ is .05, which is the worse case scenario. The 
+formula for the margin of error is $z^*\times SE$. We set that equal to .01,
+find the appropriate $z^*$ for a 95% CI, plug in the worst case choice of $p$, and
+solve for $n$.*
+
+$$
+0.01 = 1.96 \times \sqrt{\frac{0.5 \times 0.5}{n}} \\
+n = (0.5 \times 0.5) / \left(\frac{0.01}{1.96}\right)^2 \\ 
+$$
+
+```{r}
+(.5*.5)/(.01/1.96)^2
+```
+
 
 
 <div id="license">
