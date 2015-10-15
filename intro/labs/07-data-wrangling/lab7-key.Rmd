@@ -33,27 +33,123 @@ speed <- select(flights2, tailnum, speed)
 ```{r}
 flights %>%
   group_by(carrier) %>%
-  summarise(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
   arrange(desc(avg_delay))
 ```
 
-
+*The highest mean delay is with Southwest and the lowest is with Hawaiian Airlines.*
 
 * * *
 
-<div class="oyo">
-
 ## On your own
 
-- Say you're curious about the relationship between the number of flights each
-plane made in 2014, the mean distance that each of those planes flew, and the
-mean arrival delay. You also want to exclude the edge cases from your analysis,
-so focus on the planes that have logged more than 20 flights and flown an average
-distance of less than 2000 miles. Please form the chain that creates this dataset.
+For the following questions, it may be helpful to sketch out what you want the
+final data set to look like (what are the rows? what are the columns?), then
+work backwards to figure out how to create that dataset from the original data.
 
-- Say I fly very often between PDX airport in Portland and JFK airport in New York. 
-Based on the 2014 data, which day of the week would you recommend that I buy a
-ticket for if I want to minimize delays? Any tips for the best airlines to go 
-through?
+- The plot below displays the relationship between the mean arrival delay and 
+the mean distance travelled by every plane in the data set. It also shows the total
+number of flights made by each plane by the size of the plotted circle. Please
+form the chain necessary to create the dataset that lies underneath this plot. 
+You will also want to exclude the edge cases from your analysis, so focus on the
+planes that have logged more than 20 flights and flown an average distance of 
+less than 2000 miles.
 
-</div>
+<center>
+<img src="ggplot.png" width = 500>
+</center>
+
+```{r oyo1}
+delay <- flights %>%
+  group_by(tailnum) %>%
+  summarize(count = n(),
+            delay = mean(arr_delay, na.rm = TRUE),
+            dist = mean(distance)) %>%
+  filter(count > 20, dist < 2000)
+```
+
+
+- Once you have that dataset, you can check your answer by using the following 
+code to generate the plot. What does the relationship appear to be between mean distance that planes fly and their mean arrival delay?
+```{r oyo2}
+ggplot(delay, aes(dist, delay)) +
+ geom_point(aes(size = count), alpha = 1/2) +
+ geom_smooth() +
+ scale_size_area()
+```
+
+*Planes that fly just shy of 1000 miles tend to have the highest arrival 
+delays on average. Planes making longer flights (around 1500 miles) have fewer 
+arrival delays on average. This is somewhat surprising. It may suggest that if 
+there has been a departure delay, the plane is able to make up more of the lost
+time if it tends to make longer flights. Other explanations are possible, though, 
+including carrier as a confounder. Southwest makes primarily regional flights
+and we saw earlier that they have the highest mean departure delay, so their
+planes might be making up the majority of the sub-1000 mile planes.*
+
+- Say you live halfway between Portland and Seattle. Based on the 2014 data,
+which airport should you fly out of to minimize overall delays? (however you
+define them)
+
+```{r oyo3}
+flights %>%
+  # this is one possible measure of overall delay
+  mutate(tot_delay = dep_delay + arr_delay) %>%
+  group_by(origin) %>%
+  summarize(avg_tot_delay = mean(tot_delay, na.rm = TRUE))
+```
+
+*According to my measure of overall delay, the 2014 suggests that PDX had a lower
+mean overall delay at 7.39 minutes versus 8.82 for Seattle, so I'd fly out of PDX.*
+
+- Say you fly very often between PDX airport in Portland and JFK airport in 
+New York. Which day of the week would you recommend that I buy a ticket for if I
+want to minimize delays? Any tips for the best airlines to go through?
+
+```{r oyo4a}
+flights %>%
+  filter(origin == "PDX", dest == "JFK") %>%
+  mutate(date = as.Date(paste(month, day, year, sep = "-" ), "%m-%d-%Y")) %>%
+  mutate(day_of_week = weekdays(date)) %>%
+  group_by(day_of_week) %>%
+  summarize(count = n(), delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(delay)
+```
+
+*If you define delays as the arrival delay, then you'd be best served by traveling
+on a Monday or a Saturday.*
+
+```{r oyo4b}
+flights %>%
+  filter(origin == "PDX", dest == "JFK") %>%
+  group_by(carrier) %>%
+  summarize(count = n(), delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(delay)
+```
+
+*There are only two carriers that fly between PDX and JFK: Delta and JetBlue. I'd
+recommend taking Delta in general, as their average arrival delay across all days
+is less than half of that of JetBlue. You can also filter on the day of the week
+being Monday or Tuesday, and the recommendation remains the same.*
+
+**Challenge**: Remake two plots that show up in the slides - the points plot of average
+delays by carrier and the bar chart of total count of flights by carrier out of PDX - 
+but display the carriers in descending order.
+
+*There are many ways to do this. Here are two possibilities.*
+
+```{r chall1}
+flights %>%
+  group_by(carrier) %>%
+  summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  arrange(desc(avg_delay)) %>%
+  qplot(x = reorder(carrier, avg_delay), y = avg_delay, data = ., geom = "point")
+
+flights %>%
+  filter(origin == "PDX") %>%
+  group_by(carrier) %>%
+  summarize(count = n()) %>%
+  qplot(x = reorder(carrier, count), y = count, data = .,
+        stat = "identity", geom = "bar")
+```
+  
