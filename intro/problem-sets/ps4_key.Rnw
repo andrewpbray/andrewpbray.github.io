@@ -4,7 +4,7 @@
 \begin{document}
 
 \section*{Problem Set 4 Key}
-Chapter 4:  1, 2, 3, 5, 7, 10,
+Chapter 2:  1, 2, 3, 5, 7, 10,
 
 \vspace{8mm}
 
