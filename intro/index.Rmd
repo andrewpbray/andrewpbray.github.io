@@ -14,6 +14,30 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 * * *
 
+### Week Nine
+
+#### Monday, Oct. 26
+- Quiz Review
+- Inference for Means II
+- [Lab 7 Solutions](labs/07-data-wrangling/lab7-key.html)
+
+#### Tuesday, Oct. 27
+- Lab 8
+
+#### Wednesday, Oct 28
+
+
+#### Friday Oct. 30
+
+
+* * *
+
+### Week Eight
+
+FALL BREAK
+
+* * *
+
 ### Week Seven
 
 #### Monday, Oct. 12
