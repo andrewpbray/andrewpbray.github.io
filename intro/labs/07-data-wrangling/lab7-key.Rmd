@@ -142,14 +142,15 @@ but display the carriers in descending order.
 flights %>%
   group_by(carrier) %>%
   summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
-  arrange(desc(avg_delay)) %>%
-  qplot(x = reorder(carrier, avg_delay), y = avg_delay, data = ., geom = "point")
+  arrange(avg_delay) %>%
+  qplot(x = reorder(carrier, rev(avg_delay)), y = avg_delay, data = ., geom = "point")
 
 flights %>%
   filter(origin == "PDX") %>%
   group_by(carrier) %>%
   summarize(count = n()) %>%
-  qplot(x = reorder(carrier, count), y = count, data = .,
+  arrange(count) %>%
+  qplot(x = reorder(carrier, rev(count)), y = count, data = .,
         stat = "identity", geom = "bar")
 ```
   
