@@ -44,7 +44,7 @@ FALL BREAK
 - Testing Independence between two categorical variables ([r code](lectures/week-07/07A-Xsq-ind.R))
 - [Lab 6 Solutions](labs/06-inf-for-props/inf_for_categorical_data_key.html)
 - **Reading for next time**: p. 163-176
-- **PS6**: Chapter Three, 37, 39, 42. Chapter Four: 5, 14, 30
+- **PS7**: Chapter Three, 37, 39, 42. Chapter Four: 5, 14, 30
 
 #### Tuesday, Oct. 13
 - [Lab 7](labs/07-data-wrangling/lab7.html)
