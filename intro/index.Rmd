@@ -24,7 +24,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - **Reading for next time**: p. 184-195
 
 #### Tuesday, Oct. 27
-- Lab 8
+- [Lab 8](labs/08-inf-for-means/inf_for_numerical_data.html)
 
 #### Wednesday, Oct 28
 - Analysis of Variance (ANOVA)
