@@ -80,7 +80,7 @@ diff(ds$mean)
 - We can calculate a standard error
 
 ```{r}
-sqrt(ds$s[1]/sqrt(ds$n[1]) + ds$s[2]/sqrt(ds$n[2]))
+sqrt(ds$s[1]^2/ds$n[1] + ds$s[2]^2/ds$n[2])
 ```
 
 - We can calculate the df
@@ -107,7 +107,7 @@ head(gifted)
 ```
 
 
-## Paired data
+## Paired data {.build}
 
 If there is a natural pairing between observations in two groups of size n, it 
 can make more sense to analyze them as a single sample of n differences.

@@ -154,9 +154,9 @@ H_A: \mu_{M} - \mu_{F} \ne 0
 <li>We can calculate a standard error</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>sqrt(ds$s[1]/sqrt(ds$n[1]) + ds$s[2]/sqrt(ds$n[2]))</pre>
+<pre class = 'prettyprint lang-r'>sqrt(ds$s[1]^2/ds$n[1] + ds$s[2]^2/ds$n[2])</pre>
 
-<pre >## [1] 1.29</pre>
+<pre >## [1] 1.23</pre>
 
 <ul class = 'build'>
 <li>We can calculate the df</li>
@@ -191,7 +191,7 @@ H_A: \mu_{M} - \mu_{F} \ne 0
 ## 5   156      110      109    17    34  2.2  2.25     2.50
 ## 6   150      113      109    13    28  1.9  1.25     3.75</pre>
 
-</article></slide><slide class=''><hgroup><h2>Paired data</h2></hgroup><article  id="paired-data">
+</article></slide><slide class=''><hgroup><h2>Paired data</h2></hgroup><article  id="paired-data" class="build">
 
 <p>If there is a natural pairing between observations in two groups of size n, it can make more sense to analyze them as a single sample of n differences.</p>
 
