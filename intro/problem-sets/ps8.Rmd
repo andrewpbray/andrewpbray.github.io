@@ -7,13 +7,73 @@ output:
   pdf_document: default
 ---
 
+This problem set combines an analysis of our class data with a few problems
+from the book. Please create a new Rmd file to do the analysis below. The 
+problems can be done either in the same Rmd file or written out on a separate
+sheet of paper. Please knit the Rmd, *print* out the html file (on paper), and
+turn it all in (stapled!) on Monday.
+
+</br>
+
 ```{r load-data, message = FALSE, echo = FALSE}
 library(dplyr)
 library(ggplot2)
 ```
 
-### Taking a look at ourselves
-
 <center>
 <img src="../figs/kitten-mirror.jpg" width = 200>
 </center>
+
+### Taking a look at ourselves
+
+We now have a data set that captures some aspects of the working/sleeping lives
+of the students in Math 141. That data can be downloaded from the class website
+as a .csv file. To get this data into RStudio server, please follow the following
+steps:
+
+1. Save the .csv file to your local machine.
+2. Log into the RStudio server.
+3. In the lower right pane, with the Files tab selected, click "Upload" and
+navigate to where saved the data locally.
+4. Once you see `class-data.csv` in your Files tab, run the following line of
+code:
+```{r read-data}
+d <- read.csv("class-data.csv")
+```
+5. Click on `d` in your Environment and take a look at the column names (survey
+questions).
+6. For ease of typing, run the following line to shorten those names.
+```{r rename, tidy = TRUE}
+names(d) <- c("time", "year", "identity", "stats_hrs",
+              "all_hrs", "sleep_hrs", "job", "grad_school")
+```
+
+### Data Visualization
+
+A good way to begin exploring this data is by visualizing it. Choose some 
+questions / variables that are interesting to you and generate an appropriate and 
+informative plot. You should create one plot for each of the following categories:
+
+1. One categorial variable
+2. One numerical variable
+3. The relationship between two categorical variables
+4. The relationship between a categorial variable and a numerical variable
+
+`qplot()` can be used for all of these. To generate a stacked bar plot, you can
+use the following syntax.
+```{r stacked-bar, eval = FALSE}
+library(ggplot2)
+qplot(x = variable1, fill = variable2, geom = "bar")
+```
+Beneath every plot, please describe the structure and trends in the data.
+
+### Inference
+
+We might wonder if the structure and trends that we see in our sample of data
+are indicative of some greater trend in the Reed student body. Let's consider
+our class to be a random sample of the students at Reed. Please carry out an
+inferential procedure - either a confidence interval or a hypothesis test - for
+the same four categories above (for a total of four procedures).
+
+### Practice Problems
+Chapter 4: 10, 35 (FYI, those are three qq-plots), 44, 45
