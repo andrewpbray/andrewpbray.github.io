@@ -1,0 +1,19 @@
+---
+title: 'Problem Set 8'
+output:
+  html_document:
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+```{r load-data, message = FALSE, echo = FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+### Taking a look at ourselves
+
+<center>
+<img src="../figs/kitten-mirror.jpg" width = 200>
+</center>
