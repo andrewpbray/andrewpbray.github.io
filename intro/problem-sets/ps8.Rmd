@@ -73,7 +73,9 @@ We might wonder if the structure and trends that we see in our sample of data
 are indicative of some greater trend in the Reed student body. Let's consider
 our class to be a random sample of the students at Reed. Please carry out an
 inferential procedure - either a confidence interval or a hypothesis test - for
-the same four categories above (for a total of four procedures).
+the same four categories above (for a total of four procedures). You can either
+gather the summary statistics (e.g. $\bar{x}, \hat{p}, n, s$) using `summarize()`
+or you can use the `inference()` function (be sure to load `library(oilabs)`).
 
 ### Practice Problems
 Chapter 4: 10, 35 (FYI, those are three qq-plots), 44, 45
