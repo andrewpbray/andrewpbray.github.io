@@ -63,9 +63,13 @@ informative plot. You should create one plot for each of the following categorie
 use the following syntax.
 ```{r stacked-bar, eval = FALSE}
 library(ggplot2)
-qplot(x = variable1, fill = variable2, geom = "bar")
+qplot(x = variable1, fill = variable2, data = d, geom = "bar")
 ```
-Beneath every plot, please describe the structure and trends in the data.
+To generate overlaid density plots, you can use,
+```{r two-densities, eval = FALSE}
+qplot(x = variable1, col = variable2, data = d, geom = "density")
+```
+**Beneath every plot, please describe the structure and trends in the data.**
 
 ### Inference
 
