@@ -30,10 +30,10 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 #### Wednesday, Oct 28
 - Taxonomy of Data / Inference
-- Paired Data
 
 #### Friday Oct. 30
-- Analysis of Variance (ANOVA)
+- Paired Data and Analysis of Variance (ANOVA) ([r code](lectures/week-09/09C-paired-data-ANOVA.r))
+- **Reading for next time**: p. 219 - 227
 
 * * *
 
