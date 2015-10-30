@@ -29,6 +29,7 @@ Consider moving around sampling/design a bit.
 - Don't forget to use the Salish Sea Feet example for hypothesis testing.
 
 - Gather examples from previous senior theses
+    - ANOVA - Michael Pitts brainwave data
 
 - Add questions to problem sets from outside of the book (e.g. stat literacy read
 this news/journal article and comment).
