@@ -1,0 +1,11 @@
+Data File Checker
+========================================================
+
+
+```{r}
+file = "project/data/group-i.csv"
+ds = read.csv(file)
+head(ds)
+dim(ds)
+```
+
