@@ -1,0 +1,49 @@
+MTH241 (Probability and Statistics)  Spring 2013
+Sample Analytic Plan Outline
+========================================================
+
+Your project analytic plan is due by midnight on Monday, April 22nd.  It should give us a detailed sense for what questions you 
+will be considering in your analyses and the manner that you will address these.
+
+Each of the components of your analysis will have a QUESTION:, CODE: and RATIONALE:.
+This document is intended to provide an example of a possible analytic plan.  Yours will vary depending on the questions and analyses that you'll be considering (but all will have a multiple regression model at the core).  
+
+In this example, we'll be using data from the RailTrail data set. 
+
+QUESTION: What is the distribution of the predictors and outcomes in our study?
+CODE: tally(~ cloudcover)
+CODE: tally(~ wkday)
+CODE: favstats(~ volume) and bwplot(~ volume)
+CODE: favstats(~ volume) and bwplot(~ avgtemp)
+JUSTIFICATION: We need to describe the distribution of each of our categorical (cloudcover)
+and continuoue (avgtemp and volume) variables.
+
+QUESTION: Are there interesting bivariate relationships to consider?
+CODE: xyplot(volume ~ avgtemp, groups=wkday) or xyplot(volume ~ avgtemp, groups=cloudcover) or 
+JUSTIFICATION: We want to explore possible bivariate relationships in order to give people a sense of the relationships.  We're hoping that one of these might be a figure to include in our class presentation. 
+
+QUESTION: What is an appropriate multiple regression model?
+CODE: lm(volume ~ avgtemp + wkday + avgtemp*wkday + cloudcover)
+JUSTIFICATION: After accounting for cloudcover, is there still an interaction between average temperature and day of the week?  How are these factors associated with volume on the trails?
+
+QUESTION: Are these relationships statistically significant?
+CODE: confint(fm) and possible multiple degree of freedom tests of cloudcover
+JUSTIFICATION: We'll need to completely describe and quantify the relationships that we see
+
+QUESTION: How can we communicate these results?
+CODE: xyplot(fitted(fm) ~ avgtemp | cloudcover, groups=wkday, auto.key=TRUE)
+JUSTIFICATION: Because we anticipate that there will be an interaction as well as a
+significant main effect of cloud cover (categorical variable), we suspect that it will
+be a challenge to communicate our results.  We look forward to talking with Nick and
+Ben to brainstorm possibilities (but the above code is one).  
+
+
+QUESTION: Does our model meet the assumptions for multiple regression?
+CODE:
+xhistogram(~resid(fm), fit="normal") # A
+plot(fm, which=1) # B
+xyplot(resid(fm) ~ avgtemp) # C
+plot(fm, which=3) # D
+JUSTIFICATION: We will review A to assess Normality of the residuals.  We will review
+B and C to assess Linearity.  We will use D to assess Equality of variance of residuals.
+

@@ -1,0 +1,33 @@
+
+Overall: Read through your document, as the instructor would.
+* Are there any error statements from R?
+* Is there any extraneous text?
+* Are basic formatting features correct? e.g. section headers, bullet points.
+
+The variables:
+* Is there a concise, mnemonic name?
+* Has there been some description of the levels (or scale, if quantitative)?
+* Is there a codebook as part of the appendix?
+
+Are the graphics informative?
+* Are ordinal variables being shown in order?
+* Are the labels legible?  (Use las=2 to rotate the labels)
+* Are the variables clearly indicated?
+
+The models?
+* Is a hypothesis provided to justify the structure of the model?
+* Is the report informative?
+    * Effect size: give coefficients
+    * Significance: ANOVA might be more important here
+
+Extraneous content
+* Is there excess verbiage?
+* Are unnecessary aspects of the computer output provided.
+    * Example: You don't need to document the output of the run that provided your sample size.  Just a statement of which model you ran and what simulated sample size was needed to generate a low p-value.
+
+Technicalities
+* Are there any error messages in your R output?  (e.g. wrongly named variables)
+* Are links and iframes functioning?  The reader should not need special permission to access such things.
+
+Grammar and meaning:
+* "The majority of students answering the survey were Female for unknown reasons."  Presumably genetic.

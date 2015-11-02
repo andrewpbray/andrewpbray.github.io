@@ -1,0 +1,1136 @@
+GROUP-A
+
+HANGYI PAN: 
+
+I think our group has been working together and every member has been contributing relatively equal amount of effort to the project.
+
+As a group we finished roster, proposal, analysis plan as well as the handouts together. I found the original datasets and Gina took some time to sort out most part of the data. Natalie and I finished most of the project report and Gina also did some editing afterwards. Natalie also finished the Prezi.
+Everyone has been working really hard for our projects. 
+
+As a result, I think 33.3% for Gina, 33.3% for Natalie and 33.3% for myself.
+
+NATALIE PHILLIPS:
+
+Overall, our group worked very well together. I do not believe that there were really any discrepancies in the group but when there were we solved them quickly.  We were always  in constant communication with each other, making sure that everyone knew what was needed and that one person was not left out of what was going on.  We each worked on part of the project and tried to make sure that one person did not do more than the others.  At times it would seem that one person would be doing a lot and if we noticed that we would tell that person that we would do all of another part, that was the workload would even out. So in the end, we all did a very equal job.  I will say that Gina was very good in making sure that we were all on track and trying to get things done early, which was a big help to the group.  Initially, she set us up and got us rolling but we all put in an effort and did research to get us started and continuing.  Hangyi was very helpful in terms of helping explaining our variables and some of the things Gina and I had trouble describing. I contributed to adding in things that we were forgetting, editing a lot of our work, setting up our presentation and doing our technical report. It was very good working together on the project.  I would say that the percentage for each person in our group, Gina, Hangyi, and I, we would receive 33.3% each.
+
+GINA MANTICA: 
+
+Our group worked very well together. We each contributed equally to the overall project: 33.3% for each member. Hangyi worked a lot on the technical report, Natalie worked a lot on our Prezi presentation, and I worked a lot with editing all parts of the presentation along with making the handout. But, together, we all added things and talked about the various aspects of the project- we all made an equal impact in every portion turned in.  However, at some points, I found cooperation to be challenging in our group. At times, everyone was so stressed out that our work became frantic and messy. But, we were able to pull ourselves together and get through it.
+
+GROUP-B
+
+TORI BROWN: 
+
+Natalie and I worked very well together during the course of this project. Luckily, we've worked together before and knew that we got along. We did most of the work together and put about the same amount of work towards the project. The only thing that got in the way during the course of the semester would be if our schedules didn't match up completely. For example, I would have practice until 7 and she would be finished eating dinner by 6:30 and she would work on the project until I got the the designated work area. Luckily, my softball schedule cleared up and I was able to work on the project when she was unable, to make up for it. Therefore, I believe Natalie did about 55% of the work and I did 45% because if timing issues.
+
+NATALIE SMITH: 
+
+I think that Tori and I worked together in a very productive way and each put in an equal amount of effort. Because it was just the two of us working on the project, we each had to put in a substantial amount of time to complete all of the parts of the project in a thorough way. For each part of the project, Tori and I sat down together and worked on one of our computers until that part was complete. Actually meeting in person to work on all parts of the project allowed us to talk through any issues that might have come up and to ensure that we were both putting in the same amount of time and effort for what we were working on.
+
+Tori and I also made sure that we allowed ourselves plenty of time to work on each piece of the project so that we could complete it well before it was due. This strategy prevented us from getting too stressed about approaching deadlines and also meant that neither person was forced to pick up the slack if either group member became busy around the deadline. All in all, Tori and I worked very well together and were both very careful that the work was equally shared. 
+
+The amount of time and effort that either group member put in was:
+
+Natalie- 50%
+Tori- 50%
+
+
+GROUP-C
+
+ALISON GRADY: 
+
+My group worked really well together. Kyla was the one who put our handout together, and we all worked to edit it. I did most of the R work, but we all put the analytic outline together (which is where most of our code came from). Everything else, we worked on pretty equally using Dropbox and Google Docs. It was a great group to work with; everyone pulled their weight and there were no problems.
+I feel that Kyla and I each did a tiny bit more work than Emily, so I'm assigning 35% to myself, 30% to Emily, and 35% to Kyla.
+
+EMILY LANE: 
+
+Our group worked together very well. We were all on top of the work and
+engaged in the project. We all agreed that no one felt like we had done excessive
+work on the project, but somehow it all got done. The initial idea for the project
+came from Kyla, who synthesized our interests in the environment and education
+into a single idea. We split the proposal writing fairly equally, and Kyla found both
+AQI and demographic data sources, while Alison found test score data sources. I
+found the population density data source, although not until later in the project.
+Ultimately, we used only the two sources Kyla found and the population density
+data I found for our data, as the demographic data contained test score data. Kyla
+compiled demographic data, and Alison compiled some test score data that we
+didn’t end up using. I attempted to compile AQI data, but the database was
+malfunctioning, so we ended up making a group effort and looked up other sources
+and called the EPA to troubleshoot. Alison imported the csv of our complete data
+set. Our analysis outline was a group effort, although Kyla did a large chunk of the
+beginning. However, there was a fairly even split for the code and explanations. The
+analysis of the code we actually ran was done as a group. Kyla created the first draft
+of our handout, as well as most of the slides for our presentation. I created the rest
+of the slides. Editing of the handout and powerpoint was split equally between all
+three group members. Alison created the R Markdown file for our final report and
+wrote slightly more of it than Kyla or I.
+
+Final breakdown:
+Alison – 40%
+Kyla – 31%
+Emily – 29%
+
+KYLA PRIOR:
+
+Overall, our group worked really well together. We did the majority of our project on
+GoogleDocs, which helped a lot, because we would all work on it when we could, instead of
+trying to coordinate three different schedules. I think we tried to ﬁnd each other’s strengths and
+weaknesses, and then work with those strengths/weaknesses to create the best project possible.
+For example, Alison expressed that she really liked working with R-studio and the code, so she
+took responsibility for that portion of the project. In contrast, I really like creating handouts and
+developing presentations, so that became my responsibility.
+
+When it came to the ﬁnal report, Alison really took control - even though I tried to 
+make her promise to not work on it without us! While I appreciate the amount of work she put in, I
+often felt like Emily and I weren’t contributing enough, even though I would try and get Alison
+to stop working on the project! We all got together to write the ﬁnal report, but Alison had
+already done the formatting, and started working on the write up without us. In addition,
+although we were all supposed to ﬁnd three different parts of the data, what actually ended up
+happening was Alison and I found the data, and then Alison condensed the information in
+RStudio, but Emily didn’t fulﬁll her responsibility.
+
+In contrast to Alison’s performance, I really don’t feel like Emily contributed very much
+to the project. While she had great points and some verbal input, she didn’t write very much or
+produce most of the work, except for about half of the Introduction and Conclusion of the ﬁnal
+report. In addition, when I was working on the handout, only Alison replied to e-mails and
+helped look over the draft.
+
+To break it down, I feel like Alison contributed 45% to the project, I contributed 40%,
+and Emily contributed 15%.
+
+GROUP-D
+
+KRIS FEDERENKO: 
+
+I think our group worked very well together. We were able to play on each other's strength. I think the workload was divided equally:
+
+33.3% Clarke                    33.3% Michelle                  33.3% Kristina
+
+Clarke did a lot of organizing work, making sure we were on top of everything. She also was the one to come up with the project and get the data. Michelle was always very fast to respond when the group needed some urgent last-minute work done. She also contributed a lot to the write-up and the creation of the presentation and  the handout. I contributed the most in terms of organizing the data into the useable format and other code-related aspects of the project. In general, we had a very good dynamic, and were able to avoid conflicts, and get everything done efficiently.
+
+MICHELLE DEADWYLER: 
+
+My group worked very well together and I think we were all equally committed to this project. This was a slightly strange experience for me. I usually take on the role of group leader and do the bulk of the organizing and finishing touches on projects like these. However, Clarke and Kris were both so organized and proactive I found myself in a different position. I think Clarke and Kris did slightly more work than me -- I would say 35%, 35%, 30% respectively -- though this wasn't due to me trying to do less. 
+
+We all brought very different strengths to the group, which really worked out nicely. Clarke acted as out liaison between our group and prof. Rhodes and was also the resident chemistry expert (which was obviously important for understanding our data). Kris did the bulk of the coding on R, which was a huge lifesaver. I did the bulk of the formatting/putting together of the power point and handout. I think we were all equally involved in the actual interpretation of the data and the checkpoints that were submitted along the way.
+
+Overall I couldn't have asked for a better group. We worked very well together and I think produced a pretty decent final project.
+
+CLARKE KNIGHT: 
+
+Our group worked very well together. The group cohesion was strong, and we all supported each other. The work load was spread fairly, and we all had a sense of what our roles were.
+
+I would give us each 33.3% because of our equal contributions.
+
+GROUP-E
+
+BISMATU SAHU: 
+
+The  project was  a joint effort in every way possible. We divided the work in different stages of the
+project  between  coding,  proof­reading  and  problem­solving  and  all  members  of  the  group  were
+thoroughly  invested  in  the  smooth  cooperation  that  made  the  project  a  joy  to  work  on.  I  would
+confidently  say  that  each  member  contributed  to  1/3rd   of  the  effort  that  made  the  project
+possible.
+
+We  were  also  helped by  other members  of the Smith community like Sarah who went out of her
+way  to  help  us  when  we  had  trouble  merging  our  Gapminder  data.  I  would  never  have  been  so
+invested  in   the  project  had  it  not  been  the  constant  encouragement  of  Kyle  and  the  R  skills  of
+Ayla.  The  project  has  been  of the we  have  all  learned,  collaborated  and  learned  a  lot  from  the  real­world  problem  and  our seamless 
+
+AYLA STAELIN-LEFSKY: 
+
+Our group worked really well together. I honestly haven’t had such a successful group dynamic in any group I’ve worked with. We were all really dedicated to our project and we were all interested in doing high quality work. We all seemed genuinely interested in our topic and project, so everyone offered up good ideas and opinions about the data and results. Nobody seemed inclined to put things off until the last minute, and because of this we got everything in well before the deadlines. We all brought something different to the table and in the end it meshed really well. I spent a lot of time arguing with R, and Kyle and Bismita both did a lot with the analysis of the code.  While writing the report, we all did an equal share of writing and editing. I did speak for a lot of the presentation, but that was just because of how it worked out and how it was the most cohesive. I know that I tend to be a little bit of a control freak and therefore sometimes a hard group member to work with, but Bismita and Kyle did an excellent job of rolling with it and not letting me get too out of hand. I think that everyone deserves recognition for going above and beyond; everyone pulled their own weight and stepped up to do a little bit more. I know that you probably won’t believe this, but in my estimation, the break down of our effort really was:
+
+KYLE BOYD: 
+
+I was in Group E for the final project. I think that our group worked incredibly well together. We all pitched in and did what was expected of us. Nobody slacked off and made the other people do the work for them. We were all prepared and worked together in group meetings. If I was to divide the work into percentages then I would divide it as follows:
+
+Ayla 36%, Bismita 32% and Kyle 32%. 
+
+The reason I am giving Ayla a higher percentage is because she is the best at R studio and therefore she helped out a lot with the r work. Since working we r is a large component of the final project I think that she did a little bit more work than me and Bismita. 
+
+I think that Bismita and I did slightly less work then Ayla, but did equal work to each other. Bismita and I did less r work but we did more writing work than Ayla. 
+
+We call contributed equally in time and ideas. I think that we had a great group dynamic and we all worked well together. 
+
+
+Bismita-33.3%
+Kyle-33.3%
+Ayla- 33.3%
+
+
+GROUP-F
+
+RAISA RUBIN: 
+
+
+33.33 % for Greylin, 33.33% for Shelby and 33.33% for me
+
+Our group actually worked really well together. All of our team members were reliable and got done what we said we would get done, I don't think any of us felt we got the majority of the load. We communicated really well and if anyone was stressed, the workload got distributed accordingly.  I often felt like I wasn't doing enough as I was preoccupied with other course work, however, I attended all group meeting and tried to help when I could. Shelby and Greylin often had conflicting schedules so I would try to make sure everyone stayed on the same page. When I voiced my concern that I wasn't contributing enough one of the other members of my other group told me that it was just the fact that we had an amazing group, none of us were familiar with having an evenly distributed work load.  
+
+Greylin was really good at wording things so whenever we were writing reports, while we all contributed to the writing process, Greylin made sure that all the facts were accurate to the best of our ability and sounded as professional as possible. She would reread our report and make sure that it had everything we needed before it was submitted. Before our presentation she made sure that we all were saying everything that needed to be said in a clear fashion without providing every single detail. 
+
+Shelby built our Excel sheet that was used for analysis ,though we all contributing in compiling the data, and in general is a very efficient person. She was a great asset to the team and made sure we all got things done. She also worked long and hard trying to get certain parts of our code to work. She understood R pretty well and made sure all of us were on the same page. 
+
+GREYLIN NEILSEN:  
+
+Group F, Greylin, Raisa and Shelby, had ideal group dynamic with each
+member being actively involved throughout the process. We did the vast majority
+of the work in group meetings. Specifically the work for the initial proposal, revised
+project, data collection and analysis outline were all prepared with all of us in the
+same room working through the assignment. Group meetings generally progressed
+with all of us tackling the same problem, such as creating a visual representation
+of our data with each of us contributing thoughts for the interpretation. As we
+spent more time working together and became comfortable with the material and
+direction of the project we were able to specialize and do more work independently.
+Shelby and Raisa are more comfortable working with and troubleshooting
+code, and consequently did much of the code work, especially after we gave our
+presentation rehearsal and needed to last minute editing. What I couldn’t assist with
+in working with the code I made up for by putting effort into interpretation and
+analysis, initiating and spearheading the work and trying to keep us all on task. Our
+group was generally very good at leveling uneven work loads.
+Shelby put in a significant amount of effort to finalize the necessary
+components of the presentation, in addition to working with the code and preparing
+the final code needed for the presentation. Raisa’s strength in the group was to act
+as a link between Shelby and myself. Our schedules didn’t align very well, but Raisa
+made time to meet with us both individually and kept continuity in the project. It
+is difficult to pinpoint specific contributions because much of the work we did was
+done in a group setting. Shelby did the majority of the work for the initial handout,
+and Raisa and prepared the final technical report. Other than that the work was
+mostly communal. For myself personally, I had to miss meetings on occasion, but
+I actively offered to do more work (editing, slide preparation, data collection etc)
+outside of group meeting times to make up for this.
+For these reasons I am assigning each group member 33.3% of the group
+dynamic grade. That being said, I also think a huge piece of our project hinged on
+last minute, semi-frantic email conversations with Professor Baumer. Thank you.
+
+SHELBY RICHARDS: 
+
+33.3% for each member, me, Raisa Rubin, and Greylin Nielsen.
+
+ 
+
+I think that we generally worked well together. Sometimes finding a time that we could all meet was difficult; with my schedule being on the early side with morning crew practices I wasn’t able to meet late, which is when the other members usually wanted to meet. Raisa was great about being at all the meetings and keeping us all on the same page. I was more in charge of figuring the code out for the many different routes we ended up taking. Greylin was mostly in charge of the communication and making sure the awkwardness of Raisa and my writing didn’t show up too much.
+
+It seemed like we really split up the workload, which I don’t always like. I think it left all of us, at some point, feeling like we weren’t doing enough. As I reflect on it, though, I think it ended up being split up pretty evenly.
+
+GROUP-G
+
+OLIVIA CAPPELLO: 
+
+I was assigned to a group with two students whom I did not know before the project
+began. While my group was able to complete our project without major conflicts, I
+did have some difficulty working with Michele specifically. I felt that Kady and I had
+to guide her through the project step by step except when she was writing R Code.
+She was also often very late for our meetings and seemed to have difficulty focusing
+on the task at hand. It was very frustrating, and I unfortunately had little patience
+for it. I found myself increasingly irritable (and, regrettably, snappy) during our
+meetings, and by the end of the project I was grateful to be done.
+
+Kady was a pleasure to work with, and she was always prepared to work on our
+project. She also kept very calm under pressure, which was especially important
+at the end of our project. The night before the technical report was due, she and I
+wrote up the introduction and results sections while Michele worked on the data.
+After working for a few hours, we agreed that Michele and I would each meet with
+Kady the next day to finalize the report and that Michele would finish the data
+section that evening. When I met with Kady the next day, she told me that Michele
+had not done anything the night before (save for typing some notes about how
+we collected data) and had told Kady that she was leaving for home at 5 PM and
+would be unable to work on the project the rest of the evening. Kady and I ended
+up spending two hours finishing the data section and finalizing the report. I am
+glad that we finished it, but the entire situation was very upsetting, especially
+considering that she and I both had other projects and plans for that evening and
+had thought our report was virtually finished.
+
+Michele contributed less than Kady and I did to the overall project. She wrote the
+R code for our analysis and helped analyze results, but I felt that Kady and I did
+the majority of project creation, data collecting, and reporting. I would assign the
+percentages as follows:
+
+25% Michele, 37.5% Kady, 37.5% Olivia
+
+MICHELLE HANDY:
+
+The distribution of group work was fairly evenly divided; we assigned parts
+of the project so that each member would have something to do. Olivia’s strength
+was writing and using excel, while mine was coding rStudio and interpreting the
+graphs and other data. Because that was most of the project, there was often not
+much for Kady to do; however, she often assisted Olivia and I in our tasks and
+expressed a desire to do more work. Overall, everyone evenly pulled her weight.
+Notably though, Olivia contributed a lot to the project. Even after completing her
+designated task she still worked to complete or add to Kady and I’s respective parts
+of the project.
+
+Kady 21%
+* Proposal & Finding Data (33.33%)
+* Graph and Fit Analysis (15%)
+* Handout (10%)
+* PowerPoint Presentation (25%)
+* Technical Write-up (35%)
+* Miscellaneous
+
+Michele 37%
+* Proposal & Finding Data (33.33%)
+* All Coding for Analysis and Technical Write-up (100%)
+* Main Graph and Fit Analysis (70%)
+* Handout (45%)
+* PowerPoint Presentation (35%)
+* Technical Write-up (20%)
+
+Olivia 42%
+* Proposal & Finding Data (33.33%)
+* Graph and Fit Analysis (15%)
+* Compiling and Organizing Data (100%)
+* Handout (45%)
+* PowerPoint Presentation (40%)
+* Technical Write-up (45%)
+
+KATHARINE WILSON:
+
+Michele:26
+Olivia:37
+Me (Kady):37
+
+We had a little problem in our group that I think was caused by misconceptions about what each of us were supposed to be doing.  Olivia and I were on the same track, but I don't think Michele was totally into our project.  I gave her a lower score because she was very late to most of the meetings, including one time when she was 40 minutes late and then could only stay for 5 minutes. It could be very stressful.
+Michele was best with the R stuff, which was really useful.  However, she didn't always tell us what she was doing and didn't really do much else. Perhaps she did more and didn't tell us.
+Olivia was good with Excel and being organized.  She worked hard on manipulating our data so we could use it.  She was also very good at writing down our reports and whatnot.
+I didn't do as much computery stuff as the other two, partially because my computer is broken, but I was good at making plans and keeping track of what everyone was supposed to be doing.  I was good at talking our group through the analysis and writing up parts of the report things.
+
+GROUP-H
+
+FEI PENG: 
+
+Overall, our project group have worked well together, and everyone in the group has tried to share the workload as equally as possible. 
+Though Sharon joined the group later, she has tried her best to make up for the work she missed.
+I have worked on all the checkpoints for the project and went to all the group meetings.
+Because of her schedule, Kathryn wasn't able to go to all group meetings, but she has tried to share the workload equally as well. 
+The estimated percentage of the total amount of work done by each member is: 34% by Sharon, 34% by me, and 32% by Kathryn.
+
+SHARON SANTANA:
+
+First, I would like to say that, despite my group experience, having a project like this was incredibly helpful and very useful in understanding the concepts learned in this class. It really helped us see how much we learned and how to make use of it.
+
+Sharon Pamela’s Perspective on Overall group work:
+
+I must say that this semester I had my worse group work experience so far and I’ll explain why next. My group was almost never available to meet due to their busy schedules and was not very good in communicating things either. I don’t mind doing everything via web, but my problem was that we always ended up rushing and carrying the load unfairly. I was the only one pushing the group towards little goals that we could all accomplish in order to break up the work as I had a 20-credit load this semester and truly understand how busy it can get. I did not appreciate that if I would not take the initiative on something, my group would not either.  This was particularly problematic because I ended up doing more than I should have quite a few times.
+
+The various times I did my part early and waited on my group to do theirs, they ended up producing “not their greatest job” for lack of better terminology. This is where I had to, once again, finish their work.
+
+In this group I had to take the group leader role and distribute the work fairly amongst the group in order to keep things going, because my group didn’t know “how to be helpful” or what they should be doing. Also, I did this so that I didn’t end up doing most of the work myself. This strategy did not function very well; as I had to “fill in” for my group’s lack of effort must of the time. It was not up until almost the end, after I expressed some of my frustration with this issue, that my group started to care a little bit more.
+
+
+
+Sharon Pamela’s perspective on members overall effort:
+
+Fei Peng:
+
+She was willing to meet, but only after I begged and asked many times. I appreciated her presence, but it seems that she thought that was everything. She is a very nice girl, but I got somewhat annoyed by the fact that she would not take any initiatives if I didn’t tell her to. Also, she was most focused on correcting the already done work than in contributing ideas. I liked her enthusiasm though and the fact that she tried to do her part for the most part.
+
+ 
+
+Kathryn Berg:
+
+I didn’t know much about what happened to Kathryn when she had to leave home for about a week because she did not share it until the last meeting we had. I understand health issues happen and there is not much else we can do, but I would have appreciated a little more involvement from her in this project. All of the answers Fei and I kept getting from Kathryn when we sent her updates on the project and the part we would have liked her to help us on were along the lines of “I don’t have R”, “I’m busy”, “I have a lot of other commitments”, “I’m sorry”, etc… To me these excuses weren’t particularly valid because we too had a lot of things due and probably as much schoolwork to do. Towards the end, once her schedule freed up a bit, she started to work harder on project related things though and became extremely helpful.
+
+
+
+Sharon Pamela:
+
+I think I acted as the coordinator for this group. I tried to give us direction and keep us on track. I might not be good in statistics, especially in interpreting things, but I sure put good effort into this. In this project I focused more on the technical aspects of things since I’m more comfortable with that.
+
+As the “some sort of planner” for the group, I took on a lot of other people’s responsibilities when they could not do their parts for diverse reasons. I also ended up doing the data curating by myself, the data analysis almost by myself, fully reconstructed the handout, and did the final slides, along with working on the proposal report, and trying to fairly distribute the work between group H members. I put a lot of time and energy into this and worked hard so that we could present what we did.
+
+
+
+Percentages of total amount of work:
+
+30% for Fei Peng, 20% for Kathryn, and 50% for Sharon Pamela
+
+--------------------------------------------------------------------------------------------------------------------
+
+Thank you for your time! It was a pleasure to take this class. I would say it was totally worth the effort. 
+
+KATHRYN BERG:
+
+Sharon Santana: She was the “group leader” of this project. She set up the online documents for us all
+to post to, asked the most questions to the professors for the group, and helped set everything up. She
+had an amazing amount of commitment, and helped others out as well.
+
+40%
+
+Fei Peng: Always present during sessions online writing the documents, would compute code and not
+afraid to share opinions on certain sections or slides for the presentation. Definitely more of a “do the
+work assigned” person, not the one assigning work, which isn’t bad at all.
+
+33%
+
+Myself: While I wasn’t able to meet with my partners as often as they could meet with each other due
+to a very busy schedule (or the time off for treatment), I was always online editing the documents with
+them (sometimes during other lectures or rehearsals, which probably wasn’t very good of me). I took
+what the code gave us and interpreted it in terms of the questions we were trying to answer. I wrote
+the introduction and conclusion, and interpreted other things in between. If things needed editing I also
+changed up the code or labeled, etc.
+
+27%
+
+Both my members were really understanding of my situation. I think they understood a little more
+when I came back this week with a wig, which I really appreciated. I felt the code was mostly made and
+corrected by Sharon, Fei plugged and chugged with the code to put graphs and plots, and I edited what
+was put code wise if needed and provided interpretation for each section. I think we worked through
+our own personal issues to form a really good team.
+
+GROUP-I
+
+SARAH WEBER:
+
+10% Risha Sinha
+
+She did less than half of the work expected of her, had there been a fair distribution. We had five in-person meetings throughout the semester, yet she missed two of them. Both of the meetings she missed had been planned around her schedule specifically, yet she slept through our meeting times and was not proactive about making up for her share of the work.
+
+When she was physically present for meetings she would be on facebook.  Often the work she did was incorrect and had to be rewritten.  She was not proactive about learning and clarifying the concepts she had troubles with (ex: correlation vs causation).
+
+45% Kathryn Hayworth
+
+While she tended to be an alarmist when it came to larger tasks that didn’t translate directly from previous class/home work, she was willing to ask for help and put time aside in order to figure to complete the large tasks.  She didn’t have as good of an understanding of how to apply the analysis as I did, however she made up for that work by doing more proof reading/editing for our papers.  She was responsible for turning in all of our deliverables, and acting as the liaison with the professors if we had questions or concerns. She was dependable throughout the course of the project and with her help we were able to make up for Risha’s lack of contribution.
+
+45 % Sarah Weber
+
+I found and compiled the data sets, created the code, and lead the team through the analysis.  I completed 90% the outline of the analysis and was able to explain concepts to the other two throughout the course of the project.  If I was unable to meet online with the other two for a google docs work session, I would be sure to return to the document before it was due and make comments/changes. 
+
+KATHRYN HAYWORTH: 
+
+Our group worked rather well together for the most part on this project.
+Sarah came up with the initial idea ultimately. I had brainstormed a few things over
+spring break, but when we met up upon returning to school, none of them seemed
+that feasible. Sarah suggested women in power when she came across the World
+Bank while we were looking over the suggested data sets together. She also had the
+most knowledge and skill in the group as far as computers in general, so she was a
+big contributor to the project. During the last two weeks of the project, Sarah also
+had a huge engineering project due, yet she did her best to make time for this
+project as well.
+
+I did as much as I could for the project, coming to all meetings, and writing
+the majority of the technical report. I did not have the level of mastery, or perhaps
+just lacked the confidence, to take charge of the project, so Sarah was more of a
+leader in some ways. However, I initiated most meetings. I also took the
+responsibility of submitting all assignments that were part of the project using the
+correct protocol. I worked quite a bit on formatting the data and on putting it in R.
+We all worked together on the handout and the power point.
+
+Risha clearly did not take this project as seriously as Sarah or I. She worked
+on the handout and the technical report, but Sarah and I had to revise everything
+she did because it was never quite complete. She also planned a meeting and didn’t
+show up. Risha did her part in helping to format the data, enter it into R, and
+generate plots and histograms. She worked a bit on the power point and on the
+technical report, but as mentioned earlier, her work left a bit to be desired.
+
+Ultimately, I would assign my group members’ contributions as follows: 45%
+for Sarah Weber, 40% for myself, and 15% for Risha.
+
+RISHA SINHA: 
+
+Overall, I understand that the group members had varying degrees of outside commitments as
+well as abilities to work (i.e. how much sleep someone needs to properly function). To this
+end, I would like to commend my group members on how much work they were able to put in.
+Unfortunately, I do not think I was able to give as much as the rest of the members. Therefore, I
+would like to give the following percentage reports:
+
+Sarah Weber 40%, Kathryn Hayworth 35%, Risha Sinha 25% à Total = 100%
+
+Soon after the group came together, I realized that we were a group of typical group leaders
+(meaning, for group projects, we typically essay the role of group leader). It wasn’t terribly
+difficult working together as a group, but I constantly felt that I did not contribute as much
+as I personally wanted to and as much as the other members of the group wanted me to. This
+was partially because of my outside commitments (other classes with group projects, club/
+organization responsibilities, assignments, etc). I understand that we all had such commitments,
+but I guess the importance we gave to each of these separate responsibilities varied (in other
+words, our priorities weren’t exactly the same). Additionally, and possibly somewhat more
+importantly, I felt that whatever work I did put into the group wasn’t on par with what the
+members expected.
+
+In retrospect, I think I spread myself too thin all around and the response I received from
+everything else made me feel a little discouraged about my ability to do really well in other
+things I would try so I wouldn’t try as much as wanted because I didn’t think my work would be
+accepted in the end.
+
+GROUP-J
+
+MARISSA MUNOZ-RUIZ:
+
+Marissa 40%:
+I worked on the regression model and worked on the interpreting the coefficients, the predictor behavior of the model and also described the T-test and the F-test. I wrote the regression information on the handout and on the power point. I also proposed several of the questions we would be answering throughout the presentation.  
+
+Cecilia 30%
+Worked on organizing and editing the power point. She did her part on the relationship between the explanatory variables on the handout, power point and the final report. Specifically, she interpreted the histograms, scatter plots and residual models between the explanatory variables. She formatted the handout and corrected misinterpreted concepts or grammatical errors. She researched where to find the data. Attended additional meetings with Professor Baumer. 
+
+Alex 30%
+Worked on organizing the data into a format that could be uploaded into R studio. She assessed the normality of the response variable. She explored the relationship between the explanatory variables and the response variable on the handout, power point and the final report. Attended additional meetings with Professor Baumer. 
+
+Overall Group J worked well together, was productive and most of the members attended all the meetings. We all helped to gather the data for R Studio. I think our meetings could have been more productive without so much conversations that didn't have to do with our project. One of our members was very concerned with her grade and brought unnecessary stress to the group. I also think we also had too many meetings that weren't necessary. People spent a lot of time on the project that wasn't very productive. It was a good experience and I enjoyed the group dynamic. : )
+
+CECILIA LEE: 
+
+Overall, the group dynamic was satisfactory. All three group members, including myself,
+
+had a clear view of the tasks at hand and completed them with earnest effort and punctuality.
+
+Although I had to urge my group members to meet before each assignment submissions for a
+
+final review of the assignment, in the larger scheme of things, they were as committed to the
+
+project as I was. We also tried to go as a team to Professor Baumer’s office hours to clear up
+
+some confusion and misconceptions about the project.
+
+The basketball data set analysis was split into three parts and was assigned to each of the
+
+group members. We then put the analysis together and reviewed each other’s work. This worked
+
+well since the load of the project was lighter for each group member and we were able to discuss
+
+the analyses done. It allowed us to fully explain to one another why our analyses are correct and
+
+why they are important; it was like a miniature presentation of the project. If there was an error
+
+in one’s analysis we would discuss the error and solutions to fix it. Altogether, we respected and
+
+were open to the suggestions and opinions of one another.
+
+My group members are Marissa Munoz-Ruiz and Alexandra Djamen. It was evident that
+
+Marissa was committed to the project. She completed her tasks adequately and completed them
+
+in a timely manner. A particular work she has done very well was creating the summary table of
+
+our results for the multiple regression model test. Despite the fact that I wrote up most of the
+
+analysis outline, Marissa helped me polish and revise the assignment. She also added additional
+
+analysis outlines that deemed to be very helpful in our project. Moreover, she wrote the
+
+descriptions of the explanatory variable for the proposal outline due to the fact that she is most
+
+familiar with basketball terminologies. One thing that I must note is that Marissa seemed
+
+oblivious to some of the deadlines for the assignments, such as the due date for the analysis
+
+outline. Although she was committed to finishing her tasks, she would not start them until the
+
+day of the deadline. Therefore, I had to complete her tasks just in case she did not deliver. But
+
+fortunately, she completed her tasks without fail for each assignment; this also allowed us to
+
+compare and identify any discrepancies between our works. She also did well during the project
+
+presentation; it was notable that she practiced and reviewed the slides beforehand.
+
+Alexandra Djamen did not show as much commitment to the project but still completed
+
+her tasks in a timely manner. She completed her analysis on time; however, for the handout she
+
+did not deliver acceptable work. She pasted a list of R codes and the wrong plots for her analysis.
+
+She was supposed to show and assess the univariate and linear relationships between the
+
+explanatory variables and the response variable, but instead showed plots showing the linear
+
+relationships between explanatory variables. I had to redo her analysis and create histograms and
+
+scatterplots that were include in the project handout.
+
+On a more positive note, she helped me and Marissa revise the analysis outline. She also
+
+wrote the description on the handout for the histogram and the scatter plot depicting the
+
+relationship between the explanatory variables and response variables. As for the presentation,
+
+she was well-rehearsed and knew her slides very well.
+
+For this project, I felt that I was the driving force in completing all the assignments
+
+correctly and adequately. I urged my group members to visit the professor’s office hours with
+
+questions we have as a group so that we are all on the same page and no confusion will arise later
+
+regarding the question. I also had to set up group meetings, making sure that we review our
+
+assignments before we submit them. I knew from experience that meeting as a group and visiting
+
+the professor’s office hours are all crucial in preventing serious problems as the project
+
+progresses. Moreover, I tried to start the assignments at least 3 days before the deadline and I
+
+inevitably ended up writing most of the assignment, such as the project proposal, analysis outline
+
+and the handout draft. I also revised the PowerPoint for our presentation and caught mistakes.
+
+Marissa: 35 %
+
+Alex: 25 %
+
+Cecilia: 40 %
+
+ALEX DJAMEN: 
+
+The members in our group worked pretty well together and there was more or less equal contribution, although towards the end some temporary tension arose, probably due to stress. Everyone was more or less punctual: more often than not, my partners would show up about 20 minutes late. Cecilia was very focused on keeping us all on track with what elements were missing in our final product, and appeared to be driven, which is why I gave her slightly more points than Marissa and I.  
+
+Cecilia 
+35%
+Marissa 
+32%
+Alex
+33%
+
+
+GROUP-K
+
+MOMOHA TAKAHASHI:
+
+40% for Anna, 35% for Momoha, 25% for Da-Yae.
+
+There were more than one occasion when Da-Yae did not or could not
+show up to the group meeting. Those times were often because she
+forgot and was sleeping or did not tell us that she couldn’t go until
+last minute. But when we are able to meet together, we worked well
+together, though maybe not equally. Anna and Da-Yae were good at
+finding the best words to describe the situation, so they did a lot of
+editing for me. I myself was the organizer and I was most of the times
+the one to email the professors our assignments and organize data file
+and codes when necessary. Anna was really helpful in getting the data
+file in the right format and I think she did the most work because she
+always showed up at the meeting, did lots of writing, and went to get
+extra help from the professor with me. Even though she was the only
+senior in our group, she did a lot for us, and I am grateful for her
+cooperation.
+
+DA-YAE LEE:
+
+Our group worked fairly well and with not much issue with making sure each individual
+member did an approximately equal amount of work. Especially as we tended to work on almost
+every assignment together in one sitting as a group, as far as I know, there wasn’t a problem with
+one person doing a whole lot more or a whole lot less than the other members. That is, all three
+of us spent about an equal amount of time meeting up for and discussing the project.
+
+In terms of speaking about who contributed the most to the actual shaping and finalizing
+of the project, I would say it is Anna. Even though we all sat through each meeting together and
+spent an approximately equal amount of time being there for the meeting, the person that
+contributed more thoughts and ultimately helped come up with materials to work with – for
+instance, the necessary Rstudio codes – was Anna. Also, while there were one or two times that I
+and Momoha missed a meeting that had been scheduled, Anna never missed one and was there to
+work with either one of the two that hadn’t missed. So, I would give some greater weight to her
+for her extra work on these matters.
+
+30% Da Yae, 30% Momoha, 40% Anna
+
+Our group worked fairly well and with not much issue with making sure each individual
+member did an approximately equal amount of work. Especially as we tended to work on almost
+every assignment together in one sitting as a group, as far as I know, there wasn’t a problem with
+one person doing a whole lot more or a whole lot less than the other members. That is, all three
+of us spent about an equal amount of time meeting up for and discussing the project.
+
+In terms of speaking about who contributed the most to the actual shaping and finalizing
+of the project, I would say it is Anna. Even though we all sat through each meeting together and
+spent an approximately equal amount of time being there for the meeting, the person that
+contributed more thoughts and ultimately helped come up with materials to work with – for
+instance, the necessary Rstudio codes – was Anna. Also, while there were one or two times that I
+and Momoha missed a meeting that had been scheduled, Anna never missed one and was there to
+work with either one of the two that hadn’t missed. So, I would give some greater weight to her
+for her extra work on these matters.
+
+30% Da Yae, 30% Momoha, 40% Anna
+
+ANNA BOHN: 
+
+For the most, I feel that my group worked well together. 
+The biggest problem we had was Da-Yae not showing up for our first meeting, but that was due to sickness. And I did notice that Momoha and Da-Yae seemed to defer to me a little, which I think I think was due to me being a senior. I tried to be aware of this, and make sure that their thoughts were being heard, while still making sure we did not get bogged down and got our work done. 
+Other than that, we did have an interesting time trying to find time to meet up with our conflicting schedules. Overall, I feel that we all tried to pull our weight. 
+
+34% for Momoha, 30% for Da-Yae, and 36% for me 
+
+
+GROUP-L
+
+STEPHANIE HYUNH:
+
+Our group worked well together. Communication among the three of us was easy and straight-
+forward. We all put forth a great amount of effort into doing our part of the project; occasionally one of us
+would have a schedule conflict that reduced the amount we could contribute, but we made sure to double
+our effort the next time around to make up for it. I think it was key that all of us were quite understanding
+when it came to each other's busy schedules. For example, Karen understood when Valeria and I were
+distracted by our chemistry exam being on the same day as our presentation rehearsal. On the other hand,
+Valeria and I worked around Karen's night class, which often made us meet up later than we'd have liked.
+
+Of the three of us, Karen did the most work with Rstudio, tinkering around with the code and
+fixing little bugs in it, and I think her patience for doing so deserves some extra recognition. Valeria
+put together most of our handout. I did the majority of the data analysis assignment. Most of the work,
+however, we did as a group. Even if it was a part of the project that we were working on individually, we
+would often consult each other. Overall, I would divide our contribution up as 33.3% for each member.
+
+
+KAREN YU: 
+
+We worked well as a group and met multiple times late at night to complete the work. We all tried our hardest and did the best to understand our material; depending on availabilities and skills, we all focused on what we were best at and did equal portions of the project. For example, Valeria was better at presentations/layouts - and did much of the work for the worksheet/handout/graphs, while I was good at doing much of the general merging/file-management coding, while Stephanie did a lot of the obtaining data, research, and coding as well. We analyzed our data together and wrote many of the conclusions together. We worked well as a group and were friends throughout the project. I would estimate that we all worked equally on the project, in one way or another. Stephanie 33.3%, Valeria, 33.3% and Karen 33.3%
+
+VALERIA CORONILLA:
+
+For my group, I believe that we all put in an equal amount of effort into our project. Honestly, it seemed that we each took care and put enough effort into getting our work done, ready, and presentable. I do not feel that one of us slacked off, or one put in an unfair amount of work compared to the other. There might was some 'specialization', where one of our group members was easily able to take care of something compared to the other-such as decorating the powerpoint or creating the handout- which I feel helped strengthen our project rather than weaken it. I feel that Stephanie, and Karen and I each had a an equal percentage of 33.3% for our project.
+
+
+GROUP-M
+
+ELIZABETH SUMNER:
+
+Our group worked really well together; we all equally shared the workload and were active, responsible, and reliable group members. We all found a way of splitting up the work so that everyone was actively working on the project and communicating with each other. Jess was great with the code in RStudio and with coming up with the map. Helen worked on the handout and powerpoint quite a bit and I also worked on the powerpoint and project report. These are just some rough areas of where people spent the most time working, but we all contributed to each section of the project and made sure that the workload and responsibility was shared. I really enjoyed working with this group :)
+
+Overall split up of the work: Helen = 33.3%, Elizabeth = 33.3%, Jess = 33.4% (Jess gets an extra 0.1% so that it actually adds to 100% and also because we were all really proud of her map)
+
+JESSICA HOPSON:
+
+Our group worked well together. We all contributed equally to the project overall. As we all have busy schedules, there were certains aspects/times that one of us would do more or less depending on what else we had going on in our lives. Elizabeth was great and made sure that we were working on our technical report throughout our project so we didn't have to do it all at the end. Helen was great and was good at working on things ahead of time so our group meetings were more efficient. Overall, we had a very good group that worked well.
+
+Jess: 33.3%
+Elizabeth 33.3%
+Helen 33.3%
+
+HAILUN LI: 
+
+Our group worked very well together, each member contributed to different parts of the
+project. Everyone was there for every meeting, except for class conflicts. We are glad that we
+worked together and really enjoyed this project.
+
+33.3% for everyoneJ
+
+GROUP-N
+
+KATHERINE PEILMEIER:
+
+Emily and I each contributed 50% equally to this project. It was a pleasure working with her and we organized and planned our time well. We always met whenever we worked on a portion of the project, so we alway worked together on assignments rather than dividing assignments up. It was also really nice to focus on a unique topic that we were both really interested in.
+
+EMILY CLARK: 
+
+Through the progress of our project, Kate and I have shared equal effort in the development of our work. We were able to meet often, answer each other’s questions and develop ideas together. We worked well together, sharing the workload and making sure that the other was able to handle their load. I would definitely say that Kate and I both did 50% of the work required for our final project. Because there were only two of us working on the project, we made sure that one of us was not doing more of the work than the other. We were friends before we decided to work together, which made our dynamic work more fluidly because we were able to ask things of each other when necessary. 
+
+GROUP-O
+
+CORINNE DUCEY: 
+
+I enjoyed very much working with Diane and Hiwot, we were an energetic group that was well-balanced. It definitely was one of my favorite groups I've ever worked with. I'd say that Hiwot put out exceptional effort in making sure we understood everything going on in our project. She did this by writing down questions and going to office hours often, to then report back to the group what she learned. There were not group members that did not carry their own weight. I was good at centering the group and figuring out what our goal was by the end of each meeting. This came about because I didn't think our first meetings were very focused or productive. We probably got the most done in pairs. As a trio, we got things done well at the beginning of the project, but then less as we got down to the wire. In our last meetings as a trio, we worked independently on different pieces. 
+
+The breakdown of work was:
+Hiwot: 40%
+Diane: 28% Diane had work and EGR Design clinic going on. 
+Corinne: 32%
+
+DIANE KAYITESI:
+
+In this project, I worked with Hiwot Kassaye and Corrine Ducey. They were all great team members and all strived so that we could get a good grade as a team. We all worked hard, and we were all understanding of each other’s schedule. Communication was very important to ensure the success of our project. We met on a regular basis, and when needed, depending on availability, one or two or three of us would make time to go to office, hours, as we got remarkable help from office hours, and making sure that we communicate well what we learned.
+
+Hiwot has been a really great team member; she spent so many hours working hard
+on this project. She constantly asked for help in office hours, and kept the  team abreast of the project progress. She showed up at all meetings, and took initiative multiple times. She was a valuable member to our team, and she played a huge part in the project.
+
+Overall contribution: 33.3 %
+
+Corrine was a great team mate as well. She was present at all meetings, and I have to give her credit, on her work on the handout. She was professional and provided moral support to the group. In case of misunderstanding, she took initiative to make sure that the team was on the same page, and she volunteered to make submissions for the group on several occasions.
+
+Overall contribution: 33.3%
+
+I also tried to be a good team member, making sure that we had our work done, and submitted on time. I was at the meetings, and completed all the assigned work before the meetings. I spent hours working with the team to submit deliverables on time. If needed, I spent individual time working on deliverables before the meeting. I have done most work on the presentation, in terms of putting it together before the meetings.
+
+Overall contribution: 33.3 %
+
+Overall, I think the team collectively worked together. Everyone made this project their own, and did their best to complete it. We all strived to keep everyone on track of the project progress and success.
+
+HIWOT KASSAYE:
+
+My group worked very well together. We listend to each other's ideas and supported each other. When there was frustration within the group, we stepped back to address it. Most of the work was done together during our scheduled meeting times. However, whenever possible we all spend time outside of the meeting to work on it. Corinne was good at organizing the data, and worked on the handout. Diane and I  worked on the presentation and most of the r-studio code. We wrote and edited the technical report . 
+
+Overall, I believe we each contributed equally and thus assign 33% for Corinne, 33% for Diane and 33% for myself. 
+
+
+GROUP-P
+
+ANGELA GIVENS: 
+
+I think our group got along fairly well. Evelyn came up with the topic
+and the variables to be tested. She seemed to struggle with availability and we were
+unable to meet as often as I would of liked and not until closer to the deadline. I’d
+say that the project idea and variables were 80% Evelyn’s. Finding the data was
+probably a 50/50 split overall. We struggled to find some data and changed
+variables a few times; therefore, it is hard to narrow down which one of found what
+data-set. When it came time to compile the data, and run the models it became
+more difficult. We needed to remove excess data (years and countries) before
+converting it to R and Evelyn was supposed to do that part. I was going to run the
+model and write the handout, but Evelyn was out-of-communication for much of
+Friday and Saturday and could not understand what I needed her to do. I ended up
+cutting the data down myself, and sending it to her to convert to R. We then met
+and ran the data together and I wrote the handout and sent it in to be reviewed.
+Again, I apologize for the lateness. We built the power point and revised the
+handout, together. Then I wrote the script for the presentation. For the final write-
+up, I asked Evelyn to clean up the R-code and I would write up the paper. She had
+trouble sending it to me in RMD but she did send me some cleaned up data copy/
+pasted into an e-mail. Overall, I feel I did a large part (60+) of the project. I do not
+know if Evelyn didn’t understand the material very well or was just very busy with
+other classes. When she was available to meet, she did work equally to me as we
+worked side-by-side, so I assume it may have been one of those factors. Again, I
+think we worked well together for the most part.
+
+GROUP-Q
+
+WAI LENG LEONG: 
+
+Overall, the group worked fairly effectively together in synthesizing the project. Each did their own assigned tasks conscientiously and was committed to the success of the project. I would like to especially mention that Emily played a great role in supporting the project, being diligent in keeping up with deadlines, and always being punctual and prepared for group meetings. Her conscientiousness and presence to the team definitely played a role in keeping the group on task. Lucy tried her best to contribute to the team (we understood that she was juggling six classes) but I did not see as much commitment from her as from Emily. Nevertheless, Lucy’s presence to the team was valuable in that she often contributed her opinions and thoughts about our analyses, which probed all of us to think deeper about the issues and patterns we were observing. The questions she posed to the team helped, to an extent, make sure that all of us were on the same page and had equal understanding of what our project was about.  At the same time, I would have appreciated that Lucy took the initiative more at all stages of the project (especially the initial brainstorming stage) and came better prepared to group meetings by proposing ideas instead of simply critiquing others. When it came to synthesizing the project proposal, analysis outline, draft and revised handout, Emily and I took the bulk of the responsibility by working on them remotely on the shared google doc and making sure they were completed by the deadlines. I saw little initiative coming from Lucy (partly also because it was difficult to assign and delegate for these mini-tasks compared to the project report and so we did not lay out expectations about each member’s contribution with regards to these tasks) for the completion of these tasks.
+
+In all, I would assign the contribution of work by each member as:
+
+40% Emily, 20% Lucy, 40% Wai Leng 
+
+EMILY VOLKMANN: 
+
+I thought that overall my group (Lucy Chikwetu, Wai leng) worked very well together. When we
+scheduled meetings everyone showed up and the meetings were very productive. Group Q was very
+flexible in the aspect that if something needed to be done, someone just did it. We all wanted to make
+sure we weren’t the weak link and that we were doing what we specifically could to help. A lot of the
+major aspects of the project ie coming up with an idea, data finding, computing, and interpretation
+aspect of the project was done as a group. The three of us did have very different skill sets and while
+some were relied on more at different times I think they were able to balance out in the end and end up
+about equal.
+
+At first I was very nervous about what I would be able to contribute because my R-skills are
+not quite up to par as the others but this ended up being a good thing because there were enough
+things other than the programming aspect of the project that I was able to contribute to. I helped
+in the computational aspect as much as I could but I think my major role in the group was mostly
+organizational. I made sure that we had everything we needed before we sent in anything, clarified
+meeting times, facilitated communication between everyone, transferred information we needed,
+and assisted (as well as the other members) with the random thing like organizing data etc. My major
+contributions were with the handout and the power point. A lot of the information was already available
+by the computations we had done as a group so I was able to go through it, decide what was important
+and what we needed to talk about, and help to break up the slides so we all had a good portion of
+talking to do. When we had gotten feedback from the mock presentation I also helped to make a lot of
+the suggested corrections.
+
+Wai leng’s major contributions were in the R part. She really had a firm grasp of the codes and
+the interpretation of them and she was instrumental in helping Lucy as well as myself with that aspect
+of the project. She was a great group member and always had a very clear idea of what to do next. She
+had learned about HDI in one of her other classes so she had some background knowledge which was
+very instrumental in getting us started. While I think the group delegated tasks very well so no one was
+swamped, Wai leng was the one that we okayed our tasks with and who helped to make improvements
+on what we had done if it was needed.
+
+Lucy also had a very good understanding of R was able to contribute a lot in that aspect of the
+project but her major contributions in my opinion were her different viewpoints and interesting ideas.
+A lot of the time when we were trying to explain correlations or patterns in our data that we had not
+expected, Wai leng and I would be on the same page and Lucy would have a different view on it that
+often made sense but was just a different way of thinking about an issue. These different viewpoints
+definitely made way for some interesting discussion and were instrumental in the understanding of the
+complexity of our project that I believe we all possessed when we gave our presentation.
+
+Overall I do believe that we split the load evenly so I would assign everyone a 33.3%. I think that
+we worked very well together as a group and were very respectful of each others time and capabilities.
+A lot of the work done was done as a group which I think was very helpful and made this project a
+learning experience in many different ways.
+
+LUCY CHIKWETU:
+
+Our group was a great group. We had our highs and lows, but overall I strongly feel like we had a great time working together. All three members were gifted in many different ways, and those differences made our work easier and more fulfilling. I was very good at coding, Wai Leng liked writing and Emily was good at analyzing data. We did not just focus on the areas we were good at, but when a problem arose in the area one is good at, one would quickly try to solve that problem. We were never at each other’s throats about anything. We all tried to be respectful of every member of the group, and any time any person could not make it to a meeting she had to let other group members know in advance. Ours was certainly not a perfect group but it was amazing, and I give each group member a 33.3%. The group members were Lucy Chikwetu, Wai Leng Leong, and Emily Volkmann. 
+
+GROUP-1
+
+GRETCHEN RAVENHURST:
+
+Group 1 assessment – Gretchen Ravenhurst
+
+35% Yijin
+25% Emma
+40% Gretchen (me)
+
+This was the most difficult group project to work on in terms of group dynamic. In the beginning, most of my time was spent explaining the overall picture and concepts of modeling and statistics to my partners. Once we had settled on a model, I believe Yijin began feeling confident with our material after her analysis of the residuals. I was glad she volunteered to do this part because I was not as comfortable as I would like with LINE analysis.  
+	This group seemed to have lots of trouble with communication. Often, when we showed up for meetings it seemed as though no one had done any work in the interterm, this became especially true for Emma. She was assigned the writing portion of the project (describing the data and the purpose of our experiment) and very little to no R code or analysis. One we had a concrete dataset, I spent lots of time analyzing the data on my own looking for trends and trying different graphing methods. Often, I felt as though I was the only one who understood the larger picture, and when we reconvened as a group, would explain everything I had done and interpret the trends and why it was important.
+	Yijin often seemed frustrated and very stressed. I asked her to send me questions if she had them in between meetings, and to communicate to me what she was working on or finding, but I received very little in response. It seemed that she spent a lot of time puzzled over my work in the dropbox, but did not ask me about it until meetings.
+	Emma was pleasant to work with and relaxed, but did not often take initiative or know what needed to be done next. 
+	To her credit, Yijin did a very good job independently carrying out the residual analysis and conducting the project with very little former knowledge about wage distributions (did not realize that’s why our data was right skewed) and for English not being her first language! 
+	Perhaps I was also getting a little too excited about statistics and complicating our analysis when simplicity would have been more efficient for our group dynamic.
+
+Thanks!
+
+
+EMMA SCHLAM:
+
+            Our group worked well together when in the same room. Outside of that, we had trouble communicating. We had so many different data sets and copies of assignments that I felt we were barely ever on the same page. In the end it worked out well, mainly to the efforts of Gretchen, she put in the most time working with Rmarkdown and doing the coding dirty work. My attempt to apply a percentage to each of our contributions is as follows: Gretchen 50%, Yijin 35%, and myself 15%. 
+
+YIJIN WEI: 
+Gretchen talked to Nick to find data and downloaded the data files. She did much of the writing in this project and raised many good ideas to make this project more interesting. She pushed the group forward at each step and offered support and encouragement when we found there was something wrong with our data three days before our presentation. I know I can trust her to finish the work assigned to her, and rely on her if there is something wrong. I would like to work with her again if I had the chance.
+
+ 
+
+Emma did the introduction, data section and part of the conclusion in presentation. She came up with the idea of comparing yearly cost of different types of education to the estimated increase in wage observed from our model. She could finish her work in a timely manner most of the time, but she lacks a motivation to work on this project. I would not rely on her to finish some of the important components, such as analysis and interpretation. She was punctual to group meetings, but she did not participate much in the discussion. In group emails, it was usually Gretchen and I discussing our project and Emma did not participate much.
+
+ 
+
+I dealt with most of the technical details. After we merged the data set, I talked to Nick to find a way to recode the categorical variable. I analyzed the residual plots, explained and interpreted our model and put together the analysis on handout. I also made decisions for the group when no one had any opinion. I decided on the model and decided to limit our project to people in the Management and Professional occupation, following Nick’s advice. 
+
+40% for Gretchen, 20% for Emma, 40% for me.
+
+GROUP-2
+
+SWATI SHARMA:
+
+Project Group Dynamic
+
+Jinjin (45%): She did a lot of the coding, putting together the PowerPoint and parts of the paper. This topic is part of her research, and she came up with the idea, so she was able to incorporate this statistical analysis into her research. She designed the PowerPoint and generated most of the images, as well as most of the data analysis. 
+
+Deirdre (35%): She also did a lot of the coding and compiling. She and Jinjin both made the handouts and put together the first few slides of the PowerPoint, as well as did a lot of the coding for significance tests and weeding out the insignificant coefficients. 
+
+Swati (20%): I did coding related to the residuals and a little bit of the significance tests. I also put together the last few slides and generated the images for the residuals. I also put together the conclusion for the paper and the analysis of the residuals. For some parts of the coding, I could not be there to help because of exams I had to take while my team members were working. However, I did help where I could. 
+
+
+
+DEIRDRE FITZPATRICK:
+Hi,
+
+Here is my group dynamic report:
+
+I think overall our group worked well together, although I think that Jinjin and I did definitely end up doing more work than Swati. However, we were able to get everything done and I liked them both.
+
+Jinjin- She was a great partner throughout the project. I think that she did more work than anyone else in our group on the project. She was always willing to meet and work on the project and she and I worked well together. She always knew what was going on throughout the process of working on our data and model and came ready to work when we had scheduled meetings.
+
+Swati- She was not very helpful throughout the project. When we had scheduled meetings to work she would tend to show up late or not at all and was not exceedingly helpful when she was there. It was difficult to work with her because we had to constantly be catching her up on things she had missed. She also tended not to do work before our meetings when we would split up work to do and come ready to share with the other group members. She also found it hard to find things to work on herself and needed us to tell her what to do. However, she was nice and willing to work when we met as a group.
+
+Deirdre- I think that I worked hard on this project. However, I do think that Jinjin did slightly more work on it than I did. I did, however, tend to work on the project at home and always attended scheduled group meetings and worked throughout.
+
+I would split up the work load in this way:
+Jinjin - 45%
+Deirdre - 40%
+Swati - 15%.
+
+Thanks,
+Deirdre
+
+
+
+GROUP-3
+
+PEIJIA ZHANG:
+
+
+
+MINGJIA CHEN:
+
+The following is my group dynamic report:
+
+Overall, I think our group worked very well in terms of coordinating a meeting time, contributing ideas, and dividing up the workload. I think everyone was very involved in the project because we were excited to study the Million Songs Dataset.
+
+Xinchen contributed a lot to the project, such as selecting usable entries from the subset, looking for a good format to write our handout, and taking the initiative to learn about the hdf5 format.
+Peijia did many of the writing since she has the best writing skills among us. She was also an expert on music terminology, so that we gained a good understanding of our explanatory variables.
+I spent a long time looking for interesting datasets and found the Million Songs Dataset, and helped my group members open the data file by using HDFViewer. I also did all the proofreading of our submissions.
+And about proposals and reports, our group usually divide up the work evenly and do it on Google docs, so that we were able to edit them at the same time.
+
+Finally, it was great experience working in this team and we greatly improved our time management skills by meeting every deadline. I also appreciate this opportunity to apply statistics knowledge to a real and interesting project.
+
+So I want to assign equal weights for everyone's efforts: 33.3% for Xinchen, 33.3% for Peijia, and 33.3% for myself.
+
+XINCHEN CHEN:
+Dear Professor Horton,
+
+Mingjia Chen, Peijia Zhang and I worked happily together. We divided the work fairly evenly. 
+
+33.3% for Mingjia Chen, 33.3% for Pejia Zhang, and 33.3% for Xinchen Chen(me)
+
+Thank you for a lovely semester. Hope you have a great summer!!
+
+Best,
+Xinchen
+
+GROUP-4
+
+DANNIA GUZMAN:
+
+Hi Nick,
+
+This is my group report. 
+Thanks!
+Dannia
+
+Overall I think that our group had a good dynamic. We were able to get things done  and stay on track. We all were aware of what was going on at all times and we would always check with each other before submitting any of the derivable. Making things work was sometimes a challenge because Carol goes to school in Mount Holyoke and because she has taken more advance statistics. It seems like the main purpose of this class for her was to learn R. This impacted our group because sometimes she complicated things more than necessary and was always trying to guess what the professors wanted to see rather than what was appropriate to do for the scope of our project. In our group the way things mainly worked was that we would speak about our project status, talk about what had to get done, then we would decide who would do what. Then after that person did their part the rest would check it and add  their part.
+
+ 
+
+Linnette was a great team member and she was eager to get things done always.  She was always on board with the project, but I don’t think she took as much initiative getting things done as Carol and I did. What I mean by that is that she would wait for Carol or I to tell her what to do. She would get it done, but would ask us questions to guide her through that especially when it was related to R. She was a pleasure to work with, but I think that she had knowledge gaps in some areas that made it challenging for her to take more ownership and command of parts of the project.
+
+I found myself playing a balancing game throughout the entire project. Communicating with Carol at Mt. Holyoke and making sure that she didn’t do unnecessary stuff that  complicated our project further (even though she has great intentions, but Linnette and I don’t have the same stats background). On the other hand, I had to always inform Linnette of what we would speak about and get her on board and ask for her input.
+
+Things worked out in a weird way, but I always felt like we were all on board. We were mostly working in different parts and then collaborating more when putting it together and giving each other feedback. This team was interesting and challenging. We were also supportive and understanding of each other’s needs throughout the semester.
+
+Carol 35%
+
+Linnette 30%
+
+Dannia 35%
+
+
+YUE ZHU:
+
+This is my first class at Smith College so I have never met anyone in the class before. Dannia invited me to join the group, I happily accepted.  
+
+Overall, I believe we are indeed a hard-working group. Along the way, there have been many times when we went to the directions that are not exactly a good match to this class. For example, we looked into couple of possibilities for the group proposal and we did dig into the possible data sets. We were planning to research on gender income gap but finally failed since the data is panel data (has yearly measurement) and this class does not cover this part. We put into effort in settling down with our final topic. There are many more examples, such as our initial analysis plan. We (in particular, me ☺) tried to incorporate things we covered in lectures into our analysis, so I did things such as including interaction terms and Anova tests, which turn out to be unnecessary. Our final output is concise and straightforward and we did get rid of a lot of complicated contents including many plots. This is because we learned that the best model, presentation and report are the ones that best fit the data and our research topic. Sometimes complicated stuff can be counterproductive. 
+
+Group memebers:
+
+Dannia: I believe Dannia is both very hard working and she did put into a lot of time and effort for this project. I got to know that she is interested in pursuing a Statistics minor (or even major) later on, so she is very willing to learn from the project, including extra (not required) parts. She was the one who come up with the research topic and introduced us to the website where we finally found our dataset. For the handout and the final report, Dannia spent time and wrote the initial draft and I added stuff and modified the content. Overall, it’s been a pleasure working with her. She is both committed and productive. 
+Proportion of work done: 40% 
+
+Linnette: I believe that Linnette is willing to put into effort and time. She is interested in the topic and wants to learn and improve. The majority of her work involves final check (for typos, grammar mistakes) and of course her own part of the presentation (introducing to people about our project and the response variable). She did spend time to modify our handout, made the tables to make the thing look neat. The few difficulties with her, I believe may be related to her mastery about the class materials overall. Sometimes along the way, when she tried to do things in R, for example, test LINE assumptions, Dannia and I needed to help her with the codes.  Usually before we divided the work, I myself needed to explain it more than once to Linnette, including things we have covered in lectures. Because of this, sometimes it is more efficient for Dannia and I to perform the duties ourselves, although we definitely enjoyed working as a group. That being said, if we have had more abundant time, and had less stress from other school work, we would have spent more time, for example, helping Linnette with R codes, and some statistics concepts, etc. Sometimes, Linntte has the tendency to do things last minute and it had occasionally created inconvenience to Dannia and me. However, I believe we were able to overcome logistics difficulties toward the end. She is wonderful team member overall. 
+Proportion of work done: 10%  (Emotionally, I would like to put down 33% for each of us, but I guess it’s better to write things as objectively as possible, hope you could understand. ☺)
+
+Carol (me): As the semester progressed, my interests in Statistics overall increased exponentially, which was indeed reflected in the group project work. From the beginning, I contributed a lot to the initial group proposal, although my idea was not utilized finally (which I have explained in the second paragraph). But after we decided to use Dannia’s idea, it was me and her who finalized the proposal, designed the initial models, searched and finalized response and explanatory variables after searching for background news, etc. I cleaned the data and the whole process did take some time since we modified our response variable couple of times. I did transformations of the response variable (with Dania), wrote the initial analysis plan. Performed regressions and interpreted the models. Our analysis went through changes and improvements many times also. I was involved 99% of the time. For the presentation, I did my own part and helped organize the entire thing. For the final report, I modified Model interpretations based on Dania’s draft, wrote conclusion and model limitations. I learned a lot from this project and do feel a sense of achievement now!
+Proportion of work done: 40%. 
+
+
+Thank you for this short but inspiring statistics journey! I believe it will be helpful to the rest of my academic study, career and life. 
+
+
+
+
+LINNETTE FIGUEROA:
+
+Overall Commitment
+Despite everyone’s different personalities, I believe, we all, as group, worked really well together in the completion of this project. Our communication was one of our strongest aspects as a group. We communicated at least everyday, once or twice a day, and met up frequently throughout the week. Since Carol wasn’t always readily available to meet, I met the most with Dannia. Regarding the load of this project, I honestly believe, we all distributed the load equally. Although we couldn’t meet all the time, we always distributed parts of each deliverable to each group member equally, and everyone put in their best work. We did really well carrying our own weight. Therefore, when it comes to completing each deliverable, we were all on board and very aware of what was going on. I never felt like Dannia or Carol were lost, or not fully committed to the project. We were all very passionate about doing everything well and in a timely manner.
+Group member Breakdown:
+Dannia- I believe Dannia and I agreed on mostly everything. We hardly had any disagreements throughout the entire project, and we both were on the same page. We worked really well together throughout the entire process, and she was enthusiastic and motivated at every meeting we had. She was also very flexible and considerate of each team member’s busy schedule. She had faith in each team member’s judgment in the particular part the team member was working on. She never made me feel like my work was not good enough, while she provided useful feedback, when needed.
+Carol- Carol was a very focused teammate. She worked in a very timely efficient manner and wanted everything to be completely perfect. Carol sometimes didn’t agree with some ideas Dannia and I had, but we always came together as a team to clear up any areas of confusion without arguing. Out of the whole group, Carol was the most intense group member to work with. She had very high expectations that I felt I didn’t meet sometimes. I don’t believe she had a lot of faith in the team member’s judgment, especially when the deliverable wasn’t absolutely perfect in her opinion. Sometimes it was really stressful to work with Carol because she was too worried and concerned with everything. She was also very particular about how she wanted things to be done that the other team member’s opinions were sometimes not taken into consideration. Despite the personality differences, Carol was consistently very actively committed to the project. Even though she was
+sometimes blinded by her view of perfection, she meant well and just wanted to receive a really good grade.
+In all, I strongly believe we all contributed our fair share to this project and we all put in 100% effort. We were all fully invested in the project with the goal of doing well, and learning from each other as well. We all remained focused on completing each deliverable in a timely manner, without leaving anyone out of the loop. Aside from the statistical content, I learned a lot of group work skills, particularly the importance of communication, being flexible, and very patient. Also, learning how to work with others who won’t always agree with you, or have different personalities, which will definitely be very useful for future collaborative efforts beyond this class. In the end, it was my pleasure to work with Dannia and Carol.
+The percentage of the total amount of work/effort done by each member:
+Dannia-33.3% Carol-33.3% Linnette-33.3%
+
+
+GROUP-5
+
+CAROLINE FINN:
+I feel our group worked fairly well together. However I feel the work load was not shared very evenly,
+ 
+Dana 40%
+Elijah 25%
+Caroline  35%
+
+
+It was hard working with a Northampton High School student as he was not able to meet outside of class almost at all nor stay after class and work. He also did not seem as invested in the group as this class really did not affect his grades. Dana seemed very eager to do the assignments as she which was very helpful however she did not give much time for other group members to do much work.
+
+Overall the group did work well and was able to complete the assignments. 
+
+ELIJAH LUCEY:
+
+I think the dynamic of my group was very good. We were able to cooperate well and work to each other's strengths. The lack of flexibility due to my high school schedule proved to be an obstacle at times, preventing us from attending office hours as a group and limiting our ability to meet. I do not think that either Caroline or I put in less effort than we should have, but I do believe Dana went above and beyond at times. More than once, when we had a deadline to meet, I planned on contributing on a Google Doc at a certain time and when I got to it, the work was already done by Dana. This frustrated me because I didn't want it to seem like I wasn't pulling my weight, but there wasn't much I could do about it. If I were to estimate the percentage of work/effort put in, this would be it:
+
+30% for me (Elijah), 30% for Caroline, 40% for Dana
+
+DANA HSU: Group 5 Dynamic Report
+
+Group 5 included myself, Elijah Lucey and Caroline Finn.  
+Overall, if I had to summarize the efforts of all group members during the whole process of the project, I would honestly say that it was 75% my work, 10% Elijah, and 15% Caroline.  As for the Project Report itself, I typed out 95% of the document, and Caroline did 5%. 
+
+From the beginning, I knew that this project required good organizational communication and cooperation skills, on top of understanding and applying the knowledge of the material taught in class.  I suspected it was going to be challenging working with Elijah in particular, as he is a high school student with a particular school schedule and limited availability.  We had to work around his timing, as he was not available during weekdays until class time, and rarely on the weekends.  I hoped he would be more engaged and responsible for his work throughout this project, however, he did not contribute a lot to the project.  He did not bring his laptop to any of the numerous group meetings we organized, thus, he was unable to help us with the data spreadsheet, or contribute to the Google Docs while Caroline and I were working on it.  Additionally, he left at least an hour early from each meeting, and assured that he would try to contribute to the document in his spare time.  Despite this, Elijah was helpful in writing the R-Markdown file for the project.
+
+Caroline did demonstrate some effort throughout the process, as she attended all our meetings and stayed until the very end.  Caroline and I each did 50% of the data file.  However, her contributions to the project decreased over time.  
+
+Overall, I thought the work distribution amongst our group was quite imbalanced.  I ended up creating, reformatting and refining the Proposal, Analysis outline, final handout, our entire presentation, as well as the project report, because none of my group members contributed much to the Google Doc that we all share.  Deadlines were always left until the last minute, and I ended up having to finish and submit the documents.   As for our presentation, I wished that Elijah’s speech about the multiple regression model was better rehearsed, and that Caroline’s explanation of the distributions was more concise.   If we were to repeat this project again, I would have tried harder to split up parts for each person and make the allocation of workload more even.
+
+
+GROUP-6
+
+JIE LIU:
+
+Dear Prof. Horton,
+
+This is my group dynamic report:
+
+Generally, all our group members put in similar efforts. Specifically, Xiaowei Li put in a good amount of time in the project, and is responsible and efficient. She offered many useful ideas. I (Jie Liu) also put in a lot of time in the project, and contribute a lot especially in the writing and revision of proposal, handout, presentation and project report. Basically, I revised most of our group's materials. Hope Wu mainly contributes to the writing of draft-related materials, but from my perspective, probably didn't contribute as much as us towards the progress of the project.
+
+Overall, 35% for Xiaowei Li, 35% for Jie Liu, and 30% for Hope Wu.
+
+Thank you very much!
+
+Jie Liu
+
+
+
+HOPE WU:
+Hello, Professor Horton, 
+
+This is Hope. 
+
+For my group, the group distribution is 33.3%-Xiaowei Li , 33.3%-Jie Liu, and 33.3%-for me. 
+
+Thank you! 
+Hope you had a great weekend! 
+
+Best, 
+Hope 
+
+VIVIAN (XIAOWEI) LI:
+
+Dear Professor Horton,
+
+My project group is Group-6. I think we worked pretty well and we shared the load evenly. Hope Wu is good at writing, so she wrote a very good introduction and conclusion for our project. Jie Liu is good at analyzing the model and results. During our presentation, she explained our model correctly and clearly. I am good at writing codes, making PPT, and analyzing variables. So I made more efforts in these aspects.
+
+We met many difficulties during the preparation of the project, but we all worked very hard to analyze the new data and prepare a new presentation in such a short time. Hope Wu and Jie Liu are both very careful and smart. I am so glad that I can have Hope Wu and Jie Liu as my partners. I think we achieved great success in our presentation.
+
+For the percentage of the total amount of work/effort by each member, I think 33.3% for Jie Liu, 33.3% for Hope Wu, 33.3% for myself. Thank you so much!
+
+Best,
+
+Xiaowei Li (Vivian)
+
+
+
+GROUP-7
+
+SAMANTHA WEISS:
+
+We split the work pretty evenly.  Stephanie did most of the things related to biology and I helped more with analyzing the math.  She was much more comfortable than me with biology because it was her data and I was much more comfortable than her with the math so we split the work up along those lines.  Occasionally it was difficult to communicate because our skill sets were so different but overall, we worked well together.
+50% for Stephanie, 50% for me
+
+STEPHANIE ACEVEDO:
+
+Member Reporting: Stephanie Acevedo 
+
+My partner, Samantha Weiss, did a wonderful job of contributing to the group's overall work. She contributed to the following: 
+
+- Editing Proposals
+- Converting Data and R-code
+- Draft handout edits 
+- Data Anaylsis
+- Technical Report
+- 50% of presentation
+- 50% of project report 
+
+I contributed to the following:
+
+- Proposal write-up
+- Gathering Data and R-code
+- Draft handout 
+- Data Anaylsis 
+- Technical Report
+- 50% of presentation
+- 50% of project report 
+
+Assessment for each group member: 
+
+50% for Stephanie Acevedo, 50% for Samantha Weiss
+
+Please email me if you need additional information. Thank you :) 
+
+
+GROUP-8
+
+MARY BADGER: 
+
+       Over all I am happy with what Claire and I accomplished in our project, but at times It was difficult working with Claire.  The biggest problem was that I felt like I was the only one who was checking the syllabus and planning ahead for our group.  I always had to remind her when each assignment was due and I felt like the only times she put work in to our project was when we got together; whereas,  I did work out side of our meetings.  This was frustrating because I always felt like I was catching her up on what was due every time we met.    I also felt like I had to work around her schedule allot in order to get work accomplished.  I felt like I could not rely on her to be proactive about our project with things that should have been our shared responsibility.
+     That being said, when we did get together Claire was very good at things like describing our data sets and our variables.  She also really came through at the end and wrote up the abstract and intro for our project report.  I also think she did a very good job on the presentation.  But,  I feel like it was left up to me to really figure out most of the R-code that we used to analysis our data for our slide show and our draft.
+  I also acknowledge that Claire was taking lots of classes this semester and was having trouble balancing them all.  
+
+Over all I would say the distribution of the work was about:
+60% me , 40% Claire.
+
+CLAIRE SHOPE:
+
+The dynamic of our group was great – we worked really well together.  I think both of us put in a fair share of effort, and neither of us did lots of extra work that the other one didn’t.  For the presentation, we split the work so that I did the first half (opening, outliers, distribution of data, etc.) and Mary did the interpretation of the model, then we split the conclusion and limitations.  We collaborated in all areas though, and helped each other fix mistakes where it was needed.  Mary was a wonderful partner, and came to the table with a really solid understanding of statistics, and a strong work ethic.  We kept each other on track, and never had a disagreement at any point when working on the project.  I would give us a 50% and 50% in terms of effort put in to the project.  A+ for Mary in terms of group dynamic – I would gladly work with her again on a project.  

@@ -1,0 +1,60 @@
+The Title of Your Project
+===========
+
+##### Authors: Student1, Student2
+##### MTH247, Group X, Fall 2012
+
+You technical appendix should contain **all** of the steps necessary to reproduce your findings. The purpose is to make your scientific results completely reproducable, so that other researchers can corroborate your work, or identify any missteps you may have made. 
+
+When you include figures, be sure to make the labels as specific as possible. 
+
+> Hint: use the "xlab" and "ylab" arguments to any plotting function to specificy the $x$ and $y$ axis labels. 
+
+Also, you can control the height and width of figures using the "fig.width" and "fig.height" options to each R Chunk. The dimensions are in inches, so adding "fig.width=10" to an R Chunk will make any figures generated in that chunk 10 inches wide. 
+
+Be sure to intersperse your R Chunks with text! That is, you should not just have one long block of R code followed by one long block of text referring to those results. You should have a series of small R Chunks interspersed with text that refers to the nearby results. 
+
+Note also that you can name each Chunk, so that you can easily identify where any compilations errors occur. 
+
+> Be sure to click on the "MD" button next to the "Knit HTML" button for additional formatting options for R Markdown. For more details about Chunk Options, please see http://yihui.name/knitr/options
+
+Don't be afraid to try new things in R or R Markdown!
+
+Here is a skeleton of your appendix with some comments about what belongs in each section. Please use this a guide, but feel free to add sections or subsections that you feel are warranted. 
+
+### Data
+
+Start by importing any R packages that you need, with the message=FALSE option.
+
+```{r, message=FALSE}
+require(mosaic)
+```
+
+Next, import your data file from Dropbox via a public URL. Your URL should come from the domain "dl.dropbox.com" and use the HTTP protocol. Here is an example:
+
+```{r}
+ds = read.csv("http://dl.dropbox.com/s/vdd422ucxrfq85c/GDP.csv?dl=1")
+```
+
+Make sure these steps work, or else the rest of your appendix will not compile!
+
+#### Missing Data
+
+If you have missing data, then you should include a section about how you dealt with those problems. Start by quantifying the extent of the missing data, and in which variables it occurs. 
+
+If you used a single imputation method, then after describing your methodology for imputing the data, you may load a second data file that contains your imputed data. If you used multiple imputation, then you obviously won't need to do this, since  the multiple imputation prodcedure will only help you with interpretation and confidence intervals for your model. 
+
+### Exploratory Data Analysis
+
+You should begin by performing some basic descriptive analysis of your data. Keep this brief -- you only need to present what you feel is most important. You should probably start by briefly summarizing the major variables you will be discussing in your paper. Of course, your response variable is the most important. Tables and density plots may be useful here. 
+
+Next, you should explore the relationships between variables. Again, stick to only those relationships that are most important. Scatterplots and correlation matrices will be useful here. 
+
+### Model
+
+Present your models and diagnose them. Justify your choice of terms to include/exclude, and make sure to assess the conditions of your fits. For most of you, it will not be sufficient to simply present your final model -- you will want to present a few relevant models and show why the one you chose is better. Try to anticipate questions that the reader might have (e.g. "why doesn't your model include an interaction term between age and gender?"). 
+
+### Interpretation
+
+In this sections you will make inferences from your model. Present confidence intervals, predicted values, etc., and interpret the meaning of the coefficients in the real-world context of the problem. It is critical that this section of the appendix supports the conclusions that you draw in the written paper! 
+
