@@ -15,6 +15,26 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 * * *
 
+### Week Nine
+
+#### Monday, Nov. 2
+- [Project](project/project_assignment.pdf)
+- Simple Linear Regression I
+- **Reading for Weds**: p. 227 - 238
+
+#### Tuesday, Nov. 3
+- [Lab 9](labs/09-slr/simple_regression.html)
+
+#### Wednesday, Nov. 4
+- Simple Linear Regression II
+
+#### Friday, Nov. 6
+- Simple Linear Regression III
+- Quiz
+- Initial proposals due
+
+* * *
+
 ### Week Eight
 
 #### Monday, Oct. 26
