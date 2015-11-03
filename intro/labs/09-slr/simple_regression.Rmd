@@ -216,8 +216,8 @@ qplot(sample = .stdresid, data = m1, stat = "qq") +
 
 **Constant variability**:
 
-8.  Based on the plot in (1), does the constant variability condition appear to 
-    be met?
+8.  Based on the plot for the linearity condition, does the constant variability
+condition appear to be met?
     
 * * *
 
