@@ -292,7 +292,7 @@ lmPlot(x, y, col = COL[2], lCol = COL[1], lwd = 3)
 line.
 
 **Influence** measures how different the regression line would be without a given
-point.
+point. Often measured with *Cook's Distance*.
 
 ```{r, echo=FALSE, fig.height=4, }
 i <- 5
