@@ -29,7 +29,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - [Lab 9](labs/09-slr/simple_regression.html)
 
 #### Wednesday, Nov. 4
-- Simple Linear Regression II
+- Simple Linear Regression II ([r code](lectures/week-10/10B-slr-2.R))
 
 #### Friday, Nov. 6
 - Simple Linear Regression III
