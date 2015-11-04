@@ -309,3 +309,11 @@ plot(x2, y2, col = COL[2], pch = 16, xlim = range(x), ylim = range(y))
 abline(lm(y2 ~ x2), col = COL[1], lwd = 3)
 ```
 
+
+##
+
+In the following plots are there outliers, leverage pts, or influential pts?
+
+<center>
+<img src="../figs/outliers.png" height = 500>
+</center>
