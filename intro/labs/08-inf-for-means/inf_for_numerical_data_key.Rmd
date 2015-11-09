@@ -1,0 +1,289 @@
+---
+title: 'Inference for numerical data'
+output:
+  html_document:
+    css: ../lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+```{r opts, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## North Carolina births
+
+In 2004, the state of North Carolina released a large data set containing 
+information on births recorded in this state. This data set is useful to 
+researchers studying the relation between habits and practices of expectant 
+mothers and the birth of their children. We will work with a random sample of 
+observations from this data set.
+
+## Exploratory analysis
+
+Load the `nc` data set into our workspace.
+
+```{r load-data, message = FALSE, eval = TRUE}
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+head(nc)
+```
+
+We have observations on 13 different variables, some categorical and some 
+numerical. You can read more about each one in the help file.
+
+```{r nc_help}
+?nc
+```
+
+1.  What are the cases in this data set? How many cases are there in our sample?
+
+*Each case corresponds to one birth in NC in 2004. There are 1000 such cases.*
+
+As a first step in the analysis, we should consider numerical summaries of the 
+data. This can be done using the `summary` command:
+
+```{r summary}
+summary(nc)
+```
+
+As you review the variable summaries, consider which variables are categorical 
+and which are numerical. For numerical variables, are there outliers? If you 
+aren't sure or want to take a closer look at the data, make a plot.
+
+Consider the possible relationship between a mother's smoking habit and the 
+weight of her baby. Plotting the data is a useful first step because it helps 
+us quickly visualize trends, identify strong associations, and develop research
+questions.
+
+2.  Make a side-by-side boxplot of `habit` and `weight`. What does the plot 
+highlight about the relationship between these two variables?
+
+```{r ex2, eval = TRUE}
+qplot(x = habit, y = weight, data = nc, geom = "boxplot")
+```
+
+*The plot reveals that there are some missing values for this variable. Between
+smokers and non-smokers, the former has a slightly lower Q1, Q2, and Q3 birthweight
+compared to the latter. Both show evidence of a left skew, though the larger
+number of low outliers in the nonsmoker group is probably due simply to the fact
+that there were more of them.*
+
+The box plots show how the medians of the two distributions compare, but we can
+also compare the means of the distributions using the following chain to take
+the `nc` data, group it by `habit`, then summarize each groups' `weight` by taking
+the mean.
+
+```{r by-means}
+nc %>%
+  group_by(habit) %>%
+  summarize(mean(weight))
+```
+
+There is an observed difference, but is this difference statistically 
+significant? In order to answer this question we will conduct a hypothesis test
+.
+
+## Inference
+
+3.  Write the hypotheses for testing if the average weights of babies born to 
+smoking and non-smoking mothers are different.
+
+$$H_0: \mu_{smoking} = \mu_{nonsmoking}; \quad \textrm{or} \quad \mu_{smoking} - \mu_{nonsmoking} = 0 $$
+$$H_A: \mu_{smoking} - \mu_{nonsmoking} \neq 0$$
+
+*where $\mu$ is the mean birthweight within each group*.
+
+4.  What is our test statistic? What distribution would you expect it to follow
+
+*The test statistic is,*
+
+$$ T = \frac{\bar{x}_{smoking} - \bar{x}_{nonsmoking}}{SE} $$
+
+*We expect it to follow a $t$ distribution with 125 degrees of freedom or the
+Normal distribution.*
+
+4.  Check if the conditions necessary for inference are satisfied. Note that 
+you will need to obtain sample sizes to check the conditions. You can compute 
+the group size using the same chain above but replacing summarizing each group
+with `n()` instead of `mean(weight)`.
+
+*There are several assumptions we're making if we model the above test statistic
+using the t-distribution. The first is that each obseration is independent of 
+one another. As this is a random sample of all (very large number of) birth in
+NC in 2004, that assumption is reasonble.*
+
+*The second assumption is the population within each group is nearly normally
+distributed. As we saw in the boxplots above, there is some evidence of left
+skew. However, we see that the number of observations in each group is quite
+high:*
+
+```{r ex4, eval=TRUE}
+nc %>%
+  group_by(habit) %>%
+  summarize(n())
+```
+
+*Because of this, the nearly normal condition can be relaxed as the central
+limit theorem is beginning to kick in. Furthermore, at this large a number of
+observations, even though we don't know $\sigma$, our estimate using $s$ will
+be pretty good, so this sampling distribution will also be well-approximated
+by the Normal distribution.*
+
+
+Next, we introduce a new function, `inference`, that we will use for conducting
+hypothesis tests and constructing confidence intervals. 
+
+```{r inf-weight-habit-ht, eval=FALSE, tidy=FALSE}
+inference(y = nc$weight, x = nc$habit, est = "mean", type = "ht", null = 0, 
+          alternative = "twosided", method = "theoretical")
+```
+
+Let's pause for a moment to go through the arguments of this custom function. 
+The first argument is `y`, which is the response variable that we are 
+interested in: `nc$weight`. The second argument is the explanatory variable, 
+`x`, which is the variable that splits the data into two groups, smokers and 
+non-smokers: `nc$habit`. The third argument, `est`, is the parameter we're 
+interested in: `"mean"` (other options are `"median"`, or `"proportion"`.) Next
+we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a 
+confidence interval (`"ci"`). When performing a hypothesis test, we also need 
+to supply the `null` value, which in this case is `0`, since the null 
+hypothesis sets the two population means equal to each other. The `alternative`
+hypothesis can be `"less"`, `"greater"`, or `"twosided"`. Lastly, the `method` 
+of inference can be `"theoretical"` or `"simulation"` based.
+
+5.  Change the `type` argument to `"ci"` to construct and record a confidence 
+interval for the difference between the weights of babies born to smoking and 
+non-smoking mothers.
+
+```{r ex5, eval = TRUE}
+inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", null = 0, 
+          alternative = "twosided", method = "theoretical")
+```
+
+*The 95% confidence interval for the true difference between mean birthweights of
+babies born to smoking and non-smoking mothers is (.0534, .5777).*
+
+By default the function reports an interval for ($\mu_{nonsmoker} - \mu_{smoker}$)
+. We can easily change this order by using the `order` argument:
+
+```{r inf-weight-habit-ci, tidy=FALSE}
+inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", null = 0, 
+          alternative = "twosided", method = "theoretical", 
+          order = c("smoker","nonsmoker"))
+```
+
+* * *
+
+## On your own
+
+For the following inferential exercises, be sure to assess the conditions for
+inference.
+
+-   Calculate a 95% confidence interval for the average length of pregnancies 
+(`weeks`) and interpret it in context. Note that since you're doing inference 
+on a single population parameter, there is no explanatory variable, so you can 
+omit the `x` variable from the function.
+
+*As this is a random sample, our observations are independent. There is some 
+left skew in the distribution of `weeks`, but the sample size is sufficient
+that the nearly normal condition can be relaxed.*
+
+```{r oyo1, eval = TRUE}
+inference(y = nc$weeks, est = "mean", type = "ci", method = "theoretical")
+```
+
+
+-   Calculate a new confidence interval for the same parameter at the 90% 
+confidence level. You can change the confidence level by adding a new argument 
+to the function: `conflevel = 0.90`.
+
+*Conditions are the same as above.*
+
+```{r oyo2, eval = TRUE}
+inference(y = nc$weeks, est = "mean", type = "ci", method = "theoretical",
+          conflevel = .90)
+```
+
+-   Conduct a hypothesis test evaluating whether the average weight gained by 
+younger mothers is different from the average weight gained by mature mothers.
+Be sure to state hypotheses.
+
+$$ H_0: \mu_{mature} - \mu{younger} = 0 $$
+$$ H_A: \mu_{mature} - \mu{younger} \neq 0 $$
+
+*Where each $\mu$ represents the mean weight gained by the mothers in each group. 
+As this is a random sample, our observations are independent. There is some 
+right skew in the distribution of weight gains, but the sample size is sufficient
+that the nearly normal condition can be relaxed.*
+
+```{r oyo3, eval = TRUE}
+inference(y = nc$gained, x = nc$mature, est = "mean", type = "ht", alternative = "twosided", 
+          method = "theoretical")
+```
+
+*With a p-value of .1686, the observed difference in weights was not significant
+at the $\alpha = .05$ level, therefore we fail to reject the null hypothesis
+that the two groups of mothers have the same mean weight gain.*
+
+
+-   Now, a non-inference task: Determine the age cutoff for younger and mature 
+mothers. Use a method of your choice, and explain how your method works.
+
+*I create a chain to group the `nc` data set by each category within the `mature`
+variable, then I find the min and max within each. We see that the youngest
+mature mothers are 35 and the oldest younger mothers are 34, which reveals the 
+cutoff at 34/35.*
+
+```{r oyo4, eval = TRUE}
+nc %>%
+  group_by(mature) %>%
+  summarize(min(mage), max(mage))
+```
+
+
+-   Pick a pair of numerical and categorical variables and come up with a 
+research question evaluating the relationship between these variables. 
+Formulate the question in a way that it can be answered using a hypothesis test
+and/or a confidence interval. Please outline the hypotheses, utilize the `inference()` 
+function, report the statistical results, and also provide an explanation in 
+plain language.
+
+*Is the pregnancy of male versus female children associated with a different
+average number of hospital visits, on average? This can be assessed by evaluating
+the following hypotheses.*
+
+$$ H_0: \mu_{male} - \mu{female} = 0 $$
+$$ H_A: \mu_{male} - \mu{female} \neq 0 $$
+
+*Where each $\mu$ is the mean number of hospital visits during pregnancy within
+each group. In order for our test statistic to be well-approximated by the t
+(or normal) distribution, certain conditions should be met. Because the
+data arise from a random sample, the observations can be considered to be
+independent. The boxplots below show the data to be fairly symmetric about the
+center, therefore the nearly normal condition is met.*
+
+```{r, eval = TRUE}
+qplot(x = sex, y = visits, data = nc, geom = "boxplot")
+```
+
+*Although there is very little difference evident in the plot, we continue on
+with the hypothesis test just to be sure.*
+
+```{r oyo5b, eval = TRUE}
+inference(y = nc$visits, x = nc$sex, est = "mean", type = "ht", alternative = "twosided", 
+          method = "theoretical", null = 0)
+```
+
+*The p-value is 0.205, so we fail to reject the null hypothesis at the .05 level. 
+We find no strong evidence that the number of hospital visits made by a mother 
+during pregnancy is associated with the sex of the baby.*
+
+<div id="license">
+This is a product of OpenIntro that is released under a [Creative Commons 
+Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
+This lab was adapted for OpenIntro by Mine &Ccedil;etinkaya-Rundel from a lab 
+written by the faculty and TAs of UCLA Statistics.
+</div>
