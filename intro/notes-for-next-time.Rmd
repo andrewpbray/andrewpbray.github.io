@@ -38,3 +38,5 @@ this news/journal article and comment).
 for each.
 
 - Collapse approaches to inference to "computational" and "theoretical".
+
+- Have homeworks and labs due on different days.
