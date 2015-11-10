@@ -38,8 +38,8 @@ in a previous lab.
 `more`.
 3. Create a new R Markdown file and save it as `revised-proposal.Rmd` in the
 `proposal` folder.
-4. You may want to add a `slides` folder at a later date if you use R Markdown
-slides.
+4. Create another new R Markdown file and save it as `report-draft.Rmd` in
+the `report` folder.
 
 This software is brand new, so please email me if you notice any bugs or have
 any suggestions.
