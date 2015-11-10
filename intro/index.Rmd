@@ -25,13 +25,13 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - **PS10**: TBA
 
 #### Tuesday, Nov. 10
-- Lab 10
+- [Lab 10](labs/10-slr-2/10-slr-2.html)
 
 #### Wednesday, Nov. 11
-
+- Simple to Multiple Regression
 
 #### Friday, Nov. 13
-
+- Multiple Regression
 
 * * *
 
