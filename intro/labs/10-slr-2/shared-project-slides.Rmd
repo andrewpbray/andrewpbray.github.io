@@ -7,27 +7,45 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Collaborative Data Analysis {.build}
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- To access the servers from off-campus, you will need to contact CUS to
+get set-up with VPN access.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+To access your shared project:
 
-## Slide with Bullets
+1. Navigate to `http://andrewpbray.github.io/intro/project/group-rosters.html`
+2. Click on the the link for your group
+3. Use your same login to access the new shared project server
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
-## Slide with R Output
+## Shared Projects {.build}
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
+- Only your group members and I have access to these files.
+- Anyone can add/delete/modify files and work simultaneously.
+- This server is **completely separate** from the main RStudio server.
 
-## Slide with Plot
+`rstudio-dev.reed.edu` versus `rstudio.reed.edu`
 
-```{r pressure}
-plot(pressure)
-```
 
+## Group Project Organization {.build}
+
+The following directions only apply if a group mate hasn't already done them
+in a previous lab.
+
+1. Click "New Folder" in the Files tab and add a folder called `proposal`.
+2. Create three other new folders in the main directory: `data`, `report`, and
+`more`.
+3. Create a new R Markdown file and save it as `revised-proposal.Rmd` in the
+`proposal` folder.
+4. You may want to add a `slides` folder at a later date if you use R Markdown
+slides.
+
+This software is brand new, so please email me if you notice any bugs or have
+any suggestions.
+
+
+## On to the lab
+
+You can now sign out of `rstudio-dev.reed.edu` and into `rstudio.reed.edu` to
+work on the lab as usual.
