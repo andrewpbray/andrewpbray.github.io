@@ -162,6 +162,17 @@ pt(t_stat, df = 27 - 2) * 2</pre>
 
 <pre >## [1] 0.262</pre>
 
+</article></slide><slide class=''><hgroup><h2>Question</h2></hgroup><article  id="question" class="build">
+
+<p>What do you expect a 95% CI for the slope to look like?</p>
+
+<ol class = 'build'>
+<li>\(\beta_1 \pm \frac{b_1 - \beta}{SE}\)</li>
+<li>\(b_1 \pm 1.96 \times SE\)</li>
+<li>\(b_1 \pm t^* \times SE\)</li>
+<li>\(\pm \frac{b_1 - \beta}{SE}\)</li>
+</ol>
+
 </article></slide><slide class=''><hgroup><h2>CI for regression</h2></hgroup><article  id="ci-for-regression" class="build">
 
 <p>As in every CI, the form will be:</p>
@@ -170,7 +181,7 @@ pt(t_stat, df = 27 - 2) * 2</pre>
 
 <ul class = 'build'>
 <li>The SE is the same that shows up in <code>summary(m0)</code>.</li>
-<li>Find \(t^*\) using a t-table with \(df = n - p\) or with <code>pt()</code>.</li>
+<li>Find \(t^*\) using a t-table with \(df = n - p\) or with <code>qt()</code>.</li>
 <li>R will also do this in one step.</li>
 </ul>
 

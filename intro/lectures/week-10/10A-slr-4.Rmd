@@ -123,6 +123,16 @@ pt(t_stat, df = 27 - 2) * 2
 ```
 
 
+## Question {.build}
+
+What do you expect a 95% CI for the slope to look like?
+
+1. $\beta_1 \pm \frac{b_1 - \beta}{SE}$
+2. $b_1 \pm 1.96 \times SE$
+3. $b_1 \pm t^* \times SE$
+4. $\pm \frac{b_1 - \beta}{SE}$
+
+
 ## CI for regression {.build}
 
 As in every CI, the form will be:
@@ -131,7 +141,7 @@ $$ \textrm{point estimate} \pm t^* \times SE $$
 $$ b_1 \pm t^* \times SE $$
 
 - The SE is the same that shows up in `summary(m0)`.
-- Find $t^*$ using a t-table with $df = n - p$ or with `pt()`.
+- Find $t^*$ using a t-table with $df = n - p$ or with `qt()`.
 - R will also do this in one step.
 
 ```{r ci}
