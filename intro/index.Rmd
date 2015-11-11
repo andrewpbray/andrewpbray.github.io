@@ -28,7 +28,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - [Lab 10](labs/10-slr-2/10-slr-2.html)
 
 #### Wednesday, Nov. 11
-- Simple to Multiple Regression
+- Simple to Multiple Regression ([r code](lectures/week-10/10B-ancova.R))
 
 #### Friday, Nov. 13
 - Regression Quiz
