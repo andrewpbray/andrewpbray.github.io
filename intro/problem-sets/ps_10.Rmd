@@ -1,6 +1,10 @@
 ---
 title: "Problem Set 10"
-output: html_document
+output:
+  html_document:
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -8,9 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-* * *
+#### Data Analysis: Education and Ethnicity in LA
 
-### Part Two: Education and Ethnicity in LA
 Researchers in demography were interested in capturing the relationship between
 the ethnic make up of neighborhoods and the level of education.  To gather data
 they took a random sample of 100 neighborhoods and recorded the proportion of 
@@ -34,24 +37,17 @@ evidence and how do you interpret it?
 3.  Was your inference conclusion based on a valid model?  Please use plots to 
 assess the conditions for regression.
 
+* * *
 
-4. Say you work in state program that works to improve the number of 
-under-represented individuals who graduate from college.  You are deployed to one of
-20 neighborhoods (not in this sample) in LA that is half hispanic.  You'd like 
-to get a sense of the range in the graduation rate for such a neighborhood. Please
-create the appropriate interval to capture that variation.
+#### Reading
 
+To be posted soon.
 
 * * * 
 
-#### Optional challenge problem
+#### Practice Problems
 
-[This is a more challenging problem that will stretch your ability.  Don't let
-it frustrate you too much, but if you'd like, give it the old college try.  You 
-can turn in paper and pencil work under my office door by Friday evening if
-you're old school like that.]
-
-Number 4 from the end of Chapter 2 exercises.
+Chapter 6, number 4 (not d), 5, and 6.
 
 
 
