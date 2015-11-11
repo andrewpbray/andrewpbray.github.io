@@ -22,7 +22,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - Simple Linear Regression IV ([r code](lectures/week-10/10A-slr-4.R))
 - Revised proposals due *Thursday* night
 - **Reading for Weds**: none
-- **PS10**: TBA
+- **PS10**: [link](problem-sets/ps_10.html)
 
 #### Tuesday, Nov. 10
 - [Lab 10](labs/10-slr-2/10-slr-2.html)
@@ -31,6 +31,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 - Simple to Multiple Regression
 
 #### Friday, Nov. 13
+- Regression Quiz
 - Multiple Regression
 
 * * *
