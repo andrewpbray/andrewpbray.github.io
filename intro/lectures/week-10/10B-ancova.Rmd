@@ -188,6 +188,20 @@ summary(m2)
 volume and cover?
 
 
+##
+
+```{r}
+summary(m2)$coef
+qt(.025, df = nrow(books) - 3)
+```
+
+Which of the follow represents the appropriate 95% CI for `coverpb`?
+
+1. $197 \pm 1.96 \times 59.19$
+2. $-184 \pm 2.18 \times 40.5$
+3. $-184 \pm -4.55 \times 40.5$
+
+
 ## Extending the model
 
 ```{r echo = FALSE}
