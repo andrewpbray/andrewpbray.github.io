@@ -1,0 +1,42 @@
+---
+title: "SLR to MLR"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=3)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+library(openintro)
+```
+
+## Example: shipping books {.build}
+
+<center>
+<img src="../figs/pile-of-books.jpg" width = 500>
+</center>
+
+When you buy a book off of Amazon, you get a quote for how much it
+costs to ship. This is based on the weight of the book. If you
+didn't know the weight a book, what other characteristics of it
+could you measure to help predict weight?
+
+```{r getdata, echo = FALSE}
+library(DAAG)
+data(allbacks)
+allbacks <- allbacks[, c(3, 1, 4)]
+```
+
+## Example: shipping books
+```{r plotallbacks}
+qplot(x = volume, y = weight, data = allbacks)
+```
+
+
+##  {.build}
+
