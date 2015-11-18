@@ -19,12 +19,15 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 #### Monday, Nov. 16
 - Class cancelled
+- **PS 11**: Chapter 6, numbers 1, 2, 3, 7, 9 and 11
+
 
 #### Tuesday, Nov. 17
 - [Lab 11](labs/11-mlr/multiple_regression.html)
 
 #### Wednesday, Nov. 18
 - MLR: Model Selection and multi-collinearity
+- [Data Wrangling Instructions](project/data/data-wrangling.html)
 
 #### Friday, Nov. 20
 - MLR
