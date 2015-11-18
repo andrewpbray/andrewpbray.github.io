@@ -1,0 +1,18 @@
+---
+title: "Data Wrangling"
+output: html_document
+---
+
+1. Create a new R Markdown document called `data-wrangling.Rmd`.
+
+2. Download the data to your computer. The most common data formats will be .csv, .xls, and .txt. If the file is .xls, open it in excel, the save as a .csv file.
+
+3. Upload the file to the RStudio-dev server by clicking the "Upload" button in the Files tab.
+
+4. Click the "Import Dataset" button in the environment tab and navigate to your data set. Use the graphical interface to toggle the options that will make the data set read in correctly. If there is non data stuff at the top of the file, you will need to open it in excel or a text editor, save it, then start again at number 2.
+
+5. When you successfully import the data set, R will print out a line of code to the console. Go ahead and copy this into a R Markdown file that you use to keep track of all the steps that you went through to process the data.
+
+6. If you're combining multiple files, the `merge()` function will be very useful. Any additional data processing - changing column names, removing or mutating columns, changing data types, collapsing columns - should be done in the same data wrangling file (`dplyr` commands are very useful here).
+
+7. Once your data set is in good shape and ready to be visualized and modeled, save it as a .csv file using the `write.csv()` command.
