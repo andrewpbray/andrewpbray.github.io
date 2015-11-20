@@ -1,0 +1,33 @@
+---
+title: "Multicollinearity"
+output:
+  ioslides_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits=3)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(oilabs)
+library(openintro)
+```
+
+
+##  Key concepts
+- Multicollinearity
+- Transformations
+- 
+
+## LA Homes
+
+<img src="http://andrewpbray.github.io/intro/lectures/fig/la-home" height="450px" width="350px" />
+
+
+```{r load-data}
+LA <- read.csv("http://andrewpbray.github.io/data/LA.csv")
+
+```
+
