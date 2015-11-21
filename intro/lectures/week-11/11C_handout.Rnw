@@ -1,0 +1,72 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm,enumerate}
+\usepackage{fancyhdr,url,hyperref}
+\usepackage{graphicx,xspace}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning,fit,through}
+
+\oddsidemargin 0in  %0.5in
+\topmargin     0in
+\leftmargin    0in
+\rightmargin   0in
+\textheight    9in
+\textwidth     6in %6in
+%\headheight    0in
+%\headsep       0in
+%\footskip      0.5in
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}{Observation}
+\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\newtheorem{conjecture}{Conjecture}
+
+\pagestyle{fancy}
+
+\lhead{\textsc{}}
+\chead{\textsc{MTH 141: Warm-up}}
+\lfoot{}
+\cfoot{}
+%\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\title{MTH 220:\\Intro to Probability and Statistics}
+\author{}
+\date{Spring 2014}
+
+\newcommand{\ans}{\vspace{0.25in}}
+\newcommand{\R}{{\sf R}\xspace}
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\Ex}{\mathbb{E}}
+
+\rhead{\textsc{November 20, 2015}}
+
+\begin{document}
+
+<<size='footnotesize', echo=FALSE, fig.align='center', fig.height=6, fig.width=6>>=
+poverty <- read.csv("http://math.smith.edu/~bbaumer/mth241/poverty.txt", sep="\t")
+# poverty[1:3,]
+pairs(poverty)
+@
+
+\vspace{-5mm}
+
+\begin{enumerate}
+\item Which variable seems like it would be the best predictor of the response (Poverty)?  How would you describe that relationship?
+\vspace{.5in}
+\item Rank the remaining variables in terms of how well you think they would predict the response.
+\vspace{.2in}
+\item Are there any strong relationships \emph{between} the predictors? Describe a few of them.
+\end{enumerate}
+
+\end{document}
