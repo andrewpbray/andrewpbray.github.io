@@ -40,3 +40,5 @@ for each.
 - Collapse approaches to inference to "computational" and "theoretical".
 
 - Have homeworks and labs due on different days.
+
+- Video link for Data Viz: https://www.youtube.com/watch?v=14VYnFhBKcY
