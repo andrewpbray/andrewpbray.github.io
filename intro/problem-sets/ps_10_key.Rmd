@@ -1,0 +1,88 @@
+---
+title: "Problem Set 10"
+output:
+  html_document:
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#### Data Analysis: Education and Ethnicity in LA
+
+Researchers in demography were interested in capturing the relationship between
+the ethnic make up of neighborhoods and the level of education.  To gather data
+they took a random sample of 100 neighborhoods and recorded the proportion of 
+residents in each that identified as hispanic and the proportion of residents 
+that had graduated from college.  The data can be loaded with the following command:
+
+```{r}
+LA <- read.csv("http://andrewpbray.github.io/data/LAed.csv")
+```
+
+1. Plot the relationship between ethnicity and education, keeping in mind the norm
+of putting the independent variable on the x-axis.  Please describe the structure
+in the plot as well as any unusual observations.
+
+```{r}
+library(ggplot2)
+qplot(x = hispanic, y = education, data = LA, geom = "point")
+```
+
+*There is a fairly linear, negative, moderately strong relationship between
+proportion of hispanic residents in a neighborhood and the college graduation
+rate. There are several notable outliers, including neighborhoods with graduation
+rates of 1 and another with a graduation rates of zero and a hispanic propotion
+also of zero.*
+
+2. Fit a linear model to this scatterplot.  Have you found a predictor that is 
+statistically significant?  In your regression output, what do you look for as 
+evidence and how do you interpret it?
+
+```{r}
+m1 <- lm(education ~ hispanic, data = LA)
+summary(m1)
+```
+
+*The p-value associated with the slope on hispanic is very small, so we have
+evidence that it is statistically significantly different from zero. There does
+appear to be a relationship between these two variables.*
+
+3.  Was your inference conclusion based on a valid model?  Please use plots to 
+assess the conditions for regression.
+
+```{r}
+qplot(x = .fitted, y = .stdresid, data = m1)
+qplot(sample = .stdresid, data = m1) + geom_abline()
+```
+
+*The residuals in the residual plot are consistently centered at zero, so the 
+assumption of a linear trend seems reasonable. The question of constant variance
+is somewhat questionable as there is evidence of a slight increase in the variance
+as the fitted values increase. In terms of if these errors and their observations
+can be considered independent of one another, that is called into question by
+the description of how this data was collected. These constitutes a sample of 
+100 neighborhoods in LA, which may well be more than 10% of the total number of
+neighborhood, which would create some dependency between the observations in this
+sample. In the qqplot, the points generally do follow a line (with the exception
+of some strong outliers), which indicates the assumption of normality is reasonable.*
+
+* * *
+
+#### Reading
+
+To be read next week...
+
+* * * 
+
+#### Practice Problems
+
+Chapter 6, number 4 (not d), 5, and 6.
+
+
+
+
