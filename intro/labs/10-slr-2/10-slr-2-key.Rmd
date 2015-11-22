@@ -1,0 +1,145 @@
+---
+title: "Simple Linear Regression II"
+output:
+  html_document:
+    css: ../lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+## Twins and IQ
+In the mid 20th century, a study was conducted that tracked down identical
+twins that were separated at birth: one child was raised in the home of their 
+biological parents and the other in a foster home.  In an attempt to answer the 
+question of whether intelligence is result of nature or nurture, both children 
+were given IQ tests.
+
+This data is in a `.csv` file, which is a very general format for data and the
+format that your project data will be in. You can load our usual packages as
+well as the data with the following commands:
+
+```{r, message = FALSE}
+library(dplyr)
+library(ggplot2)
+twins <- read.csv("http://andrewpbray.github.io/data/twins.csv")
+```
+
+When you're working on your project, you'll be able to read it your data into
+your report by calling the same function, `read.csv()`, but using the path 
+`"../data/data.csv"`.
+
+Back to the data at hand, since this data was read in from a `.csv` file, there
+is no help file associated with it, so I'll just tell you that the IQ of the 
+foster child is recorded in `Foster` and the IQ of the biologically-raised child in
+`Biological`.  The socieoeconomic status of the biological family was also 
+recorded in `Social`.
+
+1. Create a plot of the relationship between the IQs of the two children and
+   describe the relationship in words (there is no clear independent variable 
+   here, so just put `Biological` on the x-axis).
+
+```{r}
+qplot(x = Biological, y = Foster, data = twins, geom = "point")
+```
+
+*There is a positive, linear, moderately strong relationship between the IQs
+of the biological and the foster twins.*
+
+2. Fit a linear model to this data and have a look at the summary of the model.
+Which one of the following is *false* and why?
+    - For each 10 point increase in the biological twin's IQ, we expect the 
+    foster twin's IQ to increase on average by roughly 9 points.
+    - The linear model (the estimated mean function) is approximately 
+    $\hat{y} = 9.2 + 0.9 \times x$.
+    - Foster children with higher than average IQs (average of the foster 
+    children) will have biological twins with higher than average IQs as well
+    (average of the biological children).
+    
+```{r}
+m1 <- lm(Foster ~ Biological, data = twins)
+summary(m1)$coef
+```
+
+*The fitted model makes it clear that both of the first statements are correct.
+The third statement is false because our model assumes that the data will have
+some vertical spread around this line because the normally distributed error
+will have some positive sigma (estimated in the regression summary as "residual
+standard error"). That means that it's quite possible for a twin pair with a 
+bio twin just below the average bio to have a foster twin that's above the foster
+average. This would correspond to allowing for points to fall in the top left
+quadrant when the plot is divided by the vertical and horizontal lines 
+corresponding to the two averages.*
+
+
+3. Is it reasonable to draw conclusions from this model?  Please assess the 
+conditions for a valid model.
+
+```{r}
+qplot(x = .fitted, y = .stdresid, data = m1)
+qplot(sample = .stdresid, data = m1) + geom_abline()
+```
+
+*From the residual plot, we see that the assumption of constant variance is 
+reasonable as the residuals are similarly spread around 0 for all values of the x.
+The assumption of linearity is also reasonable as the residuals are without
+any strong structure (and the previous scatterplot showed a linear trend). 
+Regarding the independent errors, that assumption is probably also fine as long
+as the sampling method selected each twin pair independently of the others.
+Finally, the qqplot shows that the assumption of normality checks out since the
+points follow the identify line fairly closely.*
+
+
+4. This study was used to weigh in on the question of whether IQ is a result of
+nature (your genes) or nurture (your environment).  If IQ was purely a result of 
+nurture, what slope would you expect to see in your linear model?  Phrase that 
+hypothetical question in terms of a hypothesis test and interpret the p-value
+in the context of this problem.
+
+*If IQ was purely a result of nurture, then there should be no association between
+two people who are raised in difference environments (bio and foster), even if
+they share the same genes. This corresponds to the hypothesis that the true
+slope that relates these two variables is 0. Our observed p-value is very close
+to zero, showing that our data is inconsistent with the nurture hypothesis, so
+we would reject it.*
+
+
+5. At the other end of the argument, the distribution of IQ might be entirely
+determined by genes.  Use a 95% confidence interval on your slope to assess
+whether this claim is reasonable given your data set.
+
+```{r}
+(ci <- confint(m1))
+```
+
+*We are 95% confident that the true slope lies between 0.703 and 1.10. Since
+this interval includes 1, the claim that IQ is determined entirely by genes
+is plausible given this data.*
+
+
+6. Now consider how the association between IQs would change if social class were
+taken into account.  Create a plot using the code below to illustrate the 
+relationship between all three variables. Just by looking at the plot (and 
+without fitting any models), does it appear that the relationship between the 
+IQs is the same for high social class children as it is for low social class 
+children?
+
+```{r ex6}
+qplot(x = Biological, y = Foster, color = Social, data = twins, geom = "point")
+```
+
+*I imagine that if you were to fit three lines to each group of points separately,
+`low` would have the steepest slope, `middle` would have the middle slope, and 
+`high` would have the shallowest slope. This would correspond to the idea that 
+there is in fact some influence of the environment, as the foster twin of the
+bio twin raised in a lower socio-economic level generally benefitted more from their
+new environment as IQ increased. It's difficut to tell based on this visualization 
+if this effect statistically is significant.*
+
+**Endnote**: The researcher that collected this data was named [Cyril Burt](http://en.wikipedia.org/wiki/Cyril_Burt), and his work was the subject of 
+some controversy.
