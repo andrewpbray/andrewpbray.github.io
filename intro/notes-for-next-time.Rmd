@@ -37,6 +37,8 @@ this news/journal article and comment).
 - Be more explicit about RV notation (Bernoulli, Binomial, Poisson) with E and V
 for each.
 
+- Be more explicit and spend more time addressing power.
+
 - Collapse approaches to inference to "computational" and "theoretical".
 
 - Have homeworks and labs due on different days.
