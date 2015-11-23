@@ -24,6 +24,7 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 
 #### Tuesday, Nov. 17
 - [Lab 11](labs/11-mlr/multiple_regression.html)
+- [Lab 10 Key](labs/10-slr-2/10-slr-2-key.html)
 
 #### Wednesday, Nov. 18
 - MLR: Model Selection and multi-collinearity
