@@ -258,11 +258,15 @@ img {
 <ol start="9" style="list-style-type: decimal">
 <li>What is the equation of the line corresponding to males? (<em>Hint:</em> For males, the parameter estimate is multiplied by 1.) For two professors who received the same beauty rating, which gender tends to have the higher course evaluation score?</li>
 </ol>
-<p><span class="math">\[ \hat{y} = (3.75 + 0.1724) + 0.074 \times bty_avg \]</span> <span class="math">\[ \hat{y} = 3.92 + 0.074 \times bty_avg \]</span></p>
+<p><span class="math">\[ \hat{y} = (3.75 + 0.1724) + 0.074 \times bty\_avg \]</span> <span class="math">\[ \hat{y} = 3.92 + 0.074 \times bty\_avg \]</span></p>
+<p><em>For two professors of the same beauty rating, our model predicts that the male professor will have a score that is 0.1723 points higher.</em></p>
 <p>The decision to call the indicator variable <code>gendermale</code> instead of<code>genderfemale</code> has no deeper meaning. R simply codes the category that comes first alphabetically as a <span class="math">\(0\)</span>. (You can change the reference level of a categorical variable, which is the level that is coded as a 0, using the<code>relevel</code> function. Use <code>?relevel</code> to learn more.)</p>
 <ol start="10" style="list-style-type: decimal">
 <li>Create a new model called <code>m_bty_rank</code> with <code>gender</code> removed and <code>rank</code> added in. How does R appear to handle categorical variables that have more than two levels? Note that the rank variable has three levels: <code>teaching</code>, <code>tenure track</code>, <code>tenured</code>.</li>
 </ol>
+<pre class="sourceCode r"><code class="sourceCode r">m_bty_rank &lt;-<span class="st"> </span><span class="kw">lm</span>(score ~<span class="st"> </span>bty_avg +<span class="st"> </span>rank, <span class="dt">data =</span> evals)
+<span class="kw">summary</span>(m_bty_rank)</code></pre>
+<p><em>R has taken the <code>rank</code> variable and strung it out into 2 dummy variables to account for the three possible levels: tenure-track, tenured, and teaching.</em></p>
 <p>The interpretation of the coefficients in multiple regression is slightly different from that of simple regression. The estimate for <code>bty_avg</code> reflects how much higher a group of professors is expected to score if they have a beauty rating that is one point higher <em>while holding all other variables constant</em>. In this case, that translates into considering only professors of the same rank with <code>bty_avg</code> scores that are one point apart.</p>
 </div>
 <div id="the-search-for-the-best-model" class="section level2">
@@ -271,21 +275,56 @@ img {
 <ol start="11" style="list-style-type: decimal">
 <li>Which variable would you expect to have the highest p-value in this model? Why? <em>Hint:</em> Think about which variable would you expect to not have any association with the professor score.</li>
 </ol>
+<p><em>I’d expect <code>pic_color</code> to have the highest p-value in the model since it seems like it should be independent of score.</em></p>
 <p>Let’s run the model…</p>
 <pre class="sourceCode r"><code class="sourceCode r">m_full &lt;-<span class="st"> </span><span class="kw">lm</span>(score ~<span class="st"> </span>rank +<span class="st"> </span>ethnicity +<span class="st"> </span>gender +<span class="st"> </span>language +<span class="st"> </span>age +<span class="st"> </span>cls_perc_eval 
              +<span class="st"> </span>cls_students +<span class="st"> </span>cls_level +<span class="st"> </span>cls_profs +<span class="st"> </span>cls_credits +<span class="st"> </span>bty_avg 
              +<span class="st"> </span>pic_outfit +<span class="st"> </span>pic_color, <span class="dt">data =</span> evals)
 <span class="kw">summary</span>(m_full)</code></pre>
 <ol start="12" style="list-style-type: decimal">
-<li><p>Check your suspicions from the previous exercise. Include the model output in your response.</p></li>
-<li><p>Interpret the coefficient associated with the ethnicity variable.</p></li>
-<li><p>Drop the variable with the highest p-value and re-fit the model. Did the coefficients and significance of the other explanatory variables change? (One of the things that makes multiple regression interesting is that coefficient estimates depend on the other variables that are included in the model.) If not, what does this say about whether or not the dropped variable was collinear with the other explanatory variables?</p></li>
-<li><p>Using backward-selection and p-value as the selection criterion, determine the best model. You do not need to show all steps in your answer, just the output for the final model. Also, write out the linear model for predicting score based on the final model you settle on.</p></li>
-<li><p>Verify that the conditions for this model are reasonable using diagnostic plots.</p></li>
-<li><p>Based on your final model, describe the characteristics of a professor and course at University of Texas at Austin that would be associated with a high evaluation score.</p></li>
-<li><p>The original paper describes how these data were gathered by taking a sample of professors from the University of Texas at Austin and including all courses that they have taught. Considering that each row represents a course, could this new information have an impact on any of the conditions of linear regression?</p></li>
-<li><p>Would you be comfortable generalizing your conclusions to apply to professors generally (at any university)? Why or why not?</p></li>
+<li>Check your suspicions from the previous exercise. Include the model output in your response.</li>
 </ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m_full)</code></pre>
+<p><em>I was wrong: pic_color was actually significant, with a p-value of 0.02. The highest p-value was for <code>cls_prof</code>.</em></p>
+<ol start="13" style="list-style-type: decimal">
+<li>Interpret the coefficient associated with the ethnicity variable.</li>
+</ol>
+<p><em>Hold all other variables in the model constant, we expect a professor that is considered “not minority” to have a score that is 0.123 points higher than a professor that is considered “minority”.</em></p>
+<ol start="14" style="list-style-type: decimal">
+<li>Drop the variable with the highest p-value and re-fit the model. Did the coefficients and significance of the other explanatory variables change? (One of the things that makes multiple regression interesting is that coefficient estimates depend on the other variables that are included in the model.) If not, what does this say about whether or not the dropped variable was collinear with the other explanatory variables?</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">m_full2 &lt;-<span class="st"> </span><span class="kw">lm</span>(score ~<span class="st"> </span>rank +<span class="st"> </span>ethnicity +<span class="st"> </span>gender +<span class="st"> </span>language +<span class="st"> </span>age +<span class="st"> </span>cls_perc_eval +<span class="st"> </span>
+<span class="st">                </span>cls_students +<span class="st"> </span>cls_level +<span class="st"> </span>cls_credits +<span class="st"> </span>bty_avg +<span class="st"> </span>pic_outfit +<span class="st"> </span>
+<span class="st">                </span>pic_color, <span class="dt">data =</span> evals)
+<span class="kw">summary</span>(m_full2)</code></pre>
+<p><em>The coefficients and p-values have changed slightly, though the signs remain the same as in the full model. This suggests that the dropped variable had only minimal collinearity with the other explanatory variables.</em></p>
+<ol start="15" style="list-style-type: decimal">
+<li>Using backward-selection and p-value as the selection criterion, determine the best model. You do not need to show all steps in your answer, just the output for the final model. Also, write out the linear model for predicting score based on the final model you settle on.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">m_final &lt;-<span class="st"> </span><span class="kw">lm</span>(score ~<span class="st"> </span>ethnicity +<span class="st"> </span>gender +<span class="st"> </span>language +<span class="st"> </span>age +<span class="st"> </span>cls_perc_eval +<span class="st"> </span>
+<span class="st">                </span>cls_credits +<span class="st"> </span>bty_avg +<span class="st"> </span>pic_color, <span class="dt">data =</span> evals)
+<span class="kw">summary</span>(m_final)</code></pre>
+<p><span class="math">\[\hat{y} = 3.77 + 0.17 ethnicity\_not\_minority + 0.21 gendermale - 0.206 language\_non\_english \\
+ -0.006 age + 0.004 cls\_perc\_eval + 0.505 cls\_credits\_one\_credit + 0.05 bty\_avg \\
+ - 0.19 pic\_color\_color\]</span></p>
+<ol start="16" style="list-style-type: decimal">
+<li>Verify that the conditions for this model are reasonable using diagnostic plots.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> .fitted, <span class="dt">y =</span> .stdresid, <span class="dt">data =</span> m_final, <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)
+<span class="kw">qplot</span>(<span class="dt">sample =</span> .stdresid, <span class="dt">data =</span> m_final) +<span class="st"> </span><span class="kw">geom_abline</span>()</code></pre>
+<p><em>This model is violating assumptions left and right. The linear trend looks like the only sensible assumption give that the residuals are centered at zero across the range of the fitted values. The funnel-shaped pattern, however, indicates some decreasing variance. Additionally, our residuals are still left-skewed and we have the same reservations about independence.</em></p>
+<ol start="17" style="list-style-type: decimal">
+<li>Based on your final model, describe the characteristics of a professor and course at University of Texas at Austin that would be associated with a high evaluation score.</li>
+</ol>
+<p><em>A high evaluation score would be associated with a professor who is male, not a minority, a native english speaker, young, rated to have high beauty, using a black-and-white photo, have a high eval completion rate, and be teaching a one credit course.</em></p>
+<ol start="18" style="list-style-type: decimal">
+<li>The original paper describes how these data were gathered by taking a sample of professors from the University of Texas at Austin and including all courses that they have taught. Considering that each row represents a course, could this new information have an impact on any of the conditions of linear regression?</li>
+</ol>
+<p><em>This makes the assumption of indendepent errors even less tenable as we’d expect that courses taught by the same professor will have similar scores.</em></p>
+<ol start="19" style="list-style-type: decimal">
+<li>Would you be comfortable generalizing your conclusions to apply to professors generally (at any university)? Why or why not?</li>
+</ol>
+<p><em>We would be comfortable generalizing our conclusions to the broader population of all professors if our sample is representative of that population (that’s be once we have a valid model). There is good reason to think that the dynamics at play in a large research university like UT Austin will be quite different than those at a small liberals arts college like, say, Reed. Therefore we’d want to restrict our generalization to similar large universities.</em></p>
 <div id="license">
 This is a product of OpenIntro that is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>. This lab was written by Mine Çetinkaya-Rundel and Andrew Bray.
 </div>

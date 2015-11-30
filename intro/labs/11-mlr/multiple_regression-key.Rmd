@@ -300,8 +300,8 @@ the intercept and slope form familiar from simple regression.
     who received the same beauty rating, which gender tends to have the
     higher course evaluation score?
     
-$$ \hat{y} = (3.75 + 0.1724) + 0.074 \times bty_avg $$
-$$ \hat{y} = 3.92 + 0.074 \times bty_avg $$
+$$ \hat{y} = (3.75 + 0.1724) + 0.074 \times bty\_avg $$
+$$ \hat{y} = 3.92 + 0.074 \times bty\_avg $$
 
 *For two professors of the same beauty rating, our model predicts that the male
 professor will have a score that is 0.1723 points higher.*
@@ -343,6 +343,9 @@ picture color.
 11. Which variable would you expect to have the highest p-value in this model? 
     Why? *Hint:* Think about which variable would you expect to not have any 
     association with the professor score.
+    
+*I'd expect `pic_color` to have the highest p-value in the model since it seems
+like it should be independent of score.*
 
 Let's run the model...
 
@@ -355,8 +358,20 @@ summary(m_full)
 
 12. Check your suspicions from the previous exercise. Include the model output
     in your response.
+    
+    
+```{r}
+summary(m_full)
+```
+
+*I was wrong: pic_color was actually significant, with a p-value of 0.02. The
+highest p-value was for `cls_prof`.*
 
 13. Interpret the coefficient associated with the ethnicity variable.
+
+*Hold all other variables in the model constant, we expect a professor that is
+considered "not minority" to have a score that is 0.123 points higher than
+a professor that is considered "minority".*
 
 14. Drop the variable with the highest p-value and re-fit the model. Did the
     coefficients and significance of the other explanatory variables change?
@@ -364,27 +379,76 @@ summary(m_full)
     coefficient estimates depend on the other variables that are included in
     the model.) If not, what does this say about whether or not the dropped
     variable was collinear with the other explanatory variables?
+    
+```{r}
+m_full2 <- lm(score ~ rank + ethnicity + gender + language + age + cls_perc_eval + 
+                cls_students + cls_level + cls_credits + bty_avg + pic_outfit + 
+                pic_color, data = evals)
+summary(m_full2)
+```
+
+*The coefficients and p-values have changed slightly, though the signs remain
+the same as in the full model. This suggests that the dropped variable had
+only minimal collinearity with the other explanatory variables.*
+
 
 15. Using backward-selection and p-value as the selection criterion,
     determine the best model. You do not need to show all steps in your
     answer, just the output for the final model. Also, write out the linear
     model for predicting score based on the final model you settle on.
+    
+```{r}
+m_final <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + 
+                cls_credits + bty_avg + pic_color, data = evals)
+summary(m_final)
+```
+
+$$\hat{y} = 3.77 + 0.17 ethnicity\_not\_minority + 0.21 gendermale - 0.206 language\_non\_english \\
+ -0.006 age + 0.004 cls\_perc\_eval + 0.505 cls\_credits\_one\_credit + 0.05 bty\_avg \\
+ - 0.19 pic\_color\_color$$ 
 
 16. Verify that the conditions for this model are reasonable using diagnostic 
     plots.
-    
+
+```{r}
+qplot(x = .fitted, y = .stdresid, data = m_final, position = "jitter")
+qplot(sample = .stdresid, data = m_final) + geom_abline()
+```
+
+*This model is violating assumptions left and right. The linear trend looks like
+the only sensible assumption give that the residuals are centered at zero across
+the range of the fitted values. The funnel-shaped pattern, however, indicates 
+some decreasing variance. Additionally, our residuals are still left-skewed and
+we have the same reservations about independence.*
+
 17. Based on your final model, describe the characteristics of a professor and 
     course at University of Texas at Austin that would be associated with a high
     evaluation score.
+    
+*A high evaluation score would be associated with a professor who is male, not
+a minority, a native english speaker, young, rated to have high beauty, using
+a black-and-white photo, have a high eval completion rate, and be teaching a
+one credit course.*
 
 18. The original paper describes how these data were gathered by taking a
     sample of professors from the University of Texas at Austin and including 
     all courses that they have taught. Considering that each row represents a 
     course, could this new information have an impact on any of the conditions 
     of linear regression?
+    
+*This makes the assumption of indendepent errors even less tenable as we'd expect
+that courses taught by the same professor will have similar scores.*
 
 19. Would you be comfortable generalizing your conclusions to apply to professors
     generally (at any university)? Why or why not?
+    
+*We would be comfortable generalizing our conclusions to the broader population
+of all professors if our sample is representative of that population (that's be once
+we have a valid model). There is
+good reason to think that the dynamics at play in a large research university like
+UT Austin will be quite different than those at a small liberals arts college like,
+say, Reed. Therefore we'd want to restrict our generalization to similar large 
+universities.*
 
 <div id="license">
 This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was written by 
