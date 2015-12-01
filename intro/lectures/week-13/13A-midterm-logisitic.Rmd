@@ -108,6 +108,13 @@ $spam \sim log(num\_char); \quad X_1 \sim W_1$
 Each one by itself has poor predictive power, so how can we combine them into
 a single stronger model?
 
+
+## {.flexbox .vcenter .build}
+
+<img src="../figs/good-bad.jpg" width="800px" />
+
+
+
 #
 
 ## Logistic Regression for B
