@@ -1,0 +1,403 @@
+---
+title: "Logistic regression"
+output:
+  html_document:
+    css: ../lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+## OkCupid Profiles
+
+For this lab we'll be investigating profile data from the free online dating 
+website [OkCupid](https://www.okcupid.com/).  The original dataset consists of 
+the public profiles of a randomly chosen sample of 10% of the 59,946 OkCupid 
+users who were living within 25 miles of San Francisco, had active profiles on 
+June 26, 2012, were online in the previous year, and had at least one picture 
+in their profile.  Using a Python script, data was scraped from users' public 
+profiles on June 30, 2012; any non-publicly facing information such as messaging 
+was not accessible.  The resulting datasets consist of 5995 rows, one for each 
+user. 
+
+Variables include typical user information (such as sex, sexual orientation, 
+age, and ethnicity) and lifestyle variables (such as diet, drinking habits, 
+smoking habits).  A list of all variables and their descrition can be found [here](https://raw.githubusercontent.com/rudeboybert/JSE_OkCupid/master/okcupid_codebook.txt).  Furthermore, text responses to the 10 essay questions posed to all OkCupid 
+users are included as well:
+
+Number | Question
+------ | -----------------------
+essay0 | My self summary
+essay1 | What I’m doing with my life
+essay2 | I’m really good at
+essay3 | The first thing people usually notice about me
+essay4 | Favorite books, movies, show, music, and food
+essay5 | The six things I could never do without
+essay6 | I spend a lot of time thinking about
+essay7 | On a typical Friday night I am
+essay8 | The most private thing I am willing to admit
+essay9 | You should message me if...
+
+Analysis of similar data has received much press of late, including Amy Webb's 
+TED talk "How I Hacked Online Dating" [https://www.youtube.com/watch?v=d6wG_sAdP0U](https://www.youtube.com/watch?v=d6wG_sAdP0U) and Wired magazine's "How a Math Genius Hacked OkCupid to Find True Love"
+[http://www.wired.com/2014/01/how-to-hack-okcupid/](http://www.wired.com/2014/01/how-to-hack-okcupid/).  Before proceeding, we note that even though this data consists of 
+publicly facing material, one should proceed with caution before scraping and 
+using data in fashion similar to ours, as the Computer Fraud and Abuse Act 
+[http://pando.com/2014/01/22/did-the-mathematician-who-hacked-okcupid-violate-federal-computer-laws/](http://pando.com/2014/01/22/did-the-mathematician-who-hacked-okcupid-violate-federal-computer-laws/) (CFAA) makes it a federal crime to access a computer without
+authorization from the owner.  In our case, permission was given by the owners 
+of the data.
+
+This lab provides us an opportunity to fit a predictive model for sex using 
+logistic regression.  Specifically, we will be using information on users' 
+profiles to predict if the user is female.  At the time, OkCupid only allowed 
+for two possible sex choices (male or female), thus making sex a binary 
+categorical variable (OkCupid has since relaxed these categorizations to allow 
+for a broader range of choices).  Mathematically speaking, the outcome variable 
+of interest is
+
+\[
+Y_i =
+\left\{
+\begin{array}{cl}
+1 & \mbox{if the user is female}\\
+0 & \mbox{if the user is male} 
+\end{array}
+\right.
+\]
+
+
+
+
+
+## Mosaic Package and OkCupid Data
+
+Before we begin, we install and load the `mosaic` package for statistical 
+education:
+
+* Install the mosaic package as described in the [Introduction to R and RStudio](http://htmlpreview.github.io/?https://github.com/beanumber/oiLabs-mosaic/blob/master/intro_to_r/intro_to_r.html#mosaic) Lab
+* Load the package:
+
+```{r, eval = FALSE, message=FALSE, warning=FALSE}
+library(mosaic)
+```
+
+We load the `profiles` and `essays` datasets:
+
+```{r, eval = FALSE, message=FALSE, warning=FALSE}
+download.file("http://people.reed.edu/~albkim/MATH141/etc/OkCupid.RData", 
+              destfile = "OkCupid.RData")
+load("OkCupid.RData")
+```
+
+
+
+
+
+
+## Exploring the Data
+
+This data set is very rich and complex and necessitates many of the exploratory 
+data analysis tools we've seen earlier.
+
+1.  In the "Environment" panel of RStudio, click on `profiles`.  A spreadsheet 
+of the data should pop up.  Which variables are numerical?  Which variables are 
+categorical?
+
+2.  Perform an exploratory data analysis of the variables using the various 
+commands we've learned so far:  `hist()`, `plot()`, `table()`, `barplot()`, 
+`mosaicplot()`, etc.  Pick any two categorical and two numerical variables.  
+Recall for barplots and mosaicplots, you need to create a frequency/contingency 
+table first. i.e.
+    + Say you want to display a barplot of a categorical variable `x`, use `barplot(table(x))`.
+    + Say you want to display a mosaicplot of categorical variables `x` and `y`, 
+    use `mosaicplot(table(x, y))`.  
+
+3.  What proportion of users are female?  What are some possible explanations 
+for this result?
+
+4.  The essay questions are quite large and do not fit into one screen.  Type 
+`essays[6,]` in R to view the contents of the sixth user, for example.
+
+5.  Create a mosaicplot of the relationship between `sex` and `orientation`.  
+What can you say about the dating pool for San Francisco OkCupid users?  What is
+the single largest dating demographic group in San Francisco?  
+
+
+
+
+
+
+## Heights
+
+We compare the distributions of male and female heights using histograms.  While 
+we could plot two separate histograms without regard to the scale of the axes, 
+we instead use the `histogram()` function from the `mosaic` package to
+
+* Plot heights for each sex by defining the formula: `~ height | sex`.  In other 
+words plot heights *conditional* on sex.
+* Plot them simultaneously in a *lattice* consisting of one column and two rows 
+by setting `layout=c(1,2)`
+* Plot them with bin widths matching the granularity of the observations 
+(inches) by setting `width=1`.
+* The `histogram()` function automatically matches the x and y axes scales for 
+both plots.
+
+```{r, eval = FALSE, message=FALSE, warning=FALSE, fig.width=10}
+histogram(~height | sex, width=1, layout=c(1,2), xlab="Height (in)", 
+          data=profiles)
+```
+
+We observe that some of the heights are nonsensical, including a height of 95 
+inches (equaling 7'11'').  We deem heights between 55 and 80 inches to be 
+reasonable and remove the rest.  While there is potential bias in discarding 
+users with what we deem non-reasonable heights, since out of the 5995 users 
+would be only 15 users discarded, the effect would not be substantial.  We 
+therefore keep only those users with heights between 55 and 80 inches using the 
+`subset()` command and the `&` AND operator i.e. keep only those users with 
+`profiles$height >= 55` and `profiles$height <= 80`.  We assign this subset of 
+users to `profiles.subset`.
+
+```{r, eval = FALSE, message=FALSE, warning=FALSE, fig.width=10}
+profiles.subset <- subset(profiles, profiles$height >= 55 & profiles$height <= 80)
+histogram(~height | sex, width=1, layout=c(1,2), xlab="Height (in)", 
+          data=profiles.subset)
+```
+
+6.  What phenomenon do you think explains the unusual spike for males at 72 
+inches?  Similarly, what phenomenon do you think explains the anomolous spike 
+for females at 64 inches?
+
+7.  If I told you someone was 6'4'', what would you predict their gender to be?  
+Similarly, what if I told you someone was 5'1''?
+
+8.  For about which height do we start seeing a higher proportion of males than 
+females?  You can think of this as a "point of indifference" i.e. we have an 
+similar proportion of males and females being of that height.
+
+9.  Make a similarly split histogram of age by sex.  What do you observe?
+
+
+
+
+## Essay Data
+
+We now turn our attention to the essay questions.  The function 
+`profile.has.word()` below searches all 10 essays for each user and returns 
+`TRUE` if the user used the particular word.  Note the function is 
+case-insensitive.  For example, let's view only the first user's essays 
+responses and search a few terms
+
+```{r, eval = FALSE}
+essays[1, ]
+profile.has.word(essays[1,], word="i like a few lame reality shows")
+profile.has.word(essays[1,], word="statistics")
+```
+
+We can use the `profile.has.word()` for all users at once as well.  For example, 
+we search for the use of the word "wine" and assign it to a new variable in 
+`profiles` called `has.wine`:
+
+```{r, eval = FALSE}
+profiles$has.wine <- profile.has.word(essays, word="wine")
+table(profiles$has.wine)
+barplot(table(profiles$has.wine))
+```
+
+We now display the relationship between the two categorical variables 
+`profiles$has.wine` and `profiles$sex` using mosaicplots.
+
+```{r, eval = FALSE}
+table(profiles$sex, profiles$has.wine)
+mosaicplot(table(profiles$sex, profiles$has.wine), xlab="Sex", ylab="Word Use",
+           main="Sex vs Word Use")
+```
+
+10.  What is your interpretation of the mosaicplot?
+
+11.  Repeat the above exercise with a different word.
+
+
+
+## Using Linear Regression to Predict Sex
+
+In order to reinforce the concepts of logistic regression, we initally keep 
+things simple and consider only one predictor variable: height.  We first 
+demonstrate that linear regression is an inappropriate tool to use when we have 
+a binary categorial variable as an outcome variable.  We first create a 
+scatterplot of the outcome variable `is.female` over height: 
+
+```{r, eval = FALSE}
+plot(profiles$height, profiles$is.female, xlab="height", ylab="is female")
+```
+
+We observe this plot is not very informative since there is a large degree of 
+overlap of the points.  For example, how many users are female with height 70 
+inches?  So we add a little `jitter()` to the points, i.e. a little random 
+noise, to better distinguish the points:
+
+```{r, eval = FALSE}
+plot(jitter(profiles$height), jitter(profiles$is.female), xlab="height", ylab="is female")
+```
+
+For example, we see there aren't as many females with height 60 inches as there 
+are with height 68 inches.  We now fit a linear regression as in the previous 
+lab and plot the regression line in red.  
+
+```{r, eval = FALSE}
+m1 <- lm(is.female ~ height, data=profiles)
+msummary(m1)
+plot(jitter(profiles$height), jitter(profiles$is.female), xlab="height", ylab="is female")
+abline(m1, col="red")
+```
+
+We observe that linear regression yields fitted probabilities greater than 1 for 
+heights less than about 60 inches for and fitted probabilities less than 0 for 
+heights over about 78 inches.  These fitted probabilities do not make sense.  
+
+
+
+
+## Using Logistic Regression to Predict Sex
+
+Logistic regression is a tool more suited for binary outcome variables, as in 
+our case.  Our goal is to once again predict users' sex using their height.  
+This may seem silly as we already know each users' sex; however we can fit the 
+model *pretending* we don't know each users' sex, but then *verifying* how good 
+our predictions are using the truth.  
+
+Unlike for linear regression, to run logistic regression we use the `glm()` (a 
+*generalized linear model*) command with the argument `family=binomial`.  Just 
+like linear regression however, the formula the takes the form 
+`y ~ x1 + x2 + ...` where `y` is the outcome variable and `x1`, `x2`, ... are 
+the predictor variables.  We fit the model using `glm()` and report the results:
+
+```{r, eval = FALSE}
+gender_height <- glm(is.female ~ height, family=binomial, data=profiles)
+msummary(gender_height)
+```
+
+We observe that the coefficient for height is `-0.65281`.  The interpretation of 
+this coefficient is not like with linear regression; it is a little more 
+complicated and we leave this for a more advanced statistics class.  However, we 
+note that the coefficient is negative, indicating that height is inversely 
+related to the probability that a user is female.   The regression line is
+
+\[
+\begin{aligned}
+\log_{e} \left(\frac{p_i}{1-p_i}\right) &= \beta_0 + \beta_1 \mbox{height}_{i}
+\end{aligned}
+\]
+
+In order to obtain the fitted probability $\widehat{p}_i$ of a particular user 
+being female, we use the *inverse logit function*:
+
+\[
+\begin{aligned}
+\widehat{p}_i 
+&= \frac{\exp\left( b_0 + b_1 \mbox{height}_{i} \right)}{1+ \exp\left( b_0 + b_1 \mbox{height}_{i} \right)}
+= \frac{1}{1+ \exp\left(-\left( b_0 + b_1 \mbox{height}_{i} \right)\right)}
+\end{aligned}
+\]
+
+12.  The first user in the dataset's height is 64 inches.  What is the fitted 
+probability $\widehat{p}$ that this user is female?
+
+13.  What is the fitted probability that a user is female if their height is 75 inches?
+
+
+
+
+
+## Prediction
+
+We can compute fitted probabilities $\widehat{p}_i$ for all 5995 users by 
+applying the `fitted()` command to the model output instead of computing them 
+all manually.  We then plot the histogram of fitted probabilities:
+
+```{r, eval = FALSE}
+profiles$p.hat <- fitted(gender_height)
+hist(profiles$p.hat, main="Fitted Probabilities", xlab=expression(hat(p)[i]))
+```
+
+For each user, however, we only have a fitted probability $\widehat{p}_i$.  If 
+we want a "yes/no" prediction as to whether or not they are female, we need a 
+"prediction threshold": if the fitted probability exceeds this threshold, we 
+predict that this user is female.  We're going to use a threshold of 50%:  if 
+the fitted probability $\widehat{p}_i$ exceeds this threshold, we *predict* this 
+user is female.  We indicate this on the histogram using a red line.  
+
+```{r, eval = FALSE}
+threshold <- 0.5
+hist(profiles$p.hat, main="Fitted Probabilities", xlab=expression(hat(p)[i]))
+abline(v=threshold, col="red")
+```
+
+It is important to note we are not restricted to using a threshold of 50\%.  Any 
+value between 0% and 100% can be used.  We chose 50% somewhat arbitrarily:  
+because it segments the $\widehat{p}_i$ into two chunks.  We did not choose this 
+value because 50% of people are female; recall in this dataset, the proportion 
+of users who are female is not close to 50%.  
+
+
+
+
+## Predictive Performance
+
+How did our predictions fare?  We can evaluate our model and prediction 
+threshold's performance using a contigency table comparing our predictions to 
+the truth:
+
+```{r, eval = FALSE}
+profiles$predicted.female <- profiles$p.hat >= threshold
+profiles$predicted.female[1:10]
+table(truth=profiles$is.female, prediction=profiles$predicted.female)
+```
+
+
+
+
+
+
+* * *
+
+## On Your Own
+
+-   Of the people we predicted to be female, what proportion did we predict 
+correctly?
+-   Of the people who were truly females, what proportion did we predict 
+correctly? 
+-   Overall, what proportion of users' sex did we predict correctly?
+-   We used 50% as a prediction threshold on the $p_i$'s to predict a user as 
+female.  What height does this correspond to?  Compare this height to our "point 
+of indifference" height from earlier.  
+-   Use 25% as a different prediction threshold on the $p_i$'s to declare a user
+as female.  Overall, what proportion of users' sex did we predict correctly?  
+Compare this value to the earlier one.  Which prediction threshold do you prefer?    
+<!---   Fit a logistic regression using only `has.wine` as a predictor variable.  Interpret the coefficient and compare the prediction performance using a prediction threshold of 50%.  Did our prediction performance improve?-->
+-   Fit a logistic regression using both `height` and `has.wine` as predictor 
+variables.  What is the fitted probability of being female for a user who is 69 
+inches tall and does not have the word "wine" in their profile?
+-   Use 50% as a prediction threshold on the $p_i$'s to declare a user as female 
+on our new model.  Overall, what proportion of users' sex did we predict 
+correctly?  Did our prediction performance improve?  What do these results say 
+about including `has.wine` as a predictor variable?
+
+
+
+## Acknowledgements
+
+We thank OkCupid president and co-founder Christian Rudder for agreeing to our 
+use of this dataset (under the condition that the dataset remains public) and 
+Everett Wetchler \url{everett.wetchler@gmail.com} for providing the data; the 
+original dataset can be found at [https://github.com/rudeboybert/JSE_OkCupid](https://github.com/rudeboybert/JSE_OkCupid).
+
+<div id="license">
+This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
+This lab was written by Albert Y. Kim and Andrew Bray.
+</div>
+
+
+
+
+
+
