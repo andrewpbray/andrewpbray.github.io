@@ -20,12 +20,13 @@ DoJo tutoring: Sun 5-7 PM, Wed 7-9 PM, Thurs 6-8 PM
 #### Monday, Nov. 30
 - Review Midterm II
 - Logistic Regression
+- **PS12**: [link]()
 
 #### Tuesday, Dec. 1
 - Lab
 
 #### Wednesday, Dec. 2
-- Approximate Bayesian Computation
+- Bayesian Modeling
 
 #### Friday, Dec. 4
 - Simpson's Paradox
