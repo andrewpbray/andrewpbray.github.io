@@ -37,7 +37,7 @@ Please draw your own subjective distributions for the following events.
 ## Karl Broman's Socks {.flexbox .vcenter .build}
 ```{r echo = FALSE, eval = FALSE}
 # credit for this example goes to Rasmus Baathe, who made a similar presentation
-# at userR! 2015. many of the included images are his.
+# at userR! 2015. most of the included images are his.
 ```
 
 <img src="../figs/broman-tweet.png" width="400px" />
@@ -161,7 +161,7 @@ table(sim_singles)[6]/1000
 pval <- table(sim_singles)[6]/1000
 ```
 
-Our p-value is `r pval`.
+Our two-tailed p-value is `r pval*2`.
 
 
 ## Question
@@ -402,7 +402,7 @@ $$ 21 \times 2 + 3 = 45 \textrm{ socks} $$
 
 ## Summary {.build}
 
-Bayesian methods
+Bayesian methods . . .
 
 - Require the subjective specification of your prior knowledge
 - Provide a posterior distribution on the parameters
