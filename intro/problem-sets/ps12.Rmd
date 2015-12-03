@@ -1,0 +1,29 @@
+---
+title: "Problem Set 12"
+output:
+  html_document:
+    theme: "cerulean"
+---
+
+### Multiple Regression in the news
+
+Last month the New York Times ran a story about a new approach to analyzing
+testing data across states.
+
+* * *
+
+<img src="../figs/nyt-upshot.png" width="700px" />
+
+* * *
+
+You can find the full story [here](http://www.nytimes.com/2015/10/27/upshot/surprise-florida-and-texas-excel-in-math-and-reading-scores.html?_r=0) 
+and the report that the story references
+[here](http://www.urban.org/research/publication/breaking-curve-promises-and-pitfalls-using-naep-data-assess-state-role-student-achievement/view/full_report).
+
+1. 
+
+
+### Math 141 Survey
+In additional to the traditional course evaluations that you will be filling out,
+I would like your feedback on some Math 141 - specfic items. Please fill out
+the survey [here](https://docs.google.com/a/reed.edu/forms/d/126pjrIfhbTOU5v30TJu78EfMDVdVrCgcU0EV62NMDh0/viewform). Your identity will not be recorded.
