@@ -8,7 +8,8 @@ output:
 ### Multiple Regression in the news
 
 Last month the New York Times ran a story about a new approach to analyzing
-testing data across states.
+testing data across states. If you read into the methods it turns out that the
+new approach is to use multiple regression.
 
 * * *
 
@@ -20,10 +21,16 @@ You can find the full story [here](http://www.nytimes.com/2015/10/27/upshot/surp
 and the report that the story references
 [here](http://www.urban.org/research/publication/breaking-curve-promises-and-pitfalls-using-naep-data-assess-state-role-student-achievement/view/full_report).
 
-1. 
+### Bayesian Models
+
+The [disappearance of Malaysian Airlines flight 370](https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370) last year lead to a worldwide seffort to locate the plane. The search effort lead many to considering Bayesian
+approaches.
+
+- [Fivethiryeight.com](http://fivethirtyeight.com/features/how-statisticians-could-help-find-flight-370/)
+- [NPR](http://www.npr.org/sections/thetwo-way/2014/03/25/294390476/can-a-250-year-old-mathematical-theorem-find-a-missing-plane)
 
 
 ### Math 141 Survey
-In additional to the traditional course evaluations that you will be filling out,
-I would like your feedback on some Math 141 - specfic items. Please fill out
+In additional to the traditional course evaluations that you have filled out,
+I would like your feedback on some Math 141-specfic items. Please fill out
 the survey [here](https://docs.google.com/a/reed.edu/forms/d/126pjrIfhbTOU5v30TJu78EfMDVdVrCgcU0EV62NMDh0/viewform). Your identity will not be recorded.
