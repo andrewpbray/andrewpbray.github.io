@@ -51,18 +51,18 @@ The false assumption that relationships that exist at an **aggregated level** (e
 between states, counties, nations) also hold at the **individual level**.
 
 
-## Immigration and Income
+## Immigration and Income {.flexbox .vcenter .build}
 
 Freedman (1999)
 
-<img src="../figs/eco-freedman" width="425px" />
+<img src="../figs/eco-freedman.png" width="375px" />
 
 **Suggests that foreign-born populations tend to have higher incomes (corr = 0.52).**
 
 
 ## Immigration and Income
 
-```{r}
+```{r echo = FALSE, fig.height = 3.5, fig.width = 5}
 birthplace <- rep(c("foreign", "native"), each = 100)
 highincome <- as.factor(c(rep(c("yes", "no"), c(28, 72)), rep(c("yes", "no"), c(35, 65))))
 highincome <-  factor(highincome, levels(highincome)[c(2,1)])
@@ -75,7 +75,7 @@ qplot(x = birthplace, fill = highincome, geom = "bar", position = "fill")
 
 ## What's going on? {.flexbox .vcenter .build}
 
-<img src="../figs/eco-freedman" width="300px" />
+<img src="../figs/eco-freedman.png" width="300px" />
 
 - **Unit of observation**: state
 - **Explanation**: states with many foreign-born people have natives with
@@ -90,13 +90,17 @@ The false assumption that relationships that exist at an **aggregated level** (e
 between states, counties, nations) also hold at the **individual level**.
 
 Interpretations can invert due to:
+
 - confounding / omitted variable (Model 1)
 - aggregation (Model 2)
 
 
 ## Strategies {.build}
 
-When dealing with an ecological study,
+1. When dealing with an ecological study, restrict model interpretations to the 
+same observational level on which the data was collected.
 
-1.
+2. If you want to make individual-level inferences, be sure your data is collected
+on that same level. Aggregate-level effects can be introduced via a multi-level model.
+
 
