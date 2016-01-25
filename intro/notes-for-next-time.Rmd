@@ -48,3 +48,5 @@ for each.
 - For second midterm, have it be take home but advertise that beforehand.
 
 - For taxonomy of data, use some other letters besides X, Y, W.
+
+- Useful NHST resource: http://rpsychologist.com/d3/NHST/
